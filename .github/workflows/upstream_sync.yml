@@ -36,9 +36,10 @@ jobs:
           DATE=$(date +%Y-%m-%d)
           BRANCH="upstream_pull-${DATE}"
           UPSTREAM_BRANCH=$(git remote show upstream | awk '/HEAD branch/ {print $NF}')
-          git checkout -b "$BRANCH"
-          git pull upstream "$UPSTREAM_BRANCH"
-          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          # Fetch upstream branch
+          git fetch upstream "$UPSTREAM_BRANCH"
+          # Create the new branch based on upstream
+          git checkout -b "$BRANCH" "upstream/$UPSTREAM_BRANCH"
 
       - name: Push new branch
         env:
