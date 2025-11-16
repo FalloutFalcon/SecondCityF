@@ -72,7 +72,7 @@
 	///Icon for the maintenance panel overlay
 	var/panel_type = "panel1"
 	///Whether this vendor can be selected when building a custom vending machine
-	var/allow_custom = FALSE
+	var/allow_custom = TRUE
 
 	/**
 	  * List of products this machine sells
@@ -141,7 +141,7 @@
 	///How likely this is to happen (prob 100) per second
 	var/shoot_inventory_chance = 1
 	//Stop spouting those godawful pitches!
-	var/shut_up = FALSE
+	var/shut_up = TRUE // DARKPACK EDIT CHANGE
 	///can we access the hidden inventory?
 	var/extended_inventory = FALSE
 	///Are we checking the users ID

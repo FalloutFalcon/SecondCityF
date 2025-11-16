@@ -424,7 +424,7 @@
 	ratio = CEILING(ratio*4, 1) * 25
 	if(ratio > 75)
 		return
-	. += mutable_appearance('icons/obj/structures.dmi', "damage[ratio]", -(layer+0.1))
+	. += mutable_appearance('modular_darkpack/modules/deprecated/icons/32x48.dmi', "damage[ratio]", -(layer+0.1)) // DARKPACK EDIT CHANGE
 
 /obj/structure/window/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
 	return exposed_temperature > T0C + heat_resistance
@@ -617,14 +617,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/spawner, 0)
 	state = WINDOW_OUT_OF_FRAME
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/unanchored/spawner, 0)
-
-// You can't rust glass! So only reinforced glass can be impacted.
-/obj/structure/window/reinforced/rust_heretic_act()
-	add_atom_colour(COLOR_RUSTED_GLASS, FIXED_COLOUR_PRIORITY)
-	AddElement(/datum/element/rust)
-	set_armor(/datum/armor/none)
-	take_damage(get_integrity() * 0.5)
-	modify_max_integrity(initial(max_integrity) * 0.2)
 
 /obj/structure/window/plasma
 	name = "plasma window"
