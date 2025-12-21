@@ -51,3 +51,7 @@
 /mob/living/simple_animal/deer : /mob/living/basic/deer
 /mob/living/simple_animal/cow : /mob/living/basic/cow
 /mob/living/simple_animal/hostile/cockroach : /mob/living/basic/cockroach/sewer
+
+# for some reasn our ghosts dont have /retaliate/ and thus arent caught by the ghost conversion txt...
+/mob/living/simple_animal/hostile/ghost : /mob/living/basic/ghost
+/mob/living/simple_animal/hostile/ghost/hostile : /mob/living/basic/ghost
