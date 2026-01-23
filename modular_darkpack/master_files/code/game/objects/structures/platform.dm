@@ -8,16 +8,13 @@
 /obj/structure/platform/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(isstack(tool))
 		var/obj/item/stack/adding_stack = tool
-		// in case the stack gets deleted after use().
-		// add in the front is to ensure the name's macro behavoir is applied correctly
-		var/stack_name = "add [adding_stack]"
 
 		if(is_glass_sheet(adding_stack) && !has_window() && adding_stack.tool_start_check(user, 2))
-			to_chat(user, span_notice("You start to [stack_name] to [src]."))
+			to_chat(user, span_notice("You start to add [adding_stack] to [src]."))
 			if(!adding_stack.use_tool(src, user, 2 SECONDS, 2))
 				return ITEM_INTERACT_FAILURE
 
-			to_chat(user, span_notice("You [stack_name] to [src]."))
+			to_chat(user, span_notice("You add [adding_stack] to [src]."))
 			var/obj/structure/window/our_window = create_structure_window(adding_stack.type)
 			our_window.state = WINDOW_OUT_OF_FRAME
 			our_window.set_anchored(FALSE)
@@ -26,7 +23,7 @@
 		/* Removed as our low-walls shouldnt really have grille
 		else if(istype(adding_stack, /obj/item/stack/rods) && !has_grille && adding_stack.use(sheet_amount))
 			has_grille = TRUE
-			to_chat(user, "<span class='notice'>You [stack_name] to [src]")
+			to_chat(user, "<span class='notice'>You add [adding_stack] to [src]")
 			update_appearance()
 			return ITEM_INTERACT_SUCCESS
 		*/
