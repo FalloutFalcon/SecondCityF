@@ -30,13 +30,6 @@
 	var/footstep = FOOTSTEP_FLOOR
 	/// Traits to give people who have clambered onto our tile
 	var/static/list/turf_traits = list(TRAIT_TURF_IGNORE_SLOWDOWN, TRAIT_TURF_IGNORE_SLIPPERY, TRAIT_IMMERSE_STOPPED)
-	// DARKPACK EDIT ADD START
-	///whether we spawn a window structure with us on mapload
-	var/start_with_window = FALSE
-	///typepath. creates a corresponding window for this frame.
-	///is either a material sheet typepath (eg /obj/item/stack/sheet/glass) or a fulltile window typepath (eg /obj/structure/window/fulltile)
-	var/window_type = /obj/item/stack/sheet/glass
-	// DARKPACK EDIT ADD END
 
 /datum/armor/half_wall
 	melee = 50

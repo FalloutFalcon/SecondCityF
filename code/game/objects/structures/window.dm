@@ -60,6 +60,7 @@
 		setDir()
 		obj_flags &= ~BLOCKS_CONSTRUCTION_DIR
 		obj_flags &= ~IGNORE_DENSITY
+		update_icon_state() // DARKPACK EDIT ADD
 		AddElement(/datum/element/can_barricade)
 
 	//windows only block while reinforced and fulltile
