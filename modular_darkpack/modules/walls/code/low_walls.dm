@@ -9,12 +9,6 @@
 	max_integrity = 350
 	smoothing_groups = SMOOTH_GROUP_CITY_LOW_WALL
 	canSmoothWith = SMOOTH_GROUP_CITY_LOW_WALL
-	var/window
-
-/obj/structure/platform/lowwall/Initialize(mapload)
-	. = ..()
-	if(window)
-		new window(loc)
 
 LOW_WALL_HELPER(rich, 'icons/obj/smooth_structures/darkpack/wall/rich/low_wall.dmi')
 
