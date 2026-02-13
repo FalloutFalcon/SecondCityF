@@ -21,6 +21,9 @@ TIME_TILL_ROUNDEND 216000
 ## World of Darkness splats
 ROUNDSTART_SPLATS splat_kindred
 ROUNDSTART_SPLATS splat_ghoul
+## APOC EDIT ADD START - IMBUED
+ROUNDSTART_SPLATS splat_imbued
+## APOC EDIT ADD END
 
 ## If dead people and ghosts can LOOC to people who are alive.
 DISABLE_GHOST_LOOC

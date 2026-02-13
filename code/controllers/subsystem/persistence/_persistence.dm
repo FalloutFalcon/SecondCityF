@@ -77,6 +77,7 @@ SUBSYSTEM_DEF(persistence)
 	load_delamination_counter()
 	load_tram_counter()
 	load_adventures()
+	load_the_word() // DARKPACK EDIT ADD - IMBUED
 	return SS_INIT_SUCCESS
 
 ///Collects all data to persist.
@@ -95,7 +96,7 @@ SUBSYSTEM_DEF(persistence)
 			save_tram_history(transport.specific_transport_id)
 		save_tram_counter()
 	save_guestbooks() // DARKPACK EDIT ADD
-
+	save_the_word() // DARKPACK EDIT ADD - IMBUED
 
 ///Loads up Poly's speech buffer.
 /datum/controller/subsystem/persistence/proc/load_poly()
