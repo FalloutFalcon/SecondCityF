@@ -3,14 +3,6 @@
 ///name of the file that has all the saved words
 #define THE_WORD_SAVE_FILE "data/words/[SSmapping.current_map.map_name]_words.json"
 
-/proc/good_the_word_location(turf/T)
-	if(!T)
-		. = FALSE
-	else if(!(isfloorturf(T) || iswallturf(T)))
-		. = FALSE
-	else
-		. = TRUE
-
 ///Loads all words, and places a select amount in maintenance and the prison.
 /datum/controller/subsystem/persistence/proc/load_the_word()
 	var/json_file = file(THE_WORD_SAVE_FILE)
@@ -19,6 +11,7 @@
 
 	var/list/json = json_decode(file2text(json_file))
 	if(!json)
+		log_world("[SSmapping.current_map.map_name] has no imbued words saved.")
 		return
 
 	if(json["version"] < THE_WORD_PERSISTENCE_VERSION)
@@ -32,16 +25,16 @@
 
 	var/successfully_loaded_words = 0
 
-	for(var/iteration in 1 to 100)
-		var/word = pick_n_take(saved_words)
-		if(!islist(word))
+	for(var/iteration in 1 to min(saved_words.len, 100))
+		var/word_data = pick_n_take(saved_words)
+		if(!islist(word_data))
 			stack_trace("something's wrong with the word data! one of the saved words wasn't a list!")
 			continue
 
-		var/xvar = word["x"]
-		var/yvar = word["y"]
-		var/zvar = word["z"]
-		var/message = word["the_word"]
+		var/xvar = word_data["x"]
+		var/yvar = word_data["y"]
+		var/zvar = word_data["z"]
+		var/message = word_data["the_word"]
 
 		if(!xvar || !yvar || !zvar || !message)
 			continue
@@ -50,7 +43,7 @@
 		if(!good_the_word_location(T))
 			continue
 
-		var/obj/structure/the_word/word = new(T, message)
+		new /obj/structure/the_word(T, message)
 
 		successfully_loaded_words++
 
