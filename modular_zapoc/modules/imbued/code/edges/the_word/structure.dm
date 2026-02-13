@@ -33,7 +33,7 @@
 	. = ..()
 
 	remove_alt_appearance("imbued_message")
-	var/image/imbued_image = image('modular_zapoc/modules/imbued/icons/the_word.dmi', src, word, layer = LATTICE_LAYER)
+	var/image/imbued_image = image('modular_zapoc/modules/imbued/icons/the_word.dmi', src, word, layer = ABOVE_NORMAL_TURF_LAYER)
 	//imbued_image.override = TRUE
 	add_alt_appearance(/datum/atom_hud/alternate_appearance/basic/imbued, "imbued_message", imbued_image)
 
