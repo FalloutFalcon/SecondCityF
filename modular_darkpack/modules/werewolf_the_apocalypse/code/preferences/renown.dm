@@ -7,6 +7,9 @@
 	minimum = 1
 	maximum = 10
 
+	relevant_inherent_trait = TRAIT_FERA_RENOWN
+	must_have_relevant_trait = TRUE
+
 /datum/preference/numeric/renown/create_default_value()
 	return 1
 

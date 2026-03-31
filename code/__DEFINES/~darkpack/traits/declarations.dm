@@ -131,6 +131,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_WTA_GAROU_AUSPICE "wta_garou_auspice"
 // This mob has fur!
 #define TRAIT_FERA_FUR "fera_fur"
+#define TRAIT_FERA_RENOWN "fera_renown"
 /// If the fera is wyrm tainted.
 #define TRAIT_WYRMTAINTED "wyrm_tainted"
 /// If the fera is wyrm tainted. Affects their sprite.
