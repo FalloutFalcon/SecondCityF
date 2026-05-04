@@ -15,6 +15,7 @@
 	desc = "Presence power description"
 	activate_sound = 'modular_darkpack/modules/powers/sounds/presence_activate.ogg'
 	deactivate_sound = 'modular_darkpack/modules/powers/sounds/presence_deactivate.ogg'
+	var/static/mutable_appearance/presence_overlay
 
 //lets not have people be able to cast this through walls
 
@@ -42,10 +43,13 @@
 	return successes
 
 /datum/discipline_power/presence/proc/apply_presence_overlay(mob/living/carbon/target)
+	var/list/overlays = target.overlays_standing[MUTATIONS_LAYER]
+	if(!presence_overlay)
+		presence_overlay = mutable_appearance('modular_darkpack/modules/powers/icons/presence.dmi', "presence", -MUTATIONS_LAYER)
+		presence_overlay.pixel_z = 1
 	target.remove_overlay(MUTATIONS_LAYER)
-	var/mutable_appearance/presence_overlay = mutable_appearance('modular_darkpack/modules/powers/icons/presence.dmi', "presence", -MUTATIONS_LAYER)
-	presence_overlay.pixel_z = 1
-	target.overlays_standing[MUTATIONS_LAYER] = presence_overlay
+	overlays |= presence_overlay
+	target.overlays_standing[MUTATIONS_LAYER] = overlays
 	target.apply_overlay(MUTATIONS_LAYER)
 	SEND_SOUND(target, sound('modular_darkpack/modules/powers/sounds/presence_activate.ogg'))
 
@@ -128,7 +132,11 @@
 /datum/discipline_power/presence/awe/deactivate()
 	. = ..()
 	for(var/mob/living/carbon/target in affected_targets)
+		var/list/overlays = target.overlays_standing[MUTATIONS_LAYER]
 		target.remove_overlay(MUTATIONS_LAYER)
+		overlays -= presence_overlay
+		target.overlays_standing[MUTATIONS_LAYER] -= overlays
+		target.apply_overlay()
 	affected_targets.Cut()
 
 // DREAD GAZE
