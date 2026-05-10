@@ -15,6 +15,7 @@
 /obj/item/melee/touch_attack/quietus/Initialize(mapload, potency = 1, duration = 0)
 	. = ..()
 	AddComponent(/datum/component/scorpions_touch_poison, potency, duration)
+	ADD_TRAIT(src, TRAIT_NODROP, INNATE_TRAIT)
 
 //COMPONENT FOR WEAPON
 /datum/component/scorpions_touch_poison
@@ -66,7 +67,7 @@
 			// apply non transmittable disease to the mortal victim if they reach zero stamina
 			to_chat(victim, span_userdanger("You feel deathly ill as the poison ravages your body!"))
 
-	victim.adjust_fire_loss(2 * poison_potency)
+	victim.apply_damage((2 * poison_potency), BURN, unsoakable = TRUE)
 	//victim.AdjustKnockdown(3 SECONDS) this is from the old code?
 
 	to_chat(user, span_warning("Your venomous touch burns [victim]!"))

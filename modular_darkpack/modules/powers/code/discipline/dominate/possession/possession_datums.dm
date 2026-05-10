@@ -68,7 +68,7 @@
 	if(mortal.mind)
 		vamp.mind = mortal.mind
 
-	vamp.adjust_brute_loss(50)
+	vamp.apply_damage(50)
 	vamp.visible_message(span_danger("[vamp] suddenly convulses violently and falls into what appears to be a coma!"))
 	to_chat(vamp, span_boldwarning("The psychic shock of your host's death sends you into torpor!"))
 	vamp.torpor(DAMAGE_TRAIT)
@@ -138,11 +138,14 @@
 	controller = WEAKREF(possessor)
 	..()
 
-/datum/action/end_possession/Trigger(trigger_flags)
+/datum/action/end_possession/Trigger(mob/clicker, trigger_flags)
+	. = ..()
+	if(!.)
+		return
+
 	var/datum/possession_controller/possessor = controller?.resolve()
 	if(!possessor)
 		Remove(owner)
 		qdel(src)
-		return
+		return FALSE
 	possessor.end_possession()
-	return TRUE

@@ -20,10 +20,8 @@
 	owner.update_body()
 	// since dot 4 is always active and requires no roll
 	if(level >= 4)
-		owner.physiology.brute_mod *= 0.8
+		owner.physiology.burn_mod *= 0.5 //Halves burn damage dice pools, V20 Core Page 476
 		owner.physiology.heat_mod *= 0.5
-		//owner.physiology.clone_mod *= 0.9
-		//ADD_TRAIT(owner, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
 		ADD_TRAIT(owner, TRAIT_NOSOFTCRIT, DISCIPLINE_TRAIT(type))
 		if(!(owner.is_clan(/datum/subsplat/vampire_clan/gargoyle)))
 			ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, DISCIPLINE_TRAIT(type))
@@ -188,7 +186,7 @@
 	desc = "Merge with solid stone, and move through it without disturbing it."
 
 	level = 5
-	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE
+	check_flags = DISC_CHECK_CONSCIOUS
 	vitae_cost = 2
 	violates_masquerade = TRUE
 
@@ -222,7 +220,7 @@
 	SIGNAL_HANDLER
 	if(!istype(blocker, /turf/closed))
 		return
-	if(!istype(blocker, /turf/cordon))
+	if(istype(blocker, /turf/cordon))
 		return
 	if(get_area(owner) == get_area(blocker))
 		return COMSIG_COMPONENT_PERMIT_PASSAGE

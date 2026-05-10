@@ -34,19 +34,19 @@
 
 	//Hair shit
 	var/list/hair_colors = list(
-		"040404", 	//Black
-		"120b05", 	//Dark Brown
-		"342414",	//Brown
-		"554433",	//Light Brown
-		"695c3b",	//Dark Blond
-		"ad924e",	//Blond
-		"dac07f",	//Light Blond
-		"802400",	//Ginger
-		"a5380e",	//Ginger alt
-		"ffeace",	//Albino
-		"650b0b",	//Punk Red
-		"14350e",	//Punk Green
-		"080918",   //Punk Blue
+		"#040404", 	//Black
+		"#120b05", 	//Dark Brown
+		"#342414",	//Brown
+		"#554433",	//Light Brown
+		"#695c3b",	//Dark Blond
+		"#ad924e",	//Blond
+		"#dac07f",	//Light Blond
+		"#802400",	//Ginger
+		"#a5380e",	//Ginger alt
+		"#ffeace",	//Albino
+		"#650b0b",	//Punk Red
+		"#14350e",	//Punk Green
+		"#080918",   //Punk Blue
 	)
 	var/list/male_hair = list(
 		"Bald",
@@ -241,8 +241,6 @@
 	fully_replace_character_name(name, real_name)
 
 
-	maxHealth = round(initial(maxHealth)+(initial(maxHealth)/3)*(st_get_stat(STAT_STAMINA)))
-	health = round(initial(health)+(initial(health)/3)*(st_get_stat(STAT_STAMINA)))
 	last_health = health
 
 	is_criminal = socialrole.is_criminal
@@ -286,7 +284,7 @@
 		skin_tone = pick(socialrole.s_tones)
 
 		if (age >= 55)
-			set_haircolor("a2a2a2")
+			set_haircolor("#a2a2a2")
 			set_facial_haircolor(hair_color)
 		else
 			set_haircolor(pick(socialrole.hair_colors))

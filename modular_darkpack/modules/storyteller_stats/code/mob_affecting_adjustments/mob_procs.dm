@@ -1,14 +1,14 @@
 /// Get a specific mob's stat from its stats list.
-/mob/living/proc/st_get_stat(stat_path, include_bonus)
+/mob/living/proc/st_get_stat(stat_path, include_bonus, include_auto_successes)
 	var/datum/st_stat/given_stat = storyteller_stats[stat_path]
-	return given_stat?.get_score(include_bonus)
+	return given_stat?.get_score(include_bonus, include_auto_successes)
 
 /// Wrapper for st_get_stat to reduce copypaste. Get a specific mob's stat from its stats list.
-/mob/living/proc/st_get_stats(list/stat_list, include_bonus)
+/mob/living/proc/st_get_stats(list/stat_list, include_bonus, include_auto_successes)
 	var/total_score = 0
 	for(var/stat_path in stat_list)
 		var/datum/st_stat/given_stat = storyteller_stats[stat_path]
-		total_score += given_stat?.get_score(include_bonus)
+		total_score += given_stat?.get_score(include_bonus, include_auto_successes)
 	return total_score
 
 /// Set a specific mob's stat from its stats list.
@@ -42,13 +42,23 @@
 	return score
 
 
+/mob/living/proc/st_add_auto_successes(stat_path, amount, source)
+	var/datum/st_stat/given_stat = storyteller_stats[stat_path]
+	var/score = given_stat?.add_auto_successes(amount, source)
+	update_modifiers_from_stats()
+	return score
+
+/mob/living/proc/st_remove_auto_successes(stat_path, source)
+	var/datum/st_stat/given_stat = storyteller_stats[stat_path]
+	var/score = given_stat?.remove_auto_successes(source)
+	update_modifiers_from_stats()
+	return score
+
+
 /mob/living/proc/update_modifiers_from_stats(initial = FALSE)
 	for(var/stat_typepath in storyteller_stats)
 		var/datum/st_stat/stat_datum = storyteller_stats[stat_typepath]
-		if(stat_datum.stat_flags & AFFECTS_HEALTH)
-			recalculate_max_health(initial)
-		if(stat_datum.stat_flags & AFFECTS_SPEED)
-			add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/dexterity, multiplicative_slowdown = -(st_get_stat(STAT_DEXTERITY) / 20))
+		stat_datum.update_mob(src)
 
 
 /datum/preferences/proc/apply_stats_from_prefs(mob/living/carbon/human/character)
