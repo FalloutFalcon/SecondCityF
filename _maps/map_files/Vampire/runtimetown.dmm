@@ -1004,6 +1004,11 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights)
+"su" = (
+/obj/effect/turf_decal/bordur,
+/obj/structure/transfer_point_bart/bus,
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/outside/pacificheights)
 "sw" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/plating/rough,
@@ -2570,6 +2575,7 @@
 /area/vtm/interior/shop)
 "PW" = (
 /obj/effect/turf_decal/bordur/corner,
+/obj/structure/transfer_point_bart/bus,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/pacificheights)
 "Qe" = (
@@ -4376,7 +4382,7 @@ je
 NR
 kb
 NR
-cj
+su
 ik
 VQ
 tW
