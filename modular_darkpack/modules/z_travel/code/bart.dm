@@ -53,22 +53,25 @@ GLOBAL_LIST_EMPTY(bart_seat_points)
 
 	if(isliving(user))
 		user.visible_message(
-			span_notice("[user] begins stepping onto [src]"),
-			span_notice("You begin stepping onto [src]")
+			span_notice("[user] begins stepping onto [src]."),
+			span_notice("You begin stepping onto [src].")
 		)
 		if(!do_after(user, 5 SECONDS, src))
 			return
+
 		user.overlay_fullscreen("fast_travel", /atom/movable/screen/fullscreen/blind)
-		ADD_TRAIT(user, TRAIT_IMMOBILIZED, "fast_travel")
+		user.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_PACIFISM), "fast_travel")
+
 		var/obj/bus_seat = pick(GLOB.bart_seat_points)
 		if(bus_seat)
 			user.forceMove(get_turf(bus_seat))
 		send_tip_of_the_round(user, source = "Fast Travel")
-		sleep(get_travel_time(endpoint))
-		REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, "fast_travel")
-		user.clear_fullscreen("fast_travel", animated = 1 SECONDS)
 
-	transfer_atom(user, endpoint)
+		sleep(get_travel_time(endpoint))
+		user.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_PACIFISM), "fast_travel")
+		user.clear_fullscreen("fast_travel", animated = 5 SECONDS)
+
+	endpoint.transfer_atom(user)
 
 /obj/structure/transfer_point_bart/proc/get_endpoints(mob/user)
 	var/options = list()
@@ -92,8 +95,8 @@ GLOBAL_LIST_EMPTY(bart_seat_points)
 	var/area/my_area = get_area(src)
 	return my_area.name
 
-/obj/structure/transfer_point_bart/proc/transfer_atom(atom/movable/arrived, obj/structure/transfer_point_bart/endpoint)
-	return arrived.forceMove(get_turf(endpoint))
+/obj/structure/transfer_point_bart/proc/transfer_atom(atom/movable/arrived)
+	return arrived.forceMove(get_turf(src))
 
 /obj/structure/transfer_point_bart/proc/get_travel_time(obj/structure/transfer_point_bart/endpoint)
 	if(!is_valid_z_level(src, endpoint))
@@ -105,13 +108,60 @@ GLOBAL_LIST_EMPTY(bart_seat_points)
 
 /obj/structure/transfer_point_bart/bus
 	name = "bus line"
+	desc = "A bus stop apart of the " + CITY_NAME + " public transit system."
 	icon_state = "busstop"
 	icon = 'modular_darkpack/modules/decor/icons/road_signs.dmi'
+	COOLDOWN_DECLARE(swap_state_cooldown)
+	var/bus_at_stop = TRUE
+	var/static/image/active_overlay
 
+/obj/structure/transfer_point_bart/bus/Initialize(mapload)
+	. = ..()
+	if(!active_overlay)
+		active_overlay = image(icon_state = "arrow", icon = 'icons/hud/screen_gen.dmi')
+		active_overlay.pixel_y += 16
+		active_overlay.color = COLOR_BLUE_LIGHT
+
+	START_PROCESSING(SSobj, src)
+
+/obj/structure/transfer_point_bart/bus/Destroy(force)
+	. = ..()
+	if(prob(50))
+		toggle_state()
+	STOP_PROCESSING(SSobj, src)
+
+/obj/structure/transfer_point_bart/bus/process(seconds_per_tick)
+	if(COOLDOWN_FINISHED(src, swap_state_cooldown))
+		toggle_state()
+
+/obj/structure/transfer_point_bart/bus/examine(mob/user)
+	. = ..()
+	var/time_left = round(COOLDOWN_TIMELEFT(src, swap_state_cooldown)/10)
+	if(time_left)
+		. += "The bus has [time_left]s left before it [bus_at_stop ? "leaves" : "arrives"]."
+
+/obj/structure/transfer_point_bart/bus/proc/toggle_state()
+	bus_at_stop = !bus_at_stop
+
+	COOLDOWN_START(src, swap_state_cooldown, rand(5 MINUTES, 10 MINUTES))
+	if(bus_at_stop)
+		add_overlay(active_overlay)
+	else
+		cut_overlay(active_overlay)
+
+
+/obj/structure/busstop
+	name = "bus shelter"
+	desc = "A metal structure providing shelter from the elements while waiting for your bus to arrive."
+	icon_state = "busstop"
+	icon = 'modular_darkpack/modules/z_travel/icons/busstop.dmi'
+
+/*
 /obj/structure/transfer_point_bart/metro
 	name = "metro line"
 	icon_state = null
 	icon = 'icons/obj/fluff/bus.dmi'
+*/
 
 /*
 /proc/avoid_duplicate_keys(list/atom/atom_list)
