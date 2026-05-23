@@ -155,6 +155,7 @@ GLOBAL_LIST_EMPTY(bart_seat_points)
 	desc = "A metal structure providing shelter from the elements while waiting for your bus to arrive."
 	icon_state = "busstop"
 	icon = 'modular_darkpack/modules/z_travel/icons/busstop.dmi'
+	pixel_x = -16
 
 /*
 /obj/structure/transfer_point_bart/metro
