@@ -1,0 +1,2162 @@
+11,100th Avenue
+3,101st Avenue
+4,102nd Avenue
+11,103rd Avenue
+7,104th Avenue
+28,105th Avenue
+14,106th Avenue
+7,107th Avenue
+4,108th Avenue
+2,109th Avenue
+10,10th Avenue
+27,10th Street
+7,11th Avenue
+32,11th Street
+4,12th Avenue
+39,12th Street
+13,13th Avenue
+10,13th Street
+32,14th Avenue
+45,14th Street
+7,15th Avenue
+9,15th Street
+10,16th Avenue
+9,16th Street
+5,17th Avenue
+23,17th Street
+3,18th Avenue
+19,18th Street
+8,19th Avenue
+20,19th Street
+6,1st Avenue
+1,1st Avenue Place
+4,20th Avenue
+6,20th Street
+9,21st Avenue
+12,21st Street
+8,22nd Avenue
+6,22nd Street
+43,23rd Avenue
+9,23rd Street
+3,24th Avenue
+15,24th Street
+7,25th Avenue
+7,25th Street
+10,26th Avenue
+8,26th Street
+4,27th Avenue
+44,27th Street
+1,28th Avenue
+9,28th Street
+28,29th Avenue
+9,29th Street
+6,2nd Avenue
+14,2nd Street
+2,30th Avenue
+10,30th Street
+2,31st Avenue
+7,31st Street
+10,32nd Street
+5,33rd Avenue
+3,33rd Street
+9,34th Avenue
+14,34th Street
+56,35th Avenue
+7,35th Street
+5,36th Avenue
+11,36th Street
+4,37th Avenue
+4,37th Street
+14,38th Avenue
+3,38th Street
+11,39th Avenue
+3,39th Street
+8,3rd Avenue
+23,3rd Street
+5,40th Avenue
+65,40th Street
+2,40th Street Way
+1,40th Way
+7,41st Avenue
+7,41st Street
+9,42nd Avenue
+6,42nd Street
+3,43rd Street
+3,44th Avenue
+2,44th Street
+6,45th Avenue
+6,45th Street
+13,46th Avenue
+4,46th Street
+3,47th Avenue
+2,47th Street
+8,48th Avenue
+6,48th Street
+2,49th Avenue
+3,49th Street
+6,4th Avenue
+12,4th Street
+6,50th Avenue
+5,50th Street
+4,51st Avenue
+37,51st Street
+5,52nd Avenue
+21,52nd Street
+4,53rd Avenue
+10,53rd Street
+6,54th Avenue
+8,54th Street
+5,55th Avenue
+10,55th Street
+3,56th Avenue
+9,56th Street
+4,57th Avenue
+6,57th Street
+2,58th Avenue
+9,58th Street
+10,59th Street
+20,5th Avenue
+36,5th Street
+3,60th Avenue
+10,60th Street
+4,61st Avenue
+1,61st Place
+19,61st Street
+6,62nd Avenue
+13,62nd Street
+6,63rd Avenue
+13,63rd Street
+3,64th Avenue
+1,64th Avenue Place
+1,64th Street
+5,65th Avenue
+6,65th Street
+24,66th Avenue
+4,66th Street
+4,67th Avenue
+4,67th Street
+6,68th Avenue
+7,69th Avenue
+11,6th Avenue
+25,6th Street
+3,70th Avenue
+6,71st Avenue
+4,72nd Avenue
+59,73rd Avenue
+4,74th Avenue
+12,75th Avenue
+7,76th Avenue
+4,77th Avenue
+6,78th Avenue
+4,79th Avenue
+8,7th Avenue
+115,7th Street
+5,80th Avenue
+6,81st Avenue
+10,82nd Avenue
+9,83rd Avenue
+8,84th Avenue
+15,85th Avenue
+5,86th Avenue
+6,87th Avenue
+6,88th Avenue
+4,89th Avenue
+12,8th Avenue
+56,8th Street
+11,90th Avenue
+1,91st Avenue
+9,92nd Avenue
+1,93rd Avenue
+4,94th Avenue
+1,95th Avenue
+8,96th Avenue
+1,97th Avenue
+168,98th Avenue
+9,99th Avenue
+1,99th Avenue Court
+7,9th Avenue
+22,9th Street
+7,A Street
+2,Abbey Street
+1,Abbott Drive
+1,Aberfoil Avenue
+4,Acacia Avenue
+2,Acalanes Drive
+1,Acton Place
+1,Ada Street
+2,Adams Avenue
+3,Adams Street
+1,Adelaide Street
+39,Adeline Street
+2,Adell Court
+6,Admiral Toney Way
+2,Agnes Street
+1,Agua Vista Street
+8,Aileen Street
+3,Air Cargo Way
+18,Airport Access Road
+24,Airport Drive
+2,Aitken Drive
+6,Alameda Avenue
+3,Alan Shepard Way
+1,Albert Street
+1,Alcala Avenue
+18,Alcatraz Avenue
+2,Alder Street
+1,Alexander
+1,Alexander Court
+1,Alhambra Avenue
+4,Alhambra Lane
+12,Alice Street
+2,Alicia Street
+1,Alida Court
+2,Alida Street
+4,Aliso Avenue
+1,Allendale Avenue
+1,Alleyway
+2,Allman Street
+1,Alma Avenue
+1,Alma Place
+1,Almaden Lane
+1,Almanza Drive
+1,Alpine Terrace
+1,Alta Road
+1,Alta Vista Avenue
+1,Altamont Avenue
+1,Altura Place
+2,Alvarado Place
+11,Alvarado Road
+1,Ambler Lane
+2,Amelia Street
+2,Amito Avenue
+1,Amy Drive
+2,Anair Way
+1,Anderson Avenue
+1,Andover Street
+1,Andrews Street
+1,Angelo Avenue
+1,Annerley Road
+1,Antioch Court
+2,Antioch Street
+1,Anza Avenue
+4,Apgar Street
+1,Apple Street
+2,Apricot Street
+1,Aquarius Way
+1,Arcadia Avenue
+1,Archmont Place
+1,Arden Place
+1,Arden Way
+6,Ardley Avenue
+1,Ardmore Avenue
+1,Argyle Street
+1,Ariane Court
+1,Arimo Avenue
+2,Arizona Street
+1,Arkansas Street
+5,Arlington Avenue
+1,Armanino Court
+3,Armour Drive
+2,Armstrong Drive
+3,Arrowhead Drive
+2,Arroyuelo Avenue
+5,Arthur Street
+1,Ascot Court
+8,Ascot Drive
+1,Ascot Lane
+1,Ascot Place
+1,Ash Street
+1,Ashbrook Court
+1,Ashmount Avenue
+1,Ashmount Way
+1,Ashton Avenue
+1,Asilomar Circle
+1,Asilomar Drive
+1,Aspen Place
+1,Aspinwall Road
+1,Aster Avenue
+1,Athens Avenue
+2,Atherton Street
+4,Athol Avenue
+2,Atlas Avenue
+1,Atwell Avenue
+2,Auburn Avenue
+3,Auseon Avenue
+1,Austin Street
+4,Avenal Avenue
+1,Avoca Avenue
+1,Avon Street
+1,Avonoak Court
+4,Ayala Avenue
+1,Azalea Lane
+1,Aztec Way
+3,B Street
+3,Bacon Road
+1,Bagshotte Drive
+2,Baker Street
+2,Balboa Drive
+12,Baldwin Street
+3,Balfour Avenue
+2,Balmoral Drive
+1,Balsam Way
+170,Bancroft Avenue
+5,Bancroft Way
+1,Banning Drive
+1,Bantry Avenue
+1,Barbara Road
+1,Barcelona Street
+1,Barmied Place
+2,Barner Avenue
+1,Barner Place
+1,Barrett Street
+1,Barrows Road
+1,Barry Place
+1,Bartlett Street
+1,Bates Road
+1,Baxter Street
+1,Bay Alley
+1,Bay Forest Court
+1,Bay Forest Drive
+1,Bay Forest Place
+12,Bay Place
+3,Bay Street
+1,Bayo Street
+4,Bayo Vista Avenue
+3,Bayview Avenue
+1,Bayview Drive
+2,Beach Street
+1,Beacon Street
+1,Beaconsfield Place
+1,Beal Avenue
+1,Beatie Street
+1,Beauforest Drive
+24,Beaumont Avenue
+5,Beechwood Drive
+1,Belfast Avenue
+1,Belgrave Place
+1,Bell Waver Way
+1,Bella Vista Avenue
+1,Bellaire Place
+11,Bellevue Avenue
+1,Belmont Street
+3,Belvedere Street
+1,Bemis Street
+2,Benedict Drive
+1,Benevides Avenue
+2,Bennett Place
+1,Benson Street
+1,Benton Street
+1,Benvenue Avenue
+3,Bergedo Drive
+1,Berlin Way
+1,Bermuda Avenue
+1,Berneves Court
+2,Bernhardt Drive
+2,Besito Avenue
+8,Bessie Coleman Drive
+1,Best Avenue
+2,Beverly Avenue
+1,Biehs Court
+1,Bienati Way
+2,Bigge Street
+1,Binnacle Hill
+1,Birch Court
+3,Birch Street
+4,Birdsall Avenue
+1,Bishops Court
+1,Blachford Court
+1,Blackwood
+1,Blaine Street
+1,Blair Avenue
+1,Blair Place
+1,Blandon Road
+2,Blenheim Street
+1,Blossom Street
+1,Blue Rock Court
+1,Blythen Way
+4,Boden Way
+2,Boeing Street
+2,Bona Street
+5,Bond Street
+1,Bonham Way
+1,Bonnington Court
+1,Booker Street
+5,Boston Avenue
+1,Boulder Avenue
+1,Boulevard Way
+1,Bowles Place
+1,Bowling Drive
+1,Bowsman Court
+1,Boxcar Circle
+1,Boyd Avenue
+1,Boyer Street
+1,Braemar Road
+2,Brandon Street
+1,Brandy Rock Way
+2,Brann Street
+1,Breed Avenue
+1,Brentwood Place
+1,Brentwood Road
+1,Briar Cliff Road
+1,Bridge Avenue
+1,Bridgeview Drive
+4,Brighton Avenue
+1,Bristol Drive
+1,Broadmoor View
+224,Broadway
+20,Broadway Terrace
+1,Brockhurst Street
+2,Bromley Avenue
+1,Brook Street
+8,Brookdale Avenue
+1,Brookfield Avenue
+3,Brooklyn Avenue
+10,Brooklyn Basin Way
+1,Brookpark Road
+3,Brookside Avenue
+1,Brookwood Place
+1,Brookwood Road
+1,Brown Avenue
+1,Bruce Street
+4,Brunell Drive
+2,Brunell Place
+1,Bruns Court
+17,Brush Street
+1,Bryant Avenue
+1,Buckeye Avenue
+2,Buckingham Boulevard
+1,Buckley Court
+6,Buell Street
+4,Buena Ventura Avenue
+3,Buena Vista Avenue
+1,Buena Vista Place
+1,Bullard Drive
+1,Burckhalter Avenue
+1,Burdeck Court
+2,Burdeck Drive
+1,Burgos
+1,Burgos Avenue
+1,Burk Street
+1,Burlington Street
+1,Burlwood Avenue
+7,Burma Road
+7,Burr Street
+1,Burton Drive
+2,Butters Drive
+1,Byron Avenue
+2,Bywood Drive
+1,C Street
+2,Cabot Drive
+1,Cabrillo Place
+2,Cairo Road
+1,Calafia Avenue
+1,Calandria Avenue
+2,Calaveras Ave
+3,Calaveras Avenue
+1,Calcot Place
+21,Caldecott Lane
+4,Caldecott Tunnel
+1,Calderwood Court
+1,Caldwell Road
+5,California Street
+2,Calmar Avenue
+1,Caloden Lane
+3,Caloden Street
+2,Calvert Court
+1,Calvin Road
+4,Camden Street
+1,Camelford Court
+3,Camelford Place
+2,Camellia Place
+1,Cameron Avenue
+1,Camino Lenada Street
+1,Camisa Circle
+12,Campbell Street
+27,Campus Drive
+1,Canning Street
+1,Canon View Lane
+24,Canyon Oaks Drive
+1,Capell Street
+2,Capistrano Drive
+3,Capital Street
+1,Capp Street
+1,Capricorn Avenue
+1,Captains Cove
+1,Capwell Drive
+1,Carberry Avenue
+1,Carisbrook Drive
+1,Carisbrook Lane
+1,Carlsen
+2,Carlsen Street
+7,Carlston Avenue
+1,Carlton Street
+3,Carmel Street
+5,Carrington Street
+1,Carroll Street
+4,Carson Street
+1,Carter Street
+1,Cary Avenue
+1,Cary Court
+1,Casa Court
+1,Casland Avenue
+1,Castello Street
+1,Casterline Road
+4,Castle Drive
+2,Castle Lane
+1,Castle Park Way
+1,Castlewood Street
+22,Castro Street
+1,Caswell Avenue
+1,Cathy Lane
+4,Catron Drive
+1,Cavendish Lane
+3,Cavour Street
+2,Cañon Avenue
+3,Cedar Street
+10,Centennial Drive
+7,Center Street
+1,Cerrito Avenue
+2,Cessna Street
+1,Chabolyn Terrace
+1,Chabot Court
+1,Chabot Crest
+11,Chabot Road
+1,Chadbourne Way
+1,Chamberlin Court
+1,Chambers Drive
+1,Chambers Lane
+9,Champion Street
+2,Chancellor Place
+3,Chandler Street
+1,Channel Way
+3,Chapman Street
+1,Chappell Place
+1,Charing Cross Road
+1,Chariot Lane
+1,Charleston Street
+2,Chase Street
+7,Chatham Road
+1,Chatsworth Court
+1,Chelsea Court
+1,Chelsea Drive
+7,Chelton Drive
+1,Chelton Lane
+1,Cheney Avenue
+2,Cherokee Avenue
+2,Cherry Street
+5,Chester Street
+6,Chestnut Street
+4,Chetwood Street
+2,Chico Court
+1,Chimney Rock
+1,Chungking Street
+4,Church Street
+1,Circle Hill Drive
+6,City Limits Circle
+1,Clairepointe Way
+1,Clara Court
+3,Clara Street
+25,Claremont Avenue
+1,Clarendon Crescent
+3,Clarewood Drive
+1,Clarewood Lane
+5,Clarke Street
+1,Clauser Road
+19,Clay Street
+4,Clemens Road
+1,Clemente Drive
+3,Cleveland Street
+1,Cliffland Avenue
+5,Clifton Street
+1,Clinton Lane
+1,Clipper Hill
+1,Clive Avenue
+1,Clover Drive
+1,Coach Drive
+1,Cochrane Avenue
+1,Colbourn Place
+2,Colby Street
+3,Cole Street
+1,Colgett Drive
+38,Coliseum Way
+21,College Avenue
+1,Collins Drive
+1,Coloma Street
+1,Colorados Drive
+4,Colton Boulevard
+1,Colton Place
+2,Columbian Drive
+2,Commerce Way
+1,Commonwealth Drive
+4,Congress Avenue
+1,Conrad Court
+1,Contra Costa Place
+2,Contra Costa Road
+2,Cooke Street
+13,Coolidge Avenue
+1,Coolidge Terrace
+1,Coral Road
+1,Cordova Street
+1,Cornwall Court
+5,Coronado Avenue
+3,Coronado Street
+2,Cortereal Avenue
+1,Cortez Court
+1,Cosgrave Avenue
+1,Cotter Street
+1,Cotton Street
+1,Country Club Drive
+14,Courtland Avenue
+1,Covent Lane
+2,Covington Drive
+2,Covington Street
+1,Crane Way
+1,Cranford Way
+1,Creed Road
+5,Creekside Circle
+6,Creekside Loop
+4,Creekside Parkway
+2,Creighton Way
+1,Crescent Street
+2,Crest Avenue
+5,Crestmont Drive
+1,Crittenden Street
+1,Crockett Place
+1,Crofton Avenue
+1,Crosby Avenue
+4,Cross Road
+1,Crown Avenue
+1,Crown Ridge Court
+1,Croxton Avenue
+2,Crystal Ridge Court
+1,Culver Court
+1,Culver Street
+1,Cunningham Street
+1,Curran Avenue
+1,Curran Way
+4,Curtis Street
+1,Custer Street
+1,Cuthbert Avenue
+7,D Street
+3,Daisy Street
+2,Dakota Street
+1,Dale Place
+2,Damuth Street
+2,Dana Street
+1,Danbury Street
+1,Dante Avenue
+1,Darien Avenue
+1,Darius Milhaud Lane
+3,Darnby Drive
+1,Dartmouth Drive
+1,Dashwood Avenue
+1,Date Street
+2,Davenport Avenue
+1,Davidson Way
+6,Davis Street
+1,Dawes Street
+2,Dawn Street
+2,De Havilland Street
+1,Deakin Street
+1,Deering Court
+2,Deering Street
+1,Deerwood Avenue
+1,Del Monte Avenue
+3,Delaware Street
+1,Delmer Street
+2,Delmont Avenue
+5,Dennison Street
+2,Denny Street
+2,Denslowe Street
+1,Denton Place
+5,Derby Avenue
+3,Desmond Street
+2,Detroit Avenue
+1,Devon Way
+2,Diablo Drive
+1,Diaz Place
+1,Dickson Court
+3,Dimond Avenue
+1,Dingley Street
+2,Dolores Avenue
+1,Doncaster Place
+2,Donna Way
+67,Doolittle Drive
+1,Doran Drive
+1,Doris Place
+1,Dorisa Avenue
+1,Dorothy Place
+3,Douglas Avenue
+8,Dover Street
+4,Dowling Street
+1,Downey Place
+1,Drake Drive
+1,Drake Lane
+1,Drake Place
+1,Dreyer Place
+2,Drury Court
+1,Drury Lane
+3,Drury Road
+1,Dublin Avenue
+1,Dulwich
+1,Dulwich Road
+2,Dunbar Drive
+1,Duncan Way
+2,Dunkirk Avenue
+1,Dunkirk Street
+1,Dunsmuir Avenue
+10,Durant Avenue
+3,Dutton Avenue
+64,Dwight D. Eisenhower Highway
+1,Dwight Place
+2,Dwight Way
+12,E Street
+2,E. C. Reems Court
+1,Eagle Court
+1,Ealing Lane
+7,Earhart Road
+1,Earl Street
+12,East 10th Street
+7,East 11th Street
+85,East 12th Street
+1,East 12th Street Place
+1,East 13th Street
+2,East 14th Street
+24,East 15th Street
+9,East 16th Street
+18,East 17th Street
+21,East 18th Street
+8,East 19th Street
+8,East 20th Street
+18,East 21st Street
+7,East 22nd Street
+5,East 23rd Street
+5,East 24th Street
+6,East 25th Street
+5,East 26th Street
+8,East 27th Street
+7,East 28th Street
+4,East 29th Street
+4,East 30th Street
+4,East 31st Street
+4,East 32nd Street
+8,East 33rd Street
+4,East 34th Street
+4,East 36th Street
+2,East 38th Street
+12,East 7th Street
+26,East 8th Street
+7,East 9th Street
+1,East Circle
+3,East Court
+3,East Drive
+1,Eastlake Avenue
+6,Eastlawn Street
+2,Eastman Avenue
+1,Eastwood Court
+1,Echo Avenue
+1,Eden Lane
+1,Edenvale Place
+18,Edes Avenue
+1,Edge Drive
+2,Edgemont Way
+1,Edgemoor Place
+1,Edgerly Street
+39,Edgewater Drive
+1,Edgewood Avenue
+6,Edward White Way
+7,Edwards Avenue
+2,Edy Lane
+2,El Camile Avenue
+1,El Caminito
+1,El Carmello Circle
+3,El Centro Avenue
+1,El Dorado Avenue
+2,El Embarcadero
+1,El Monte Avenue
+3,El Paseo Drive
+1,El Patio Street
+1,El Verano Street
+1,Elbert Street
+1,Elderberry Drive
+1,Eldridge Avenue
+1,Elinora Avenue
+1,Elizabeth Street
+1,Ellen Street
+1,Ellington Way
+1,Elliot Street
+1,Ellita Avenue
+1,Elm Street
+1,Elmar Avenue
+3,Elmhurst Avenue
+1,Elmview Drive
+6,Elmwood Avenue
+1,Elrod Avenue
+1,Elsinore Avenue
+2,Elston Avenue
+1,Elston Court
+2,Elverton Drive
+1,Elvessa Street
+3,Elwood Avenue
+1,Elysian Fields Drive
+1,Elysian Place
+37,Embarcadero
+26,Embarcadero West
+1,Emerald Street
+1,Emerson Street
+1,Emerson Way
+1,Emery Lane
+1,Empire Court
+4,Empire Road
+1,Encina Avenue
+2,Encina Way
+4,Engineer Road
+1,Englewood Drive
+2,Enos Avenue
+1,Enterprise Way
+2,Entrada Avenue
+2,Erie Street
+1,Escher Drive
+1,Essex Street
+12,Estates Drive
+2,Estepa Drive
+1,Estero Way
+1,Estudillo Avenue
+1,Ettie Street
+1,Ettrick Street
+2,Eucalyptus Road
+1,Euclid Avenue
+1,Eustice Avenue
+1,Evans Avenue
+1,Evelyn Court
+4,Everett Avenue
+1,Evergreen Avenue
+2,Evergreen Lane
+1,Evers Avenue
+1,Evirel Place
+14,Excelsior Avenue
+1,Excelsior Court
+2,Exeter Drive
+1,F Street
+3,Faculty Circle
+2,Fair Avenue
+1,Fairbairn Avenue
+1,Fairbanks Avenue
+1,Fairchild Street
+2,Fairfax Avenue
+1,Fairhill Court
+2,Fairlane Drive
+8,Fairmount Avenue
+3,Fairview Street
+2,Fairway Avenue
+1,Fallbrook Way
+12,Fallon Street
+1,Farallon Way
+1,Farnam Street
+2,Favor Street
+2,Fenham Street
+1,Fern Street
+1,Fernhoff Court
+1,Fernhoff Road
+1,Fernwood Drive
+1,Ferro Street
+1,Field Street
+1,Fieldbrook Place
+2,Fieldbrook Road
+9,Filbert Street
+1,Fish Ranch Road
+1,Fisher Avenue
+1,Fitzgerald Street
+1,Fitzpatrick Road
+1,Flagg Avenue
+1,Fleet Road
+6,Fleming Avenue
+1,Flint Court
+1,Flintridge Lane
+3,Flora Street
+3,Florence Avenue
+4,Florence Terrace
+1,Florida Street
+2,Florio Street
+1,Fontaine Court
+4,Fontaine Overpass
+19,Fontaine Street
+160,Foothill Boulevard
+2,Foothill Place
+4,Foothill Way
+5,Ford Street
+1,Forest Hill Avenue
+4,Forest Street
+1,Forestland Way
+1,Fortune Way
+1,Foster Avenue
+1,Foster Court
+1,Fox Hills Court
+1,Frances Street
+20,Franklin Street
+1,Frazier Avenue
+1,Frederick Street
+3,Freeway Overpass
+1,Fremont Street
+1,Fremont Way
+2,Fresno Street
+2,Frisbie Street
+13,Frontage Road
+60,Fruitvale Avenue
+1,Frye Street
+1,Fullington Street
+1,Funston Place
+4,G Street
+5,Galindo Street
+1,Galvin Street
+1,Gannon Road
+1,Garden Street
+1,Gardenia Place
+1,Garfield Avenue
+1,Garland Avenue
+1,Garnet Street
+2,Gaskill Street
+3,Gaspar Drive
+3,Gauss Way
+1,Gelston Street
+5,Genoa Street
+2,Georgia Street
+1,Geranium Place
+1,Ghormley Avenue
+1,Gibraltar Road
+5,Gilbert Street
+3,Girvin Drive
+3,Glascock Street
+2,Glaser Road
+2,Gleason Way
+1,Glen Alpine Road
+3,Glen Artney Street
+6,Glen Avenue
+1,Glen Eden Avenue
+2,Glen Manor Place
+1,Glen Oaks Way
+2,Glen Park Road
+2,Glenarms Drive
+1,Glenbrook Drive
+1,Glencourt Drive
+1,Glendale Avenue
+3,Glendome Circle
+1,Glendora Avenue
+2,Glenfield Avenue
+1,Glenly Road
+1,Glenview Avenue
+1,Glenwood Avenue
+6,Glenwood Glade
+8,Golden Gate Avenue
+2,Golden Gate Way
+2,Golf Course Drive
+35,Golf Links Road
+2,Gordon Street
+1,Goss Street
+1,Gould Street
+1,Gouldin Road
+2,Grace Avenue
+1,Graeagle
+1,Graffian Street
+1,Graham Place
+1,Gramercy Place
+1,Granada Avenue
+79,Grand Avenue
+3,Grand View Drive
+1,Grande Vista Avenue
+1,Grande Vista Place
+1,Grass Valley Court
+4,Grass Valley Road
+1,Gravatt Drive
+2,Gravenstein Street
+1,Gray Street
+1,Greathose
+1,Greenacre Road
+1,Greenbrier Street
+2,Greenly Drive
+1,Greenridge Drive
+1,Greenview Drive
+1,Greenwood Avenue
+1,Gregory Place
+1,Gregory Street
+1,Griffin Street
+1,Grisborne Avenue
+7,Grizzly Peak Boulevard
+1,Grizzly Terrace Drive
+3,Grosvenor Place
+102,Grove Shafter Freeway
+2,Grumman Street
+2,Guido Street
+2,Gunn Drive
+1,Gwin Court
+1,Gwin Road
+1,Gypsy Lane
+1,Haddon Place
+3,Haddon Road
+1,Hageman Avenue
+1,Hale Avenue
+1,Halleck Street
+2,Halliday Avenue
+1,Hamilton Place
+8,Hamilton Street
+1,Hamline Avenue
+2,Hampel Street
+1,Hanly Road
+2,Hannah Street
+2,Hanover Avenue
+7,Hansom Drive
+10,Harbor Bay Parkway
+3,Harbor View Avenue
+1,Harbord Court
+11,Harbord Drive
+1,Harding Way
+1,Hardy Street
+1,Harlan Street
+3,Harmon Avenue
+1,Harmon Street
+4,Harold Street
+1,Harper Street
+1,Harrington Avenue
+88,Harrison Street
+4,Harvard Road
+1,Harvey Avenue
+5,Harwood Avenue
+3,Hassler Way
+1,Haven Street
+21,Havenscourt Boulevard
+1,Haverhill Drive
+3,Hawkins Drive
+1,Hawks Hill Court
+7,Hawley Street
+5,Hawthorne Avenue
+2,Hayes Street
+1,Hazelwood Court
+3,Heafey Road
+1,Hearst Avenue
+1,Heartwood Drive
+1,Heather Ridge Way
+1,Hedge Court
+1,Hedge Lane
+1,Hegenberger Court
+4,Hegenberger Loop
+2,Hegenberger Place
+94,Hegenberger Road
+1,Helen Court
+2,Helen Street
+1,Hellman Street
+1,Hemlock Lane
+1,Hemlock Street
+2,Hemphill Place
+1,Henrietta Street
+1,Henry Street
+1,Herbert Guice Way
+2,Heritage
+1,Hermann Street
+5,Hermosa Avenue
+1,Heron Drive
+1,Herrier Street
+1,Herriott Avenue
+4,Herzog Street
+1,Hesket Road
+1,Hickory Street
+1,High Knoll Drive
+46,High Street
+4,Highland Avenue
+1,Hill Road
+2,Hillcrest Court
+3,Hillcroft Circle
+2,Hillegass Avenue
+1,Hillen Drive
+8,Hiller Drive
+1,Hiller Street
+1,Hillgirt Circle
+1,Hillgrade Court
+5,Hillmont Drive
+1,Hillsborough Street
+3,Hillside Street
+1,Hilltop Crescent
+1,Hillview Street
+1,Hillwood Place
+3,Hilton Street
+2,Holland Street
+10,Hollis Street
+5,Holly Street
+2,Hollywood Avenue
+3,Holman Road
+1,Holmes Avenue
+1,Holway Court
+2,Holway Street
+2,Holyrood Drive
+1,Holyrood Manor
+1,Home Place East
+1,Home Place West
+1,Homeglen Lane
+2,Homewood Drive
+1,Hood Street
+1,Hoover Avenue
+1,Hopkins Place
+1,Hornbeam Alley
+5,Horton Street
+2,Howard Street
+11,Howe Street
+2,Howell Street
+1,Hubbard Street
+2,Hubert Road
+5,Hudson Street
+1,Hughes Avenue
+1,Humboldt Avenue
+1,Humphrey Place
+1,Hunter Avenue
+1,Hunter Court
+1,Huntington Street
+1,Hyacinth Avenue
+3,Hyde Street
+2,Idaho Street
+1,Idlewood Street
+2,Independence Way
+2,Independent Road
+2,Indian Way
+294,International Boulevard
+1,Interstate Highway 80
+1,Inverness Court
+3,Inyo Avenue
+1,Iris Street
+2,Ironwood
+1,Ironwood Alley
+1,Irving Avenue
+1,Irwin Court
+6,Isabella Street
+1,Isleton Avenue
+2,Ivanhoe Road
+4,Ivy Drive
+16,Jackson Street
+1,Jacobus Avenue
+2,James Avenue
+1,Jayne Avenue
+8,Jean Street
+10,Jefferson Street
+1,Jensen Street
+1,Jewell Court
+1,Joaquin Miller Court
+25,Joaquin Miller Road
+22,John B. Williams Freeway
+13,John Glenn Drive
+1,John Street
+1,Johnson Circle
+1,Johnson Circle Greathouse
+1,Johnson Road
+1,Johnston Drive
+2,Jones Avenue
+3,Jordan Road
+1,Judd Place
+1,Julia Street
+1,Julie Ann Way
+1,Julius Street
+1,June Court
+2,K Street
+1,Kales Avenue
+3,Kansas Street
+1,Kaphan Avenue
+8,Kapiolani Road
+1,Kearney Avenue
+7,Keith Avenue
+29,Keller Avenue
+1,Kelton Court
+1,Kempton Avenue
+2,Kempton Way
+1,Kenilworth Avenue
+1,Kenilworth Road
+2,Kenmore Avenue
+11,Kennedy Street
+1,Kent Road
+1,Kentwood Court
+3,Kenwyn Road
+1,Kerrigan Drive
+3,Kerwin Avenue
+1,Keswick Court
+1,Kevin Court
+1,Key Court
+4,Key System ROW
+1,Kimberley Court
+4,Kimberlin Heights Drive
+4,King Street
+17,Kingsland Avenue
+1,Kingsland Place
+1,Kingsley Circle
+3,Kingsley Street
+2,Kingston Avenue
+1,Kingwood Road
+1,Kirkham Ct
+7,Kirkham Street
+1,Kirkland Court
+1,Kitchener Court
+1,Kitty Lane
+1,Kiwanis Street
+1,Klamath Street
+1,Knight Street
+1,Knoll Avenue
+1,Knoll Ridge Way
+1,Knowland Avenue
+1,Koford Road
+1,Krause Avenue
+1,Krohn Lane
+1,Kuhnle
+4,Kuhnle Avenue
+1,La Cresta Avenue
+1,La Cuesta Street
+1,La Prenda Drive
+13,La Salle Avenue
+1,Lacey Avenue
+4,Laguna Avenue
+1,Laguna Way
+1,Lagunitas Avenue
+2,Laird Avenue
+16,Lake Merritt Boulevard
+21,Lake Park Avenue
+74,Lakeshore Avenue
+13,Lakeside Drive
+2,Lamp Street
+2,Lancaster Street
+1,Landvale Road
+1,Lane Court
+1,Laney College Parking Lot
+4,Langley Street
+2,Larkspur Road
+2,Larry Lane
+1,Las Aromas
+1,Las Flores Court
+1,Las Vegas Avenue
+2,Latimer Place
+3,Laurel Avenue
+1,Lauriston Court
+1,Laverne Avenue
+3,Lawlor Street
+1,Lawrence Road
+4,Lawton Avenue
+1,Leach Avenue
+1,Leamont Court
+2,Lee Street
+2,Leet Drive
+1,Legion Avenue
+3,Leighton Street
+5,Leimert Boulevard
+1,Leimert Place
+1,Lenox Avenue
+1,Leo Way
+1,Leona Creek Drive
+8,Leona Drive
+2,Leona Lodge Overflow Parking Lot
+5,Leona Street
+1,Lesser Street
+2,Lester Avenue
+3,Lewis Street
+1,Lexford Place
+1,Libby Court
+1,Liese Avenue
+1,Liggett Drive
+1,Lilac Street
+1,Lily Street
+19,Lincoln Avenue
+1,Lincoln Way
+1,Lincolnshire Drive
+2,Linda Avenue
+14,Linden Street
+5,Link Street
+1,Linnet Avenue
+2,Linwood Avenue
+2,Lion Way
+2,Lisbon Avenue
+1,Live Oak Road
+1,Livingston Street
+1,Lochard Street
+1,Locksley Avenue
+3,Lockwood Street
+1,Locust Street
+1,Lodge Court
+2,Logan Street
+2,Loma Vista Avenue
+1,Loma Vista Way
+1,London Road
+2,Long
+1,Longcroft Drive
+1,Longfellow Avenue
+5,Longridge Road
+2,Longwalk Drive
+1,Loomis Court
+1,Lorenzo Avenue
+2,Los Angeles Street
+5,Louise Street
+1,Louisiana Street
+1,Louvaine Avenue
+9,Lowell Street
+1,Lowry Road
+1,Lucas Avenue
+1,Lucille Street
+1,Lundholm Avenue
+1,Lusk Street
+2,Lyman Road
+3,Lynde Street
+1,Lyndhurst Street
+1,Lyon Avenue
+221,MacArthur Boulevard
+165,MacArthur Freeway
+1,MacCall Street
+3,Maddux Drive
+3,Madeline Street
+2,Madera Avenue
+25,Madison Street
+2,Madrone Avenue
+1,Magee Avenue
+1,Magellan Drive
+1,Maggiora Court
+2,Maggiora Drive
+9,Magnolia Street
+1,Maiden Lane
+2,Majestic Avenue
+1,Makin Road
+1,Malat Street
+1,Malcolm Avenue
+1,Maldon Street
+1,Mall Court
+1,Malta Court
+1,Manchester Drive
+3,Mandalay Road
+5,Mandana Boulevard
+1,Mandana Circle
+33,Mandela Parkway
+1,Mangels Avenue
+13,Manila Avenue
+1,Manoa Street
+1,Manor Crest
+1,Manuel Court
+3,Manzanita Drive
+7,Maple Avenue
+1,Marden Lane
+10,Margarido Drive
+1,Margarita Avenue
+1,Marguerite Drive
+1,Marie Way
+1,Marin Way
+1,Marion Avenue
+1,Mariposa Avenue
+28,Maritime Street
+1,Mark Street
+109,Market Street
+1,Marlborough Terrace
+2,Marlin Cove
+5,Marlow Drive
+1,Marr Avenue
+1,Marsh Place
+4,Marshall Street
+63,Martin Luther King Junior Way
+2,Martin Street
+1,Marvin Court
+1,Mason Street
+1,Masonic Avenue
+1,Masonic Place
+1,Masterson Street
+1,Mastlands Drive
+2,Mather Street
+3,Mathieu Avenue
+1,Mattis Court
+1,Mauritania Avenue
+3,Mavis Street
+2,Maxwell Avenue
+2,Maxwelton Road
+1,May Court
+1,Maybelle Avenue
+1,Maybelle Way
+1,Maydon Court
+1,Maynard Avenue
+1,Maywood Avenue
+1,Mazuela Drive
+1,McAndrew Drive
+2,McAuley Street
+1,McClary Avenue
+2,McClelland Street
+1,McClure Street
+1,McCormick Avenue
+1,McDonell Avenue
+1,McElroy Street
+1,McGurrin Road
+1,McIntyre Street
+2,McKillop Road
+3,McKinley Avenue
+1,McMIllan Road
+1,McMillan Street
+2,Mead Avenue
+1,Meadow Street
+2,Medau Place
+1,Medford Avenue
+1,Meldon Avenue
+1,Melrose Avenue
+1,Melville Drive
+1,Melville Lane
+1,Melvin Court
+3,Melvin Road
+1,Mendenhall Road
+1,Mendocino Avenue
+2,Mendoza Drive
+1,Mera Street
+1,Merced Avenue
+1,Merlin Court
+1,Merriewood Circle
+5,Merriewood Drive
+1,Merrill Avenue
+2,Merrimac Street
+4,Merritt Avenue
+1,Miami Court
+1,Michigan Avenue
+1,Midcrest Road
+25,Middle Harbor Road
+1,Middleton Drive
+1,Middleton Street
+2,Midvale Avenue
+24,Miles Avenue
+6,Miller Avenue
+1,Miller Place
+1,Millsbrae Avenue
+1,Millsview Avenue
+2,Milton Street
+2,Minna Avenue
+1,Mira Vista Avenue
+1,Mirasol Avenue
+2,Mission Hills
+3,Mitchell Street
+1,Modesto Avenue
+4,Modoc Avenue
+1,Mokelumne Avenue
+2,Monadnock Way
+1,Monan Street
+2,Monroe Avenue
+13,Montana Street
+2,Montclair Avenue
+1,Monte Cresta Avenue
+1,Monte Vista Avenue
+2,Montecito Avenue
+1,Montell Street
+18,Monterey Boulevard
+2,Montgomery Street
+2,Monticello Avenue
+1,Montwood Way
+1,Monzal Avenue
+1,Moonlight Court
+2,Moore Drive
+2,Moorpark Street
+36,Moraga Avenue
+2,Morcom Avenue
+1,Morcom Place
+3,Morgan Avenue
+1,Morken Street
+1,Morley Drive
+1,Morningstar Circle
+1,Morpeth Street
+1,Morrill Court
+2,Morrison Avenue
+2,Morse Drive
+4,Moss Avenue
+1,Moss Lane
+1,Moss Way
+1,Motor Pool Way
+1,Mott Place
+75,Mountain Boulevard
+3,Mountain Valley
+1,Mountain View Avenue
+2,Mountaingate Way
+1,Moyer Place
+1,Munson Way
+1,Murdock Court
+1,Murillo Avenue
+1,Myers Court
+1,Myers Street
+1,Myrtle Alley
+6,Myrtle Street
+1,Mystic Street
+1,Nairobi Place
+1,Napa Street
+1,Natchez Alley
+1,Nattress Way
+4,Neil Armstrong Way
+1,Neva Court
+1,Nevada Street
+1,Nevil Street
+1,Newton Avenue
+4,Ney Avenue
+2,Nicol Avenue
+119,Nimitz Freeway
+2,Norfolk Road
+1,Norgren Street
+1,Norman Lane
+1,Normandie Avenue
+3,Nort Field
+1,North Circle
+1,North Hill Court
+1,North Mall
+2,North Rockridge Boulevard
+2,North Street
+17,Northgate Avenue
+1,Northvale Road
+1,Northwood Court
+4,Norton Avenue
+1,Norwood Avenue
+2,Nottingham Drive
+1,Novelda Drive
+2,Noyo Street
+1,Oak Creek Way
+1,Oak Crest Drive
+1,Oak Grove Avenue
+1,Oak Hill Circle
+3,Oak Hill Road
+4,Oak Knoll Boulevard
+23,Oak Street
+2,Oakdale Avenue
+20,Oakland Avenue
+2,Oakleaf Street
+1,Oakmore Place
+1,Oakmore Road
+40,Oakport Street
+1,Oakview Drive
+1,Oakwood Court
+2,Oakwood Drive
+1,Observation Place
+1,Observatory Avenue
+5,Occidental Street
+1,Ocean Avenue
+2,Ocean View Drive
+3,Octavia Street
+1,Ohanneson Road
+1,Old Earhard Road
+4,Old Earhart Road
+1,Old Quarry Loop
+1,Old Redwood Road
+1,Old Tunnel Road
+6,Olive Street
+2,Oliver Avenue
+4,Opal Street
+3,Orange Street
+1,Orchard Meadow Road
+1,Orchid Street
+1,Orinda Vista Drive
+1,Ormindale Court
+2,Orral Street
+1,Osborne Court
+1,Oscar Avenue
+3,Oscar Grant III Way
+2,Ostrander Road
+11,Outlook Avenue
+2,Oval Road
+1,Over Street
+1,Overdale Avenue
+1,Overlake Court
+1,Overmoor Street
+3,Packard Street
+2,Pali Court
+1,Palm Avenue
+1,Palm Court
+1,Palm Villa Court
+1,Palmer Avenue
+1,Palmera Court
+1,Palmetto Street
+2,Paloma Avenue
+1,Pampas Avenue
+1,Panama Court
+1,Panoramic Place
+4,Panoramic Way
+1,Paramount Road
+7,Pardee Drive
+5,Pardee Lane
+1,Park Avenue
+74,Park Boulevard
+4,Park Boulevard Way
+3,Park Lane
+2,Park Street Bridge
+1,Park View Terrace
+2,Park Way
+1,Parker Avenue
+1,Parkhurst Drive
+4,Parkridge Drive
+1,Partridge Avenue
+3,Paso Robles Drive
+1,Patricia Court
+4,Patterson Avenue
+8,Patton Street
+1,Paxton Avenue
+2,Peabody Lane
+1,Peach Street
+3,Pearl Street
+2,Pearmain Street
+2,Pebble Beach Drive
+1,Peerless Court
+1,Pelham Place
+2,Pembroke Court
+1,Pendleton Way
+3,Penniman Avenue
+2,Penniman Court
+3,Peralta Oaks Court
+6,Peralta Oaks Drive
+26,Peralta Street
+3,Perkins Street
+1,Peroly Court
+2,Perry Place
+1,Pershing Drive
+1,Perth Place
+1,Peterson Street
+2,Petroleum Street
+1,Phaeton Drive
+1,Phelps Street
+2,Picardy Drive
+1,Picardy Drive North
+1,Picardy Drive South
+15,Piedmont Avenue
+1,Pierpoint Avenue
+6,Pierson Street
+1,Pine Hills Court
+1,Pine Hills Drive
+1,Pine Hills Lane
+2,Pine Needle Drive
+2,Pine Street
+5,Pine Top Road
+1,Pinecrest Drive
+4,Pinehaven Road
+1,Pinehurst Road
+2,Pinewood Road
+1,Pippin Street
+6,Pleasant Street
+21,Pleasant Valley Avenue
+2,Pleasant Valley Court
+1,Pleasant Valley Court North
+1,Pleasant Valley Court South
+1,Pleitner Avenue
+13,Plymouth Street
+1,Poirier Street
+1,Pontiac Street
+9,Poplar Street
+2,Poplar Way
+3,Portal Avenue
+3,Porter Street
+1,Portland Avenue
+1,Portsmouth Road
+1,Portwood Avenue
+1,Posey Tube
+4,Post Road
+1,Potomac Street
+1,Potter Street
+3,Powell Street
+1,Prentiss Place
+1,Prentiss Street
+1,Prescott Street
+1,Preservation Park Way
+2,Presley Way
+1,Prince Royal Court
+1,Prince Street
+1,Princeton Street
+3,Proctor Avenue
+2,Prospect Avenue
+4,Prospect Hill Road
+1,Prospect Steps
+1,Prune Street
+1,Pueblo Drive
+2,Pullman Way
+1,Quietwood
+1,Quigley Lane
+1,Quigley Place
+2,Quigley Street
+2,Racine Street
+1,Radnor Road
+3,Railroad Avenue
+1,Railway Circle
+3,Ramona Avenue
+1,Rampart Street
+2,Rand Avenue
+4,Randolph Avenue
+1,Randwick Avenue
+1,Ranleigh Way
+1,Ransom Avenue
+2,Rashida Muhammad Street
+1,Ravenwood Lane
+1,Rawson Street
+1,Raymond Street
+1,Reata Place
+1,Redding Place
+8,Redding Street
+1,Redondo Avenue
+46,Redwood Road
+2,Regatta Drive
+1,Regent Street
+2,Reinhardt Drive
+1,Renwick Street
+1,Reposo Drive
+2,Rettig Avenue
+1,Rettig Place
+3,Revere Avenue
+1,Rhoda Avenue
+1,Rich Street
+4,Richards Road
+1,Richmond Avenue
+6,Richmond Boulevard
+1,Ridgemont Court
+1,Ridgemont Drive
+1,Ridgemoor Road
+7,Ridgeway Avenue
+1,Ridgewood Drive
+2,Ridgewood Lane
+1,Ridgewood Way
+1,Rifle Lane
+1,Rilea Way
+1,Rincon Drive
+1,Rio Vista Avenue
+3,Rishell Drive
+1,Rising Hill Court
+1,Rispin Drive
+1,Ritchie Street
+1,Riviera Court
+2,Roanoke Road
+2,Roberts Avenue
+1,Robin Hood Way
+1,Robinson Drive
+3,Roble Road
+1,Robledo Drive
+1,Robley Terrace
+1,Rockingham Court
+1,Rockridge Boulevard
+1,Rockridge Place
+1,Rockwell Street
+1,Rocky Point Court
+1,Roderick Road
+3,Roland Way
+4,Romany Road
+21,Ron Cowan Parkway
+1,Ronada Avenue
+3,Rosal Avenue
+2,Rose Avenue
+1,Rosecrest Drive
+2,Rosedale Avenue
+1,Rosemount Road
+1,Ross Circle
+3,Ross Street
+1,Rossmoor Avenue
+1,Rossmoor Court
+1,Roxbury Avenue
+1,Royal Ann Street
+1,Royal Oak Road
+1,Royal Street
+1,Rubin Drive
+4,Ruby Street
+4,Rudsdale Street
+1,Rugby Court
+1,Russet Street
+1,Rusting Avenue
+1,Ruth Avenue
+1,Rutherford Street
+1,Ruthland Road
+1,Ryan Street
+1,Rydal Court
+1,Saddle Brook Court
+1,Saddle Brook Drive
+1,Sage Road
+2,Saint Andrew's Road
+1,Saint Cloud Court
+1,Saint Elmo Drive
+1,Saint Paul Court
+2,Salem Court
+1,Salem Street
+1,Salisbury Street
+2,Sally Ride Way
+8,Samaria Lane
+1,San Antonio Way
+1,San Carlos Avenue
+1,San Francisco Court
+1,San Juan Street
+1,San Leandro North
+1,San Leandro South
+80,San Leandro Street
+1,San Luis Avenue
+137,San Pablo Avenue
+1,San Sebastian Avenue
+5,Sanborn Drive
+1,Sand Island Frontage Road
+2,Sanford Street
+18,Santa Clara Avenue
+1,Santa Ines Court
+1,Santa Maria Court
+2,Santa Ray Avenue
+1,Santa Rita Street
+1,Santa Rosa Avenue
+1,Sarazen Avenue
+1,Saroni Court
+4,Saroni Drive
+1,Sausal Street
+1,Savannah Court
+1,Sayre Drive
+1,Scarborough Drive
+1,Scenic Avenue
+4,School Street
+2,Schooner Hill
+1,Schyler Street
+1,Scotia Avenue
+1,Scott Street
+2,Scout Road
+1,Scoville Street
+1,Seacor Court
+2,Selkirk Street
+22,Seminary Avenue
+1,Seminary Court
+1,Seneca Street
+2,Sequoyah Road
+1,Sequoyah View Court
+1,Sequoyah View Drive
+3,Sereno Circle
+2,Serramar Drive
+1,Sextus Road
+1,Shadow Mountain
+8,Shafter Avenue
+10,Shattuck Avenue
+1,Shaw Street
+1,Shawnee Court
+1,Shay Drive
+3,Sheffield Avenue
+4,Sheldon Street
+12,Shellmound Street
+1,Shelterwood Drive
+1,Shepherd Canyon Road
+1,Shepherd Street
+2,Sheridan Road
+1,Sherwick Drive
+1,Sherwood Drive
+3,Shetland Avenue
+1,Shetland Court
+2,Shirley Drive
+3,Shone Avenue
+1,Short Hill Road
+2,Short Street
+3,Siena Drive
+1,Siesta Court
+1,Siesta Lane
+2,Sigourney Avenue
+2,Sigourney Elysian Fields Drive
+1,Sikorsky Street
+1,Siler Place
+1,Silverado Court
+1,Silverwood Avenue
+3,Simmons Street
+3,Sims Drive
+1,Simson Street
+67,Skyline Boulevard
+2,Skyline Circle
+1,Skypoint Court
+2,Skyview Drive
+1,Skyway Lane
+1,Slater Lane
+1,Slope Crest Drive
+7,Snake Road
+5,Snell Street
+1,Snowdown Avenue
+1,Sobrante Road
+6,Soda Entrance
+3,Solano Way
+4,Somerset Road
+2,Sonia Street
+3,Sonoma Way
+4,South Coliseum Way
+1,South Court
+1,South Elmhurst Avenue
+2,South Hill Court
+1,South Mall
+4,South Rockridge Boulevard
+1,Southwood Court
+4,Spencer Street
+1,Springfield Street
+1,Spruce Street
+1,Spyglass Hill
+1,Stacy Street
+26,Stanford Avenue
+2,Stanley Avenue
+2,Stanley Place
+1,Stantonville Court
+1,Stantonville Drive
+1,Star Avenue
+1,Star Court
+1,Stark Knoll Place
+1,Starview Court
+1,Starview Drive
+2,Staten Avenue
+1,Stauffer Court
+2,Stauffer Place
+5,Stearns Avenue
+1,Steele Street
+1,Steinmetz Way
+1,Stella Street
+1,Stephens Way
+2,Sterling Drive
+1,Stockbridge Drive
+1,Stone Street
+1,Stoneford Avenue
+1,Stonemason Court
+1,Stoneridge Court
+5,Stonewall Road
+3,Storer Avenue
+1,Stow Avenue
+1,Stratford Avenue
+1,Stratford Road
+1,Strathmoor Drive
+1,"Street ""H"""
+1,"Street ""J"""
+1,"Street ""K"""
+2,Stuart Street
+3,Summit Street
+2,Sun Valley Drive
+3,Sunkist Drive
+1,Sunny Slope Avenue
+1,Sunnyhills Road
+2,Sunnymere Avenue
+5,Sunnyside Street
+3,Sunset Avenue
+1,Sunshine Court
+1,Surrey Lane
+4,Suter Street
+3,Swainland Road
+10,Swan Way
+3,Sycamore Street
+1,Sylhowe Road
+1,Sylvan Avenue
+1,Sylvan Way
+2,Taft Avenue
+1,Tajum
+1,Talbot Avenue
+1,Tamarisk Drive
+1,Tampa Avenue
+1,Tanglewood Road
+1,Tanner Way
+1,Tartan Way
+1,Tartarian Street
+1,Tate Terrace
+2,Taurus Avenue
+1,Taylor Avenue
+138,Telegraph Avenue
+2,Temescal Alley
+2,Templar Place
+3,Teralynn Court
+2,Terrabella Place
+1,Terrabella Way
+1,Terrace Street
+1,Tevis Street
+1,Texas Street
+1,Thackeray Drive
+1,The Turn
+11,Thermal Street
+1,Thomas Avenue
+21,Thomas L. Berkley Way
+1,Thompson Street
+3,Thorndale Drive
+1,Thornhill Court
+12,Thornhill Drive
+1,Thousand Oaks
+1,Thunderbird Court
+1,Tidewater Avenue
+1,Tiffany Lane
+2,Tiffin Road
+1,Toler Avenue
+6,Tompkins Avenue
+2,Topanga Drive
+2,Totterdell Street
+5,Town Square Place
+1,Townsend Avenue
+1,Toyon Place
+6,Trafalgar Place
+10,Trask Street
+1,Treasure Hill
+1,Tremont Street
+9,Trestle Glen Road
+1,Trinidad Avenue
+1,Truitt Lane
+2,Truman Avenue
+2,Tubman Drive
+5,Tucker Street
+2,Tulagi Street
+1,Tulip Avenue
+1,Tully Place
+1,Tunis Road
+22,Tunnel Road
+1,Turner Avenue
+2,Turner Court
+1,Turnley Avenue
+1,Turquoise Way
+1,Turtle Creek Street
+1,Twin Oaks Way
+1,Twitter Court
+1,Tyler Street
+1,Tyrrell Street
+1,Tyson Circle
+1,Underhills Road
+5,Underwood Avenue
+18,Union Street
+3,Uptown Circle
+1,Uranus Avenue
+1,Utah Street
+1,Valant Place
+4,Valdez Street
+2,Vale Avenue
+1,Valentine Street
+5,Valle Vista Avenue
+1,Vallecito Place
+1,Vallejo Street
+1,Valley Street
+3,Valley View Road
+2,Van Buren Avenue
+1,Van Cleave Way
+1,Van Dyke Avenue
+1,Van Mourik Avenue
+1,Van Sicklen Place
+1,Vermont Street
+10,Vernon Street
+1,Vernon Terrace
+1,Verrada Road
+1,Veteran Way
+1,Via Rialto
+1,Vicente Place
+5,Vicente Road
+1,Vicente Street
+2,Vicente Way
+3,Vicksburg Avenue
+2,Victor Avenue
+1,Victory Court
+1,View Crest Court
+1,View Crest Drive
+4,View Place
+1,View Street
+1,Village Circle
+2,Villanova Drive
+1,Villanova Lane
+3,Viola Street
+1,Viona Avenue
+1,Virden Avenue
+2,Virginia Avenue
+1,Virgo Road
+1,Virmar Avenue
+1,Vista Court
+1,Vista Del Mar Court
+1,Vista Street
+1,Voltaire Avenue
+1,Wadean Place
+4,Wake Avenue
+1,Wakefield Avenue
+6,Walavista Avenue
+1,Waldeck Court
+2,Walker Avenue
+2,Wallace Street
+5,Walnut Street
+1,Walter Avenue
+8,Walter Miles Way
+1,Ward Lane
+2,Warfield Avenue
+2,Warner Avenue
+2,Warren Avenue
+57,Warren Freeway
+1,Warwick Avenue
+11,Washington Street
+2,Waterhouse Road
+3,Wattling Street
+1,Watts Street
+1,Waverly Street
+1,Wawona Avenue
+2,Wayne Avenue
+1,Wayne Place
+1,Weaver Place
+1,Webster Place
+44,Webster Street
+1,Webster Street Tube
+1,Wee Blythen
+4,Weld Street
+2,Weldon Avenue
+5,Wellington Street
+2,Wentworth Avenue
+1,Werner Court
+3,Wesley Avenue
+1,Wesley Way
+3,West 14th Street
+1,West 15th Street
+1,West 17th Street
+1,West 18th Street
+1,West 19th Street
+1,West 20th Street
+1,West Circle
+3,West Court
+64,West Grand Avenue
+62,West MacArthur Boulevard
+1,West Maritime Street
+40,West Street
+3,West View Drive
+1,West View Place
+1,Westall Avenue
+1,Westfield Way
+1,Westminster Drive
+1,Westmoorland Drive
+1,Westover Drive
+1,Westwood Court
+2,Westwood Way
+1,Wetmore Road
+1,Weybridge Court
+1,Wheeler Street
+1,White Court
+1,Whitmore Place
+2,Whitmore Street
+2,Whitney Street
+2,Whittle Avenue
+1,Whittle Court
+1,Wickson Avenue
+1,Wilbur Street
+1,Wild Currant Way
+1,Wilda Avenue
+1,Wilding Lane
+1,Wildwood Avenue
+1,Wilkie Street
+1,Wilkinson
+1,Willard Place
+2,William Street
+1,Williams Street
+1,Willis Court
+8,Willow Street
+1,Wilshire Boulevard
+1,Wilson Avenue
+1,Wilson Place
+2,Wilton Drive
+1,Winding Way
+1,Windward Hill
+1,Winsor Avenue
+1,Winthrope Street
+3,Wisconsin Street
+1,Wistar Road
+1,Wood Court
+4,Wood Drive
+14,Wood Street
+1,Woodbine Avenue
+1,Woodcliff Court
+1,Woodcrest Circle
+1,Woodhaven Way
+1,Woodland Place
+1,Woodminster Lane
+1,Woodmont Way
+1,Woodrow Drive
+4,Woodruff Avenue
+4,Woodside Glen Court
+1,Woodside Way
+1,Woodson Drive
+1,Worden Way
+1,Worth Street
+1,Wrenn Street
+1,Wright Street
+1,Wyman Place
+3,Wyman Street
+1,Yankee Hill
+1,Yarmouth Court
+3,Yerba Buena Avenue
+7,Ygnacio Avenue
+1,York Street
+1,Yorkshire Drive
+1,Yosemite Avenue
+1,Young Avenue
+2,Yuba Avenue
+1,Zephyr Drive
+2,Ziegler Avenue
+2,Zinn Drive
+1,Zorah Street
