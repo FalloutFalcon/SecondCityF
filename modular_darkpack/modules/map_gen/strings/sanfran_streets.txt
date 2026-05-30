@@ -1,130 +1,44 @@
-3,0 Calle
-1,0 Calle A
-7,1 de Mayo
-7,10 de Agosto
-5,10a Avenida
-1,10a Avenida SO
-4,10a Calle
 15,10th Avenue
 16,10th Street
-1,11 - Avenida Héctor J. Cámpora
-3,11 Avenida
-2,11 Calle
-11,11th Avenue
-25,11th Street
-1,11th Street & Harrison Street
-3,12 Avenida
-2,12 Calle
-1,12 de Febrero
+12,11th Avenue
+24,11th Street
 16,12th Avenue
 8,12th Street
-1,13 - Colonos Irlandeses
-3,13 Avenida
-2,13 Calle
-2,13 de Abril
 31,13th Street
-2,14 Avenida
-2,14 Calle
 35,14th Avenue
 24,14th Street
-1,15 - Docentes Gilenses
-2,15 Avenida
-2,15 Calle
-3,15 de Enero
-1,15 de Noviembre
-31,15th Avenue
+30,15th Avenue
 30,15th Street
-2,16 Avenida
-1,16 Calle
-1,16 de Agosto
 23,16th Avenue
-1,16th Avenue Tiled Steps
-96,16th Street
-1,16th Street & Wisconsin Street
-1,17 - Chacabuco
-1,17 Avenida
-1,17 Calle
+84,16th Street
 13,17th Avenue
-67,17th Street
-3,18
-1,18 Avenida
-1,18 Calle
-1,18 de Octubre
-13,18th Avenue
-37,18th Street
-3,19
-1,19 - España
-1,19 Calle
-1,19 de Abril
-2,19 de Julio
+57,17th Street
+14,18th Avenue
+30,18th Street
 93,19th Avenue
-35,19th Street
-4,1a Avenida
-1,1a Avenida NE
-1,1a Avenida NO
-1,1a Avenida SE
-3,1a Avenida SO
-14,1a Calle
-4,1a Calle A
-1,1a Calle NE
-1,1a Calle NO
-1,1a Calle SE
-2,1a Calle SO
-19,1st Street
-1,2 de Abril
-1,2 de Agosto
+33,19th Street
+16,1st Street
 31,20th Avenue
-2,20th Avenue Entrance
-38,20th Street
-1,21 - Lavalle
-2,217 - Brasil
-2,219 - República Argentina
+35,20th Street
 15,21st Avenue
-26,21st Street
-2,22 de Septiembre
+25,21st Street
 12,22nd Avenue
-47,22nd Street
-1,23 - Italia
+44,22nd Street
 15,23rd Avenue
-41,23rd Street
-1,24 de Julio
-2,24 de Mayo
+42,23rd Street
 11,24th Avenue
 36,24th Street
-1,25 - San Lorenzo
-2,252 - Ecuador
-1,256 - Colombia
 34,25th Avenue
 3,25th Avenue North
 28,25th Street
-1,26 de Septiembre
-1,260 - Uruguay
-1,262 - Paraguay
-1,264 - Bolivia
-2,266 - Perú
 12,26th Avenue
 21,26th Street
-1,27 de Febrero
 9,27th Avenue
-10,27th Street
+9,27th Street
 11,28th Avenue
 3,28th Street
 11,29th Avenue
 8,29th Street
-4,2a Avenida
-5,2a Avenida A
-1,2a Avenida B
-1,2a Avenida C
-1,2a Avenida NE
-1,2a Avenida NO
-1,2a Avenida SE
-2,2a Avenida SO
-9,2a Calle
-5,2a Calle A
-1,2a Calle NE
-1,2a Calle NO
-2,2a Calle SE
-1,2a Calle SO
 6,2nd Avenue
 31,2nd Street
 11,30th Avenue
@@ -136,21 +50,9 @@
 8,35th Avenue
 12,36th Avenue
 9,37th Avenue
-1,38 - Colectora Sur
 5,38th Avenue
 7,39th Avenue
-7,3a Avenida
-2,3a Avenida A
-1,3a Avenida B
-1,3a Avenida NE
-1,3a Avenida NO
-1,3a Avenida SE
-2,3a Avenida SO
-7,3a Calle
-1,3a Calle NE
-1,3a Calle SE
-2,3a Calle SO
-13,3rd Avenue
+12,3rd Avenue
 237,3rd Street
 6,40th Avenue
 8,41st Avenue
@@ -161,309 +63,86 @@
 9,46th Avenue
 14,47th Avenue
 13,48th Avenue
-7,4a Avenida
-1,4a Avenida NO
-1,4a Avenida SE
-1,4a Avenida SO
-7,4a Calle
-1,4a Calle SO
 8,4th Avenue
 73,4th Street
-1,5 de Agosto
-1,5 de Junio
-1,"50 bis - Alberto ""Tito"" Valli"
-1,52 - Combatientes de Malvinas
-1,54 - Crucero General Belgrano
-1,56 - 30 de Noviembre
-1,58 - Dorrego
-8,5a Avenida
-1,5a Avenida A
-1,5a Avenida NO
-2,5a Avenida SO
-6,5a Calle
-2,5a Calle A
-1,5a Calle SO
-10,5th Avenue
-4,5th Avenue Entrance
-1,6 de Diciembre
-1,6 de Octubre
-1,611 Folsom Street Plaza
-8,6a Avenida
-2,6a Avenida A
-2,6a Avenida SO
-5,6a Calle
+12,5th Avenue
+39,5th Street
 15,6th Avenue
 26,6th Street
-1,7UP Road
-8,7a Avenida
-2,7a Avenida A
-1,7a Avenida B
-1,7a Avenida SO
-4,7a Calle
-16,7th Avenue
-44,7th Street
-1,7th Street & Brannan Street
-1,7th Street & Bryant Street
-1,7th Street & Folsom Street
-1,7th Street & Harrison Street
-1,7th Street & Howard Street
-3,8 de Marzo
-6,8a Avenida
-3,8a Avenida A
-1,8a Avenida B
-1,8a Avenida SO
-4,8a Calle
-19,8th Avenue
+15,7th Avenue
+41,7th Street
+15,8th Avenue
 37,8th Street
-3,9a Avenida
-1,9a Avenida SO
-4,9a Calle
 22,9th Avenue
 14,9th Street
-1,A Dock
 1,A Street
 1,Abbey Street
-1,Abelardo Moncayo
-2,Abelardo Morán Muñoz
 1,Acacia Avenue
 1,Acadia Street
 1,Accacia Street
-2,Acceso 1
-2,Acceso 2
-2,Acceso 3
-4,Acceso 4
-1,Acceso 5
-12,Acceso Norte Ramal Pilar
-2,Acceso al Puente de la Integración (solo camiones en lastre - vacios)
-5,Acera 1
-4,Acera 2
-3,Acera 3
-1,Acera 4
-2,Acera 5
-1,Acera 6
-1,Acera 7
-1,Acera 8
 1,Acevedo Avenue
-5,Acme Alley
+1,Acme Alley
 1,Acorn Alley
 1,Acton Street
 1,Ada Court
-1,Adah's Stairway
 1,Adair Street
 4,Addison Street
 1,Adele Court
 1,Admiral Avenue
 2,Adolph Sutro Court
-7,Aerial Way
-1,Afragola Street
-1,Agate Street
-4,Agave Trail
+1,Aerial Way
 1,Agnon Avenue
 1,Agua Way
-3,Aguaribay
-1,Agustin Rosales
 1,Ahern Way
-2,Aintzira kalea
 3,Al Scoma Way
-19,Alabama Street
-1,Alabat Street
+15,Alabama Street
 1,Aladdin Terrace
-13,Alameda 1
-2,Alameda 10
-1,Alameda 11
-1,Alameda 12
-1,Alameda 17
-1,Alameda 18
-1,Alameda 19
-14,Alameda 2
-1,Alameda 20
-1,Alameda 21
-1,Alameda 22
-1,Alameda 23
-1,Alameda 24
-1,Alameda 24B
-1,Alameda 25
-1,Alameda 26
-1,Alameda 27
-1,Alameda 28
-1,Alameda 28B
-2,Alameda 29
-12,Alameda 3
-1,Alameda 30
-1,Alameda 30B
-1,Alameda 30C
-1,Alameda 30D
-1,Alameda 30E
-1,Alameda 31
-1,Alameda 32
-2,Alameda 33
-1,Alameda 34
-1,Alameda 35
-1,Alameda 36
-1,Alameda 36A
-1,Alameda 36B
-1,Alameda 37
-1,Alameda 39
-9,Alameda 4
-1,Alameda 40
-1,Alameda 40A
-1,Alameda 40B
-1,Alameda 41
-1,Alameda 42
-1,Alameda 43
-1,Alameda 44
-1,Alameda 45
-1,Alameda 46
-1,Alameda 47
-1,Alameda 48
-1,Alameda 49
-9,Alameda 5
-1,Alameda 50
-1,Alameda 51
-1,Alameda 52
-1,Alameda 53
-1,Alameda 54
-1,Alameda 55
-1,Alameda 55A
-1,Alameda 56
-1,Alameda 57
-1,Alameda 58
-1,Alameda 59
-6,Alameda 6
-1,Alameda 60
-1,Alameda 61
-1,Alameda 62
-1,Alameda 63
-1,Alameda 63A
-1,Alameda 65
-1,Alameda 66
-1,Alameda 67
-1,Alameda 68
-1,Alameda 69
-5,Alameda 7
-1,Alameda 70
-1,Alameda 71
-1,Alameda 72
-1,Alameda 7A
-2,Alameda 8
-2,Alameda 9
-2,Alameda A
-1,Alameda B
-2,Alameda C
-2,Alameda D
-1,Alameda E
-1,Alameda El Rosal
-1,Alameda G
-1,Alameda H
-1,Alameda I
-1,Alameda J
-1,Alameda L
-1,Alameda Las Amapolas
-1,Alameda Las Begonias
-1,Alameda Las Gardenias
-1,Alameda Las Hortencias
-1,Alameda Las Margaritas
-2,Alameda Las Orquídeas
-1,Alameda Las Violetas
-1,Alameda Los Claveles
-1,Alameda Los Girasoles
-1,Alameda Los Tulipanes
-1,Alameda M
-1,Alameda N
-1,Alameda O
-1,Alameda P
-1,Alameda Q
-1,Alameda R
 8,Alameda Street
 5,Alana Way
-1,Alaska
 1,Albatross Court
-2,Alberca Street
-4,Alberdi
 1,Alberta Street
-1,Alberto Haro
 2,Albion Street
 1,Alder Street
-1,Alejandro Villamar
-5,Alem
 114,Alemany Boulevard
 2,Alert Alley
-2,Alexander Zuckermann Bay Bridge Trail
-1,Alfonso Almeida Andrade Marin
-1,Alfonso Galindo
-1,Alfredo Goirán
-2,Alfredo Gómez Jaime
-3,Alfredo Pareja Diezcanseco
 3,Alhambra Street
 1,Alice B. Toklas Place
-1,Alize Street
 1,Allan Street
 1,Allen Street
 1,Allison Street
 1,Allston Way
 1,Alma Street
 1,Almaden Court
-1,Almadine Street
-4,Almafuerte
-1,Almirante Adolfo Díaz
-1,Almirante Brown
 3,Aloha Avenue
-5,Alonso Baldrich
 4,Alpha Street
 2,Alpine Terrace
 2,Alta Mar Way
 2,Alta Street
-1,Alta Vista Terrace
 2,Alton Avenue
 4,Alvarado Street
 1,Alviso Street
-1,Amadeo B. Cabrera
 14,Amador Street
-2,Amatista Lane
 2,Amatury Loop
 1,Amazon Avenue
 1,Amber Drive
-1,Amber Street
-1,Ambrose Bierce Alley
-1,Ambrosio Olmos
-5,Ameghino
+1,Ambrose Bierce Street
 2,Ames Street
-2,Amethyst Street
 1,Amethyst Way
 2,Amherst Street
-1,Amihan Street
 1,Amity Alley
-2,América
-2,Ana Luisa Leoro Vasquez
-1,Analía Bernal
 3,Anderson Street
-3,Andover Street
-1,Andradite Street
-3,Andrews Road
-1,Andrés del Pozo
-1,Angel Meneses
+2,Andover Street
 1,Angelo's Alley
 1,Anglo Alley
-4,Anise Street
 2,Ankeny Street
 1,Annapolis Terrace
-3,Annie Street
-1,Anonang Street
+2,Annie Street
 1,Anson Place
 1,Anthony Street
-1,Antigua Via de Urcuqui
-1,Antigua Vía del Ferrocarril
-1,Antonio Ante
-1,Antonio Berni
-1,Antonio Carpio Avenue
-1,Antonio Iturralde
-2,Antonio José de Sucre
 1,Antonio Street
-5,Antártida Argentina
-4,Anza Avenue
+3,Anza Avenue
 14,Anza Street
 3,Anzavista Avenue
-1,Apatite Street
 2,Apollo Street
 1,Apparel Way
 1,Appleton Avenue
@@ -471,233 +150,43 @@
 2,Aptos Avenue
 1,Aquavista Way
 1,Arago Street
-1,Arapysandú
 7,Arballo Drive
-3,Arbol Lane
 1,Arbor Street
-4,Arcenio Torres
 6,Arch Street
 1,Arco Way
 1,Ardath Court
+1,Arden Way
 1,Ardenwood Way
-1,Areatzako zubia
 3,Arelious Walker Drive
 1,Arellano Avenue
-4,Aretxaga kalea
-2,Argent Alley
-2,Argentina
 3,Argonaut Avenue
 45,Arguello Boulevard
-1,Aristóbulo del Valle
 2,Arkansas Street
 5,Arleta Avenue
-2,Arlington Path
 5,Arlington Street
 3,Armistead Road
 2,Armory Drive
 7,Armstrong Avenue
-58,Arnaldo Highway
 1,Arnold Avenue
-1,Arnotegi kalea
 2,Arroyo Way
-1,Artemisia Street
 4,Arthur Avenue
-1,Arturo Hidalgo Rivadeneira
-1,Arturo Jauretche
-1,Arturo Taglioretti
 1,Ash Street
 1,Ashburton Place
 8,Ashbury Street
 1,Ashbury Terrace
 2,Ashton Avenue
-1,Ashwood Lane
-8,Asian Leaf Way
 1,Aspen Court
-1,Asuncion Street
-3,Asunción
 1,Atalaya Terrace
-4,Athens Street
+3,Athens Street
 1,Atoll Circle
 1,Attridge Alley
-1,Atucha
-1,Atuntaqui
 1,Auburn Street
 1,August Alley
 2,Augusta Street
-2,Aurelio Gomez Jurado Erazo
-2,Aurelio Mosquera Narváez
-1,Ausmolo Street
 5,Austin Street
-1,Austria Street
 1,Auto Drive
-1,Auto Mac San Francisco
-4,Autopista Braulio Carrillo
-6,Autopista Medellín - Bogotá
-2,Autovía del Mediterráneo
+1,Automobile Drive
 4,Avalon Avenue
-2,Avelino González
-6,Avellaneda
-5,Avenida 0
-13,Avenida 1
-1,Avenida 1 Este
-1,Avenida 1 Oeste
-3,Avenida 10
-1,Avenida 10 del Ferrocarril
-3,Avenida 12
-2,Avenida 14
-1,Avenida 14A
-7,Avenida 15
-2,Avenida 15A
-1,Avenida 16
-9,Avenida 17
-2,Avenida 17A
-2,Avenida 18
-6,Avenida 19
-13,Avenida 2
-1,Avenida 2 Rafael Francisco Osejo
-1,Avenida 20
-1,Avenida 20A
-2,Avenida 21
-2,Avenida 22
-1,Avenida 24
-10,Avenida 3
-1,Avenida 3 D Sur
-1,Avenida 3 G Sur
-1,Avenida 3 K Sur
-1,Avenida 3 M Sur
-1,Avenida 3 N Sur
-1,Avenida 30
-6,Avenida 4
-3,Avenida 4 José Cecilio del Valle
-2,Avenida 4 Sur
-1,Avenida 4ta C Sur
-1,Avenida 5
-1,Avenida 5D Sur
-4,Avenida 6
-2,Avenida 6 Pedro Molina
-2,Avenida 8
-1,Avenida 9 de Septiembre
-1,Avenida B
-4,Avenida B Sur
-13,Avenida Balboa
-7,Avenida Balboa Viaducto
-1,Avenida Balcarse González
-6,Avenida Brasil
-2,Avenida C Sur
-5,Avenida Calle 6
-3,Avenida Calle 9
-5,Avenida Camilo Ponce Enriquez
-3,Avenida Carchi
-9,Avenida Carrera 50
-2,Avenida Cedros
-1,Avenida Central
-1,Avenida Central Norte
-1,Avenida Central Sur
-9,Avenida Cervantes
-1,Avenida Chile
-14,Avenida Cincuentenario
-22,Avenida Cristóbal de Troya
-3,Avenida Cuarta
-14,Avenida Doctor Belisario Porras
-3,Avenida Doctor Juan Bautista Alberdi
-1,Avenida Doctor Pedro Ramón Torales
-1,Avenida El Amarillón
-1,Avenida El Carao
-1,Avenida El Ceibo
-1,Avenida El Cenízaro
-1,Avenida El Cocobolo
-1,Avenida El Cristóbal
-1,Avenida El Espavel
-1,Avenida El Espino
-1,Avenida El Guachipelín
-1,Avenida El Guapinol
-1,Avenida El Jaúl
-1,Avenida El Nogal
-1,Avenida El Níspero
-1,Avenida El Poró
-1,Avenida El Roble
-1,Avenida El Sol
-1,Avenida El Sura
-5,Avenida Eloy Alfaro
-8,Avenida Espora
-9,Avenida Estanislao López
-2,Avenida Eugenio Espejo
-1,Avenida F
-19,Avenida Fray Vacas Galindo
-4,Avenida Fuerza Aérea
-5,Avenida Garibaldi
-3,Avenida General Bernardino Caballero
-4,Avenida General Savio
-1,Avenida Guachipelín
-4,Avenida Guararí
-8,Avenida Güemes
-4,Avenida Heleodoro Ayala
-4,Avenida Hernán Nuñez de Toledo
-6,Avenida Hipólito Yrigoyen
-33,Avenida Israel
-3,Avenida Italia
-8,Avenida Jaime Rivadeneira
-12,Avenida Jaime Roldos
-8,Avenida José Baca Castex
-1,Avenida José Félix Bogado
-1,Avenida José Ignacio Rucci
-8,Avenida José Miguel Vaca
-1,Avenida José Miguel Vaca Flores
-2,Avenida José Tobar y Tobar
-4,Avenida Juan de Garay
-3,Avenida Julio A. Roca
-1,Avenida K
-2,Avenida La Fosforera
-6,Avenida La Milpa
-3,Avenida Las Huertas
-14,Avenida Libertador Norte
-1,Avenida Los Almendros
-1,Avenida Los Malinches
-2,Avenida Los Pinares
-1,Avenida Los Robles
-1,Avenida Los Sauces
-1,Avenida Los Álamos
-4,Avenida Maipú
-1,Avenida Malinches
-1,Avenida Manantial
-18,Avenida Mariano Acosta
-1,Avenida Mariscal José Félix Estigarribia
-3,Avenida Mayorga
-2,Avenida Mercurio
-2,Avenida Monseñor Leonidas Proaño
-1,Avenida Narciso Garay
-12,Avenida Nicanor de Obarrio
-1,Avenida Paseo de Las Flores
-11,Avenida Primera
-3,Avenida Principal
-1,Avenida Quinta
-1,Avenida Radial
-4,Avenida Rafael Miranda
-1,Avenida República de China
-4,Avenida Ricardo Sánchez
-3,Avenida Rodrigo Miño
-1,Avenida Rodríguez
-22,Avenida Rosario de Santa Fe
-1,Avenida San Antonio
-1,Avenida San Isidro
-3,Avenida San Jorge
-5,Avenida San Martín
-1,Avenida Santa Cecilia
-5,Avenida Santa Elena
-1,Avenida Santa Elena Sur
-8,Avenida Segunda
-1,Avenida Sevilla
-1,Avenida Tenerife
-5,Avenida Tercera
-1,Avenida Tomás Guardia
-20,Avenida Urquiza
-3,Avenida Victor Manuel Guzman
-8,Avenida Victor Manuel Peñerrera
-2,Avenida Victoria
-2,Avenida Víctor Manuel Guzmán
-5,Avenida de la Universidad
-4,Avenida del Libertador Norte
-8,Avenida del Libertador Sur
 1,Avenue A
 2,Avenue B
 6,Avenue D
@@ -709,25 +198,16 @@
 1,Avenue N
 1,Avenue of the Palms
 3,Avila Street
-1,Avoca Alley
 1,Avocet Way
 1,Avon Way
-1,Axinite Street
-1,Ayacucho
-1,Azaroaren 25eko emakumeen plaza
 1,Aztec Street
-1,B Dock
 2,B Street
-3,B. C. Rodriguez Avenue
-1,Babes kalea
 2,Bache Street
 10,Bacon Street
 6,Baden Street
 1,Badger Street
-1,Bahía Blanca
-5,Bailen kalea
 2,Baker Court
-27,Baker Street
+25,Baker Street
 1,Balance Street
 23,Balboa Street
 2,Balceta Avenue
@@ -737,104 +217,70 @@
 6,Baltimore Way
 1,Banbury Drive
 7,Bancroft Avenue
-1,Banikag Avenue
-7,Banks Street
+6,Banks Street
 1,Bannam Place
 1,Banneker Way
 1,Bannock Street
-1,Baobab Street
 1,Barcelona Avenue
-1,Barcelona Street
-3,Barnard Avenue
+2,Barnard Avenue
 4,Barneveld Avenue
-1,Barstow Street
-7,Bartlett Street
-3,Bartol Street
-1,Bartolomé Mitre
-2,Base Esperanza
-1,Base General
-1,Base General Belgrano
-1,Base Sobral
+2,Bartlett Street
+2,Bartol Street
 1,Bass Court
-12,Batteries to Bluffs Trail
 4,Battery Caulfield Road
 1,Battery Chamberlin Road
 1,Battery Dynamite Road
-6,Battery East Road
+2,Battery East Road
 1,Battery Saffold Road
-24,Battery Street
+22,Battery Street
 1,Battery Wagner Road
-2,Battle of the Bulge Memorial Trail
-14,Bay Area Ridge Trail
-33,Bay Street
-1,Bay Trail
+31,Bay Street
 1,Bay View Street
-3,Bayamo Street
-1,Bayardo Tobar
 109,Bayshore Boulevard
-1,Bayshore Boulevard & Cortland Avenue
 1,Bayshore Freeway
 1,Bayside Drive
 5,Bayside Village Place
 1,Bayview Circle
-1,Bayview Park Road
 1,Baywood Court
-26,Beach Street
+23,Beach Street
 1,Beachmont Drive
 1,Beacon Street
-25,Beale Street
+21,Beale Street
 2,Beatrice Lane
 4,Beaumont Avenue
 2,Beaver Street
 1,Beckett Street
-1,Bedford Place
-2,Beech Street
-1,Beeman Lane
 1,Behr Avenue
 1,Beideman Street
 1,Belcher Street
-2,Belden Place
-7,Belgrano
+1,Belden Place
 1,Belgrave Avenue
-3,Belisario Roldán
 1,Bell Court
 2,Bella Vista Way
-2,Bellair Place
+1,Bellair Place
 1,Belle Avenue
-4,Belles Street
+3,Belles Street
 1,Bellevue Avenue
 1,Belmont Avenue
 2,Belvedere Street
 3,Bemis Street
-1,Benedicto Oscar Perini
-1,Benevento Street
-1,Bengal Alley
-1,Benito Juárez
-1,Benjamin Carrion
 1,Bennington Street
-8,Benton Avenue
+7,Benton Avenue
 1,Bepler Street
-1,Bergamo Street
-1,Bergen Alley
+1,Bergen Place
 1,Berkeley Way
 2,Berkshire Way
-1,Bermuda Street
-5,Bernal Cut Path
-5,Bernal Heights Boulevard
+4,Bernal Heights Boulevard
 1,Bernard Street
-2,Bernice Rodgers Way
 1,Bernice Street
 7,Berry Street
 3,Bertha Lane
-1,Bertie Minor Lane
 1,Bertita Street
 2,Berwick Place
-1,Beryl Street
-2,Bessie Street
+1,Bessie Street
 1,Beulah Street
 2,Beverly Street
 1,Bigelow Court
-2,Bill Walsh Way
 1,Birch Street
 1,Birchwood Court
 1,Bird Street
@@ -844,14 +290,12 @@
 1,Black Place
 1,Blackstone Court
 1,Blair Terrace
-7,Blairwood Lane
 3,Blake Street
 1,Blanche Street
 1,Blandy Street
 7,Blanken Avenue
 3,Bliss Road
-1,Blue Greenway
-4,Blue Heron Lake Drive
+3,Blue Heron Lake Drive
 1,Blue Heron Lake Drive East
 1,Bluxome Alley
 1,Bluxome Street
@@ -859,97 +303,61 @@
 1,Boardman Place
 1,Bob Kaufman Alley
 1,Bocana Street
-1,Bogotá
-3,Bolivia
 1,Bonifacio Street
 1,Bonita Street
-1,Bonnie Brae Lane
 3,Bonview Street
-1,Bora Street
-1,Borage Street
 1,Borica Street
-1,Bostonship Plaza
 1,Boswell Street
 26,Bosworth Street
-2,Boulevard 25 de Mayo
-1,Boulevard 25 de mayo
-12,Boulevard 9 de Julio
-5,Boulevard El Hayek
-2,Boulevard Isaac Hanono Missri
-14,Boulevard Pacífica
-8,Boulevard Roca
-17,Boulevard Sáenz Peña
 2,Boutwell Street
 7,Bowdoin Street
 3,Bowley Street
 2,Bowling Green Drive
 1,Bowman Court
 2,Boylston Street
-1,Boynton Court
 6,Bradford Street
 3,Brady Street
 38,Brannan Street
 1,Brant Alley
-5,Brasil
-2,Brasilia
-1,Brazel Ave Multi-Use Path
 4,Brazil Avenue
-1,Brazil Street
 1,Breen Place
-1,Breezeway
 1,Brentwood Avenue
 1,Bret Harte Terrace
-3,Brewster Street
+2,Brewster Street
+1,Briarcliff Terrace
 2,Bridgeview Drive
-1,Bridgeview Paseo
-5,Bridgeview Way
+4,Bridgeview Way
 2,Bright Street
 5,Brighton Avenue
 2,Bristol Court
 2,Britton Street
-1,Briviesca Street
 3,Broad Street
 2,Broadmoor Drive
-60,Broadway
-19,Broderick Street
+58,Broadway
+17,Broderick Street
 1,Bromley Place
 5,Brompton Avenue
-3,Bronte Street
+2,Bronte Street
 1,Brook Street
 1,Brookdale Avenue
-1,Brookhaven Lane
 1,Brooklyn Place
 2,Brooks Street
 1,Brosnan Street
 30,Brotherhood Way
 3,Brown Street
 1,Bruce Avenue
-1,Bruce's Stairs
 1,Brumiss Terrace
-1,Bruno Mauricio Zabala kalea
 2,Brunswick Street
 1,Brush Place
 2,Brussels Street
 1,Bruton Street
 56,Bryant Street
 2,Bucareli Drive
-3,Buchanan Mall
-43,Buchanan Street
-1,Buchanan Street Mall
+19,Buchanan Street
 10,Buckingham Way
 4,Buena Vista Avenue East
 3,Buena Vista Avenue West
-2,Buena Vista Park Waller Steps
 2,Buena Vista Terrace
-2,Buenos Aires
-1,Bulevar 9 de Julio
-7,Bulevar Buenos Aires
-12,Bulevar Los Paraísos
-3,Bulevar Los Pinos
-1,Bulevar Quinquela Martin
-3,Bulevar Roca
-1,Bunga Street
-2,Burgos Street
 1,Burgoyne Street
 4,Burke Avenue
 1,Burlwood Drive
@@ -957,491 +365,50 @@
 1,Burnett North Avenue
 1,Burns Place
 5,Burnside Avenue
-1,Burnside Steps
 1,Burr Avenue
 1,Burritt Street
 3,Burrows
 6,Burrows Street
-35,Bush Street
-1,Bushwillow Street
+34,Bush Street
 1,Butte Place
 1,Byron Court
 1,Byxbee Street
-1,C Dock
 2,C Street
-1,Cabalero Street
-1,Cable Car Waiting Line
-2,Cabo de Hornos
-21,Cabrillo Street
-1,Cactus Street
+19,Cabrillo Street
 1,Cadell Place
 3,Caine Avenue
 1,Caire Terrace
-1,Calantas Avenue
-1,Cale Nispero
 2,Caledonia Street
 2,Calgary Street
 2,Calhoun Terrace
 1,California Avenue
-70,California Street
-1,Calima Street
-1,Callao
-1,Calle 0
-1,Calle 0A
-46,Calle 1
-1,Calle 1 - Acceso a Tanque de Petropar
-3,Calle 1 Monseñor Víctor M. Sanabria Martínez
-2,Calle 1 Sur
-6,Calle 10
-1,Calle 102
-1,Calle 102 Bis
-1,Calle 104
-2,Calle 106
-1,Calle 108
-1,Calle 10A
-5,Calle 11
-1,Calle 110
-1,Calle 112
-1,Calle 11A
-3,Calle 12
-3,Calle 12A
-1,Calle 12B
-6,Calle 13
-1,Calle 13A
-1,Calle 14
-3,Calle 15
-5,Calle 19
-1,Calle 199
-3,Calle 1A
-25,Calle 2
-2,Calle 20
-2,Calle 203
-1,Calle 205
-1,Calle 206
-4,Calle 21
-1,Calle 22
-5,Calle 23
-1,Calle 24
-2,Calle 26
-13,Calle 3
-4,Calle 3 Julio Fonseca Gutiérrez
-2,Calle 3 Sur
-2,Calle 34 Joaquín Vargas Coto
-2,Calle 36 Vicente Sáenz
-2,Calle 38 José María Zeledón
-5,Calle 3A
-1,Calle 3A Sur
-1,Calle 3AB
-10,Calle 4
-4,Calle 4 Bis
-3,Calle 40 Pío Víquez
-4,Calle 4A
-1,Calle 4A Bis
-2,Calle 4B
-1,Calle 4D
-3,Calle 4F
-1,Calle 4F Bis
-10,Calle 5
-1,Calle 5 Bis
-1,Calle 53
-2,Calle 53 A Este
-2,Calle 53A
-2,Calle 54 Este
-1,Calle 56
-1,Calle 56 C Este
-1,Calle 56D Este
-3,Calle 59 Este
-7,Calle 5A
-4,Calle 6
-2,Calle 60 Este
-2,Calle 62 Este
-2,Calle 62 Este Bis
-1,Calle 62-A Este
-1,Calle 63 Este
-1,Calle 64
-4,Calle 64 Este
-1,Calle 65
-1,Calle 65 A Este
-2,Calle 66
-2,Calle 67 Este Bis
-3,Calle 68 Este
-2,Calle 68 Este Bis
-8,Calle 7
-1,Calle 70 Este Bis
-2,Calle 71 Este Bis
-1,Calle 72 Este
-2,Calle 73 Este
-7,Calle 75
-1,Calle 75 1/2 Este
-1,Calle 75 B Este
-1,Calle 75-A Este
-2,Calle 76
-1,Calle 76 Este
-1,Calle 77 Este
-1,Calle 78 A Este
-2,Calle 78 C Este
-1,Calle 78B
-2,Calle 79 B Este
-1,Calle 79 Este
-3,Calle 8
-2,Calle 80 Este
-1,Calle 83
-1,Calle 8A
-9,Calle 9
-2,Calle 9A
-1,Calle 9B
-3,Calle A
-1,Calle A1
-1,Calle Abelina
-1,Calle Alberto Boyd
-1,Calle Alfredo Sinclair
-2,Calle Andrés Mojica
-1,Calle Arco
-1,Calle Arco Iris
-1,Calle Astillero
-1,Calle Añoranzas
-1,Calle B
-2,Calle B1
-3,Calle Belén
-1,Calle Benito Reyes Testa
-1,Calle Benito Villar
-1,Calle Bin
-2,Calle C
-1,Calle C1
-1,Calle CH
-5,Calle Carrasquilla
-8,Calle Central
-1,Calle Central Alfredo Volio
-1,Calle Central Este
-1,Calle Central Oeste
-3,Calle Chucos
-1,Calle Ciruelo
-1,Calle Ciudad Real
-2,Calle Cordero
-1,Calle Coronado
-3,Calle Cuarta
-2,Calle Cuenca
-1,Calle D
-1,Calle D1
-1,Calle Del Rio
-1,Calle Doctor José Ciríaco Juárez
-1,Calle Doctor Thomas Owens
-4,Calle Domingueños
-2,Calle Don Bosco
-1,Calle Don Tito
-1,Calle E
-2,Calle E1
-1,Calle Eduardo Barahona
-1,Calle Eduardo Maduro
-3,Calle Eduardo Tejeira Davis
-3,Calle El Aguacate
-2,Calle El Encino
-3,Calle El Guayabal
-2,Calle El Laurel
-1,Calle El Manú
-2,Calle El Roble
-1,Calle El Saril
-3,Calle Enrique J Arce
-1,Calle Este
-1,Calle Externa
-3,Calle F
-1,Calle F1
-4,Calle Federico Velasquez
-2,Calle Flor de Espiritu Santo
-3,Calle Fuente Fría
-5,Calle G
-1,Calle G1
-1,Calle G2
-1,Calle G3
-1,Calle Galilea
-2,Calle Gil Blas Tijeira
-3,Calle Gil Colunge
-1,Calle Granada
-1,Calle Guacimal
-1,Calle Guaranda
-6,Calle Guararí
-2,Calle H
-1,Calle H1
-1,Calle Heliodoro Patiño
-1,Calle Hernando de Baeza
-1,Calle Hernández
-1,Calle Huerta del Conde
-3,Calle I
-2,Calle Interna
-2,Calle Iván Turgueniev
-1,Calle J
-2,Calle Jara
-2,Calle Jose de la Cruz Herrera
-2,Calle José A. Fernández
-1,Calle José Matilde Pérez
-1,Calle Juan Martinez de Orbe
-3,Calle Juan XXIII
-2,Calle Julián Volio
-1,Calle Júpiter
-1,Calle K
-2,Calle L
-1,Calle La Amistad
-1,Calle La Balsa
-6,Calle La Bula
-2,Calle La Deportiva
-1,Calle La Esperanza
-3,Calle La Gruta
-4,Calle La Isidreña
-1,Calle La Macha
-1,Calle La Mutual
-3,Calle La Quintana
-4,Calle La Rusia
-2,Calle La Simona
-2,Calle La Unión
-2,Calle La Uruca
-1,Calle Las Amapolas
-1,Calle Las Begonias
-1,Calle Las Calas
-1,Calle Las Campanillas
-1,Calle Las Caracuchas
-1,Calle Las Cloacas
-2,Calle Las Gladiolas
-1,Calle Las Hortensias
-3,Calle Las Ilusiones
-1,Calle Las Javelitas
-1,Calle Las Lilas
-1,Calle Las Mercedes
-1,Calle Las Mimosas
-4,Calle Las Quebradas
-3,Calle Las Rosas
-1,Calle Las Tranqueras
-2,Calle Las Violetas
-1,Calle Latacunga
-1,Calle Los Almendros
-1,Calle Los Claveles
-1,Calle Los Cosposas
-2,Calle Los Crisantemos
-2,Calle Los Cuipos
-1,Calle Los Fundadores
-1,Calle Los Gardenias
-1,Calle Los Germanios
-1,Calle Los Girasoles
-1,Calle Los Guayacanes
-1,Calle Los Itabos
-1,Calle Los Jacintos
-1,Calle Los Jazmines
-1,Calle Los Jobos
-1,Calle Los Leitón
-2,Calle Los Macanos
-2,Calle Los Manzanos
-2,Calle Los Pinares
-1,Calle Los Pinos
-1,Calle Los Robles
-1,Calle Los Rosales
-2,Calle Los Sauces
-2,Calle Los Tulipanes
-2,Calle Lourdes
-2,Calle M
-3,Calle Madre de la Ribera
-2,Calle Manuel Benavides
-1,Calle Manuel J. Castelleros
-3,Calle Manuel de Jesus Quijano
-1,Calle Manuel de Palacio
-1,Calle Mario Guardia Jaen
-3,Calle Mario Rognoni
-3,Calle Masayoshi Ohira
-5,Calle Matilde Obarrio De Mallet
-1,Calle Miguel Ángel Paredes
-1,Calle Mira al Río
-4,Calle Moisés Levy
-1,Calle Molino Harinero
-1,Calle Monte Verde
-1,Calle N
-5,Calle Napoleón Quesada
-1,Calle Narciso Araúz
-3,Calle Navarro
-1,Calle Navidad
-4,Calle Neptuno
-1,Calle Norte
-1,Calle Níspero
-3,Calle Nísperos
-1,Calle O
-2,Calle Octavio Villaláz Castillo
-2,Calle Otilla Jiminez Sarmiento
-1,Calle Ovigildo Herrera Marcucci
-7,Calle Oxígeno Norte
-1,Calle Oxígeno Oeste
-2,Calle Oxígeno Sur
-1,Calle Oxígeno Sur 2
-1,Calle P
-5,Calle Paul Gambotti
-4,Calle Paul Harris
-1,Calle Pirrango
-11,Calle Primera
-10,Calle Principal
-1,Calle Punta Chiriqui
-6,Calle Punta Colón
-4,Calle Punta Darién
-1,Calle Punta Pacifica
-6,Calle Puntas Bocas del Toro
-1,Calle Puntas Herrera
-1,Calle Puntas Los Santos
-1,Calle Puntas Veraguas
-1,Calle Q
-1,Calle R
-4,Calle Ramon H Jurado
-4,Calle Ramon Real Madrid
-1,Calle Real
-5,Calle República de la India
-6,Calle Residencial San Francisco
-2,Calle Rinconada
-2,Calle Rincón del Valle
-2,Calle Roberto Lewis
-5,Calle Rodríguez
-2,Calle S
-3,Calle Salomón Hernández
-1,Calle San Antonio
-4,Calle San Francisco
-1,Calle San Juan Bosco
-2,Calle San Juan de Dios
-1,Calle Santa Catalina
-1,Calle Santa Marta
-1,Calle Saturno
-1,Calle Secundaria
-7,Calle Segunda
-1,Calle Sur
-3,Calle Sánchez
-1,Calle T
-4,Calle Tercera
-1,Calle Terciaria
-4,Calle Tomás Gabriel Duque
-1,Calle Torres
-1,Calle U
-1,Calle Urbana
-1,Calle Urraca
-1,Calle V
-2,Calle Venus
-3,Calle Villalobos
-1,Calle Vuelta La Piedra
-1,Calle W
-1,Calle West Land
-4,Calle Winston Churchill
-1,Calle X
-1,Calle X2
-1,Calle Y
-1,Calle Y2
-1,Calle Z
-1,Calle de los Guarumos
-2,Calle del Ferrocarril
-1,Calle Ñ
-1,Camarones
+64,California Street
 3,Cambon Drive
 11,Cambridge Street
 1,Camellia Avenue
 1,Cameo Way
 1,Cameron Way
-8,Camino Hito Tres Fronteras
-3,Camino Parque de Paitilla
-1,Camino a la Marina y Aduana Paraguaya
 1,Camp Street
 3,Campbell Avenue
 1,Campton Place
-1,Campus Lane
-1,Canadá
-2,Canal de Beagle
 1,Canby Street
-1,Candelara Street
 4,Candlestick Cove Way
-2,Cantalojas kalea
-1,Canteras de Quilpo
+1,Canyon Avenue
 3,Canyon Drive
-1,Canónigo Domingo A. Riaño
 1,Capistrano Avenue
 1,Capitol Avenue
-1,Capitán Giachino
-16,Capp Street
+11,Capp Street
 1,Capra Way
-3,Caracas
 1,Card Alley
 2,Cardenas Avenue
 14,Cargo Way
 2,Carl Street
-1,Carlo Verlo Vasquez
-1,Carlo Verlo Vásquez
-1,Carlos Almeida
-10,Carlos Boero Romano
-5,Carlos Elias Almeida
-7,Carlos Gilli
-5,Carlos Pellegrini
-1,Carlos Proaño
-1,Carlos Villacís
 3,Carmel Street
-2,Carmela Granja
-1,Carmela Sandoval
-1,Carmela Suarez de Lopez
 1,Carmelita Street
 2,Carnelian Way
 10,Carolina Street
 1,Carpenter Court
 1,Carr Street
-1,Carrera 1
-6,Carrera 10
-2,Carrera 10A
-2,Carrera 11
-1,Carrera 11A
-1,Carrera 12
-1,Carrera 16A
-1,Carrera 16B
-1,Carrera 17A
-1,Carrera 18
-1,Carrera 18A
-1,Carrera 19
-1,Carrera 19A
-1,Carrera 19B
-1,Carrera 1A
-4,Carrera 2
-3,Carrera 2 Este
-1,Carrera 2 Sur
-1,Carrera 20
-2,Carrera 23A
-1,Carrera 23B
-4,Carrera 3
-1,Carrera 3 Este
-1,Carrera 3 Sur
-1,Carrera 30
-1,Carrera 32
-3,Carrera 34
-1,Carrera 3A Este
-3,Carrera 4
-4,Carrera 4 Este
-1,Carrera 42B
-1,Carrera 42C
-4,Carrera 43
-4,Carrera 43A
-2,Carrera 43B
-3,Carrera 43C
-2,Carrera 44
-2,Carrera 45
-1,Carrera 4A
-2,Carrera 4A Este
-3,Carrera 5
-1,Carrera 5 Este
-1,Carrera 6
-1,Carrera 6A
-1,Carrera 7
-1,Carrera 8
-1,Carrera 8A
-1,Carrera 8B
-4,Carrera 9
-1,Carretera Cañas Arriba
-1,Carretera Huaura - Ambo
-7,Carretera La Ceiba - San Juan Pueblo
-2,Carretera La Libertad - San Francisco
-1,Carretera Las Mercedes - Coyotepe
-1,Carretera Matagalpa - empalme a San Ramón
-1,Carretera Nacional Cumaná - Maturín
-3,Carretera San Benito - San Francisco
-1,Carretera Santa Ana - San Francisco
-1,Carretera Telica - San Isidro
-1,Carretera Waslala a empalme Rancho Grande
-1,Carretera a Ebenezer
-2,Carretera a El Rama
-1,Carretera a San Francisco
 1,Carrie Street
 1,Carrizal Street
 6,Carroll Avenue
@@ -1449,56 +416,36 @@
 1,Carter Street
 1,Carver Street
 1,Casa Way
-1,Casablanca Street
-1,Cascade Walk
 1,Caselli Avenue
-8,Caseros
 7,Cashmere Street
 5,Casitas Avenue
 1,Cassandra Court
-4,Castelli
 1,Castelo Avenue
 5,Castenada Avenue
 2,Castillo Street
-1,Castillo jeneralaren kalea
 1,Castle Manor Avenue
 1,Castle Street
-1,Castro Barros
 25,Castro Street
-1,Casuarina Street
 2,Catalina Street
-6,Catamarca
-2,Catamarca Norte
-1,Catherine Court
-13,Cavite–Laguna Expressway
-7,Cayuga Avenue
-1,Cayuga and Lamartine Mini Park Path
+6,Cayuga Avenue
 2,Cecilia Avenue
 1,Cedar Street
 2,Cedro Avenue
-4,Ceferino Namuncurá
-3,Cemetery Overlook Path
 7,Central Avenue
-1,Central Avenue Footpath
 6,Central Freeway
 2,Central Magazine Road
 1,Century Place
 1,Ceres Street
 4,Cerritos Avenue
 5,Cervantes Boulevard
-109,Cesar Chavez Street
-4,"Cesar Chavez Street, N. Sidewalk"
-3,"Cesar Chavez Street, S. Sidewalk"
-2,Cesar Guerra Davila
+108,Cesar Chavez Street
 1,Chabot Terrace
-1,Chacabuco
-6,Chaco
 1,Chain of Lakes Drive
 6,Chain of Lakes Drive East
 2,Chain of Lakes Drive West
 1,Chancery Lane
 12,Channel Street
-3,Chapman Street
+2,Chapman Street
 2,Charles J. Brenham Place
 1,Charles Street
 1,Charlton Court
@@ -1511,40 +458,28 @@
 5,Cherry Street
 1,Chesley Street
 3,Chester Avenue
-23,Chestnut Street
+22,Chestnut Street
 2,Chicago Way
 2,Child Street
-1,Chile
-3,Chilton Avenue
-1,China Basin Landing
+2,Chilton Avenue
 5,China Basin Street
 1,Chinook Court
-1,Chinook Street
-1,Chives Street
 2,Christmas Tree Point Road
 3,Christopher Drive
-1,Christopher Trail
-4,Chubut
 3,Chula Lane
 3,Chumasero Drive
-44,Church Street
+36,Church Street
 1,Cielito Drive
-1,Cilantro Street
-4,Cinta Costera
 4,Circular Avenue
-2,Citrine Street
 2,Cityview Way
 1,Clairview Court
 2,Clara Street
 7,Claremont Boulevard
 1,Clarence Place
 43,Clarendon Avenue
-1,Clarendon Connector Trail
-2,Clarendon Knob Trail
 2,Clarion Alley
 1,Clarke Street
 1,Claude Lane
-3,Claudio Monet
 35,Clay Street
 16,Clayton Street
 4,Clearfield Drive
@@ -1555,18 +490,15 @@
 1,Cleo Rand Avenue
 1,Cleveland Street
 2,Clifford Terrace
-1,Clifford Terrace Stairway
 3,Clinton Park
 4,Clipper Cove Way
 16,Clipper Street
 1,Clipper Terrace
 1,Cloud Circle
-1,Clover Lane
 1,Clover Street
 3,Clyde Street
-39,Coastal Trail
 1,Cochrane Street
-3,Codman Place
+1,Codman Place
 1,Cohen Place
 4,Colby Street
 9,Cole Street
@@ -1574,84 +506,58 @@
 4,Coleridge Street
 1,Colin P. Kelly Junior Street
 1,Colin Place
-1,Colleen Way
 7,College Avenue
 1,College Terrace
 5,Collingwood Street
 10,Collins Street
-6,Colombia
 1,Colon Avenue
-3,Colonia
 1,Colonial Way
 2,Colton Street
 1,Columbia Square Street
 41,Columbus Avenue
 1,Colusa Place
-3,Colón
 1,Comerford Street
-1,Comfrey Street
 1,Commer Court
-2,Commercial Street
+3,Commercial Street
 3,Commonwealth Avenue
 1,Compton Road
-1,Concejal Fernando Sileoni
 2,Concord Street
-2,Confederación Argentina
 6,Congdon Street
 1,Congo Street
 1,Conkling Street
 7,Connecticut Street
-2,Connector Trail
 1,Conrad Street
-1,Conservation Plaza
-3,Conservatory Access Road
-3,Conservatory Drive East
+2,Conservatory Drive East
 3,Conservatory Drive West
 2,Constanso Way
-1,Constitución
 1,Continuum Way
-1,Convention Plaza
 3,Converse Street
 3,Cook Street
 2,Cooper Alley
-1,Copper Alley
 1,Cora Street
 1,Coral Court
-2,Coral Road
-1,Coralino Lane
+1,Coral Road
 2,Corbett Avenue
-1,Corbin Place
 1,Cordelia Street
 4,Cordova Street
 4,Corinne Woods Way
-8,Cornwall Street
-4,Corona Street
-5,Coronado Street
-1,Corredor Periférico Norte
-28,Corredor Sur
-7,Corredor urbano de la Ribera del Marco
-2,Corrientes
+7,Cornwall Street
+3,Corona Street
 1,Cortes Avenue
 9,Cortland Avenue
 1,Corwin Street
 1,Cosgrove Street
 1,Cosmo Place
 3,Coso Avenue
-3,Costa Rica
 2,Costa Street
-1,Costmary Street
-1,Cottage Row
 3,Cotter Street
-1,Cotton Seed Street
 2,Country Club Drive
 1,Coventry Court
-1,Coventry Lane
 1,Cowell Place
 5,Cowles Street
-13,Coyote Crags Trail
 1,Cragmont Avenue
 1,Crags Court
-2,Craig Lane
+1,Craig Lane
 1,Crane Street
 1,Cranleigh Drive
 2,Craut Street
@@ -1662,28 +568,21 @@
 1,Crescio Court
 5,Crespi Drive
 1,Cresta Vista Drive
-2,Crestlake Drive
+1,Crestlake Drive
 2,Crestline Drive
 1,Crestmont Drive
-2,Crestwell Walk
 4,Crisp Road
-2,Crispin Calabia Avenue
-3,Crissy Field Avenue
+1,Crissy Field Avenue
 1,Croaker Court
-3,Crocker Galleria
 1,Crook Street
 1,Cross Street
 29,Crossover Drive
-1,Crotone Street
 2,Crown Court
 1,Crown Terrace
-8,Crystal Air Drive
 1,Crystal Street
-1,Cstellon Street
-3,Cuba
 1,Cuesta Court
 2,Culebra Terrace
-5,Cumberland Street
+3,Cumberland Street
 1,Cunningham Place
 4,Curtis Street
 1,Cushman Street
@@ -1694,51 +593,29 @@
 2,Cypress Street
 7,Cyril Magnin Street
 2,Cyrus Place
-1,César Ferrero
-1,César Morales Granda
-9,Córdoba
-1,D Dock
 1,D Street
-4,Dabeiba - Uramita
-1,Daffodil Street
 1,Daggett Street
-1,Dahlia Street
 1,Dakota Street
 2,Dalewood Way
-2,Dan's Lost Trail
 1,Daniel Burnham Court
-1,Dante
-1,Dante Alighieri
 1,Danton Street
 3,Danvers Street
 2,Darien Way
-2,Dario Egas Almeida
-1,Darrell Place
 3,Dartmouth Street
 1,Dashiell Hammett Street
-4,Dasmariñas – General Trias Diversion Road
-15,Dasmariñas-General Trias Diversion Road
-1,Datu Lipus Macapandong Avenue
-35,Davao-Agusan National Highway
 4,Davidson Avenue
-2,Davis Court
 9,Davis Street
 2,Dawnview Way
-2,Dawson Place
+1,Dawson Place
 2,Day Street
 1,De Boom Street
-2,De Forest Way
-4,De Fuego Link Road
 6,De Haro Street
-1,De Las Golondrinas
 2,De Long Street
 1,De Montfort Avenue
 1,De Soto Street
 1,De Wolf Street
-1,De Young Route
 1,Dearborn Street
 1,Decatur Street
-4,Decatur Way
 1,Decker Alley
 4,Dedman Court
 1,Deems Road
@@ -1748,7 +625,6 @@
 1,Del Vale Avenue
 4,Delancey Street
 3,Delano Avenue
-1,Delaware Street
 1,Delgado Place
 6,Dellbrook Avenue
 2,Delmar Street
@@ -1757,70 +633,24 @@
 3,Denslowe Drive
 2,Derby Street
 2,Desmond Street
-1,Destino Decepción
-1,Destino Melchor
-6,Detroit Street
-1,Deuteronomy Street
+3,Detroit Street
 1,Devonshire Way
 5,Dewey Boulevard
-3,Deán Funes
-1,Diagonal 1
-2,Diagonal 51
-1,Diagonal 5C Bis
-2,Diagonal 5D Bis
-3,Diagonal 5F
-3,Diagonal 5F Bis
-3,Diagonal 5F Bis A
-3,Diagonal 5G
-1,Diagonal 5G Bis
-2,Diagonal 5G Bis A
-1,Diagonal 5H
-2,Diagonal 5H Bis
-1,Diagonal del Estadio
 2,Diamond Cove Terrace
 35,Diamond Heights Boulevard
-28,Diamond Street
+24,Diamond Street
 1,Diana Street
 1,Diaz Avenue
-1,Dicha Alley
 1,Dichiera Court
 4,Digby Street
 1,Dirk Dirksen Place
-1,Diva Street
 63,Divisadero Street
 18,Division Street
-1,Dixie Alley
-1,Doctor Alfonso Gomez Jurado
-1,Doctor Arturo Illia
-1,Doctor Carlos O. del Forno
-1,Doctor Cristobal Gomez Jurado
-3,Doctor Cristobal Tobar Subia
-1,Doctor Cristóbal Tobar Subia
-1,Doctor Desiderio Davel
-6,Doctor Enrique J. Carrá
-1,Doctor Gregorio
-4,Doctor Jorge Dávila Mesa
-1,Doctor José Miguel Urrutia
-1,Doctor Juan José Paez
-1,Doctor Juan José Páez
-2,Doctor Luis Fernando Aguigana
-4,Doctor Luis Gonzalo Gomez Jurado
-1,Doctor Maestro Simoni
-1,Doctor Newton
-1,Doctor Raul Montalvo
-1,Doctor Ricardo Cornejo Rosales
-1,Doctor Ángel Roque Suárez
 1,Dodge Street
-1,Dolores
 19,Dolores Street
 1,Dolores Terrace
-1,Dolores Veintimilla de Galindo
 1,Dolphin Court
-3,Dominga Cullen
-1,Domingo Funes
-2,Don Chee Way
 7,Donahue Street
-1,Donaluz Street
 15,Donner Avenue
 6,Dorado Terrace
 4,Dorantes Avenue
@@ -1831,80 +661,53 @@
 2,Dorland Street
 2,Dorman Avenue
 1,Dormitory Road
-1,Dorrego
-11,Douglass Street
+10,Douglass Street
 1,Dow Place
 1,Downey Street
-1,Doña Corazon Drive
 2,Dr. Carlton B. Goodlett Place
 3,Dr. David Sanchez Way
-1,Dr. Maya Angelou Paseo
-1,Dr. Maya Angelou Way
-1,Dr. Rolland and Kathryn Lowe Community Bridge
 1,Dr. Tom Waddell Place
 2,Drake Street
-1,Drum Bridge
 15,Drumm Street
 1,Drummond Alley
 2,Dublin Street
-29,Duboce Avenue
+22,Duboce Avenue
 1,Dudley Road
 2,Dukes Court
-12,Duncan Street
-1,Duncombe Alley
+10,Duncan Street
 1,Dunnes Alley
 1,Dunshee Street
 1,Dunsmuir Street
 18,Dwight D. Eisenhower Highway
 3,Dwight Street
-1,Dy Ning Street
-1,E Dock
 1,E Street
-1,E.M. Formentera
-1,E.Q. Flores
 2,Eagle Street
 1,Earl Gage Jr. Street
 4,Earl Street
 1,East Beach Road
 1,East Crystal Cove Terrace
-2,East Ridge Trail
 4,East Road
 1,Eastman Place
 1,Eastwood Drive
 1,Eaton Place
-4,Echeverría
-2,Ecker Plaza
-3,Ecker Street
-2,Ecology Trail (lower)
-4,Ecology Trail (upper)
-3,Ecuador
+1,Ecker Street
 18,Eddy Street
-1,Edelmiro L. Ceballos
 3,Edgar Avenue
 1,Edgardo Place
 4,Edgehill Way
 1,Edgewood Avenue
-1,Edgewood Trail
 3,Edie Road
 2,Edinburgh Street
-1,Edison
 1,Edith Street
-9,Edna Street
-1,Eduardo Cesar Lestono
-1,Eduardo Huergo
-1,Eduardo Jativa
+7,Edna Street
 1,Edward Street
 7,Egbert Avenue
-31,El Camino del Mar
+23,El Camino del Mar
 2,El Mirasol Place
 1,El Plazuela Way
-5,El Polin Loop
-1,El Polin Spring Connector Trail
 1,El Sereno Court
-1,El Tesorito
 1,El Verano Way
 1,Elgin Park
-2,Elisa Damar
 6,Elizabeth Street
 6,Elk Street
 1,Ellert Street
@@ -1916,122 +719,70 @@
 1,Elmhurst Drive
 4,Elmira Street
 2,Elmwood Way
-1,Eloy Alfaro
 4,Elsie Street
 1,Elwood Street
 2,Emerald Cove Terrace
-1,Emerald Lane
-1,Emerald Street
 1,Emerson Street
 1,Emery Lane
-1,Emiliano Zapata
-1,Emilio Grijalva
-1,Emilio Petorutti
 1,Emma Street
 1,Emmett Court
-2,Empalme RP1
 1,Encanto Avenue
-2,Encinal Walk
 1,Encline Court
-1,England Street
 1,English Street
-2,Enriqueta Amalvy
 1,Enterprise Street
-1,Entrada Calle La Rusia
 3,Entrada Court
-4,Entrada Vía 1
-4,Entre Ríos
-2,Entre Ríos Norte
-2,Entre Ríos Sur
-3,Erandique - San Francisco
 2,Erie Street
 1,Erkson Court
-2,Ernesto Monge Sandoval
-3,Ernesto Vidal
-1,Erribera zubia
-1,Erriberako zubia
 3,Ervine Street
-1,Escalona Street
-1,Escollar Street
 1,Escolta Way
 1,Escondido Avenue
-11,Esmeralda Avenue
+5,Esmeralda Avenue
 1,Espanola Street
-5,España
-1,Esperanza
 1,Esquina Drive
-13,Essex Street
-1,Essex Street & Folsom Street
-2,Estación DELTA
-1,Estanislao López
+10,Essex Street
 2,Estero Avenue
-3,Estero Bellaco
-1,Esther Cevallos
 11,Eucalyptus Drive
 19,Euclid Avenue
-5,Eugenia Avenue
-1,Eugenio Espejo
-1,Eugenio Savino
+4,Eugenia Avenue
 8,Eureka Street
-6,Eusebio Borrero
-6,Eustaquio García
-1,Eva Perón
 42,Evans Avenue
 6,Evelyn Way
-1,Event Space
 4,Everglade Drive
 3,Everson Street
 1,Ewer Place
 5,Ewing Terrace
-1,Ex Ruta Nacional 7
 5,Excelsior Avenue
 1,Exchange Place
 8,Executive Park Boulevard
 2,Exeter Street
 1,Exposition Drive
-1,F Dock
-1,F. Amante Drive
-3,F. Teodoro Street
-1,Facundo Quiroga
-3,Fair Avenue
+1,Fair Avenue
 2,Fair Oaks Street
 6,Fairfax Avenue
 2,Fairfield Way
 2,Fairmount Street
-1,Fairy Gates Trail
-3,Faith Street
-5,Fallon Place
+2,Faith Street
 1,Falmouth Street
-5,Falucho
 1,Fanning Way
-1,Fano Street
 1,Farallones Street
 1,Fargo Place
-2,Farnsworth Lane
-1,Farnsworth Trail
+1,Farnsworth Lane
 1,Farnum Street
 1,Farragut Avenue
 1,Farview Court
 7,Faxon Avenue
 2,Federal Street
-1,Federico Larrea
 1,Felix Avenue
 35,Fell Street
 1,Fella Place
 3,Felton Street
 2,Fern Street
 2,Fernandez Street
-1,Fernando Daquilema
-3,Fernando Fader
 1,Fernwood Drive
-6,Ferry Plaza
+5,Ferry Plaza
 1,Fielding Street
-1,Figuerres Street
-19,Filbert Steps
-17,Filbert Street
-1,Fillmore Center Plaza
+16,Filbert Street
 46,Fillmore Street
-1,Finland Street
 2,Finley Road
 2,First Drive East
 4,First Drive West
@@ -2039,44 +790,25 @@
 1,Fisher Avenue
 5,Fisher Loop
 9,Fitzgerald Avenue
-5,Fleming
-1,Flights of Fancy
 2,Flint Street
 2,Flood Avenue
 1,Flora Street
 1,Florence Street
-2,Florencio Molina Campos
-3,Florencio Sánchez
 2,Florentine Street
-12,Florida Street
+11,Florida Street
 1,Flounder Court
 1,Flournoy Street
 1,Flower Street
 6,Foerster Street
-1,Fog Bridge
-115,Folsom Street
-1,Folsom Street & 11th Street
-1,Folsom Street & 1st Street
-1,Folsom Street & 2nd Street
-1,Folsom Street & 3rd Street
-1,Folsom Street & 6th Street
-1,Folsom Street & 7th Street
-1,Folsom Street & 8th Street
-1,Folsom Street & 9th Street
-1,Folsom Street & Beale Street
-1,"Folsom Street, E. Sidewalk"
-1,"Folsom Street, W. Sidewalk"
+100,Folsom Street
 23,Font Boulevard
 1,Fontinella Terrace
 2,Foote Avenue
 1,Ford Street
-2,Forest Hill Path
 1,Forest Knolls Drive
-2,Forest Road
+1,Forest Road
 2,Forest Side Avenue
 2,Forest View Drive
-1,Forli Street
-7,Formosa
 2,Fort Funston Road
 2,Fort Mason 10
 1,Fort Mason 12
@@ -2093,34 +825,20 @@
 1,Fort Miley 6
 2,Fort Miley 7
 1,Fortuna Avenue
-1,Fortunato La Camera
-4,Foundry Square
-4,Fountain Street
+1,Fountain Street
 2,Fowler Avenue
 3,France Avenue
-3,France Street
 1,Francis Street
-1,Francisca Ferrazzi
-1,Francisco Pizarro
-27,Francisco Street
-1,Francisco de Goya
-11,Franconia Street
+21,Francisco Street
+6,Franconia Street
 1,Frank Norris Street
-5,Franklin
-36,Franklin Street
+37,Franklin Street
 1,Fratessa Court
-1,Fray Bartolome de las Casas
-1,Fray Mamerto Esquiú
-1,Fredela Lane
 10,Frederick Street
 1,Fredson Court
 2,Freelon Street
-2,Freeman Court
-1,Freixas
-1,Fremont Center
 21,Fremont Street
 1,French Court
-4,French y Berutti
 1,Fresnel Way
 1,Fresno Street
 20,Frida Kahlo Way
@@ -2128,152 +846,94 @@
 1,Friendship Court
 8,Front Street
 1,Fuente Avenue
-62,Fulton Street
-12,Fulton Trail
-1,Functional and Fantasy Stair
+52,Fulton Street
 20,Funston Avenue
 1,Funston Road
-1,G Dock
 1,Gabilan Way
-1,Gaboto
-2,Gabriel García Moreno
-1,Gabriela Mistral
-1,Gaiser Court
 5,Galewood Circle
 4,Galilee Lane
 1,Galindo Avenue
 1,Gallagher Lane
-2,Galo Plaza Lasso
-1,Galo Rea Rivadeneira
 10,Galvez Avenue
 1,Gambier Street
 2,Garces Drive
 5,Garcia Avenue
-4,García Moreno
 1,Garden Street
-2,Garden Walk
 2,Garden Way
 3,Gardener Road
-3,Gardener's Trail
 1,Gardenside Drive
 4,Garfield Street
 3,Garlington Court
 1,Garnett Terrace
 1,Garrison Avenue
-2,Gasteiz kalea
-3,Gates Street
+2,Gates Street
 2,Gateview Avenue
 4,Gateview Court
-1,Gatun Alley
 2,Gaven Street
 1,Gaviota Way
-263,Geary Boulevard
+247,Geary Boulevard
 21,Geary Street
 2,Gellert Drive
-2,Gene Friend Way
+1,Gene Friend Way
 2,Genebern Way
-1,General Antonio Tiscornia
-1,General Bartolome Salom
-1,General Bernardino Caballero
-1,General Deheza
 2,General Douglas MacArthur Tunnel
-2,General Enrique Mosconi
-1,General Güemes
-2,General Juan Galo de Lavalle
 3,General Kennedy Avenue
-1,General Lavalle
-4,General Paz
-2,General Trias Interchange
-64,Geneva Avenue
+65,Geneva Avenue
 4,Gennessee Street
 1,Genoa Place
 1,George Court
-1,Georgia Lane
-1,Georgias del Sur
 2,Gerke Alley
 1,Germania Street
-1,Germany Street
-3,Gerónimo del Barco
-2,Gerónimo del Barco Norte
-4,Gerónimo del Barco Sur
 1,Getz Street
-2,Ghost Trail
-1,Giants Drive
+3,Giants Drive
 1,Gibb Street
 1,Gibbon Court
-2,Gibraltar Street
 1,Gibson Road
-3,Gilavar Street
 1,Gilbert Street
 2,Gillette Avenue
 12,Gilman Avenue
-3,Gilroy Street
-2,Gimnasio kalea
-3,Ginés García
+1,Gilroy Street
 19,Girard Road
 6,Girard Street
-1,Girona Street
 1,Gladeview Way
-1,Gladiolus Lane
 4,Gladstone Drive
-2,Gladstone Way
+1,Gladstone Way
 1,Gladys Street
 1,Glen Court
 1,Glenbrook Avenue
-2,Glendale Street
-1,Glenhaven Lane
+1,Glendale Street
 5,Glenview Drive
-1,Globe Alley
 2,Gloria Court
-3,Glorieta Francisco Haro Laguna
 1,Glover Street
-3,Gobernador Dante Agodino
-1,Gobernador Luis Genaro
-2,Gobernador Sabattini
-2,Gobernador San Martín
 1,Godeus Street
 2,Goethe Street
-5,Goettingen Street
+4,Goettingen Street
 1,Gold Mine Drive
 1,Gold Street
-5,Goldberg Lane
-1,Golden Court
 35,Golden Gate Avenue
 3,Golden Gate Bridge
-3,Golden Gate Bridge East Sidewalk
-1,Golden Gate Bridge West Sidewalk
-2,Golden Gate Promenade
 1,Goleta Avenue
 6,Gonzalez Drive
 1,Gordon Street
 9,Gorgas Avenue
 1,Gorham Street
-4,Gorte kalea
-1,Goshenite Street
-36,Gough Street
+34,Gough Street
 1,Gould Street
-22,Governor's Drive
 2,Grace Street
 3,Grafton Avenue
 8,Graham Street
 2,Granada Avenue
-1,Granada Street
 9,Grand View Avenue
 1,Grand View Terrace
 29,Grant Avenue
-2,Granville Way
+1,Granville Way
 3,Grattan Street
 2,Graystone Terrace
-54,Great Highway
-13,Great Highway Extension
-3,Great Highway Promenade
-2,Greece Street
-33,Green Street
-1,Green Tunnel
-1,Green Valley Avenue
+59,Great Highway
+4,Great Highway Extension
+29,Green Street
 1,Greenough Avenue
 1,Greenview Court
-5,Greenwich Steps
 22,Greenwich Street
 1,Greenwood Avenue
 1,Grenard Terrace
@@ -2281,33 +941,24 @@
 2,Grijalva Drive
 1,Grote Place
 21,Grove Street
-4,Guallupe
-3,Guatemala
 49,Guerrero Street
-2,Guillermo Rawson
-9,Gum Tree Girls Trail
-1,Gustavo Mallat
+1,Gum Tree Girls Trail
 2,Guttenberg Street
 2,Guy Place
 4,H Lot
 1,H Street
-1,H. Escudero
 1,Habitat Terrace
-4,Hagiwara Tea Garden Drive
+3,Hagiwara Tea Garden Drive
 2,Hahn Street
 27,Haight Street
-1,Haití
 1,Hale Street
 1,Halibut Court
 1,Hallam Street
 5,Halleck Street
-2,Hallidie Plaza
 1,Hamerton Avenue
 3,Hamilton Street
-1,Hamlin Street
 11,Hampshire Street
 1,Hancock Street
-1,Hang Ah Alley;Pagoda Alley
 2,Hanover Street
 2,Harbor Road
 1,Hardie Avenue
@@ -2325,15 +976,12 @@
 1,Harrington Street
 1,Harris Place
 1,Harrison Boulevard
-72,Harrison Street
-3,Harrobi kalea
-2,Harry Street
+56,Harrison Street
 2,Hartford Street
 2,Harvard Street
 1,Hastings Terrace
 3,Hattie Street
 3,Havelock Street
-2,Havens Street
 1,Havenside Drive
 9,Hawes Street
 1,Hawkins Lane
@@ -2341,7 +989,7 @@
 21,Hayes Street
 4,Hays Street
 2,Hazelwood Avenue
-6,Head Street
+5,Head Street
 9,Healy Avenue
 4,Hearst Avenue
 1,Heather Avenue
@@ -2352,38 +1000,27 @@
 1,Hemway Terrace
 2,Henry Adams Street
 5,Henry Street
-11,Herb Caen Way...
 1,Heritage Avenue
 5,Hermann Street
-4,Hermanos Casalis
-1,Hermanos Casalis (n)
 1,Hernandez Avenue
-1,Hernani kalea
 1,Heron Street
 2,Hester Avenue
 1,Heyman Avenue
 3,Hickory Street
 2,Hidalgo Terrace
-1,Hidden Garden Steps
-2,High Five Zone
 1,High Street
 5,Highland Avenue
 6,Higuera Avenue
-1,Hilda Pezantes de Cevallos
 1,Hiliritas Avenue
 1,Hill Point Avenue
 3,Hill Street
 1,Hillcrest Court
 3,Hillcrest Road
-1,Hilltop Park Ampitheater
 1,Hillview Court
 1,Hillway Avenue
 1,Hilton Street
 1,Himmelmann Place
-1,Hinckley Walk
-5,Historic Trail
 3,Hitchcock Street
-1,Hno. Remigio German
 1,Hobart Alley
 1,Hodges Alley
 1,Hoff Street
@@ -2399,28 +1036,23 @@
 1,Homer Street
 1,Homestead Street
 1,Homewood Court
-6,Honduras
 1,Hooker Alley
 1,Hooper Street
-1,Hooper's Steps
 1,Hopkins Avenue
 1,Horace Street
 1,Horne Avenue
 3,Hospital Street
 1,Hotaling Place
-2,Houston Street
+1,Houston Street
 6,Howard Road
-58,Howard Street
+55,Howard Street
 4,Howth Street
-1,Hubang Road
 1,Hubbell Street
 14,Hudson Avenue
 2,Hudson Court
 2,Hugo Street
 1,Hulbert Alley
-3,Humboldt Street
-1,Hungary Street
-3,Hunter's Point Power Plant Trail
+2,Humboldt Street
 3,Hunters Point Boulevard
 2,Hunters Point Expressway
 1,Huntington Drive
@@ -2428,102 +1060,48 @@
 1,Hussey Street
 1,Hutchins Court
 29,Hyde Street
-3,Hyde Street Pier
-1,I Dock
+1,Hyde Street Pier
 1,I Street
-2,I. Suárez Centanino
-2,ITAIPU
-2,Ibarra
-1,Ibiza Street
 1,Icehouse Alley
-1,Iceland Street
 3,Idora Avenue
 1,Ignacio Avenue
 30,Illinois Street
 2,Ils Lane
 1,Imperial Alley
 2,Ina Court
-1,Inca Lane
-2,Incinerator Road
-3,Independencia
-1,Independencia Norte
-3,Independencia Sur
 14,Indiana Street
 18,Industrial Street
-6,Infantry Terrace
+4,Infantry Terrace
 18,Ingalls Street
-2,Ingeniero Huergo
-7,Ingeniero S. Trigueros
-16,Ingerson Avenue
-1,Ingleside Path
-1,Ingreso al Estadio
+8,Ingerson Avenue
 11,Innes Avenue
 1,Innes Court
-3,Intendente Carlos A. Dittrich
-1,Intendente Cartier
-2,Intendente G J Peretti
 1,Inverness Drive
 4,Iowa Street
-1,Ipil Street
-1,Ipil-Ipil Street
-1,Ireland Street
 1,Iris Avenue
-1,Iris Street
-2,Iron Alley
-1,Ironship Plaza North
-1,Ironship Plaza South
+1,Iron Alley
 1,Ironwood Way
 26,Irving Street
 1,Irwin Street
-1,Isaac Albéniz
 1,Isadora Duncan Lane
 1,Isis Street
-3,Isla Lennox
-1,Isla Nueva
-2,Isla Picton
-1,Isla San Cristobal
-1,Isla Santa Fe
-1,Isla Soledad
-1,Isla de los Estados
-6,Islais Creek Trail
-1,Islas Malvinas
-2,Islas Orcadas
 1,Isola Way
 1,Issleib Avenue
-7,Italia
 1,Italy Avenue
-1,Italy Street
-1,Ituzaingó
 1,Ivy Street
-1,J Dock
 1,J Street
-1,J. L. Castagnino
-1,J. P. Rizal Street
-1,J. Spilimbergo
-1,Jabilles Street
-1,Jacarandá
-1,Jacinth Street
-1,Jack Balestreri Way
-1,Jack Kerouac Alley
 2,Jack London Alley
 1,Jack Micheline Alley
-1,Jack Micheline Place
 34,Jackson Street
 1,Jade Place
 1,Jakey Court
-1,Jako Doma access road
 76,James Lick Freeway
 23,Jamestown Avenue
-1,Jane Warner Plaza
 1,Jansen Street
 3,Jarboe Avenue
-1,Jasmine Street
-1,Jason Court
 2,Jasper Place
-1,Jasper Street
 1,Jauss Street
 1,Java Street
-1,Jean Way
 1,Jeff Adachi Way
 12,Jefferson Street
 1,Jennifer Place
@@ -2532,144 +1110,64 @@
 2,Jerome Alley
 19,Jerrold Avenue
 6,Jersey Street
-2,Jerónimo Luis de Cabrera
 1,Jessie East Street
-1,Jessie Square
-13,Jessie Street
+12,Jessie Street
 1,Jessie West Street
-1,Jesusen Zerbitzarien kaia
-1,Joaquín G. Martínez
-1,Job Street
 48,John F Foran Freeway
 23,John F Kennedy Drive
-5,John F Shelley Drive
-5,John F. Kennedy Drive
-26,John F. Kennedy Promenade
-1,John Maher Street
+3,John F Shelley Drive
 7,John Muir Drive
 1,John Street
 1,Johnson Street
 5,Johnstone Drive
 3,Joice Street
-4,Jonas Salk
-34,Jones Street
+35,Jones Street
 5,Joost Avenue
 1,Jordan Avenue
-1,Jorge Enrique Adoum
-1,Jorge Icaza
-2,Jorge Subia
-1,Jorge Villacís
-1,Jorge Viteri Guzman
-1,Jose Ignacio Narvaez
 1,Josepha Avenue
-1,Joshua Street
 2,Josiah Avenue
-2,José A. Gontero
-1,José Alejandro Villamar Andrade
-2,José Bernardo Iturraspe
-1,José Bernardo Iturraspe(N)
-5,José Hernández
-3,José Ignacio Canelos
-1,José Ignacion Burbano
-2,José Ingenieros
-2,José Joaquin de Olmedo
-3,José Lencinas
-2,José María Drago
-6,José Mejia Lequerica
-2,José Mármol
-1,José Nicolas Hidalgo
-1,José Nicolas Vacas
-1,José Peralda
 1,José Sarria Court
-1,José Teobaldo
-1,José Vinueza
-1,Joy Street
-1,Juan A. García
-7,Juan B. Justo
 4,Juan Bautista Circle
-1,Juan C. Brook
-1,Juan Domingo Perón
-2,Juan Genaro Jaramillo
-2,Juan Gollner
-3,Juan Hernandez
-6,Juan José Flores
-5,Juan José Paso
-1,Juan José Paso (Norte)
-1,Juan José Paso (Sur)
-1,Juan José Torres
-1,Juan Leon Mera
-1,Juan Manuel Fangio
-6,Juan Manuel Grijalva
-2,Juan Maria Baggio Ferraz
-1,Juan Miguel Muñoz
-3,Juan Montalvo
-1,Juan Venier
-1,Juan XIII
-3,Juan XXIII
-2,Juan de Dios Navas
-1,Juan de Garay
-2,Juan de Salinas
-3,Juan de Solís
-3,Juana de la Roca
 5,Juanita Way
-102,Judah Street
-1,Judges Street
+94,Judah Street
 10,Judson Avenue
-1,Jujuy
 1,Jules Avenue
-1,Julia Miranda Cueto
 2,Julia Street
 1,Julian Avenue
-2,Julio Miguel Alarcón
-1,Julio Paredes
-1,Julio Zaldumbide
 1,Julius Street
-1,Julián Aguirre
-1,Julián Romero
 1,Junior Terrace
 1,Juniper Street
 62,Junipero Serra Boulevard
-1,Jurado
 1,Juri Street
-2,Justice Avanceña Street
-1,Justice Bengzon Street
-2,Justice Mapa Street
-1,Justice Moran Street
-1,Justice Santos Street
 2,Justin Drive
-1,Juárez
 1,Kalmanovitz Street
-1,Kamagong Street
 2,Kamille Court
 11,Kansas Street
 1,Kaplan Lane
 1,Karen Court
 1,Kate Street
-1,Kawayan Street
 34,Kearny Street
-8,Keith Street
+7,Keith Street
 1,Kelloch Avenue
 1,Kempton Avenue
 2,Kendall Drive
 1,Kennedy Place
 2,Kenneth Rexroth Place
-2,Kenny Alley
 6,Kensington Way
 1,Kent Street
 1,Kenwood Way
 1,Keppler Court
 1,Kern Street
-5,Key Avenue
+4,Key Avenue
 1,Keyes Alley
 2,Keyes Avenue
 1,Keystone Way
 30,Kezar Drive
-12,Kiko Rosa Road
 1,Kimball Place
 30,King Street
-4,Kingston Street
+2,Kingston Street
 1,Kinzey Street
-19,Kirkham Street
+20,Kirkham Street
 11,Kirkwood Avenue
 1,Kiska Road
 1,Kissling Street
@@ -2677,232 +1175,119 @@
 1,Knockash Hill
 1,Knollview Way
 1,Knott Court
-1,Knuckle Wharf
-9,Kobbe Avenue
+8,Kobbe Avenue
 2,Kohler Place
-2,Kontzezio kalea
-1,Kontzezio zeharkalea
 3,Koret Way
 1,Kramer Place
 1,Krausgrill Place
 1,Kronquist Court
 1,La Avanzada Street
 2,La Bica Way
-1,La Central
-1,La Colmena
 1,La Ferrera Terrace
 3,La Grande Avenue
-1,La Habana
-1,La Pampa
-2,La Paz
-3,La Piñuela - San Francisco
 8,La Playa Street
 10,La Playa Terminal Loop
-1,La Rioja
 13,La Salle Avenue
-1,La Tunas
 1,Lafayette Street
-2,Laguna Avenue
 47,Laguna Honda Boulevard
 31,Laguna Street
 1,Lagunitas Drive
 7,Laidley Street
 1,Lake Forest Court
-17,Lake Merced Bike Path
-71,Lake Merced Boulevard
-1,Lake Merced Boulevard bikeway
+69,Lake Merced Boulevard
 1,Lake Merced Hill
 3,Lake Merced Hill Street
-1,Lake Merced Hills Community Center Access Stairs
-7,Lake Merced Northbound Bikeway
-1,Lake Merced Southbound protected bikeway
-23,Lake Street
+1,Lake Merced Hill Street North
+3,Lake Merced Hill Street South
+17,Lake Street
 2,Lakeshore Drive
 4,Lakeshore Plaza
 1,Lakeview Avenue
 1,Lakewood Avenue
-5,Lamadrid
-1,Lamadrid Norte
-1,Lamadrid Sur
-1,Lamana kalea
 1,Lamartine Street
 1,Lamson Lane
-2,Lancaster Lane
 2,Landers Street
-1,Lands End Trail
-11,Lane Street
+8,Lane Street
 3,Langdon Court
 4,Langton Street
 1,Lansdale Avenue
 1,Lansing Street
-1,Lanzones Street
-1,Lanín
 2,Lapham Way
 1,Lapidge Street
 1,Lapu Lapu Street
-1,Lapu-Lapu Street
 1,Larch Street
 1,Larch Way
 34,Larkin Street
-4,Larrea
-3,Las Acacias
-1,Las Araucarias
-4,Las Camelias
-1,Las Dalias
-2,Las Guayanas
-1,Las Heras
-1,Las Lajas
-1,Las Magnolias
-3,Las Malvinas
-5,Las Margaritas
-1,Las Palmeras
-2,Las Truchas
-1,Las Uvillas
 1,Las Villas Court
 1,Laskie Street
 2,Lathrop Avenue
 1,Latona Street
-2,Laura Jaramillo
 1,Laura Street
-5,Laurel Street
+4,Laurel Street
 2,Lauren Court
 2,Laussat Street
-5,Lavalle
-1,Lavisores Street
 1,Lawrence Avenue
 11,Lawton Street
-1,Layno Street
 3,Le Conte Avenue
 1,Le Conte Circle
-33,Leavenworth Street
+32,Leavenworth Street
 1,Ledyard Street
 6,Lee Avenue
 2,Leese Street
-1,Legion Court
 5,Legion of Honor Drive
 4,Leidesdorff Street
 6,Leland Avenue
 6,Lendrum Court
 1,Lenox Way
 1,Leo Street
-1,Leona Terrace
-2,Leonardo da Vinci
 1,Leroy Place
 1,Lessing Street
 2,Lester Court
 2,Letterman Drive
 2,Levant Street
-1,Levant Street Stairway
-1,Levi's Plaza
 2,Lexington Street
-5,León Guruciaga
-2,Libertad
-9,Liberty Street
+8,Liberty Street
 1,Liebig Street
 7,Liggett Avenue
-1,Ligure Street
 3,Lilac Street
 1,Lillian Street
-5,Lily Street
-5,Lima
-1,Limpio Street
+4,Lily Street
 2,Linares Avenue
-1,Lincoln
 49,Lincoln Boulevard
 1,Lincoln Court
-1,Lincoln Park Steps
-70,Lincoln Way
+65,Lincoln Way
 2,Linda Street
-5,Linden Street
+4,Linden Street
 1,Lindsay Circle
-9,Liniers
-3,Lipa - Padre Garcia Diversion Road
 4,Lippard Avenue
 1,Lisbon Street
 1,Littlefield Terrace
 1,Lloyd Street
-1,Lobby Shops
-1,Lobos
-3,Lobos Creek Valley Trail
 2,Lobos Street
 2,Locksley Avenue
 3,Lockwood Street
-4,Locust Street
+1,Locust Street
 2,Loehr Street
 1,Lois Lane
-1,Lola Orbe
 1,Loma Vista Terrace
-62,Lombard Street
+60,Lombard Street
 3,Lomita Avenue
 4,London Street
-11,Lone Mountain Terrace
 2,Long Avenue
 6,Long Bridge Street
 1,Longview Court
 3,Loomis Street
 1,Lopez Avenue
 1,Loraine Court
-1,Lorenzo Medina
-2,Los Alamos
-1,Los Alerces
-2,Los Algarrobos
-2,Los Andes
-3,Los Aromos
-3,Los Cedros
-1,Los Ceibos
-3,Los Chañaritos
-3,Los Cipreses
-2,Los Fresnos
-1,Los Galeanos
-1,Los Garabatos
-1,Los Higos
-1,Los Jazmines
-5,Los Naranjos
-2,Los Olmos
-1,Los Ombúes
 1,Los Palmos Drive
-3,Los Paraísos
-1,Los Perales
-2,Los Pinos
-1,Los Reyunos
-2,Los Robles
-5,Los Sauces
-1,Los Taxos
-1,Los Tomates
-1,Los Tulipanes
-1,Los piamonteses
-2,Los Álamos
-1,Lothar Badersbach
-1,Lottie Bennett Lane
 3,Louisburg Street
 2,Louisiana Street
-8,Lovers' Lane
-1,Lovers' Lane Bridge
 4,Lowell Street
-6,Lower Great Highway
-1,Lower Great Highway Trail
 1,Lower Terrace
 1,Loyola Terrace
 1,Lucerne Street
-1,Lucio Tarquino Páez
 3,Lucky Street
 1,Lucy Street
-2,Luis Agote
-1,Luis Alfonso Moreno
-1,Luis Alfredo Matínez
-1,Luis Dellepiane
-1,Luis F. Leloir
-7,Luis Federico Leloir
-8,Luis Felipe Borja
-1,Luis Felipe Lara González
-4,Luis Fernando Villamar
-1,Luis Iruarrizaga kalea
-2,Luis Miretti
-3,Luis Vargas Torres
-1,Luis Zuleta Vinueza
-1,Luisa Paez
-3,Lulu Alley
-1,Lumang Kalsada
 2,Lunado Court
 1,Lunado Way
 2,Lundys Lane
@@ -2914,109 +1299,52 @@
 5,Lyell Street
 1,Lynch Street
 1,Lyndhurst Drive
-40,Lyon Street
-1,Lyon Street Footpath
-3,López y Planes
-7,M. Gutierrez
-2,M. Gutierrez Norte
-2,M. Gutierrez Sur
-1,M. Rodríguez
-1,M.A. Parama
-1,Mabel Alley
+28,Lyon Street
 1,Mabini Street
 1,Mabrey Court
 5,MacArthur Avenue
 6,Macalla Road
 1,Macedonia Street
-2,Machain
-4,Macondray Lane
-1,Macopa Street
+2,Macondray Lane
 4,Maddux Avenue
 1,Madera Street
-1,Madid Street
 2,Madison Street
-2,Madre Mansilla
-1,Madre Teresa de Calcuta
 1,Madrid Street
 1,Madrone Avenue
-1,Maestro Garrone
-1,Maestro Reinaldo Grigolato
-1,Magallanes
 8,Magellan Avenue
-1,Magiting Street
 2,Magnolia Street
 1,Mahan Street
-6,Maharlika Highway
-1,Mahogany Street
-1,Maiatzaren biko kalea
-3,Maiden Lane
+2,Maiden Lane
 5,Main Drive
-20,Main Street
+15,Main Street
 1,Majestic Avenue
 3,Malden Alley
-2,Malecón
-1,Mallaga Street
 3,Mallorca Way
 1,Malosi Street
 4,Malta Drive
 1,Malvina Place
-2,Manabí
-2,Managua
 1,Manchester Street
-1,Mandalay Lane
 1,Mangels Avenue
-1,Mangosteen Street
 1,Manor Drive
 1,Manseau Street
-3,Mansell Multi-Use Path
 19,Mansell Street
 1,Mansfield Street
-1,Manual Pasquel Monje
-2,Manuel España
-2,Manuel Estrada
-2,Manuel María Sánchez
-1,Manuel Pasquel Monge
-1,Manuel Terán
-2,Manuel de la Chica Narvaez
-2,Manuel Ávila Camacho
-2,Manuela Cañizares
-1,Manuela Leon
-1,Manuela Perez Quiñonez
-3,Manuelita Saenz
 1,Manzanita Avenue
 3,Maple Street
-1,Mar Argentino
-1,Maranga Street
-9,Maravilla Avenue
-1,Marbella Street
 3,Marcela Avenue
-3,Marco Nicolalde León
-4,Marconi
-1,Marcos Nicolini
-1,Marcos Paulino Avenue
 1,Marcy Place
 1,Marengo Street
 1,Margaret Avenue
 3,Margrave Place
-1,Maria Esther Castro de Rodriguez
-7,Mariano Moreno
-1,Mariano Peñaherrera
-1,Mariano Suarez
-1,Mariaren Bihotza plaza
-1,Marieta de Veintimilla
 6,Marietta Drive
 8,Marin Street
 14,Marina Boulevard
 3,Marina Green Drive
 3,Marine Drive
 1,Mariner Drive
-1,Marion Place
-29,Mariposa Street
-2,Mariscal López
+25,Mariposa Street
 1,Marist Street
-1,Mark Lane
-2,Mark Twain Place
-237,Market Street
+223,Market Street
 1,Marlin Court
 1,Marne Avenue
 1,Mars Street
@@ -3024,45 +1352,31 @@
 3,Marston Avenue
 1,Martha Avenue
 1,Martin Avenue
-38,Martin Luther King Junior Drive
+30,Martin Luther King Junior Drive
 4,Martinez Street
-2,Martzana kalea
-1,Martín Antonio Carra
-2,Martín García
 1,Marvel Court
 4,Marview Way
-3,Marx Meadow Drive
-2,Mary Street
+1,Mary Street
 2,Mary Teresa Street
-8,Maryland Street
-6,María Angelica Idrobo
-1,María Esther León
-1,María de la Letra
-3,Masagana Street
+6,Maryland Street
 1,Mason Court
-38,Mason Street
-65,Masonic Avenue
-4,Massa Street
+34,Mason Street
+61,Masonic Avenue
 1,Massasoit Street
 1,Mateo Street
-1,Matiwasay Street
 1,Matthew Court
 1,Maxwell Court
 5,Mayfair Drive
-4,Mayflower Street
+2,Mayflower Street
 3,Maynard Street
-1,Mayor Novoa
 1,Maywood Drive
 33,McAllister Street
 1,McCann Street
 1,McCarthy Avenue
-8,McCoppin Street
+7,McCoppin Street
 1,McCormick Street
-3,McCovey Cove Promenade
 3,McDowell Avenue
-2,McDowell Road SW
-4,McDowell Road Southwest
-1,McKinley - Vermont Lower Steps
+3,McDowell Road Southwest
 9,McKinnon Avenue
 1,McLaren Avenue
 1,McLea Court
@@ -3078,45 +1392,30 @@
 1,Melba Avenue
 1,Melra Court
 4,Melrose Avenue
-1,Meltem Street
 3,Memory Lane
-1,Mena kalea
-10,Mendell Street
+9,Mendell Street
 7,Mendosa Avenue
-4,Mendoza
 1,Mercato Court
-3,Merced Avenue
+1,Merced Avenue
 4,Mercedes Way
 2,Merchant Road
 2,Merchant Street
 2,Mercury Street
-1,Merida Street
 1,Merlin Street
-2,Merrie Way
 1,Merrill Street
-5,Merrimac Street
+3,Merrimac Street
 3,Merritt Street
 3,Mersey Street
 1,Mesa Avenue
-5,Mesa Street
-2,Mesedeetako kaia
-2,Mesedeetako zubia
+3,Mesa Street
 1,Metson Road
-2,Miami
 4,Michigan Street
 2,Midcrest Way
-5,Middle Drive West
+3,Middle Drive West
 2,Middle Point Road
 3,Middlefield Drive
 1,Midway Street
-1,Miguel A. Morini
-1,Miguel Endara Játiva
-1,Miguel Hidalgo
-1,Miguel P. Borgarello
 8,Miguel Street
-1,Miguel Visconti
-1,Miguel Ángel Buonarroti
-1,Mijares Street
 1,Milan Terrace
 1,Miles Street
 1,Miley Street
@@ -3128,392 +1427,225 @@
 3,Minerva Street
 11,Minna Street
 14,Minnesota Street
-2,Mint Plaza
 1,Mint Street
 1,Mirabel Avenue
 3,Miraloma Drive
 6,Miramar Avenue
 2,Mirando Way
-2,Mirasol kondearen kalea
-2,Misiones
 2,Mission Bay Boulevard
 7,Mission Bay Boulevard North
 11,Mission Bay Boulevard South
 7,Mission Bay Circle
 6,Mission Bay Drive
 4,Mission Rock Street
-147,Mission Street
-1,"Mission Street, E. Sidewalk"
-1,"Mission Street, W. Sidewalk"
+140,Mission Street
 6,Mississippi Street
 5,Missouri Street
 1,Mistral Street
-5,Mitre
 1,Mizpah Street
 1,Modoc Avenue
 2,Moffitt Street
 1,Mojave Street
-1,Molave Street
 2,Molimo Drive
-1,Molleyaco
-1,Monaco Street
 5,Moncada Way
 1,Moneta Court
 2,Moneta Way
-2,Mono Street
-1,Monseñor Jorge Eduardo Villacís
 1,Montague Place
 5,Montalvo Avenue
-2,Montana Street
-4,Montcalm Street
+1,Montana Street
+3,Montcalm Street
 1,Montclair Terrace
-1,Montecarlo
 3,Montecito Avenue
-41,Monterey Boulevard
-1,Monterey Junction
-1,Montevideo
+40,Monterey Boulevard
 1,Montezuma Street
 33,Montgomery Street
 1,Monticello Street
-1,Monument Way
-1,Monza Street
-1,Moonwalk Stairs
 1,Moore Place
 5,Moraga Avenue
-13,Moraga Street
+12,Moraga Street
 1,Moreland Street
-5,Morella Street
 1,Morningside Drive
 1,Morrell Place
 1,Morrell Street
 1,Morris Street
 5,Morse Street
-1,Morteros
 1,Morton Street
 4,Moscow Street
 1,Moss Street
 4,Moulton Street
-4,Moultrie Street
-1,Mount Lane
-3,Mount Magdiwata Trail
+2,Moultrie Street
 7,Mount Vernon Avenue
-1,Mountain Lake Trail
 2,Mountain Spring Avenue
 1,Mountview Court
 1,Mrs. Jackson Way
-3,Muelle de las Siervas de Jesús
 3,Muir Loop
 1,Mulford Alley
 2,Mullen Avenue
 3,Munich Street
 3,Murray Street
 1,Museum Way
-10,Music Concourse Drive
+6,Music Concourse Drive
 4,Myra Way
 2,Myrtle Street
-1,Mystery Trail
-2,Médanos
-10,México
-1,NIC-17
-1,NN-133
-4,NRJ Pisaan - Del Monte Road
-1,NRJ Pisaan-Del Monte Road
-1,NRJ San Rafael - PRJ Borbon Road
 1,Nadell Court
-4,Naglee Avenue
+3,Naglee Avenue
 2,Nahua Avenue
-7,Nancy Pelosi Drive
+6,Nancy Pelosi Drive
 1,Nantucket Avenue
-1,Napier Lane
 10,Naples Street
 4,Napoleon Street
 1,Natick Street
-10,Natoma Street
+9,Natoma Street
 9,Nauman Road
 1,Nautilus Court
 1,Navajo Avenue
-2,Navarro Road
-3,Navy Road
-1,Naxa kalea
+2,Navy Road
 1,Naylor Street
 1,Nebraska Street
 1,Nellie Street
 5,Nelson Rising Lane
 1,Neptune Street
-1,Netherlands Avenue
-1,Neuquén
-1,Neutra Street
-1,Nevada St
-5,Nevada Street
+4,Nevada Street
 4,New Montgomery Street
 1,Newburg Street
 11,Newcomb Avenue
 1,Newell Street
-19,Newhall Street
+17,Newhall Street
 1,Newman Street
-2,Newton
 1,Newton Street
 1,Ney Street
 4,Niagara Avenue
 1,Niantic Avenue
 1,Nibbi Court
-1,Nicolas Gomez Tobar
 1,Nido Avenue
-2,Nike Road
+1,Nike Road
 2,Nimitz Avenue
-1,Nipa Street
 1,Nob Hill Place
 1,Nobles Alley
 14,Noe Street
-1,Nogal Histórico
 1,Nordhoff Street
 2,Norfolk Street
 30,Noriega Street
-4,Normandie Terrace
-1,North Creek Trail
+1,Normandie Terrace
 1,North Drive
-1,North Lake Merced Hill Street
-22,North Point Street
-3,North Ridge Trail
+21,North Point Street
 1,North State Drive
 1,North View Court
-1,Northbound Protected Bikeway
 1,Northgate Drive
 1,Northgate Road
 1,Northpoint Drive
 2,Northridge Road
 3,Northwood Drive
 1,Norton Street
-1,Norway Street
 1,Norwich Street
 1,Nottingham Place
-1,Nouvel Street
-1,Novara Street
 1,Nueva Avenue
 29,O'Farrell Street
 2,O'Reilly Avenue
 14,O'Shaughnessy Boulevard
 1,Oak Grove Street
-4,Oak Park Drive
+3,Oak Park Drive
 29,Oak Street
-1,Oak Street Cyclepath
-25,Oakdale Avenue
-1,Oakhurst Lane
+27,Oakdale Avenue
 1,Oakwood Street
-8,Obedoza Street
-8,Obispo Jesús Yerovi
-1,Obispo Pedro Rafael Gonzalez Calisto
 98,Ocean Avenue
 1,Oceanview Terrace
-1,Octavia
-18,Octavia Boulevard
-8,Octavia Boulevard Bike Connector
-33,Octavia Street
-1,Officer James W. Bloesch Road
+19,Octavia Boulevard
+30,Octavia Street
 4,Ogden Avenue
 1,Ohlone Way
-2,Olascoaga
-1,Old Chinatown Lane
 1,Old Macalla Road
-4,Olegario Andrade
-1,Olimpia Gudiño Vasquez
 2,Olive Street
 1,Oliver Street
 2,Olmstead Street
 3,Olympia Way
 1,Olympic Country Club Road
 1,Omar Way
-5,Oneida Avenue
-1,Onique Lane
+3,Oneida Avenue
 3,Onondaga Avenue
-1,Onyx Street
 1,Opal Place
-2,Opal Street
-1,Opalo Lane
 1,Ophir Alley
 1,Ora Way
 1,Orange Alley
-1,Orange Street
 1,Orben Place
 1,Ord Court
 6,Ord Street
 1,Ordway Street
-1,Oriole Way
 5,Orizaba Avenue
 1,Orsi Circle
 21,Ortega Street
-3,Ortega Way
-2,Osage Street
-2,Osaka Way
-1,Oscar Alley
-1,Oscar Efren Reyes
-1,Oscar Ventura Liwacki
+2,Osage Alley
 3,Osceola Lane
 1,Osgood Place
-2,Otavalo
-1,Otega Avenue
 14,Otis Street
 1,Otsego Avenue
 3,Ottawa Avenue
 1,Otter Cove Terrace
-1,Outback Trail
-1,Overlook Drive
-1,Oviedo Street
 1,Owen Street
 19,Owens Street
 2,Oxford Street
 1,Ozbourn Court
-3,Pablo Aníbal Vela
-38,Pacheco Street
-27,Pacific Avenue
-2,Padre Gervasi
-3,Padre Jacinto Pankery
-5,Padre Monteverde
-1,Pag-ambakan Street
-30,Page Street
+26,Pacheco Street
+25,Pacific Avenue
+19,Page Street
 6,Palace Drive
 2,Palm Avenue
-1,Palm Lane
 4,Palmetto Avenue
 5,Palo Alto Avenue
 1,Paloma Avenue
-1,Palomaria Street
 1,Palos Place
 24,Palou Avenue
 1,Panama Street
-3,Panamericana Norte
-7,Panamá
 11,Panorama Drive
-1,Papagayo Street
-1,Parada de Bus de Zona Franca America
-1,Parade Ground
 1,Paradise Avenue
-7,Paraguay
-1,Paraguay Norte
-1,Paraguay Sur
 1,Paraiso Place
-1,Paramaribo
 1,Paramount Terrace
 5,Paris Street
 6,Park Boulevard
-4,Park Boulevard Trail
 3,Park Hill Avenue
 27,Park Presidio Boulevard
 6,Park Presidio Bypass Drive
 4,Park Street
-13,Park Trail
 13,Parker Avenue
 1,Parkhurst Alley
-4,Parklane Avenue
-1,Parklane Tenant
 2,Parkridge Drive
 10,Parnassus Avenue
 2,Parque Drive
 1,Parsons Street
-1,Particular del Norte kalea
 1,Pasadena Street
-1,Pasaje 1
-1,Pasaje 2
-1,Pasaje 26
-1,Pasaje 3
-1,Pasaje 4
-1,Pasaje 7
-1,Pasaje 8
-1,Pasaje A
-1,Pasaje Arturo Zanichelli
-1,Pasaje B
-2,Pasaje C
-1,Pasaje Canadá
-2,Pasaje Cangallo
-3,Pasaje Champagnat
-1,Pasaje D
-1,Pasaje Doctor Carlos Horacio Olguin
-1,Pasaje Doctor Serguio Enrique Ayala Leoro
-2,Pasaje E
-1,Pasaje Estados Unidos
-1,Pasaje Haedo
-1,Pasaje Haití
-2,Pasaje Interno del Barrio San Francisco
-1,Pasaje Jauretche
-1,Pasaje Laprida
-1,Pasaje Las Guayanas
-2,Pasaje Lisandro de la Torre
-3,Pasaje Lugones
-1,Pasaje Luis A. Pontaut
-1,Pasaje Obispo José Ignacio Checa y Barba
-1,Pasaje Profesor Cecil Newton
-1,Pasaje Reconquista
-1,Pasaje Rojas
-1,Pasaje Salerni
-1,Pasaje Santa Cruz
-3,Pasaje Santo Domingo
-1,Pasaje Tierra del Fuego
-1,Pasaje Traíña
-1,Pascual B. Sosa
-4,Paseo Colón
-1,Paseo de la Salud
-1,Paso Rio Santo Domingo
-2,Pasteur
-1,Pastora Alomía
-6,Patin-ay - La Caridad - Tagapua Road
-1,Patin-ay - Lucac - Pisaan Road
-1,Patio de Retención Vehicular
 1,Patterson Street
 1,Patton Street
 9,Paul Avenue
 4,Paulding Street
-1,Pavón
 1,Payson Street
 2,Peabody Street
 1,Pearl Street
-1,Pedro Calvallo
-3,Pedro Moncayo
-1,Pedro Pablo Pérez
-2,Pedro Rodriguez
-2,Pedro Vicente Maldonado
 1,Pelican Cove Terrace
 1,Pelton Place
-2,Pemberton Place
 1,Pena Street
 1,Peninsula Avenue
 20,Pennsylvania Avenue
-2,Penny Lane
-24,Peralta Avenue
+1,Penny Lane
+21,Peralta Avenue
 1,Perego Terrace
-1,Peridot Street
-1,Perimeter Path
 1,Perine Place
-5,Perry Street
+4,Perry Street
 2,Pershing Drive
 7,Persia Avenue
-3,Peru Avenue
-3,Perú
-4,Peter Macchiarini Steps
+2,Peru Avenue
 2,Peter Yorke Way
 1,Peters Avenue
-1,Petran Street
 1,Petrarch Place
-1,Peyrel
 1,Pfeiffer Street
-5,Phelps Street
-4,Phil Arnold Trail
-24,Philosopher's Way
-1,Phoenix Terrace
+4,Phelps Street
 1,Pico Avenue
-1,Piedad Gomez Jurado
-1,Piedad Gómez Jurado
 1,Piedmont Street
-3,Pier 3 promenade
-4,Pier 39
 1,Pier 45
 3,Pier 50
 1,Pier 50 A
 1,Pier 50 B
 2,Pier 96
-13,Pierce Street
-3,Pierpoint Lane
-1,Pietro Finazzi
-1,Pigüe
+15,Pierce Street
 1,Pilgrim Avenue
 27,Pine Street
 1,Pinehurst Way
@@ -3521,159 +1653,100 @@
 1,Pinto Avenue
 3,Pioche Street
 5,Piper Loop
-1,Piraverá
-1,Pisaan - Del Monte Road
 3,Pixley Street
 2,Pizarro Way
-1,Pizzara Street
 3,Plaza Street
-3,Plaza de San Francisco
-1,Plaza de la Cantera
 1,Pleasant Street
 2,Plum Street
 13,Plymouth Avenue
 21,Point Lobos Avenue
-2,Poland Street
 1,Polaris Way
-55,Polk Street
+38,Polk Street
 1,Pollard Place
 1,Pomona Street
 1,Pond Street
-1,Pontiac Street
 1,Pope Road
 4,Pope Street
-2,Popeye | Burger King
 2,Poplar Street
-4,Poppy Lane
-4,Portal Drive
-4,Portal Path
+3,Poppy Lane
+2,Portal Drive
 1,Porter Street
-87,Portola Drive
+86,Portola Drive
 4,Portola Street
-2,Portugal
-38,Post Street
+37,Post Street
 1,Potomac Street
-1,Potosi
 66,Potrero Avenue
-54,Powell Street
+39,Powell Street
 1,Powers Avenue
-5,Powhattan Avenue
+3,Powhattan Avenue
 2,Prado Street
 8,Prague Street
 1,Pratt Place
 10,Precita Avenue
-4,Prentiss Street
+3,Prentiss Street
 1,Prescott Court
 15,Presidio Avenue
 10,Presidio Boulevard
 61,Presidio Parkway
-9,Presidio Promenade
 19,Presidio Terrace
 1,Pretor Way
-1,Priego Street
-2,Priest Street
-6,Primeros Colonizadores
 3,Princeton Street
-3,Profesor Juan Francisco Leoro Vasquez
-1,Profesor Masjuan Garay
-1,Profesor Sergio Palacios
-1,Profesora Isabel Pubill
 1,Progress Street
 1,Prospect Avenue
 1,Prosper Street
-14,Provincial Road
-5,Public Park
 1,Public Pier Parking
 2,Pueblo Street
-1,Puente La Maquina
-1,Puente Libertad de Prensa
-1,Puente de Cantalojas
-1,Puente de la Integración
-1,Puente del Matadero
-2,Puerto Rico
-5,Pueyrredón
 4,Putnam Street
-1,Pyrope Street
 1,Quane Street
 1,Quarry Road
-1,Quartz Street
 1,Quartz Way
-1,Quesada
 13,Quesada Avenue
-1,Quezon Street
-1,Quickstep Lane
 2,Quincy Street
 12,Quint Street
-1,Quint-Jerrold Connector Road
-21,Quintara Street
-4,Quito
+18,Quintara Street
 1,R Street
-1,R.L. Maningo
 1,Raccoon Drive
 3,Racine Lane
-19,Radial Heredia
 1,Radio Terrace
 1,Rae Avenue
-1,Rafael Carvajal
-1,Rafael Rosales
-4,Rafael Troya
-1,Rafael Varela
 1,Raleigh Avenue
 4,Ralston Avenue
 1,Ralston Street
-3,Ramon Alarcon
 1,Ramona Avenue
 4,Ramsel Court
 3,Ramsell Street
-2,Ramón José Cárcano
-2,Ramón Y Cajal
-1,Ramón y Cajal
 8,Randall Street
 3,Randolph Street
 7,Rankin Street
-3,Rauch
 1,Rausch Street
 1,Ravenwood Drive
 1,Rawles Street
 1,Rayburn Street
 3,Raycliff Terrace
 4,Raymond Avenue
-1,Raúl J. Dosanto
 1,Reardon Road
 1,Rebecca Lane
 3,Recycle Road
 1,Red Leaf Court
 1,Red Rock Way
 1,Reddy Street
-2,Redfield Alley
-1,Redondel de Ajavi
-1,Redondel de la Madre
-1,Redondel de la Policía
-1,Redondel de los Bomberos
+1,Redfield Alley
 1,Redondo Street
 1,Redwood
 2,Redwood Street
-2,Reed Street
+1,Reed Street
 1,Reeves Court
 1,Regent Street
-1,Reno Place
 2,Reposa Way
-2,República del Líbano
-1,República Árabe de Siria
 5,Reservoir Street
-2,Resistencia
 2,Restani Way
 1,Retiro Way
 2,Reuel Court
-1,Revelation
 16,Revere Avenue
 1,Rex Avenue
-5,Rey Street
+4,Rey Street
 1,Rhine Street
 11,Rhode Island Street
-3,Ricardo Fernández Irujo
-2,Ricardo Rojas
-1,Ricardo Tampieri
 1,Rice Street
 1,Richards Circle
 16,Richardson Avenue
@@ -3681,35 +1754,23 @@
 3,Rickard Street
 1,Rico Way
 1,Ridge Court
-3,Ridge Lane
 1,Ridgewood Avenue
 1,Riley Avenue
 2,Rincon Street
-1,Rincón
-1,Rincón de Luna
 1,Ringold Street
 1,Rio Court
-1,Rio I
-1,Rio II
-1,Rio III
-1,Rio IV
 1,Rio Verde Street
-1,Riobamba
-4,Rioja
 2,Ripley Street
 2,Ritch Street
-10,Rivadavia
 1,Rivas Avenue
 10,Rivera Street
 1,Riverton Drive
 1,Rivoli Street
 1,Rizal Street
 1,Roach Street
-1,Road to Backpackers Hostel
 1,Roanoke Street
 1,Robblee Avenue
 1,Robert Kirk Lane
-1,Roberto Poso
 1,Robinhood Drive
 4,Robinson Drive
 3,Robinson Street
@@ -3722,65 +1783,41 @@
 1,Rodgers Street
 1,Rodriguez Street
 2,Roemer Way
-1,Roger Evans Terrace
 5,Rolph Street
-2,Roma
 4,Romain Street
-1,Romania Street
 1,Rome Street
 2,Romolo Place
-3,Ronda de San Francisco
-1,Rondeau
 1,Rondel Place
 10,Roosevelt Way
-1,Rosa Paredes
 1,Rosa Parks Lane
-1,Rosales Street
-2,Rosalía Pubill
-1,Rosalía de Castro
 1,Roscoe Street
 1,Rose Pak's Way
-5,Rose Street
+4,Rose Street
 1,Rosella Court
 1,Roselyn Terrace
 1,Rosemary Court
 1,Rosemont Place
-2,Rosenkranz Street
+1,Rosenkranz Street
 1,Rosewood Drive
 1,Rosie Lee Lane
 1,Ross Alley
 1,Rossi Avenue
 2,Rossmoor Drive
-5,Rotonda de La Aurora
-2,Rotonda de San Francisco
-1,Rotonda de Santa Clara
-2,Rotonda de Tres Fronteras
 3,Rotteck Street
 4,Rousseau Street
 21,Route 80
-6,Roxas Street
 1,Royal Lane
-1,Ruby Street
 1,Ruckman Avenue
 1,Rudden Avenue
-1,Rufila Street
-2,Rufino Varela
 6,Ruger Street
 2,Russ Street
 1,Russell Street
 4,Russia Avenue
 1,Russian Hill Place
-4,Ruta Nacional 22
-3,Ruta Nacional 7
-2,Ruta Provincial 41 Presidente Héctor José Cámpora
-1,Rutas Naturbanas
-2,Ruth Street
+1,Ruth Street
 7,Rutland Street
-3,Rutledge Street
-4,Río Negro
-1,SA.S. Arquilano
+2,Rutledge Street
 1,Sabin Place
-1,Sacramento Alley
 31,Sacramento Street
 1,Saddleback Drive
 1,Sadowa Street
@@ -3789,87 +1826,48 @@
 6,Saint Charles Avenue
 1,Saint Croix Drive
 1,Saint Elmo Way
-1,Saint Francis Avenue
 12,Saint Francis Boulevard
 1,Saint Francis Place
 3,Saint George Alley
 1,Saint Germain Avenue
 6,Saint Joseph's Avenue
-1,Saint Louis Alley
-3,Saint Mary's Avenue
+1,Saint Mary's Avenue
 1,Sal Street
 1,Sala Terrace
 3,Salinas Avenue
 1,Salmon Street
-2,Salta
-1,Salto Grande
-2,Salvador Dalí
 1,Samoset Street
-1,Sampaguita Street
-3,Samson Street
 1,San Aleso Avenue
 3,San Andreas Way
 4,San Anselmo Avenue
 1,San Antonio Place
-1,San Antonio Street
 4,San Benito Way
 29,San Bruno Avenue
 1,San Buenaventura Way
 1,San Carlos Street
-2,San Damián
 1,San Diego Avenue
 1,San Felipe Avenue
 4,San Fernando Way
-18,San Francisco Bypass Road
 2,San Francisco Golf Club Road
-2,San Francisco Junction
-9,San Francisco Rotonda
-3,San Francisco de Asís
-3,San Francisco- La Quiebra
-8,San Francisco-Bahi-Barobo Road
-2,San Francisco-Poro-Tudela Road
-5,San Frantzisko kalea
 1,San Gabriel Avenue
-1,San Gabriel Street
-1,San Gregorio Road
 1,San Jacinto Way
-1,San Javier
-114,San Jose Avenue
-2,San Jose de Cananvalle
-4,San José de Costa Rica
-3,San Juan
+112,San Jose Avenue
 2,San Juan Avenue
-1,San Juan Bosco
-1,San Juan Street
 2,San Leandro Way
-4,San Lorenzo
 1,San Lorenzo Way
-2,San Luis
-9,San Luis - Granada - San Carlos
-1,San Luis Street
 11,San Marcos Avenue
 1,San Miguel Street
-2,San Pablo
-3,San Pablo Avenue
-2,San Pedro
-1,San Pedro - Belmira
-1,San Pedro - Entrerrios
-1,San Rafael Street
+2,San Pablo Avenue
 1,San Rafael Way
 2,San Ramon Way
-2,San Salvador
 3,Sanches Street
-27,Sanchez Street
-2,Sand Ladder
+21,Sanchez Street
 2,Sandpiper Cove Way
-22,Sansome Street
+23,Sansome Street
 2,Santa Ana Avenue
-1,Santa Ana Street
 1,Santa Barbara Avenue
 5,Santa Clara Avenue
-1,Santa Cruz
 1,Santa Cruz Avenue
-4,Santa Fe
 1,Santa Fe Avenue
 1,Santa Marina Street
 3,Santa Monica Way
@@ -3878,50 +1876,30 @@
 3,Santa Rosa Avenue
 2,Santa Ynez Avenue
 1,Santa Ysabel Avenue
-2,Santiago Albarracín
-1,Santiago G. Pampiglione
-3,Santiago Puzzi
 12,Santiago Street
-1,Santiago de Chile
-1,Santiago del Estero
-1,Santol Avenue
 4,Santos Street
-1,Sapphire Street
-1,Saraca Street
 1,Sargent Street
-2,Sargento Cabral
-9,Sarmiento
-1,Saroyan Place
-1,Saturn Steps
 1,Saturn Street
-1,Sausa Street
-1,Savanna Drive
-1,Savona Street
 3,Sawyer Street
 1,Scenic Way
-5,Schofield Road
+1,Schofield Road
 1,School Alley
 3,Schwerin Street
 1,Science Circle
 1,Scotia Avenue
 1,Scotland Street
 1,Scott Alley
-21,Scott Street
+19,Scott Street
 1,Scotto di Vettino Street
 5,Sea Cliff Avenue
 1,Sea View Terrace
 1,Seal Cove Terrace
 1,Seal Rock Drive
-1,Seals Plaza
 1,Sears Street
 2,Second Drive
 1,Security Pacific Place
-1,Segundo Luis Moreno
 3,Selby Street
-1,Selma Way
 1,Seminole Avenue
-1,Senador Juan Bautista Fassi
-1,Sendero Ambiental Rio Bogotá
 1,Seneca Avenue
 1,Sequoia Way
 2,Sergeant John V Young Street
@@ -3936,11 +1914,9 @@
 1,Shafter Court
 1,Shafter Road
 3,Shakespeare Street
-1,Shamal Street
 2,Shannon Street
 1,Sharon Street
 1,Sharp Place
-2,Shaw Alley
 1,Shawnee Avenue
 1,Sheldon Terrace
 1,Shephard Place
@@ -3949,15 +1925,11 @@
 1,Sherman Road
 1,Sherman Street
 1,Sherwood Court
-1,Sherwood Road Trail
 3,Shields Street
-1,Shiloh's Way
 2,Shipley Street
 1,Shore View Avenue
 2,Short Street
 19,Shotwell Street
-3,"Shotwell Street, E. Sidewalk"
-3,"Shotwell Street, W. Sidewalk"
 7,Shrader Street
 4,Shriners Avenue
 1,Sibert Loop
@@ -3968,76 +1940,55 @@
 3,Silliman Street
 15,Silver Avenue
 1,Silverview Drive
-1,Simon Rodriguez
 5,Simonds Loop
 1,Sims Road
-4,Simón Bolívar
-1,Simón Rodríguez
-2,Sirocco Street
-51,Skyline Boulevard
+46,Skyline Boulevard
 2,Skyview Way
-2,Sloat Blvd bikeway
 81,Sloat Boulevard
-1,Sol de Mayo
 1,Sola Avenue
 5,Somerset Street
 1,Sonoma Street
-28,Sor Teresa
-1,Sor Teresa Benages
 1,Sotelo Avenue
-1,South Creek Trail
 1,South Drive
 5,South Hill Boulevard
-5,South Lake Merced Hill Street
 3,South Park
-1,South Poblacion
-1,South Ridge Trail
 70,South Van Ness Avenue
-3,"South Van Ness Avenue, E. Sidewalk"
-1,"South Van Ness Avenue, W. Sidewalk"
 1,Southard Place
 18,Southern Embarcadero Freeway
 1,Southern Heights Avenue
 4,Southwood Drive
-4,Spain Street
 1,Sparrow Street
 1,Sparta Street
 2,Spear Avenue
 6,Spear Street
 1,Spencer Street
-1,Spinel Street
 1,Spofford Street
 2,Spreckels Lake Drive
 1,Spring Street
 1,Springfield Drive
 1,Sproule Lane
 7,Spruce Street
-1,St. Marks Square
-1,St. Mary's Park Pedestrian Bridge
 1,Stanford Heights Avenue
 1,Stanford Street
 1,Stanley Street
 1,Stanton Street
 9,Stanyan Boulevard
-34,Stanyan Street
+33,Stanyan Street
 4,Staples Avenue
 1,Stark Street
 5,Starr King Way
 1,Starview Way
 8,State Drive
 3,States Street
-2,Steep Ravine Trail
 27,Steiner Street
-1,Steps to Wisdom
-2,Sterling Street
-1,Stern Grove Court
+1,Sterling Street
+3,Stern Grove Court
 1,Steuart Lane
 7,Steuart Street
-1,Steve Silver Beach Blanket Babylon Gallery Terrace
 1,Steveloe Place
 2,Stevens Alley
-19,Stevenson Street
-5,Still Street
+17,Stevenson Street
+4,Still Street
 1,Stillings Avenue
 2,Stillman Street
 1,Stilwell Road
@@ -4055,73 +2006,48 @@
 1,Striped Bass Street
 3,Student Union Loading Dock
 1,Sturgeon Street
-1,Sucre
-1,Suipacha
 2,Summit Street
 2,Summit Way
 1,Sumner Avenue
 1,Sumner Street
-1,Sunbeam Lane
-1,Sundowner Street
-2,Sunglow Lane
 14,Sunnydale Avenue
 1,Sunnyside Terrace
 3,Sunrise Way
-4,Sunset Blvd Bike Path
 50,Sunset Boulevard
-6,Sunset Dunes
-2,Sunset Dunes Trail
-5,Sunset Trail
-1,Sunshine Street
 1,Sunview Drive
 2,Surrey Street
 1,Sussex Street
-7,Sutro Baths Upper Trail
 1,Sutro Heights Avenue
-3,Sutro Tower Trail
 36,Sutter Street
 1,Sweeny Street
 3,Swiss Avenue
 2,Sycamore Street
-3,Sydney Way
+2,Sydney Way
 1,Sylvan Drive
-5,Sánchez y Cifuentes
 1,Taber Place
-2,Tablada Oncativo
 1,Tacoma Street
 3,Talbert Street
-1,Talcahuano
 1,Tamalpais Terrace
 1,Tandang Sora Street
 4,Tapia Drive
 1,Tara Street
 63,Taraval Street
 3,Taylor Road
-27,Taylor Street
+28,Taylor Street
 4,Teddy Avenue
-1,Tegucigalpa
 7,Tehama Street
-1,Tehuano Street
-1,Tektites Street
 3,Telegraph Hill Boulevard
 1,Telegraph Place
 1,Temescal Terrace
 1,Temple Street
-3,Tennessee Hollow Trail
 14,Tennessee Street
-1,Terazza Street
 8,Teresita Boulevard
 1,Terra Vista Avenue
 2,Terrace Drive
-2,Terrace Walk
 13,Terry A. Francois Boulevard
 4,Texas Street
-1,The Agave Trail
-119,The Embarcadero
-2,The Esplanade
-7,The Feeney Way
-1,The Great Stairs at Grace Cathedral
-4,The Nave
+114,The Embarcadero
+6,The Feeney Way
 4,Theresa Street
 10,Thomas Avenue
 7,Thomas Mellon Circle
@@ -4131,27 +2057,17 @@
 7,Thornton Avenue
 1,Thorp Lane
 1,Thrift Street
-8,Tierra Nevada Main Road
-3,Tierra del Fuego
-2,Tiffany Avenue
-1,Tillman Place
-1,Timber Trail
+1,Tiffany Avenue
 1,Timothy Pflueger Place
 1,Tingley Street
 2,Tioga Avenue
-1,Titanite Street
-1,To Little Puffer Steam Train
-1,Tobias Mena
 1,Tocoloma Avenue
 1,Todd Street
 2,Toland Street
 1,Toledo Way
-1,Tomasa Sosa
 1,Tomaso Court
-3,Tompkins Avenue
+2,Tompkins Avenue
 1,Toni Stone Crossing
-1,Toog Avenue
-2,Topaz Street
 2,Topaz Way
 2,Topeka Avenue
 5,Torney Avenue
@@ -4159,79 +2075,35 @@
 1,Touchard Street
 1,Towerside Avenue
 1,Townsend Circle
-38,Townsend Street
+35,Townsend Street
 1,Toyon Lane
 2,Trade Winds Avenue
 1,Trader Vic Alley
 1,Trainor Street
-1,TransMilenio
-19,Transbay Bus Ramp
-3,Transversal 1
-1,Transversal 1 Sur
-1,Transversal 4
-2,Transversal 42
-4,Transversal 42A
-1,Transversal 42A Bis
-1,Transversal 42A Bis A
-9,Transversal 43B
-1,Transversal 44
-4,Transversal 44A
-6,Transversal 45
-2,Transversal 47
-1,Transversal 48
-1,Transversal 48A
-1,Transversal 49
-1,Transversal 5
-7,Transversal 7
-2,Transversal 9
-19,Transversal Medellin - Bogotá
 6,Transverse Drive
-2,Transverse Drive Path
-2,Transverse Drive Trail
-27,Treasure Island Road
+10,Treasure Island Road
 1,Treasury Place
-14,Treat Avenue
+12,Treat Avenue
 1,Treat Way
-1,Trento Street
 2,Trenton Street
 3,Trinity Place
-1,Trinity Plaza
-1,Trocadero Drive
-1,Troncal del Pacífico
-5,Troop 88 Trail
 1,Troy Alley
 1,Truett Street
 3,Trumbull Street
 1,Tubbs Street
 2,Tucker Avenue
-3,Tucumán
 1,Tulane Street
-1,Tumulak Street
 5,Tunnel Avenue
 25,Turk Boulevard
 2,Turk Murphy Lane
 22,Turk Street
-1,Turkey Street
 1,Turner Terrace
-1,Turquoise Street
 1,Turquoise Way
-2,Tuscany Alley
-23,Twin Peaks Boulevard
-2,Twin Peaks Connector Trail
-5,Twin Peaks Ridge Trail
-2,Túnel Peatonal - Ciclovia AFZ
-1,UPN Bikepath
+16,Twin Peaks Boulevard
 24,Ulloa Street
-1,Ulpiano Navarro
-3,Ulpiano Perez Quiñonez
-2,Ulpiano de la Torre
 1,Underground Parking Entrance
 4,Underwood Avenue
-3,Union Paraguaya
 33,Union Street
-1,United Kingdom Avenue
-1,United Nation Avenue
-1,Unity Plaza
 5,University Street
 3,Upland Drive
 8,Upper Terrace
@@ -4239,15 +2111,12 @@
 1,Upton Street
 1,Uranus Terrace
 3,Urbano Drive
-6,Uruguay
 7,Utah Street
 1,Valdez Avenue
 1,Vale Avenue
 50,Valencia Street
-1,Valencia Street Bikeway
 1,Valerton Court
-24,Vallejo Street
-11,Vallejo Street Stairway
+19,Vallejo Street
 1,Valletta Court
 1,Valley Street
 1,Valmar Terrace
@@ -4255,61 +2124,31 @@
 1,Van Buren Street
 3,Van Dyke Avenue
 1,Van Keuran Avenue
-119,Van Ness Avenue
-1,Van Ness Avenue & Union Street
-1,Van Ness Avenue & Vallejo Street
-34,Van Ness Bus Rapid Transit
+98,Van Ness Avenue
 1,Vandewater Street
 2,Varela Avenue
 1,Varennes Street
-2,Vargas Torres
 1,Varney Place
-1,Vasco Da Gama
 4,Vasquez Avenue
 1,Vassar Place
-1,Vedia
 1,Vega Street
 5,Velasco Avenue
-1,Veléz Sarsfield
-1,Venancio Gomez Jurado
 1,Venard Alley
-1,Vendavel Street
-6,Venezuela
 1,Ventura Avenue
 2,Venus Street
-1,Venustiano Carranza
 1,Verdi Place
-1,Verdun Way
-1,Vereda San Francisco
 1,Vermehr Place
 15,Vermont Street
-2,Verna Street
-1,Vernon Alley
+1,Verna Street
 1,Vernon Street
-1,Verolìs Residencial
 1,Vesta Street
 15,Veterans Boulevard
 7,Veterans Drive
 1,Via Bufano
 1,Via Ferlinghetti
-2,Viamonte
-3,Viareggio Street
-1,Vicente Fierro
-1,Vicente Mansilla
-3,Vicente Rocafuerte
 31,Vicente Street
-1,Vicenza Street
-3,Vicha Ratanapakdee Way
 4,Vicksburg Street
-1,Victor Alejandro Jaramillo
-1,Victor Elkin
-5,Victor Gómez Jurado
-1,Victor Mideros
-1,Victor Peñaherrera
-2,Victoria Castello Chiriboga
-1,Victoria Ocampo
 5,Victoria Street
-2,Victory Trail
 9,Vidal Drive
 3,Vienna Street
 2,Villa Terrace
@@ -4317,87 +2156,57 @@
 1,Vinton Court
 2,Virgil Street
 1,Virginia Avenue
-1,Virginia Pérez
 13,Visitacion Avenue
-1,Visitacion Valley Greenway Community Garden
 1,Vista Court
-2,Vista Lane
 4,Vista Verde Court
 1,Vista View Court
-1,Vittoria Street
-1,Vulcan Stairway
-3,Vélez Sarsfield
-15,Vía 111
-8,Vía 112
-2,Vía 171
-3,Vía Alto Minas - San Francisco
-1,Vía El Colegio - El Charquito
-4,Vía Ibarra - Urcuquí
-2,Vía Muisne
-4,Vía Perimetral
-3,Vía San Francisco - Santa Fe
-2,Vía San Francisco - el Pepino - Villa Garzon
-4,Vía Santiago - San Francisco
-1,Vía a Chorrillos
-2,Vía a Nueva Esperanza
-1,Vía a San Francisco
-6,Vía a Vda. Pueblo Viejo
 1,Wabash Terrace
 1,Wagner Alley
 2,Waithman Way
 1,Waldo Alley
-2,Walkway to Lake Merced
 1,Wall Place
 3,Wallace Avenue
 1,Wallen Street
-14,Waller Street
-1,Waller Street Skatepark
+13,Waller Street
 2,Walnut Street
 1,Walter Street
 1,Walter U. Lum Place
 1,Waltham Street
 1,Wanda Street
-2,Ward Street
+1,Ward Street
 1,Warner Place
 1,Warren Drive
 4,Warriors Way
 2,Washburn Street
-15,Washington Boulevard
-34,Washington Street
+7,Washington Boulevard
+35,Washington Street
 1,Watchman Way
 1,Water Street
-3,Waterfront Plaza
 1,Waterloo Street
 4,Waterville Street
 1,Watson Avenue
 1,Watt Avenue
 1,Waverly Place
 1,Waverly Way
-26,Wawona Street
+25,Wawona Street
 5,Wayland Street
 1,Wayne Place
-1,Webb Place
-72,Webster Street
+71,Webster Street
 4,Wedemeyer Street
 3,Welsh Street
 1,Wentworth Place
-1,West Broadway
-1,West Campus Green
 1,West Clay Street
 1,West Crystal Cove Terrace
-6,West Pacific Avenue
+5,West Pacific Avenue
 22,West Portal Avenue
-2,West Ridge Trail
-16,West Road
+14,West Road
 1,West View Avenue
 2,Westbrook Court
-2,Western Shore Lane
 1,Westgate Drive
 1,Westmoorland Drive
-4,Westside Drive
+2,Westside Drive
 1,Westwood Drive
 1,Wetmore Street
-3,Whaleship Plaza
 1,Wheat Street
 1,Wheeler Avenue
 2,Whipple Avenue
@@ -4418,13 +2227,12 @@
 6,Williams Avenue
 1,Williar Avenue
 1,Willie B Kennedy Drive
-1,Willie Mays Plaza
 5,Willow Street
 2,Wilmot Street
 1,Wilson Street
 3,Winding Way
 1,Windsor Place
-3,Windy Gulch Trail
+1,Windy Gulch Trail
 2,Winfield Street
 27,Winston Drive
 1,Winter Place
@@ -4446,18 +2254,12 @@
 2,Wright Loop
 1,Wright Street
 2,Wyman Avenue
-9,Wyton Lane
 16,Yacht Road
-1,Yacireta
-2,Yakal Avenue
 4,Yale Street
-11,Yarumal - Briceño
 2,Yellow Cab Access Road
 6,Yerba Buena Avenue
 1,Yerba Buena Drive
-1,Yerba Buena Lane
 3,Yerba Buena Road
-1,Yorba Lane
 5,Yorba Street
 7,York Street
 5,Yosemite Avenue
@@ -4465,12 +2267,8 @@
 3,Yukon Street
 3,Zampa Lane
 1,Zanowitz Avenue
-2,Zaragoza Street
-1,Zelda Way
 1,Zeno Place
 1,Zircon Place
-1,Zircon Street
 3,Zoe Street
-3,Zoila Tafur de Paz
 9,Zoo Road
 1,mariscal Jose Felix Estigarribia
