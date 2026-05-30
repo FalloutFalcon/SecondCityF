@@ -1,9 +1,9 @@
-GLOBAL_LIST_INIT(weighted_street_names, generate_street_names(CONFIG_GET(string/main_street_txt)))
+// I think it needs to be like this because globals init before configs?
+#define DEFAULT_STREET_SOURCE "modular_darkpack/modules/map_gen/strings/sanfran_streets.txt"
 
-/datum/config_entry/string/main_street_txt
-	default = "modular_darkpack/modules/map_gen/strings/sanfran_streets.txt"
+GLOBAL_LIST_INIT(weighted_street_names, generate_street_names())
 
-/proc/generate_street_names(txt_source)
+/proc/generate_street_names(txt_source = DEFAULT_STREET_SOURCE)
 	. = list()
 	for(var/entry in world.file2list(txt_source))
 		var/comma_index = findtext(entry, ",")
@@ -29,3 +29,5 @@ GLOBAL_LIST_INIT(weighted_street_names, generate_street_names(CONFIG_GET(string/
 	. = pick_weight(street_list)
 	street_list[.] = null
 	return .
+
+#undef DEFAULT_STREET_SOURCE

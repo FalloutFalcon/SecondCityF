@@ -62,6 +62,3 @@ LOG_STATS
 
 ## Bool for if roleplay only merits/quirks are enabled
 ROLEPLAY_ONLY_MERITS 1
-
-MAIN_STREET_TXT modular_darkpack/modules/map_gen/strings/sanfran_streets.txt
-
