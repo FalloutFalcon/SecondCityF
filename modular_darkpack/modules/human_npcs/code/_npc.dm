@@ -1,3 +1,9 @@
+/// All human NPCs, living or dead
+GLOBAL_LIST_EMPTY(human_npc_list)
+/// All living human NPCs
+GLOBAL_LIST_EMPTY(alive_human_npc_list)
+
+
 /mob/living/carbon/human/npc
 	faction = list(FACTION_NPC)
 	ai_controller = /datum/ai_controller/npc
@@ -14,8 +20,18 @@
 
 /mob/living/carbon/human/npc/Initialize(mapload)
 	. = ..()
+	GLOB.human_npc_list += src
+
 	AddElement(/datum/element/ai_retaliate)
 	equipOutfit(outfit_type)
+
+/mob/living/carbon/human/npc/Destroy()
+	. = ..()
+	GLOB.human_npc_list -= src
+
+/mob/living/carbon/human/npc/death(gibbed)
+	. = ..()
+	GLOB.alive_human_npc_list -= src
 
 /mob/living/carbon/human/npc/RangedAttack(atom/atom_target, modifiers)
 	. = ..()

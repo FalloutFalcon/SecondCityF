@@ -80,8 +80,8 @@
 /mob/living/carbon/human/npc/Initialize(mapload)
 	. = ..()
 
-	GLOB.npc_list += src
-	GLOB.alive_npc_list += src
+	GLOB.human_npc_list += src
+	GLOB.alive_human_npc_list += src
 
 	AddElement(/datum/element/relay_attackers)
 	RegisterSignal(src, COMSIG_ATOM_WAS_ATTACKED, PROC_REF(handle_attacked))
@@ -130,8 +130,8 @@
 	my_backup_weapon = null
 	spotted_bodies = null
 	drop_on_death_list = null
-	GLOB.npc_list -= src
-	GLOB.alive_npc_list -= src
+	GLOB.human_npc_list -= src
+	GLOB.alive_human_npc_list -= src
 	SShumannpcpool.try_repopulate()
 	return ..()
 

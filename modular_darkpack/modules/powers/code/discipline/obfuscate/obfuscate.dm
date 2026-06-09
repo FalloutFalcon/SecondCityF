@@ -103,7 +103,7 @@
 
 	#warn forget hostile
 	/*
-	for(var/mob/living/carbon/human/npc/NPC in GLOB.npc_list)
+	for(var/mob/living/carbon/human/npc/NPC in GLOB.human_npc_list)
 		if (NPC.danger_source == owner)
 			NPC.danger_source = null
 	*/
@@ -156,7 +156,7 @@
 
 	#warn forget hostile
 	/*
-	for(var/mob/living/carbon/human/npc/NPC in GLOB.npc_list)
+	for(var/mob/living/carbon/human/npc/NPC in GLOB.human_npc_list)
 		if (NPC.danger_source == owner)
 			NPC.danger_source = null
 	*/
@@ -284,7 +284,7 @@
 
 	#warn forget hostile
 	/*
-	for(var/mob/living/carbon/human/npc/NPC in GLOB.npc_list)
+	for(var/mob/living/carbon/human/npc/NPC in GLOB.human_npc_list)
 		if (NPC.danger_source == owner)
 			NPC.danger_source = null
 	*/
@@ -334,7 +334,7 @@
 
 	#warn forget hostile
 	/*
-	for(var/mob/living/carbon/human/npc/NPC in GLOB.npc_list)
+	for(var/mob/living/carbon/human/npc/NPC in GLOB.human_npc_list)
 		if (NPC.danger_source == owner)
 			NPC.danger_source = null
 	*/
@@ -375,7 +375,7 @@
 
 	#warn forget hostile
 	/*
-	for(var/mob/living/carbon/human/npc/NPC in GLOB.npc_list)
+	for(var/mob/living/carbon/human/npc/NPC in GLOB.human_npc_list)
 		if (NPC.danger_source == owner)
 			NPC.danger_source = null
 	*/

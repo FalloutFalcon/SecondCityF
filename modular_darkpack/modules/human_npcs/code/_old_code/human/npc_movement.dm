@@ -39,7 +39,7 @@
 	GLOB.npc_activities -= src
 
 /mob/living/carbon/human/npc/death()
-	GLOB.alive_npc_list -= src
+	GLOB.alive_human_npc_list -= src
 	SShumannpcpool.try_repopulate()
 	GLOB.move_manager.stop_looping(src)
 
