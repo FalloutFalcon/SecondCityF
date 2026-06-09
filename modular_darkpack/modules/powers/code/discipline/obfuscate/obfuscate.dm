@@ -332,9 +332,12 @@
 	RegisterSignal(owner, COMSIG_POWER_ACTIVATE, PROC_REF(on_discipline_activation))
 	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(on_talk))
 
+	#warn forget hostile
+	/*
 	for(var/mob/living/carbon/human/npc/NPC in GLOB.npc_list)
 		if (NPC.danger_source == owner)
 			NPC.danger_source = null
+	*/
 	if(prob(1))
 		SEND_SIGNAL(SSmasquerade, COMSIG_PLAYER_MASQUERADE_REINFORCE, owner)
 

@@ -1,16 +1,4 @@
-/obj/effect/landmark/npc_spawn_point
-	icon = 'modular_darkpack/modules/deprecated/icons/effects/landmarks_static.dmi'
-	icon_state = "spawn"
 
-/obj/effect/landmark/npc_spawn_point/Initialize(mapload)
-	. = ..()
-
-	GLOB.npc_spawn_points += src
-
-/obj/effect/landmark/npc_spawn_point/Destroy()
-	GLOB.npc_spawn_points -= src
-
-	. = ..()
 
 /obj/effect/landmark/npcbeacon
 	name = "NPC beacon"

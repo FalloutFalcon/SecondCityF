@@ -48,7 +48,7 @@ SUBSYSTEM_DEF(humannpcpool)
 		var/creating_npc = pick(
 			/mob/living/carbon/human/npc/police, \
 			/mob/living/carbon/human/npc/bandit, \
-			/mob/living/carbon/human/npc/hobo, \
+			/mob/living/carbon/human/npc/poor, \
 			/mob/living/carbon/human/npc/walkby, \
 			/mob/living/carbon/human/npc/business \
 		)

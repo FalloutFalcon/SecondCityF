@@ -8,6 +8,8 @@
 
 	COOLDOWN_DECLARE(car_dodge)
 
+	/// NPC is in the process of "typing" a message
+	var/is_talking = FALSE
 	var/outfit_type = /datum/outfit/npc
 
 /mob/living/carbon/human/npc/Initialize(mapload)

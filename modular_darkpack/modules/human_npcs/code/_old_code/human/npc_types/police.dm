@@ -27,7 +27,7 @@
 		aggro_npc(H, FALSE)
 
 // There was a todo here for creating a npc that stands still. But it seems like we did implement that behavoir
-/mob/living/carbon/human/npc/police/static
+/mob/living/carbon/human/npc/police/standing
 	// fights_anyway = TRUE
 	staying = TRUE
 	max_stat = UNCONSCIOUS

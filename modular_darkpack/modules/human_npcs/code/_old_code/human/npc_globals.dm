@@ -4,5 +4,3 @@ GLOBAL_LIST_EMPTY(npc_list)
 GLOBAL_LIST_EMPTY(alive_npc_list)
 /// Landmarks that NPCs will navigate towards
 GLOBAL_LIST_EMPTY(npc_activities)
-/// Landmarks that NPCs will spawn at
-GLOBAL_LIST_EMPTY(npc_spawn_points)
