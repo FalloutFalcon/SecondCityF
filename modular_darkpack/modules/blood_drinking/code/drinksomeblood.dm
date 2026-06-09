@@ -23,7 +23,8 @@
 
 	if(isnpc(drunk_from))
 		var/mob/living/carbon/human/npc/NPC = drunk_from
-		NPC.danger_source = null
+		#warn forget hostile
+		// NPC.danger_source = null
 		drunk_from.Stun(40) //NPCs don't get to resist
 
 	if(drunk_from.blood_volume <= BLOOD_VOLUME_BAD)

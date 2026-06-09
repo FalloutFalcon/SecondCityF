@@ -240,7 +240,7 @@
 		return
 	#warn crime
 	for(var/mob/living/carbon/human/npc/police/P in oviewers(DEFAULT_SIGHT_DISTANCE, src))
-		P.Aggro(user)
+		P.aggro_npc(user)
 	log_game("[user] tried lockpicking [src]")
 	var/total_lockpicking = user.st_get_stat(STAT_LARCENY)
 	if(CONFIG_GET(flag/punishing_zero_dots) && total_lockpicking < 1)
@@ -295,7 +295,7 @@
 			playsound(src, 'modular_darkpack/modules/cars/sounds/signal.ogg', 50, FALSE)
 			#warn crime
 			for(var/mob/living/carbon/human/npc/police/P in oviewers(DEFAULT_SIGHT_DISTANCE, src))
-				P.Aggro(user)
+				P.aggro_npc(user)
 
 		if(prob(10) && locked)
 			playsound(src, 'modular_darkpack/modules/cars/sounds/open.ogg', 50, TRUE)
@@ -514,7 +514,7 @@
 	#warn attack
 	if(driver && istype(bumped_atom, /mob/living/carbon/human/npc))
 		var/mob/living/carbon/human/npc/NPC = bumped_atom
-		NPC.Aggro(driver, TRUE)
+		NPC.aggro_npc(driver, TRUE)
 
 	last_pos["x_pix"] = 0
 	last_pos["y_pix"] = 0
