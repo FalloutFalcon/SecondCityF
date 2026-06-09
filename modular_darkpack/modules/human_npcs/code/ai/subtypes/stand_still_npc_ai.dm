@@ -1,6 +1,4 @@
 /datum/ai_controller/npc/stand_still
-	ai_movement = /datum/ai_movement/jps
-	movement_delay = 0.8 SECONDS
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/escape_captivity, // Resist out of cuffs or whatnot first.
 		/datum/ai_planning_subtree/target_retaliate, // Then handle combat.
@@ -17,7 +15,6 @@
 		BB_MONKEY_BLACKLISTITEMS = list(),
 		BB_HOME_VILLAGE = null
 	)
-	can_idle = FALSE
 
 /datum/ai_controller/npc/stand_still/New(atom/new_pawn)
 	. = ..()

@@ -239,8 +239,10 @@
 		to_chat(user, span_warning("The [src] is already unlocked."))
 		return
 	#warn crime
+	/*
 	for(var/mob/living/carbon/human/npc/police/P in oviewers(DEFAULT_SIGHT_DISTANCE, src))
 		P.aggro_npc(user)
+	*/
 	log_game("[user] tried lockpicking [src]")
 	var/total_lockpicking = user.st_get_stat(STAT_LARCENY)
 	if(CONFIG_GET(flag/punishing_zero_dots) && total_lockpicking < 1)
@@ -294,8 +296,10 @@
 			COOLDOWN_START(src, beep_cooldown, 7 SECONDS)
 			playsound(src, 'modular_darkpack/modules/cars/sounds/signal.ogg', 50, FALSE)
 			#warn crime
+			/*
 			for(var/mob/living/carbon/human/npc/police/P in oviewers(DEFAULT_SIGHT_DISTANCE, src))
 				P.aggro_npc(user)
+			*/
 
 		if(prob(10) && locked)
 			playsound(src, 'modular_darkpack/modules/cars/sounds/open.ogg', 50, TRUE)
@@ -512,9 +516,11 @@
 		COOLDOWN_START(src, impact_delay, 2 SECONDS)
 
 	#warn attack
+	/*
 	if(driver && istype(bumped_atom, /mob/living/carbon/human/npc))
 		var/mob/living/carbon/human/npc/NPC = bumped_atom
 		NPC.aggro_npc(driver, TRUE)
+	*/
 
 	last_pos["x_pix"] = 0
 	last_pos["y_pix"] = 0
@@ -653,8 +659,11 @@
 				if(length(dodge_direction))
 					step(NPC, angle2dir(pick(dodge_direction)), NPC.cached_multiplicative_slowdown)
 					COOLDOWN_START(NPC, car_dodge, 2 SECONDS)
+					#warn speech
+					/*
 					if(prob(50))
 						NPC.realistic_say(pick(NPC.socialrole.car_dodged))
+					*/
 
 /// Moves the client cameras of living inside of the car.
 /obj/darkpack_car/proc/move_car_riders(moved_x, moved_y)

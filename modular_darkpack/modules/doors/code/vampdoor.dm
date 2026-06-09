@@ -311,8 +311,10 @@
 		proc_unlock(5)
 		playsound(src, 'modular_darkpack/modules/doors/sounds/hack.ogg', 100, TRUE)
 		#warn crime
+		/*
 		for(var/mob/living/carbon/human/npc/police/P in oviewers(DEFAULT_SIGHT_DISTANCE, src))
 			P.aggro_npc(user)
+		*/
 		if(do_after(user, 1 TURNS, src, interaction_key = DOAFTER_SOURCE_DOOR))
 			if(!locked)
 				return

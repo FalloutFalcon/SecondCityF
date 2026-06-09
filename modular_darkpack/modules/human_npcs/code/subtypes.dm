@@ -8,6 +8,9 @@
 /mob/living/carbon/human/npc/average
 	outfit_type = /datum/outfit/npc/average
 
+/mob/living/carbon/human/npc/average/standing
+	ai_controller = /datum/ai_controller/npc/stand_still
+
 /mob/living/carbon/human/npc/poor
 	outfit_type = /datum/outfit/npc/poor
 
