@@ -23,7 +23,8 @@
 		if (!H.warrant)
 			continue
 
-		Aggro(H, FALSE)
+		#warn crime
+		aggro_npc(H, FALSE)
 
 // There was a todo here for creating a npc that stands still. But it seems like we did implement that behavoir
 /mob/living/carbon/human/npc/police/static

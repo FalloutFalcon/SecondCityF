@@ -7,8 +7,7 @@
 	// NPCs normally walk around slowly
 	move_intent = MOVE_INTENT_WALK
 
-	// NPC humans get the area of effect, player humans dont.
-	violation_aoe = TRUE
+
 
 	/// Until we do a full NPC refactor (see: rewriting every single bit of code)
 	/// use this to determine NPC weapons and their chances to spawn with them -- assuming you want the NPC to do that
@@ -156,30 +155,7 @@
 
 //============================================================
 
-/mob/living/carbon/human/npc/proc/realistic_say(message)
-	GLOB.move_manager.stop_looping(src)
 
-	if (!message)
-		return
-	if (stat >= HARD_CRIT)
-		return
-	if (is_talking)
-		return
-	is_talking = TRUE
-
-	addtimer(CALLBACK(src, PROC_REF(start_talking), message), 1 SECONDS)
-
-/mob/living/carbon/human/npc/proc/start_talking(message)
-	ADD_TRAIT(src, TRAIT_THINKING_IN_CHARACTER, CURRENTLY_TYPING_TRAIT)
-	create_typing_indicator()
-	var/typing_delay = round(length_char(message) * 0.5)
-	addtimer(CALLBACK(src, PROC_REF(finish_talking), message), max(3 SECONDS, typing_delay))
-
-/mob/living/carbon/human/npc/proc/finish_talking(message)
-	remove_typing_indicator()
-	REMOVE_TRAIT(src, TRAIT_THINKING_IN_CHARACTER, CURRENTLY_TYPING_TRAIT)
-	say(message)
-	is_talking = FALSE
 
 /mob/living/carbon/human/npc/proc/Annoy(atom/source)
 	GLOB.move_manager.stop_looping(src)
@@ -210,9 +186,9 @@
 	// Only aggro nearby npcs if its lethal.
 	if(!(attack_flags & (ATTACKER_STAMINA_ATTACK|ATTACKER_SHOVING)))
 		for(var/mob/living/carbon/human/npc/nearby_npcs in oviewers(DEFAULT_SIGHT_DISTANCE, src))
-			nearby_npcs.Aggro(attacker)
+			nearby_npcs.aggro_npc(attacker)
 		SEND_SIGNAL(SSdcs, COMSIG_GLOB_REPORT_CRIME, CRIME_FIREFIGHT, get_turf(src))
-	Aggro(attacker, TRUE)
+	aggro_npc(attacker, TRUE)
 
 /mob/living/carbon/human/npc/proc/handle_bumped(mob/living/carbon/human/npc/source, mob/living/bumping)
 	SIGNAL_HANDLER

@@ -238,6 +238,7 @@
 	if(!locked)
 		to_chat(user, span_warning("The [src] is already unlocked."))
 		return
+	#warn crime
 	for(var/mob/living/carbon/human/npc/police/P in oviewers(DEFAULT_SIGHT_DISTANCE, src))
 		P.Aggro(user)
 	log_game("[user] tried lockpicking [src]")
@@ -292,6 +293,7 @@
 		if(!driver && !length(passengers) && COOLDOWN_FINISHED(src, beep_cooldown) && locked)
 			COOLDOWN_START(src, beep_cooldown, 7 SECONDS)
 			playsound(src, 'modular_darkpack/modules/cars/sounds/signal.ogg', 50, FALSE)
+			#warn crime
 			for(var/mob/living/carbon/human/npc/police/P in oviewers(DEFAULT_SIGHT_DISTANCE, src))
 				P.Aggro(user)
 
@@ -509,6 +511,7 @@
 		speed_in_pixels = 0
 		COOLDOWN_START(src, impact_delay, 2 SECONDS)
 
+	#warn attack
 	if(driver && istype(bumped_atom, /mob/living/carbon/human/npc))
 		var/mob/living/carbon/human/npc/NPC = bumped_atom
 		NPC.Aggro(driver, TRUE)

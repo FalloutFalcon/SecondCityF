@@ -95,8 +95,9 @@
 
 	. = ..()
 
+	#warn attack, kinda
 	if (pulledby && (prob(25) || aggressive))
-		INVOKE_ASYNC(src, PROC_REF(Aggro), pulledby, TRUE)
+		INVOKE_ASYNC(src, PROC_REF(aggro_npc), pulledby, TRUE)
 
 	if (!can_npc_move())
 		return
