@@ -7793,6 +7793,8 @@
 #include "modular_darkpack\modules\storyteller_dice\code\roll_subsystem.dm"
 #include "modular_darkpack\modules\storyteller_dice\code\roll_subtypes.dm"
 #include "modular_darkpack\modules\storyteller_dice\code\verbs.dm"
+#include "modular_darkpack\modules\storyteller_dice\code\investigation\hidden_atom.dm"
+#include "modular_darkpack\modules\storyteller_dice\code\investigation\investigation_roll.dm"
 #include "modular_darkpack\modules\storyteller_stats\code\_st_stats.dm"
 #include "modular_darkpack\modules\storyteller_stats\code\global_procs.dm"
 #include "modular_darkpack\modules\storyteller_stats\code\logging.dm"
