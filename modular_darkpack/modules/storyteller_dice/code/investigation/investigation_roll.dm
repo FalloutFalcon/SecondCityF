@@ -1,7 +1,8 @@
+#define COMSIG_KB_LIVING_SEARCH_DOWN "keybinding_living_search_down"
+
 /mob/living
 	#warn dont leave here.
 	var/datum/storyteller_roll/investigation/automatic/invesitage_roll
-
 
 
 /datum/keybinding/living/search
@@ -9,6 +10,7 @@
 	name = "search"
 	full_name = "Search"
 	description = "Search the area around you and roll Perception + Investigation."
+	keybind_signal = COMSIG_KB_LIVING_SEARCH_DOWN
 
 /datum/keybinding/living/search/down(client/user, turf/target, mousepos_x, mousepos_y)
 	. = ..()
@@ -32,4 +34,4 @@
 /datum/storyteller_roll/investigation/automatic
 	reroll_cooldown = 1 SCENES
 
-
+#undef COMSIG_KB_LIVING_SEARCH_DOWN
