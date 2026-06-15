@@ -1,22 +1,22 @@
 /obj/item/barrier_tape
 	name = "barrier tape roll"
-	icon = 'icons/obj/barriertape.dmi'
+	icon = 'modular_darkpack/modules/barrier_tape/icons/barriertape.dmi'
 	icon_state = "rollstart"
+	abstract_type = /obj/item/barrier_tape
 	w_class = WEIGHT_CLASS_SMALL
 	var/turf/start
 	var/turf/end
 	var/tape_type = /obj/structure/barrier_tape
-	var/icon_base
 	var/placing = FALSE
 
 /obj/structure/barrier_tape
 	name = "barrier tape"
-	icon = 'icons/obj/barriertape.dmi'
+	icon = 'modular_darkpack/modules/barrier_tape/icons/barriertape.dmi'
+	abstract_type = /obj/structure/barrier_tape
 	anchored = TRUE
 	density = TRUE
 	var/lifted = FALSE
 	var/crumpled = FALSE
-	var/icon_base
 	var/tape_dir
 
 
@@ -24,38 +24,33 @@
 	name = "police tape"
 	desc = "A roll of police tape used to block off crime scenes from the public."
 	icon_state = "police_start"
+	base_icon_state = "police"
 	tape_type = /obj/structure/barrier_tape/police
-	icon_base = "police"
 
 /obj/structure/barrier_tape/police
 	name = "police tape"
-	desc = "A length of police tape.  Do not cross."
-	req_access = list(ACCESS_SECURITY)
-	icon_base = "police"
+	desc = "A length of police tape. Do not cross."
+	base_icon_state = "police"
 
 
-/obj/structure/barrier_tape/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/barrier_tape/CanAllowThrough(atom/movable/mover, border_dir)
 	. = ..()
 	if(.)
-		return
+		return .
 	if(mover.pass_flags & PASSGLASS)
 		return TRUE
-	if(iscarbon(mover))
-		var/mob/living/carbon/C = mover
-		if(C.stat)	// Allow dragging unconscious/dead people
-			return TRUE
-		if(lifted)
-			return TRUE
+	if(lifted)
+		return TRUE
 	return FALSE
 
 /obj/structure/barrier_tape/attack_hand(mob/living/user)
-	if(user.a_intent != INTENT_HARM)
-		user.visible_message("<span class='notice'>[user] lifts [src], allowing passage.</span>")
-		lift_tape()
-	else
-		user.visible_message("<span class='notice'>[user] tears down [src]!</span>")
-		playsound(src, 'sound/items/poster_ripped.ogg', 100, TRUE)
+	if(user.combat_mode)
+		user.visible_message(span_notice("[user] tears down [src]!"))
+		playsound(src, 'sound/items/poster/poster_ripped.ogg', 100, TRUE)
 		qdel(src)
+	else
+		user.visible_message(span_notice("[user] lifts [src], allowing passage."))
+		lift_tape()
 
 /obj/structure/barrier_tape/proc/lift_tape()
 	lifted = TRUE
@@ -75,11 +70,11 @@
 	if(!placing)
 		start = get_turf(src)
 		to_chat(user, "<span class='notice'>You place the first end of [src].</span>")
-		icon_state = "[icon_base]_stop"
+		icon_state = "[base_icon_state]_stop"
 		placing = TRUE
 	else
 		placing = FALSE
-		icon_state = "[icon_base]_start"
+		icon_state = "[base_icon_state]_start"
 		end = get_turf(src)
 		if(start.y != end.y && start.x != end.x || start.z != end.z)
 			to_chat(user, "<span class='notice'>[src] can only be laid horizontally or vertically.</span>")
@@ -121,7 +116,7 @@
 					tapetest = TRUE
 			if(!tapetest)
 				var/obj/structure/barrier_tape/P = new tape_type(cur)
-				P.icon_state = "[P.icon_base]_[dir]"
+				P.icon_state = "[P.base_icon_state]_[dir]"
 				P.tape_dir = dir
 			cur = get_step_towards(cur,end)
 		to_chat(user, "<span class='notice'>You finish placing [src].</span>")
@@ -130,7 +125,7 @@
 	if(proximity && istype(A, /obj/structure/vampdoor))
 		var/turf/T = get_turf(A)
 		var/obj/structure/barrier_tape/P = new tape_type(T)
-		P.icon_state = "[icon_base]_door"
+		P.icon_state = "[base_icon_state]_door"
 		P.layer = ABOVE_ALL_MOB_LAYER + 0.1
 		to_chat(user, "<span class='notice'>You finish placing [src].</span>")
 
