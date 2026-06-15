@@ -156,6 +156,7 @@
 #define BRAND_MASSAGE_COMPANY "Lotus Blossom"
 #define BRAND_TTRPG_COMPANY_5 "LSD, Inc."
 #define BRAND_COMPUTER_COMPANY_2 "Macrosoft"
+#define COMPUTER_COMPANY_2_FOUNDING 1975
 #define BRAND_TTRPG_COMPANY_6 "Magicians of the Bay"
 #define BRAND_CHINESE_FOOD_COMPANY "Mao Long Restaurant"
 #define BRAND_COMPUTER_COMPANY_6 "Megahurtz Computing"

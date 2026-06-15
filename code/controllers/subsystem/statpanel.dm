@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(statpanels)
 			global_data += "Next Map: [cached.map_name]"
 
 		global_data += list(
-			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
+			"Round ID: [GLOB.round_id ? GLOB.round_id : "Unset"]", // DARKPACK EDIT CHANGE
 			"Server Time: [server_timestamp(format = "YYYY-MM-DD hh:mm:ss")]", // DARKPACK EDIT CHANGE - CITY_TIME
 			"Round Time: [(SSticker.round_start_time == 0) ? "Pre-Game" : round_timestamp()]", // DARKPACK EDIT CHANGE - CITY_TIME
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)",
@@ -101,7 +101,7 @@ SUBSYSTEM_DEF(statpanels)
 		return
 	target.stat_panel.send_message("update_stat", list(
 		"global_data" = global_data,
-		"other_str" = target.mob?.get_status_tab_items(),
+		"other_str" = target.mob?.get_time_status() + target.mob?.get_status_tab_items(), // DARKPACK EDIT CHANGE - MERITS/FLAWS - (Time sense)
 	))
 
 /datum/controller/subsystem/statpanels/proc/set_MC_tab(client/target)

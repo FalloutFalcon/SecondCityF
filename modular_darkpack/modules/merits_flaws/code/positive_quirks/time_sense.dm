@@ -10,7 +10,7 @@
 	excluded_clans = list(VAMPIRE_CLAN_TRUE_BRUJAH)
 
 /mob/proc/get_time_status()
-	. = list()
+	. = list("")
 	. += "Local City Time: [SSticker.round_start_timeofday ? "[server_timestamp("hh:mm", ic_time = TRUE, twelve_hour_clock = client?.prefs.read_preference(/datum/preference/toggle/twelve_hour))] [server_timestamp("MMM YYYY", ic_time = TRUE)]" : "The round hasn't started yet!"]"
 
 /mob/living/get_time_status()
