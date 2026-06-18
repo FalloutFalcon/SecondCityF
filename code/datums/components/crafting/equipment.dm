@@ -1,4 +1,4 @@
-/* /datum/crafting_recipe/strobeshield // DARKPACK EDIT REMOVE
+/* /datum/crafting_recipe/strobeshield // DARKPACK EDIT REMOVAL
 	name = "Strobe Shield"
 	result = /obj/item/shield/riot/flash
 	reqs = list(
@@ -19,11 +19,12 @@
 	result = /obj/item/shield/improvised
 	reqs = list(
 		/obj/item/stack/sheet/iron = 10,
-		/obj/item/stack/sticky_tape = 2,
+		/obj/item/stack/medical/wrap/sticky_tape = 2,
 	)
 	time = 4 SECONDS
 	category = CAT_EQUIPMENT
 
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/moonflowershield
 	name = "Moonflower Shield"
 	result = /obj/item/shield/buckler/moonflower
@@ -33,6 +34,7 @@
 	)
 	time = 4 SECONDS
 	category = CAT_EQUIPMENT
+*/
 
 /datum/crafting_recipe/radio_containing
 	abstract_type = /datum/crafting_recipe/radio_containing
@@ -45,7 +47,7 @@
 		radio_types_blacklist = typecacheof(list(/obj/item/radio/headset, /obj/item/radio/intercom))
 	blacklist = radio_types_blacklist
 	return ..()
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/radio_containing/radiogloves
 	name = "Radio Gloves"
 	result = /obj/item/clothing/gloves/radio
@@ -88,6 +90,7 @@
 	tool_behaviors = list(TOOL_WELDER, TOOL_SCREWDRIVER, TOOL_WRENCH)
 	time = 20 SECONDS
 	category = CAT_EQUIPMENT
+	skill_dots_minimum = 3 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/secured_freezer_cabinet
 	name = "Secure Freezer Cabinet"
@@ -156,7 +159,7 @@
 		/obj/item/stack/rods = 1,
 	)
 	category = CAT_EQUIPMENT
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/flashlight_eyes
 	name = "Flashlight Eyes"
 	result = /obj/item/organ/eyes/robotic/flashlight
@@ -251,7 +254,7 @@
 	name = "Improvised Gripper Gloves"
 	reqs = list(
 		/obj/item/clothing/gloves/fingerless = 1,
-		/obj/item/stack/sticky_tape = 1,
+		/obj/item/stack/medical/wrap/sticky_tape = 1,
 	)
 	result = /obj/item/clothing/gloves/tackler/offbrand
 	category = CAT_EQUIPMENT
@@ -278,7 +281,7 @@
 	)
 	category = CAT_EQUIPMENT
 	tool_behaviors = list(TOOL_WELDER, TOOL_WIRECUTTER)
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/tether_anchor
 	name = "Tether Anchor"
 	result = /obj/item/tether_anchor

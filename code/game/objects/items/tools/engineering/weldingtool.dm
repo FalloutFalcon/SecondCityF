@@ -48,6 +48,8 @@
 
 	var/activation_sound = 'sound/items/tools/welderactivate.ogg'
 	var/deactivation_sound = 'sound/items/tools/welderdeactivate.ogg'
+	/// Lighting middleman, lets us do a flicker effect
+	var/datum/light_middleman/middleman
 	custom_price = 20 // DARKPACK EDIT ADD - ECONOMY
 
 /datum/armor/item_weldingtool
@@ -56,6 +58,10 @@
 
 /obj/item/weldingtool/Initialize(mapload)
 	. = ..()
+	if(IS_OVERLAY_LIGHT_SYSTEM(light_system))
+		middleman = new(src, "flashlight")
+		RegisterSignal(middleman, COMSIG_LIGHT_MIDDLEMAN_UPDATED, PROC_REF(light_updated))
+		middleman.being_overriding_light()
 	AddElement(/datum/element/update_icon_updates_onmob)
 	AddElement(/datum/element/tool_flash, light_range)
 	AddElement(/datum/element/falling_hazard, damage = force, wound_bonus = wound_bonus, hardhat_safety = TRUE, crushes = FALSE, impact_sound = hitsound)
@@ -64,6 +70,10 @@
 	if(starting_fuel)
 		reagents.add_reagent(/datum/reagent/fuel, max_fuel)
 	update_appearance()
+
+/obj/item/weldingtool/Destroy(force)
+	QDEL_NULL(middleman)
+	return ..()
 
 /obj/item/weldingtool/update_icon_state()
 	if(welding)
@@ -77,7 +87,7 @@
 	. = ..()
 	if(change_icons)
 		var/ratio = get_fuel() / max_fuel
-		ratio = CEILING(ratio*4, 1) * 25
+		ratio = ceil(ratio*4) * 25
 		. += "[initial(icon_state)][ratio]"
 	if(welding)
 		. += "[initial(icon_state)]-on"
@@ -146,6 +156,10 @@
 
 	return try_heal_loop(interacting_with, user)
 
+/obj/item/weldingtool/proc/light_updated(datum/source)
+	SIGNAL_HANDLER
+	fire_flicker_middleman(middleman)
+
 /obj/item/weldingtool/proc/try_heal_loop(atom/interacting_with, mob/living/user, repeating = FALSE)
 	var/mob/living/carbon/human/attacked_humanoid = interacting_with
 	var/obj/item/bodypart/affecting = attacked_humanoid.get_bodypart(check_zone(user.zone_selected))
@@ -185,7 +199,7 @@
 		user.log_message("set [key_name(attacked_mob)] on fire with [src].", LOG_ATTACK)
 
 /obj/item/weldingtool/attack_self(mob/user)
-	if(reagents.spark_act(0, TRUE, banned_reagents = /datum/reagent/fuel) & SPARK_ACT_DESTRUCTIVE)
+	if(reagents.spark_act(0, SPARK_ACT_ENCLOSED, banned_reagents = /datum/reagent/fuel) & SPARK_ACT_DESTRUCTIVE)
 		message_admins("[ADMIN_LOOKUPFLW(user)] activated a rigged welder at [AREACOORD(user)].")
 		user.log_message("activated a rigged welder", LOG_VICTIM)
 		qdel(src)
@@ -248,13 +262,13 @@
 			START_PROCESSING(SSobj, src)
 		else
 			balloon_alert(user, "no fuel!")
-			switched_off(user)
+			switched_off()
 	else
 		playsound(loc, deactivation_sound, 50, TRUE)
-		switched_off(user)
+		switched_off()
 
 /// Switches the welder off
-/obj/item/weldingtool/proc/switched_off(mob/user)
+/obj/item/weldingtool/proc/switched_off()
 	set_welding(FALSE)
 
 	force = 3

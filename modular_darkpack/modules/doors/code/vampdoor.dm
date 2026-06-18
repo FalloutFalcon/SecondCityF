@@ -25,17 +25,14 @@
 	var/door_broken = FALSE
 	var/door_layer = CLOSED_DOOR_LAYER
 	var/lock_id = null
-	var/lockpick_timer = LOCKTIMER_1
-	var/lockpick_difficulty = 6
+	var/lockpick_difficulty = 5
 
 	var/open_sound = 'modular_darkpack/modules/doors/sounds/door_open.ogg'
 	var/close_sound = 'modular_darkpack/modules/doors/sounds/door_close.ogg'
 	var/lock_sound = 'modular_darkpack/modules/doors/sounds/door_locked.ogg'
 	var/burnable = FALSE
-	/// Cooldown for bashing attempts
-	COOLDOWN_DECLARE(bash_cooldown)
-	/// Cooldown for lockpicking attempts
-	COOLDOWN_DECLARE(lockpick_cooldown)
+	var/datum/storyteller_roll/lockpick/lockpick_roll
+	var/datum/storyteller_roll/bash_door/bash_roll
 	/// Difficulty for bashing this door down
 	var/bash_difficulty = 6
 	/// Number of successes needed to bash down
@@ -46,22 +43,10 @@
 
 	register_context()
 
-	AddElement(/datum/element/contextual_screentip_bare_hands, rmb_text = "Try lock")
-	switch(lockpick_difficulty) //This is fine because any overlap gets intercepted before
-		if(LOCKDIFFICULTY_7 to INFINITY)
-			lockpick_timer = LOCKTIMER_7
-		if(LOCKDIFFICULTY_6 to LOCKDIFFICULTY_7)
-			lockpick_timer = LOCKTIMER_6
-		if(LOCKDIFFICULTY_5 to LOCKDIFFICULTY_6)
-			lockpick_timer = LOCKTIMER_5
-		if(LOCKDIFFICULTY_4 to LOCKDIFFICULTY_5)
-			lockpick_timer = LOCKTIMER_4
-		if(LOCKDIFFICULTY_3 to LOCKDIFFICULTY_4)
-			lockpick_timer = LOCKTIMER_3
-		if(LOCKDIFFICULTY_2 to LOCKDIFFICULTY_3)
-			lockpick_timer = LOCKTIMER_2
-		if(-INFINITY to LOCKDIFFICULTY_2) //LOCKDIFFICULTY_1 is basically the minimum so we can just do LOCKTIMER_1 from -INFINITY
-			lockpick_timer = LOCKTIMER_1
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_MAGICALLY_UNLOCKED = PROC_REF(on_magic_unlock),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/structure/vampdoor/CanAStarPass(to_dir, datum/can_pass_info/pass_info)
 	return !density || !locked
@@ -109,11 +94,12 @@
 	. = ..()
 	if(isnull(held_item) && isliving(user))
 		var/mob/living/living_user = user
-		context[SCREENTIP_CONTEXT_RMB] = locked ? "Unlock" : "Lock"
 		if(living_user?.combat_mode)
 			context[SCREENTIP_CONTEXT_LMB] = "Knock"
+			context[SCREENTIP_CONTEXT_RMB] = "Bash"
 		else
 			context[SCREENTIP_CONTEXT_LMB] = closed ? "Open" : "Close"
+			context[SCREENTIP_CONTEXT_RMB] = locked ? "Unlock" : "Lock"
 
 		return CONTEXTUAL_SCREENTIP_SET
 
@@ -126,14 +112,15 @@
 
 /obj/structure/vampdoor/atom_break(damage_flag)
 	. = ..()
-	if(!door_broken)
-		break_door()
+	break_door()
 
 /obj/structure/vampdoor/atom_fix()
 	. = ..()
 	fix_door()
 
 /obj/structure/vampdoor/proc/break_door(mob/user)
+	if(door_broken)
+		return FALSE
 	playsound(get_turf(src), 'modular_darkpack/master_files/sounds/effects/door/get_bent.ogg', 100, FALSE)
 	var/obj/item/shield/door/broken_door = new(get_turf(src))
 	broken_door.icon_state = base_icon_state
@@ -150,6 +137,7 @@
 	locked = FALSE
 	icon_state = "[base_icon_state]-b"
 	update_icon()
+	return TRUE
 
 /obj/structure/vampdoor/proc/fix_door()
 	name = initial(name)
@@ -180,6 +168,13 @@
 	closed = FALSE
 	SEND_SIGNAL(src, COMSIG_AIRLOCK_OPEN)
 
+/// Signal proc for [COMSIG_ATOM_MAGICALLY_UNLOCKED]. Unlock and open up when we get knock casted.
+/obj/structure/vampdoor/proc/on_magic_unlock(datum/source, datum/action/cooldown/spell/aoe/knock/spell, atom/caster)
+	SIGNAL_HANDLER
+
+	locked = FALSE
+	INVOKE_ASYNC(src, PROC_REF(open_door))
+
 /obj/structure/vampdoor/proc/close_door(mob/user, force)
 	if(!force)
 		for(var/mob/living/L in src.loc)
@@ -201,40 +196,15 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/living_user = user
 	if(door_broken)
 		to_chat(user, span_warning("There is no door to use here."))
 		return
+	var/mob/living/living_user = user
 	if(living_user.combat_mode)
-		if(ishuman(user))
-			var/mob/living/carbon/human/human_user = user
-			if(human_user.st_get_stat(STAT_STRENGTH) > 5)
-				if(!COOLDOWN_FINISHED(src, bash_cooldown))
-					var/time_left = COOLDOWN_TIMELEFT(src, bash_cooldown)
-					to_chat(human_user, span_warning("You must wait [time_left / 10] seconds before attempting to rip the door off it's hinges again."))
-					return
-				var/roll = SSroll.storyteller_roll(human_user.st_get_stat(STAT_STRENGTH), bash_difficulty, human_user, numerical = TRUE)
-				if(roll >= bash_successes_needed)
-					to_chat(human_user, span_danger("You wind up a big punch to break down the door..."))
-					if(do_after(human_user, 3 SECONDS, src))
-						proc_unlock(50)
-						break_door(human_user)
-					else
-						to_chat(human_user, span_danger("You must be standing next to the door to break it down."))
-				else
-					pixel_z = pixel_z+rand(-1, 1)
-					pixel_w = pixel_w+rand(-1, 1)
-					playsound(get_turf(src), 'modular_darkpack/master_files/sounds/effects/door/get_bent.ogg', 50, TRUE)
-					proc_unlock(5)
-					to_chat(user, span_warning("You aren't strong enough to break it down! You hurt your shoulder by punching the door!"))
-					human_user.adjust_brute_loss(30)
-					addtimer(CALLBACK(src, PROC_REF(reset_transform)), 2)
-					COOLDOWN_START(src, bash_cooldown, 1 SCENES)
-			else
-				pixel_z = pixel_z+rand(-1, 1)
-				pixel_w = pixel_w+rand(-1, 1)
-				playsound(src, 'modular_darkpack/modules/doors/sounds/knock.ogg', 75, TRUE)
-				addtimer(CALLBACK(src, PROC_REF(reset_transform)), 2)
+		pixel_z = pixel_z+rand(-1, 1)
+		pixel_w = pixel_w+rand(-1, 1)
+		playsound(src, 'modular_darkpack/modules/doors/sounds/knock.ogg', 75, TRUE)
+		addtimer(CALLBACK(src, PROC_REF(reset_transform)), 2)
 	else
 		if(locked)
 			playsound(src, lock_sound, 75, TRUE)
@@ -246,31 +216,67 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
+	if(door_broken)
+		to_chat(user, span_warning("There is no door to use here."))
+		return
+	var/mob/living/living_user = user
+	if(living_user.combat_mode)
+		if(ishuman(user))
+			var/mob/living/carbon/human/human_user = user
+			if(!bash_roll)
+				bash_roll = new()
+			bash_roll.difficulty = bash_difficulty
+			bash_roll.successes_needed = bash_successes_needed
+			var/roll = bash_roll.st_roll(user, src)
+			switch(roll)
+				if(ROLL_SUCCESS)
+					to_chat(human_user, span_danger("You wind up a big punch to break down the door..."))
+					if(do_after(human_user, 1 TURNS, src))
+						proc_unlock(50)
+						break_door(human_user)
+					else
+						to_chat(human_user, span_danger("You must be standing next to the door to break it down."))
+				if(ROLL_FAILURE)
+					pixel_z = pixel_z+rand(-1, 1)
+					pixel_w = pixel_w+rand(-1, 1)
+					playsound(get_turf(src), 'modular_darkpack/master_files/sounds/effects/door/get_bent.ogg', 50, TRUE)
+					proc_unlock(5)
+					to_chat(user, span_warning("You aren't strong enough to break it down!"))
+					addtimer(CALLBACK(src, PROC_REF(reset_transform)), 2)
+				if(ROLL_BOTCH)
+					pixel_z = pixel_z+rand(-1, 1)
+					pixel_w = pixel_w+rand(-1, 1)
+					playsound(get_turf(src), 'modular_darkpack/master_files/sounds/effects/door/get_bent.ogg', 50, TRUE)
+					proc_unlock(5)
+					to_chat(user, span_danger("You hurt your shoulder by punching the door!"))
+					human_user.adjust_brute_loss(1 LETHAL_TTRPG_DAMAGE, user.get_active_hand())
+					addtimer(CALLBACK(src, PROC_REF(reset_transform)), 2)
+	else
+		var/has_keys = FALSE
+		for(var/obj/item/vamp/keys/found_key in user)
+			// check if we already set has_keys so the first key you try and no do_after.
+			if(has_keys && !do_after(user, 1 SECONDS, src, interaction_key = DOAFTER_SOURCE_DOOR))
+				return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+			has_keys = TRUE
+			if(try_keys(user, found_key))
+				return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		if(ishuman(user))
+			var/mob/living/carbon/human/human_user = user
+			if(human_user.back)
+				for(var/obj/item/vamp/keys/found_key in human_user.back)
+					if(!do_after(human_user, 1 SECONDS, src, interaction_key = DOAFTER_SOURCE_DOOR))
+						return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+					has_keys = TRUE
+					if(try_keys(user, found_key))
+						return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-	var/has_keys = FALSE
-	for(var/obj/item/vamp/keys/found_key in user)
-		if(!do_after(user, 1 SECONDS, src, interaction_key = DOAFTER_SOURCE_DOOR))
-			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-		has_keys = TRUE
-		if(try_keys(user, found_key))
-			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	if(ishuman(user))
-		var/mob/living/carbon/human/human_user = user
-		if(human_user.back)
-			for(var/obj/item/vamp/keys/found_key in human_user.back)
-				if(!do_after(human_user, 1 SECONDS, src, interaction_key = DOAFTER_SOURCE_DOOR))
-					return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-				has_keys = TRUE
-				if(try_keys(user, found_key))
-					return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		if(lock_id == LOCKACCESS_ALL)
+			if(try_keys(user, need_key = FALSE))
+				return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-	if(lock_id == LOCKACCESS_ALL)
-		if(try_keys(user, need_key = FALSE))
-			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-
-	if(!has_keys)
-		to_chat(user, span_warning("You need a key to lock/unlock this door!"))
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		if(!has_keys)
+			to_chat(user, span_warning("You need a key to lock/unlock this door!"))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/vampdoor/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/door_repair_kit))
@@ -283,7 +289,7 @@
 
 /obj/structure/vampdoor/proc/try_repair(mob/living/user, obj/item/tool)
 	if(!door_broken)
-		to_chat(user,span_warning("This door does not seem to be broken."))
+		to_chat(user, span_warning("This door does not seem to be broken."))
 		return FALSE
 	playsound(src, 'sound/items/tools/ratchet.ogg', 50)
 	if(do_after(user, 10 SECONDS, src, interaction_key = DOAFTER_SOURCE_DOOR))
@@ -301,31 +307,26 @@
 	if(CONFIG_GET(flag/punishing_zero_dots) && user.st_get_stat(STAT_LARCENY) < 1)
 		to_chat(user, span_warning("How do I do this...?"))
 		return
-	if(!COOLDOWN_FINISHED(src, lockpick_cooldown))
-		var/time_left = COOLDOWN_TIMELEFT(src, lockpick_cooldown)
-		to_chat(user, span_warning("You must wait [time_left / 10] seconds before attempting another lockpick!"))
-		return
 	if(locked)
 		proc_unlock(5)
 		playsound(src, 'modular_darkpack/modules/doors/sounds/hack.ogg', 100, TRUE)
 		for(var/mob/living/carbon/human/npc/police/P in oviewers(DEFAULT_SIGHT_DISTANCE, src))
 			P.Aggro(user)
-		var/total_lockpicking = user.st_get_stat(STAT_LARCENY)
-		if(do_after(user, lockpick_timer, src, interaction_key = DOAFTER_SOURCE_DOOR))
+		if(do_after(user, 1 TURNS, src, interaction_key = DOAFTER_SOURCE_DOOR))
 			if(!locked)
 				return
-			var/roll_result = SSroll.storyteller_roll(total_lockpicking + (user.st_get_stat(STAT_DEXTERITY, FALSE)), lockpick_difficulty, list(user), user)
-			switch(roll_result)
+			if(!lockpick_roll)
+				lockpick_roll = new()
+			lockpick_roll.difficulty = lockpick_difficulty
+			switch(lockpick_roll.st_roll(user, src))
 				if(ROLL_SUCCESS)
 					to_chat(user, span_notice("You pick the lock."))
 					locked = FALSE
 					return TRUE
 				if(ROLL_FAILURE)
 					to_chat(user, span_warning("You failed to pick the lock."))
-					COOLDOWN_START(src, lockpick_cooldown, 1 SCENES)
 				if(ROLL_BOTCH)
 					to_chat(user, span_warning("Your lockpick broke!"))
-					COOLDOWN_START(src, lockpick_cooldown, 1 SCENES)
 					qdel(tool)
 		else
 			to_chat(user, span_warning("You failed to pick the lock."))
@@ -349,7 +350,7 @@
 		to_chat(user, span_notice("You try to unlock [src]"))
 
 	if(door_broken)
-		to_chat(user,span_warning("There is no door to open/close here."))
+		to_chat(user, span_warning("There is no door to open/close here."))
 		return
 	if(key_used.roundstart_fix)
 		lock_id = pick(key_used.accesslocks)
@@ -357,25 +358,22 @@
 	if(key_used.accesslocks)
 		for(var/i in key_used.accesslocks)
 			if(i == lock_id)
-				playsound(src, lock_sound, 75, TRUE)
-				if(!locked)
-					to_chat(user, "[src] is now locked.")
-					locked = TRUE
-				else
-					to_chat(user, "[src] is now unlocked.")
-					proc_unlock("key")
-					locked = FALSE
-				return TRUE
+				return toggle_lock(user)
 	if(!need_key)
-		playsound(src, lock_sound, 75, TRUE)
-		if(!locked)
-			to_chat(user, "[src] is now locked.")
-			locked = TRUE
-		else
-			to_chat(user, "[src] is now unlocked.")
-			proc_unlock("key")
-			locked = FALSE
-		return TRUE
+		return toggle_lock(user)
+
+/obj/structure/vampdoor/proc/toggle_lock(mob/living/user)
+	playsound(src, lock_sound, 75, TRUE)
+	if(!locked)
+		if(user)
+			to_chat(user, span_notice("[src] is now locked."))
+		locked = TRUE
+	else
+		if(user)
+			to_chat(user, span_notice("[src] is now unlocked."))
+		proc_unlock("key")
+		locked = FALSE
+	return TRUE
 
 /obj/structure/vampdoor/proc/reset_transform()
 	pixel_z = initial(pixel_z)

@@ -2,6 +2,7 @@
 	name = "ominous skull"
 	desc = "A stylized skull, made out of marble."
 	icon = 'modular_darkpack/modules/masquerade/icons/blood_hunt_skull.dmi'
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/masquerade/icons/onfloor.dmi')
 	icon_state = "skull"
 	item_flags = NOBLUDGEON
 	w_class = WEIGHT_CLASS_SMALL
@@ -24,7 +25,7 @@
 
 /obj/item/blood_hunt/examine(mob/user)
 	. = ..()
-	if(iskindred(user))
+	if(get_kindred_splat(user))
 		. += span_notice("This thaumaturgically-created artifact allows you to announce a Blood Hunt to the city.")
 		. += span_notice("It also allows you to pardon a kindred's masquerade violation by <b>interacting</b> with the kindred while holding the skull.")
 
@@ -70,17 +71,17 @@
 	target.clear_blood_hunt()
 
 // This code is for reinforcing a player's masquerade.
-/obj/item/blood_hunt/pre_attack(atom/A, mob/living/user, params)
-	if(!ishuman(A))
-		return
-	if(!iskindred(A))
-		return
+/obj/item/blood_hunt/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!ishuman(interacting_with))
+		return NONE
+	if(!get_kindred_splat(interacting_with))
+		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You hold the [src] up to [A]..."))
-	if(!do_after(user, 10 SECONDS, A))
-		return COMPONENT_CANCEL_ATTACK_CHAIN
-	if(SSmasquerade.masquerade_reinforce(src, A, MASQUERADE_REASON_PREFERENCES))
-		to_chat(user, span_notice("You pardon [A]'s masquerade breach!"))
-		return COMPONENT_CANCEL_ATTACK_CHAIN
-	to_chat(user, span_notice("[A]'s masquerade breach isn't worthy enough to be pardoned!"))
-	return COMPONENT_CANCEL_ATTACK_CHAIN
+	to_chat(user, span_notice("You hold the [src] up to [interacting_with]..."))
+	if(!do_after(user, 10 SECONDS, interacting_with))
+		return ITEM_INTERACT_BLOCKING
+	if(SSmasquerade.masquerade_reinforce(src, interacting_with, MASQUERADE_REASON_PREFERENCES))
+		to_chat(user, span_notice("You pardon [interacting_with]'s masquerade breach!"))
+		return ITEM_INTERACT_SUCCESS
+	to_chat(user, span_notice("[interacting_with]'s masquerade breach isn't worthy enough to be pardoned!"))
+	return ITEM_INTERACT_BLOCKING

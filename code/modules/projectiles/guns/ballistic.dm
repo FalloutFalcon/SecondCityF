@@ -146,8 +146,10 @@
 	var/obj/item/suppressor/suppressor = null
 	/// Sound played when the burst mode is changed
 	var/burst_select_sound = SFX_FIRE_MODE_SWITCH
-	COOLDOWN_DECLARE(recoil_skill_check) // DARKPACK EDIT ADD
-
+	// DARKPACK EDIT ADD START - STORYTELLER_DICE
+	COOLDOWN_DECLARE(recoil_skill_check)
+	var/datum/storyteller_roll/shooting/recoil_roll
+	// DARKPACK EDIT ADD END
 	// DARKPACK EDIT ADD START - FORENSICS
 	/// Base serial number prefix, whatever's here will come before the numbers. Blank means no number/obliterated number.
 	var/serial_type = ""
@@ -238,11 +240,10 @@
 	// DARKPACK EDIT ADD END
 
 	if(selector_switch_icon)
-		switch(burst_fire_selection)
-			if(FALSE)
-				. += "[initial(icon_state)]_semi"
-			if(TRUE)
-				. += "[initial(icon_state)]_burst"
+		if(burst_fire_selection)
+			. += "[initial(icon_state)]_burst"
+		else
+			. += "[initial(icon_state)]_semi"
 
 	if(show_bolt_icon)
 		if (bolt_type == BOLT_TYPE_LOCKING)
@@ -607,11 +608,27 @@
 	if(sawn_off)
 		bonus_spread += SAWN_OFF_ACC_PENALTY
 
-	// DARKPACK EDIT ADD - recoil
+	// DARKPACK EDIT ADD START - STORYTELLER_DICE
+	if(!recoil_roll)
+		recoil_roll = new()
+
 	if(COOLDOWN_FINISHED(src, recoil_skill_check))
-		var/recoil_reduction = SSroll.storyteller_roll(user.st_get_stat(STAT_FIREARMS), initial(recoil), user, numerical = TRUE)
+		for(var/obj/item/gun/gun in user.held_items)
+			if(gun == src || gun.weapon_weight >= WEAPON_MEDIUM)
+				continue
+			else if(can_trigger_gun(user, akimbo_usage = TRUE))
+				recoil_roll.difficulty += 1	//Akimboing gains +1 difficulty
+		if(firing_burst == TRUE)
+			recoil_roll.difficulty += 1	//Bursts gains +1 difficulty
+		var/datum/component/automatic_fire/automatic_check = src.GetComponent(/datum/component/automatic_fire)
+		if(automatic_check)
+			recoil_roll.difficulty += 2	//Full-auto gains +2 difficulty
+
+		var/recoil_reduction = recoil_roll.st_roll(user, src)
 		recoil = max(initial(recoil) - recoil_reduction, 0)
+		spread = max(initial(spread) - recoil_reduction, 0)
 		COOLDOWN_START(src, recoil_skill_check, 1 SCENES)
+	// DARKPACK EDIT ADD END
 
 	// DARKPACK EDIT ADD START - FORENSICS
 	if(serial_type && serial_shown)

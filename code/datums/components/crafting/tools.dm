@@ -1,4 +1,4 @@
-/*// DARKPACK EDIT REMOVE
+/*// DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/gold_horn
 	name = "Golden Bike Horn"
 	result = /obj/item/bikehorn/golden
@@ -44,7 +44,7 @@
 	reqs = list(
 		/obj/item/crowbar = 1,
 		/obj/item/knife = 1,
-		/obj/item/stack/sticky_tape = 1,
+		/obj/item/stack/medical/wrap/sticky_tape = 1,
 	)
 	result = /obj/item/pickaxe/improvised
 	category = CAT_TOOLS
@@ -57,7 +57,7 @@
 	)
 	result = /obj/item/stack/medical/bandage/makeshift
 	category = CAT_TOOLS
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/bone_rod
 	name = "Bone Fishing Rod"
 	result = /obj/item/fishing_rod/bone
@@ -132,6 +132,10 @@
 	)
 	category = CAT_TOOLS
 
+/datum/crafting_recipe/jaws_of_recovery/New()
+	LAZYADD(blacklist, typecacheof(/obj/item/crowbar/power/paramedic, ignore_root_path = TRUE))
+	return ..()
+
 /datum/crafting_recipe/lantern
 	name = "Lantern"
 	result = /obj/item/flashlight/lantern
@@ -143,4 +147,3 @@
 	crafting_flags = CRAFT_SKIP_MATERIALS_PARITY
 	tool_behaviors = list(TOOL_SCREWDRIVER)
 	category = CAT_TOOLS
-

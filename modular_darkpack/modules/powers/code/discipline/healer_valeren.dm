@@ -20,6 +20,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_FREE_HAND
 	target_type = TARGET_MOB
 	range = 1
+	vitae_cost = 0
 
 	cooldown_length = 5 SECONDS
 
@@ -88,6 +89,7 @@
 	desc = "Create a supernatural barrier to protect yourself from harm."
 
 	level = 4
+	vitae_cost = 0
 
 	cooldown_length = 40 SECONDS
 
@@ -123,7 +125,7 @@
 /datum/discipline_power/valeren/unburden_the_bestial_soul/can_activate(mob/living/target, alert)
 	. = ..()
 
-	if (!iskindred(target))
+	if (!get_kindred_splat(target))
 		if (alert)
 			to_chat(owner, span_warning("[src] can only be used on Kindred."))
 		return FALSE

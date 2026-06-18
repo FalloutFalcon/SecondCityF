@@ -30,7 +30,7 @@
 
 	if(CONFIG_GET(flag/punishing_zero_dots) && user.st_get_stat(STAT_TECHNOLOGY) < 1)
 		to_chat(user, span_warning("You don't know how to operate this!"))
-		return ITEM_INTERACT_FAILURE
+		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/radio/headset/darkpack/radio = tool
 	if(radio.radio_id)
@@ -45,10 +45,10 @@
 	else
 		var/input_number = tgui_input_number(user = user, message = "Set Radio ID", title = "Enter a numerical ID to use for this network.", max_value = 999, min_value = 1, round_value = TRUE)
 		if(!input_number)
-			return ITEM_INTERACT_FAILURE
+			return ITEM_INTERACT_BLOCKING
 		if("[input_number]" in connected_radios)
 			to_chat(user, span_warning("A radio with that ID is already connected to this network!"))
-			return ITEM_INTERACT_FAILURE
+			return ITEM_INTERACT_BLOCKING
 		join_network(radio, input_number)
 		playsound(src, 'modular_darkpack/modules/radios/sounds/radio_on.ogg', 60, TRUE)
 		to_chat(user, span_notice("You link the [radio] to the [radio_network]."))
@@ -107,6 +107,9 @@
 
 	if(!COOLDOWN_FINISHED(src, crime_reporting_cooldown))
 		return
+	var/area/vtm/crime_area = astype(get_area(location))
+	if(!crime_area || crime_area.zone_type != ZONE_MASQUERADE) // prevents sewer rats from reporting crime
+		return
 	COOLDOWN_START(src, crime_reporting_cooldown, 10 SECONDS)
 	switch(crime)
 		if(CRIME_GUNSHOTS)
@@ -139,7 +142,7 @@
 		if(!subspace_radio.can_receive(frequency, RADIO_NO_Z_LEVEL_RESTRICTION))
 			radios -= subspace_radio
 
-	for(var/called_radio as anything in radios)
+	for(var/called_radio in radios)
 		playsound(get_turf(called_radio), 'modular_darkpack/modules/radios/sounds/panic.ogg', 50, TRUE)
 
 /obj/machinery/radio_tranceiver/clinic

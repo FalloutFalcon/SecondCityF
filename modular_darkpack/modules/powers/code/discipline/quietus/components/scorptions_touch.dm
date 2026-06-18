@@ -15,6 +15,7 @@
 /obj/item/melee/touch_attack/quietus/Initialize(mapload, potency = 1, duration = 0)
 	. = ..()
 	AddComponent(/datum/component/scorpions_touch_poison, potency, duration)
+	ADD_TRAIT(src, TRAIT_NODROP, INNATE_TRAIT)
 
 //COMPONENT FOR WEAPON
 /datum/component/scorpions_touch_poison
@@ -42,7 +43,7 @@
 	var/mob/living/carbon/human/victim = target
 
 	// victim resists the posion with stamina + fortitude
-	var/resistance = SSroll.storyteller_roll(dice = (victim.st_get_stat(STAT_STAMINA)/* + victim.st_get_stat(STAT_FORTITUDE)*/), difficulty = 6, numerical = TRUE, mobs_to_show_output = victim)
+	var/resistance = SSroll.storyteller_roll(dice = (victim.st_get_stat(STAT_STAMINA)/* + victim.st_get_stat(STAT_FORTITUDE)*/), difficulty = 6, numerical = TRUE, roller = victim)
 
 	// each resistance success subtracts from the duration
 	var/effective_duration = max(0, poison_duration - resistance)
@@ -58,7 +59,7 @@
 	addtimer(CALLBACK(src, PROC_REF(remove_poison), victim), poison_duration MINUTES)
 
 	if(victim.st_get_stat(STAT_STAMINA) <= 0)
-		if(iskindred(victim))
+		if(get_kindred_splat(victim))
 			victim.torpor(DAMAGE_TRAIT)
 			to_chat(victim, span_userdanger("Your body shuts down as the poison drains your very essence! You enter torpor!"))
 			to_chat(user, span_boldwarning("[victim] collapses into torpor!"))

@@ -47,14 +47,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	//Job preferences 2.0 - indexed by job title , no key or value implies never
 	var/list/job_preferences = list()
-	// DARKPACK EDIT ADD START - STORYTELLR_STATS
+	// DARKPACK EDIT ADD START
 	var/list/preference_storyteller_stats = list()
-	// DARKPACK EDIT ADD END
-	// DARKPACK EDIT ADD START - ALTERNATIVE_JOB_TITLES
-	/// Alternative job titles stored in preferences. Assoc list, ie. alt_job_titles["Scientist"] = "Cytologist"
+	// Associative list of disciplines and their current level. like: list("/datum/discipline/animalism" = 2)
+	var/list/discipline_levels = list()
+	// Alternative job titles stored in preferences. Assoc list, ie. alt_job_titles["Scientist"] = "Cytologist"
 	var/list/alt_job_titles = list()
+	/// Whether this player is whitelisted to bypass discipline sheet validation limits
+	var/discipline_trusted = FALSE
 	// DARKPACK EDIT ADD END
-	/// The current window, PREFERENCE_TAB_* in [`code/__DEFINES/preferences.dm`]
+	// The current window, PREFERENCE_TAB_* in [`code/__DEFINES/preferences.dm`]
 	var/current_window = PREFERENCE_TAB_CHARACTER_PREFERENCES
 
 	var/unlock_content = 0
@@ -258,6 +260,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			for(var/datum/preference_middleware/preference_middleware as anything in middleware)
 				preference_middleware.post_set_preference(ui.user, requested_preference_key, value)
+			requested_preference.post_set_preference(ui.user, value) // DARKPACK EDIT ADD - SPLATS - (lore primers)
 			return TRUE
 		if ("set_color_preference")
 			var/requested_preference_key = params["preference"]
@@ -335,7 +338,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		return TRUE
 
 /datum/preferences/proc/create_character_preview_view(mob/user)
-	character_preview_view = new(null, src)
+	character_preview_view = new(null, null, src)
 	character_preview_view.generate_view("character_preview_[REF(character_preview_view)]")
 	character_preview_view.update_body()
 
@@ -345,7 +348,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/preferences = list()
 
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
-		if (!preference.is_accessible(src))
+		if (!preference.visible_in_page(src)) // DARKPACK EDIT CHANGE - (is_accessible to visible_in_page)
 			continue
 
 		var/value = read_preference(preference.type)
@@ -388,7 +391,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Whether we show current job clothes or nude/loadout only
 	var/show_job_clothes = TRUE
 
-/atom/movable/screen/map_view/char_preview/Initialize(mapload, datum/preferences/preferences)
+/atom/movable/screen/map_view/char_preview/Initialize(mapload, datum/hud/hud_owner, datum/preferences/preferences)
 	. = ..()
 	src.preferences = preferences
 
@@ -457,7 +460,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	return TRUE
 
 /datum/preferences/proc/GetQuirkBalance()
-	var/bal = CONFIG_GET(number/default_quirk_points)
+	var/bal = SSquirks.default_quirk_points
 	for(var/V in all_quirks)
 		var/datum/quirk/T = SSquirks.quirks[V]
 		bal -= initial(T.value)
@@ -488,7 +491,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(LAZYLEN(quirks_removed))
 		LAZYADD(feedback, "The following quirks are incompatible with your species or splat:") // DARKPACK EDIT CHANGE - SPLATS
 		LAZYADD(feedback, quirks_removed)
-	if(!CONFIG_GET(flag/disable_quirk_points) && GetQuirkBalance() < 0)
+	if(SSquirks.points_enabled && GetQuirkBalance() < 0)
 		LAZYADD(feedback, "Your quirks have been reset.")
 		all_quirks = list()
 	if(LAZYLEN(feedback))
@@ -577,6 +580,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if (preference.must_have_relevant_trait && preference.relevant_inherent_trait)
 			if (!HAS_TRAIT(character, preference.relevant_inherent_trait))
 				continue
+
+		if (preference.must_be_accessible && !preference.is_accessible(src))
+			continue
 		// DARKPACK EDIT ADD END - TTRPG preferences
 
 		preference.apply_to_human(character, read_preference(preference.type))

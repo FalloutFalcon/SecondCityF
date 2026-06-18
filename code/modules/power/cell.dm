@@ -24,7 +24,7 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_FISHING_BAIT, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_POISONOUS_BAIT, INNATE_TRAIT) //bro is fishing using lithium...
-	/* // DARKPACK EDIT REMOVE
+	/* // DARKPACK EDIT REMOVAL
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/battery_match)
 	AddElement(
 		/datum/element/slapcrafting,\
@@ -263,7 +263,6 @@
 	connector_type = null
 	custom_materials = null
 	emp_damage_modifier = 0
-	abstract_type = /obj/item/stock_parts/power_store/cell/ethereal
 
 /obj/item/stock_parts/power_store/cell/ethereal/grind_results()
 	return null

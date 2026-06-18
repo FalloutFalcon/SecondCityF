@@ -13,20 +13,20 @@
 	fire = 100
 	acid = 100
 
-/obj/item/masquerade_contract/attack_self(mob/user)
+/obj/item/masquerade_contract/attack_self(mob/user, modifiers)
 	. = ..()
-	if(!iskindred(user) && !isghoul(user))
+	if(!get_vampire_splat(user))
 		return
 	var/turf/current_location = get_turf(user)
 	to_chat(user, "[span_bold("YOU")], [get_area_name(user)] X:[current_location.x] Y:[current_location.y] Z:[current_location.z]")
-	for(var/mob/living/carbon/breacher as anything in GLOB.masquerade_breakers_list)
+	for(var/mob/living/carbon/breacher in GLOB.masquerade_breakers_list)
 		var/location_info
 		var/turf/turf = get_turf(breacher)
 		if(breacher.masquerade_score <= 2)
 			location_info = "[get_area_name(turf)], X:[turf.x] Y:[turf.y] Z:[turf.z]"
 		else
 			location_info = "[get_area_name(turf)]"
-		to_chat(user, span_info("[breacher.real_name], Masquerade: [breacher.masquerade_score], Diablerist: [HAS_TRAIT(breacher, TRAIT_DIABLERIE) ? "<b>YES</b>" : "NO"], [location_info]"))
+		to_chat(user, span_info("[breacher.real_name], Masquerade: [breacher.masquerade_score], Diablerist: [(HAS_TRAIT(breacher, TRAIT_DIABLERIE) && !HAS_TRAIT(breacher, TRAIT_HIDDEN_DIABLERIE)) ? "<b>YES</b>" : "NO"], [location_info]"))
 
 	if(!GLOB.masquerade_breakers_list)
 		to_chat(user, span_info("No available Masquerade breakers in city..."))
@@ -42,14 +42,13 @@
 	armor_type = /datum/armor/masquerade_contract
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
-/* // DARKPACK TODO - GAROU
-/obj/item/veil_contract/attack_self(mob/user)
+/obj/item/veil_contract/attack_self(mob/user, modifiers)
 	. = ..()
-	if(!isgarou(user))
+	if(!get_werewolf_splat(user))
 		return
 	var/turf/current_location = get_turf(user)
 	to_chat(user, "[span_bold("YOU")], [get_area_name(user)] X:[current_location.x] Y:[current_location.y] Z:[current_location.z]")
-	for(var/mob/living/breacher as anything in GLOB.veil_breakers_list)
+	for(var/mob/living/breacher in GLOB.veil_breakers_list)
 		var/location_info
 		var/turf/turf = get_turf(breacher)
 		if(breacher.masquerade_score <= 2)
@@ -60,4 +59,3 @@
 
 	if(!GLOB.veil_breakers_list)
 		to_chat(user, span_info("No available Veil breakers in city..."))
-*/

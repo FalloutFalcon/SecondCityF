@@ -22,12 +22,16 @@
 
 /obj/item/organ/cyberimp/arm/on_mob_remove(mob/living/carbon/arm_owner)
 	. = ..()
+	UnregisterSignal(arm_owner, COMSIG_CARBON_POST_ATTACH_LIMB)
 	on_limb_detached(hand)
 
 /obj/item/organ/cyberimp/arm/proc/on_limb_attached(mob/living/carbon/source, obj/item/bodypart/limb)
 	SIGNAL_HANDLER
 	if(!limb || QDELETED(limb) || limb.body_zone != zone)
 		return
+	handle_attachment(limb)
+
+/obj/item/organ/cyberimp/arm/proc/handle_attachment(obj/item/bodypart/limb)
 	if(hand)
 		on_limb_detached(hand)
 	RegisterSignal(limb, COMSIG_BODYPART_REMOVED, PROC_REF(on_limb_detached))
@@ -88,9 +92,10 @@
 
 /obj/item/organ/cyberimp/arm/toolkit/on_mob_remove(mob/living/carbon/arm_owner)
 	. = ..()
+	UnregisterSignal(arm_owner, COMSIG_KB_MOB_DROPITEM_DOWN)
 	Retract()
 
-/obj/item/organ/cyberimp/arm/toolkit/on_limb_attached(mob/living/carbon/source, obj/item/bodypart/limb)
+/obj/item/organ/cyberimp/arm/toolkit/handle_attachment(obj/item/bodypart/limb)
 	. = ..()
 	RegisterSignal(limb, COMSIG_ITEM_ATTACK_SELF, PROC_REF(on_item_attack_self))
 
@@ -214,6 +219,11 @@
 		to_chat(owner, span_warning("The implant doesn't respond. It seems to be broken..."))
 		return
 
+	// DARKPACK EDIT START
+	var/datum/component/two_handed/two_handed = GetComponent(/datum/component/two_handed)
+	if(two_handed)
+		return
+	// DARKPACK EDIT END
 	if(!active_item || (active_item in src))
 		active_item = null
 		if(contents.len == 1)

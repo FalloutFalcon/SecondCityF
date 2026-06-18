@@ -49,6 +49,7 @@
 /datum/discipline_power/dominate
 	name = "Dominate power name"
 	desc = "Dominate power description"
+	vitae_cost = 0 //No Dominate 1-5 abilities cost blood.
 
 	activate_sound = 'modular_darkpack/modules/powers/sounds/dominate.ogg'
 
@@ -56,11 +57,11 @@
 	. = ..()
 
 	var/mob/living/carbon/human/dominate_target = target
-	dominate_target.remove_overlay(MUTATIONS_LAYER)
-	var/mutable_appearance/dominate_overlay = mutable_appearance('modular_darkpack/modules/powers/icons/dominate.dmi', "dominate", -MUTATIONS_LAYER)
+	dominate_target.remove_overlay(POWERS_LAYER)
+	var/mutable_appearance/dominate_overlay = mutable_appearance('modular_darkpack/modules/powers/icons/dominate.dmi', "dominate", -POWERS_LAYER)
 	dominate_overlay.pixel_z = 2
-	dominate_target.overlays_standing[MUTATIONS_LAYER] = dominate_overlay
-	dominate_target.apply_overlay(MUTATIONS_LAYER)
+	dominate_target.overlays_standing[POWERS_LAYER] = dominate_overlay
+	dominate_target.apply_overlay(POWERS_LAYER)
 
 	//dominate compels the target to have their gaze absolutely entrapped by the dominator
 	dominate_target.face_atom(owner)
@@ -73,6 +74,10 @@
 //all dominate rolls involve rolling some stat against the victim's permanent willpower with many caveats. this proc rolls and considers those caveats
 /datum/discipline_power/dominate/proc/dominate_check(mob/living/carbon/human/owner, mob/living/carbon/human/target, owner_stat, numerical = FALSE)
 	var/datum/discipline/dominate/parent_disc = discipline
+
+	if(HAS_TRAIT(owner, TRAIT_NO_EYE_CONTACT))
+		to_chat(owner, span_warning("You are unable to make eye contact!"))
+		return FALSE
 
 	//someone has botched a dominate against this human
 	if(LAZYLEN(parent_disc.botched_targets))
@@ -100,15 +105,18 @@
 			return TRUE
 
 	var/theirpower = target.st_get_stat(STAT_TEMPORARY_WILLPOWER)
-	var/mypower = SSroll.storyteller_roll(owner_stat, difficulty = theirpower, mobs_to_show_output = owner, numerical = TRUE)
+	var/mypower = SSroll.storyteller_roll(owner_stat, difficulty = theirpower, roller = owner, numerical = TRUE)
 
 	//tremere have built-in safeguards to easily dominate their stone servitors
-	var/mob/living/carbon/human/human_target = target
 	if(HAS_TRAIT(target, TRAIT_WEAK_TO_DOMINATE))
 		theirpower -= 2
 
-	//wearing dark sunglasses makes it harder for the Dominator to capture the victim's gaze and raises difficulty -- v20 'Dominate' section titled 'Eye Contact'
+	if(HAS_TRAIT(target, TRAIT_WEAK_WILLED))
+		theirpower -= 2
+
+	//wearing dark sunglasses makes it harder for the Dominator to capture the victim's gaze and raises difficulty -- V20 'Dominate' section titled 'Eye Contact'
 	var/total_tint = 0
+	var/mob/living/carbon/human/human_target = target
 	for(var/obj/item/clothing/worn_item in human_target.get_equipped_items(INCLUDE_ABSTRACT))
 		total_tint += worn_item.tint
 
@@ -128,12 +136,16 @@
 		to_chat(owner, span_warning("Your Dominate attempt has botched! [target] is now resistant to your Dominate for the rest of the night."))
 		return FALSE
 
-	var/datum/splat/vampire/kindred/owner_splat = iskindred(owner)
-	var/datum/splat/vampire/kindred/target_splat = iskindred(target)
+	var/datum/splat/vampire/kindred/owner_splat = get_kindred_splat(owner)
+	var/datum/splat/vampire/kindred/target_splat = get_kindred_splat(target)
 	if(target_splat)
 		if(owner_splat.generation > target_splat.generation)
-			to_chat(owner, span_warning("Your fail to dominate [target], as their blood is more potent than yours!"))
+			to_chat(owner, span_warning("You fail to dominate [target], as their blood is more potent than yours!"))
 			return FALSE
+
+	if(HAS_TRAIT(target, TRAIT_MERIT_UNTAMABLE))
+		to_chat(owner, span_warning("You fail to dominate [target], they are an untamable beast!"))
+		return FALSE
 
 	if(numerical == TRUE)
 		return mypower
@@ -165,7 +177,7 @@
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_GENERIC)
 
 /mob/living/carbon/human/proc/post_dominate_checks(mob/living/carbon/human/dominate_target)
-	dominate_target?.remove_overlay(MUTATIONS_LAYER)
+	dominate_target?.remove_overlay(POWERS_LAYER)
 
 //COMMAND
 /datum/discipline_power/dominate/command
@@ -197,14 +209,17 @@
 			return "immediate and vigorous completion"
 
 /datum/discipline_power/dominate/command/pre_activation_checks(mob/living/carbon/human/target)
+
+	custom_command = tgui_input_text(owner, "Dominate Command", "What is your command?", encode = FALSE)
+	owner.say(custom_command)
+
 	successes = dominate_check(owner, target, owner.st_get_stat(STAT_MANIPULATION) + owner.st_get_stat(STAT_INTIMIDATION), numerical = TRUE)
 	if(successes > 0)
 		var/command_strength = get_success_message(successes)
 		to_chat(owner, span_notice("You have the power to Command your target with [command_strength]!"))
-		custom_command = tgui_input_text(owner, "Dominate Command", "What is your command?", encode = FALSE)
 		var/mob/living/carbon/human/conditioner = target.conditioner?.resolve()
 		if(owner != conditioner)
-			//v20 Dominate 'Command' section
+			//V20 Dominate 'Command' section
 			if(length(splittext(custom_command, " ")) > 1)
 				to_chat(owner, span_warning("Commands must be only ONE word!"))
 				return FALSE
@@ -213,6 +228,7 @@
 		return TRUE
 
 	to_chat(owner, span_warning("[target] has resisted your domination!"))
+	to_chat(target, span_warning("[owner] intensely stares at you."))
 	do_cooldown(TRUE)
 	return FALSE
 
@@ -220,7 +236,6 @@
 	. = ..()
 	to_chat(owner, span_warning("You've successfully dominated [target]'s mind!"))
 	log_combat(owner, target, "Dominated with Command: [custom_command]")
-	owner.say(custom_command)
 	to_chat(target, span_big("[custom_command]"))
 	var/command_strength = get_success_message(successes)
 	to_chat(target, span_warning("[owner] has successfully dominated your mind with [successes] successes. You feel compelled to [custom_command] with [command_strength]."))
@@ -259,6 +274,10 @@
 		pulse_interval = successes
 		return TRUE
 	pulse_interval = 0
+
+	to_chat(owner, span_warning("[target] has resisted your domination!"))
+	to_chat(target, span_warning("[owner] intensely stares at you."))
+
 	do_cooldown(cooldown_length)
 	return FALSE
 
@@ -346,10 +365,14 @@
 	..()
 	linked_power = power
 
-/datum/action/vampire/end_mesmerization/Trigger(trigger_flags)
+/datum/action/vampire/end_mesmerization/Trigger(mob/clicker, trigger_flags)
+	. = ..()
+	if(!.)
+		return
+
 	if(!linked_power)
 		Remove(owner)
-		return
+		return FALSE
 	linked_power.force_end_mesmerization()
 
 // THE FORGETFUL MIND
@@ -368,18 +391,15 @@
 /datum/discipline_power/dominate/the_forgetful_mind/proc/get_success_message(successes)
 	switch(successes)
 		if(1)
-			return "a single memory is removed, and no alteration takes its place, leaving a void for the true memory to bubble up with the right circumstances"
+			return "a single memory is permanently removed, and no alteration takes its place, leaving a void for the true memory to bubble up with the right circumstances"
 		if(2)
 			return "multiple memories may be permanently removed, but not altered, leaving a void for the true memories to potentially re-emerge with intense recollection"
 		if(3)
 			return "multiple memories may be permanently altered or removed, but without careful and precise alteration, the true memories may crawl forth much later"
 		if(4)
 			return "deep and intense alterations or removals may take place in the memory, changing entire events or conversations with great strength"
-		if(5)
-			return "entire periods of life and personality may be removed, altered or otherwise as the subconcious completely collapses"
-		if(6 to INFINITY)
-			return "there is no limit to the extent to which the memories may be affected, forever changing the memory beyond recognition. There is no hope."
-
+		if(5 to INFINITY)
+			return "entire periods of life may be completely restructured or otherwise as the subconcious completely collapses"
 
 /datum/discipline_power/dominate/the_forgetful_mind/pre_activation_checks(mob/living/carbon/human/target)
 
@@ -392,6 +412,7 @@
 			return FALSE
 		return TRUE
 	to_chat(owner, span_warning("[target] has resisted your domination!"))
+	to_chat(target, span_warning("[owner] intensely stares at you."))
 	do_cooldown(cooldown_length)
 	return FALSE
 
@@ -455,8 +476,8 @@
 
 /datum/discipline_power/dominate/possession/pre_activation_checks(mob/living/carbon/human/target)
 
-	if(iskindred(target) || isgarou(target)) //DARKPACK TODO: reimplement Kuei-Jin
-		to_chat(owner, span_warning("You cannot possess [iskindred(target) ? "another kindred" : "this creature - the beast within resists"]!"))
+	if(get_kindred_splat(target) || get_garou_splat(target)) // DARKPACK TODO: reimplement Kuei-Jin
+		to_chat(owner, span_warning("You cannot possess [get_kindred_splat(target) ? "another kindred" : "this creature - the beast within resists"]!"))
 		return FALSE
 
 	if(target.possessed)
@@ -466,6 +487,7 @@
 	var/roll_success = dominate_check(owner, target, owner.st_get_stat(STAT_CHARISMA) + owner.st_get_stat(STAT_INTIMIDATION))
 	if(!roll_success)
 		to_chat(owner, span_warning("[target] has resisted your domination!"))
+		to_chat(target, span_warning("[owner] intensely stares at you."))
 		do_cooldown(cooldown_length)
 	return roll_success
 

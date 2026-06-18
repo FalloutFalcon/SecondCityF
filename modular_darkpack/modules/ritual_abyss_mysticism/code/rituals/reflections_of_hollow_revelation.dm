@@ -12,6 +12,7 @@
 	var/isactive = FALSE
 
 /obj/ritual_rune/abyss/reflections_of_hollow_revelation/complete()
+	. = ..()
 	var/mob/living/user = usr
 	if(!user)
 		return
@@ -61,11 +62,11 @@
 
 /obj/ritual_rune/abyss/reflections_of_hollow_revelation/proc/scry_target(mob/living/carbon/human/target, mob/living/user)
 	// If the target has Obtenebration or Auspex, roll to see if they detect the shadows
-	if(iskindred(target))
-		var/datum/splat/vampire/vampire = does_use_disciplines(target)
+	if(get_kindred_splat(target))
+		var/datum/splat/vampire/vampire = get_splat_with_discipline(target)
 		if(vampire?.get_discipline(/datum/discipline/obtenebration) || vampire?.get_discipline(/datum/discipline/auspex))
 			var/theirpower = (user.st_get_stat(STAT_PERCEPTION) + user.st_get_stat(STAT_OCCULT))
-			if(SSroll.storyteller_roll(theirpower, 8, target, numerical = FALSE) == ROLL_SUCCESS)
+			if(SSroll.storyteller_roll(theirpower, 8, target) == ROLL_SUCCESS)
 				to_chat(target, span_warning("You notice the nearby shadows flicker... something is watching you."))
 
 	shadowview(target, user)
@@ -162,7 +163,11 @@
 	..()
 	parent_rune = rune
 
-/datum/action/close_window/Trigger(trigger_flags)
+/datum/action/close_window/Trigger(mob/clicker, trigger_flags)
+	. = ..()
+	if(!.)
+		return
+
 	if(!parent_rune || !usr)
 		return
 	parent_rune.close_window(usr)

@@ -4,6 +4,7 @@
 	icon_state = "quietus"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/quietus
+	signature_clan = VAMPIRE_CLAN_BANU_HAQIM
 
 /datum/discipline_power/quietus
 	name = "Quietus power name"
@@ -48,7 +49,7 @@
 
 /datum/discipline_power/quietus/scorpions_touch/pre_activation_checks(atom/target)
 	. = ..()
-	var/success_count = SSroll.storyteller_roll(dice = owner.st_get_stat(STAT_PERMANENT_WILLPOWER), difficulty = 6, mobs_to_show_output = owner, alert_atom = owner, numerical = TRUE)
+	var/success_count = SSroll.storyteller_roll(dice = owner.st_get_stat(STAT_PERMANENT_WILLPOWER), difficulty = 6, roller = owner, numerical = TRUE)
 
 	if(success_count <= 0)
 		to_chat(owner, span_warning("Your blood fails to transform into poison!"))
@@ -191,9 +192,9 @@
 	var/victim_stamina = victim.st_get_stat(STAT_STAMINA)
 	var/victim_willpower = victim.st_get_stat(STAT_PERMANENT_WILLPOWER)
 
-	var/attacker_successes = SSroll.storyteller_roll(attacker_stamina, victim_willpower, numerical = TRUE, mobs_to_show_output = owner)
+	var/attacker_successes = SSroll.storyteller_roll(attacker_stamina, victim_willpower, numerical = TRUE, roller = owner)
 
-	var/victim_successes = SSroll.storyteller_roll(victim_stamina, victim_willpower, numerical = TRUE, mobs_to_show_output = victim)
+	var/victim_successes = SSroll.storyteller_roll(victim_stamina, victim_willpower, numerical = TRUE, roller = victim)
 
 	var/net_successes = attacker_successes - victim_successes
 
@@ -258,7 +259,7 @@
 	var/layers = tgui_input_number(owner, "How many blood points do you want to use?", "Baal's Caress", 1, max_layers, 1)
 	if(!layers)
 		return
-	user.bloodpool -= layers
+	user.adjust_blood_pool(-layers)
 	target.AddComponent(/datum/component/baals_caress, owner, layers)
 	to_chat(owner, span_notice("You imbue [target] with [layers] layer\s of your toxic vitae!"))
 
@@ -301,7 +302,7 @@
 	firing_effect_type = null
 	item_flags = DROPDEL
 
-/obj/item/gun/magic/quietus/process_fire()
+/obj/item/gun/magic/quietus/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	. = ..()
 	if(charges == 0)
 		qdel(src)
@@ -315,12 +316,12 @@
 			target.adjust_blood_points(-transfered)
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		H.remove_overlay(MUTATIONS_LAYER)
-		var/mutable_appearance/quietus_overlay = mutable_appearance('modular_darkpack/modules/deprecated/icons/icons.dmi', "quietus", -MUTATIONS_LAYER)
-		H.overlays_standing[MUTATIONS_LAYER] = quietus_overlay
-		H.apply_overlay(MUTATIONS_LAYER)
+		H.remove_overlay(POWERS_LAYER)
+		var/mutable_appearance/quietus_overlay = mutable_appearance('modular_darkpack/modules/deprecated/icons/icons.dmi', "quietus", -POWERS_LAYER)
+		H.overlays_standing[POWERS_LAYER] = quietus_overlay
+		H.apply_overlay(POWERS_LAYER)
 		spawn(5*level_casting)
-			H.remove_overlay(MUTATIONS_LAYER)
+			H.remove_overlay(POWERS_LAYER)
 */
 
 /datum/discipline_power/quietus/taste_of_death

@@ -80,6 +80,11 @@ GLOBAL_LIST_INIT(caesar_cipher, list(
 		return final_message
 
 
+/datum/storyteller_roll/sarcophagus_cipher
+	bumper_text = "examine"
+	difficulty = 10
+	applicable_stats = list(STAT_INTELLIGENCE, STAT_OCCULT)
+	reroll_cooldown = 1 SCENES
 
 /obj/sarcophagus
 	name = "unknown sarcophagus"
@@ -88,29 +93,28 @@ GLOBAL_LIST_INIT(caesar_cipher, list(
 	icon_state = "b_sarcophagus"
 	// layer = CAR_LAYER
 	density = TRUE
-	anchored = TRUE
+	anchored = FALSE
 	pixel_w = -8
-	COOLDOWN_DECLARE(roll_cooldown)
 	var/password = "Brongus"
 	var/passkey = 5
+	var/datum/storyteller_roll/sarcophagus_cipher/cipher_roll
 
 /obj/sarcophagus/Initialize(mapload)
 	. = ..()
 	password = pick(GLOB.sarcophagus_passwords)
-	if(prob(50))
-		passkey = rand(5, 15)
-	else
-		passkey = rand(-15, -5)
+	passkey = rand(5, 15)
+
 	//to_chat(world, span_userdanger("<b>UNKNOWN SARCOPHAGUS POSITION HAS BEEN LEAKED</b>"))
-	SEND_SOUND(world, sound('modular_darkpack/master_files/sounds/announce.ogg'))
+	//if(!mapload)
+	//	SEND_SOUND(world, sound('modular_darkpack/master_files/sounds/announce.ogg'))
 
 /obj/sarcophagus/examine(mob/user)
 	. = ..()
 	var/message = "You see an engraved text on it: <b>[encipher(password, passkey)]</b>."
-	if(isliving(user) && COOLDOWN_FINISHED(src, roll_cooldown))
-		COOLDOWN_START(src, roll_cooldown, 1 SCENES)
-		var/mob/living/living_user = user
-		var/roll_result = SSroll.storyteller_roll(living_user.st_get_stat(STAT_INTELLIGENCE) + living_user.st_get_stat(STAT_OCCULT), 10, list(user), user)
+	if(isliving(user))
+		if(!cipher_roll)
+			cipher_roll = new()
+		var/roll_result = cipher_roll.st_roll(user, src)
 		if(roll_result == ROLL_SUCCESS)
 			message += " It's an ancient cipher. You shift letters in your head till you end up with [uppertext(password)]."
 		else
@@ -124,16 +128,50 @@ GLOBAL_LIST_INIT(caesar_cipher, list(
 		if(!pass)
 			return ITEM_INTERACT_BLOCKING
 		if(password == uppertext(pass))
-			icon_state = "b_sarcophagus-open1"
-			to_chat(world, span_userdanger("<b>UNKNOWN SARCOPHAGUS HAS BEEN OPENED</b>"))
-			SEND_SOUND(world, sound('modular_darkpack/master_files/sounds/announce.ogg'))
-			var/sound_length = SSsounds.get_sound_length(OPEN_SOUND)
-			playsound(src, OPEN_SOUND, 100, FALSE)
-			spawn(sound_length)
-				icon_state = "b_sarcophagus-open0"
-				new /mob/living/simple_animal/hostile/megafauna/wendigo/antediluvian(loc)
-		return ITEM_INTERACT_SUCCESS
+			open_the_sarcophagus()
+			return ITEM_INTERACT_SUCCESS
+
+/obj/sarcophagus/proc/open_the_sarcophagus()
+	icon_state = "b_sarcophagus-open1"
+	to_chat(world, span_userdanger("<b>UNKNOWN SARCOPHAGUS HAS BEEN OPENED</b>"))
+	SEND_SOUND(world, sound('modular_darkpack/master_files/sounds/announce.ogg'))
+	var/sound_length = SSsounds.get_sound_length(OPEN_SOUND)
+	playsound(src, OPEN_SOUND, 100, FALSE)
+	spawn(sound_length)
+		icon_state = "b_sarcophagus-open0"
+		if(prob(50))
+			new /mob/living/simple_animal/hostile/megafauna/wendigo/antediluvian(loc)
+		else
+			new /mob/living/simple_animal/hostile/megafauna/colossus/antediluvian(loc)
 #undef OPEN_SOUND
+
+/obj/sarcophagus/bomb
+
+/obj/sarcophagus/bomb/open_the_sarcophagus()
+	icon_state = "b_sarcophagus-open2"
+	to_chat(world, span_userdanger("<b>UNKNOWN SARCOPHAGUS HAS BEEN OPENED</b>"))
+	SEND_SOUND(world, sound('modular_darkpack/master_files/sounds/announce.ogg'))
+	playsound(src, 'sound/items/weapons/armbomb.ogg', 100, FALSE)
+	anchored = TRUE
+	addtimer(CALLBACK(src, PROC_REF(explode)), 6 SECONDS)
+
+/obj/sarcophagus/bomb/proc/explode()
+	explosion(src, devastation_range = 2, heavy_impact_range = 7, light_impact_range = 11)
+	qdel(src)
+	priority_announce(
+		"BREAKING NEWS!!! A massive explosion has been reported in your area. First responders are advised to rush to the scene as soon as possible to rescue any survivors and a curfew is issued immediately to all citizens until the city is safe.",
+		"EMERGENCY BREAKING NEWS",
+		'modular_darkpack/modules/events/sounds/news_notification.ogg',
+		ANNOUNCEMENT_TYPE_PRIORITY,
+		color_override = "red",
+	)
+
+/obj/sarcophagus/empty
+
+/obj/sarcophagus/empty/open_the_sarcophagus()
+	icon_state = "b_sarcophagus-open0"
+	to_chat(world, span_userdanger("<b>UNKNOWN SARCOPHAGUS HAS BEEN OPENED</b>"))
+	SEND_SOUND(world, sound('modular_darkpack/master_files/sounds/announce.ogg'))
 
 /obj/fake_sarcophagus
 	name = "unknown sarcophagus"

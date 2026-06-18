@@ -17,8 +17,6 @@
 	/// my_backup_weapon = type_path
 	/// This only determines my_weapon, you set my_backup_weapon yourself
 	/// The last entry in the list for a type of NPC should always have 100 as the index
-	// DARKPACK TODO - reimplement weapons
-	/*
 	var/static/list/role_weapons_chances = list(
 		BANDIT_TYPE_NPC = list(
 			/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle = 33,
@@ -30,7 +28,6 @@
 			/obj/item/gun/ballistic/automatic/darkpack/ar15 = 100,
 		)
 	)
-	*/
 	var/datum/socialrole/socialrole
 
 	var/is_talking = FALSE
@@ -94,18 +91,14 @@
 	RegisterSignal(src, COMSIG_LIVING_MOB_BUMPED, PROC_REF(handle_bumped))
 	// Be annoyed if helped
 	RegisterSignal(src, COMSIG_CARBON_HELP_ACT, PROC_REF(handle_helped))
-
 	return INITIALIZE_HINT_LATELOAD
 
 /mob/living/carbon/human/npc/LateInitialize(mapload)
-	// DARKPACK TODO - reimplement weapons
-	/*
 	if (role_weapons_chances.Find(type))
 		for(var/weapon in role_weapons_chances[type])
 			if(prob(role_weapons_chances[type][weapon]))
 				my_weapon = new weapon(src)
 				break
-	*/
 
 	if (!my_weapon && my_weapon_type)
 		my_weapon = new my_weapon_type(src)
@@ -124,6 +117,7 @@
 		register_sticky_item(my_backup_weapon)
 
 /mob/living/carbon/human/npc/Destroy()
+	UnregisterSignal(src, list(COMSIG_ATOM_WAS_ATTACKED, COMSIG_LIVING_MOB_BUMPED, COMSIG_CARBON_HELP_ACT))
 	QDEL_NULL(socialrole)
 	danger_source = null
 	QDEL_NULL(afraid_of_fire)
@@ -173,15 +167,17 @@
 		return
 	is_talking = TRUE
 
-	addtimer(CALLBACK(src, PROC_REF(start_talking), message), 0.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(start_talking), message), 1 SECONDS)
 
 /mob/living/carbon/human/npc/proc/start_talking(message)
+	ADD_TRAIT(src, TRAIT_THINKING_IN_CHARACTER, CURRENTLY_TYPING_TRAIT)
 	create_typing_indicator()
 	var/typing_delay = round(length_char(message) * 0.5)
-	addtimer(CALLBACK(src, PROC_REF(finish_talking), message), max(0.1 SECONDS, typing_delay))
+	addtimer(CALLBACK(src, PROC_REF(finish_talking), message), max(3 SECONDS, typing_delay))
 
 /mob/living/carbon/human/npc/proc/finish_talking(message)
 	remove_typing_indicator()
+	REMOVE_TRAIT(src, TRAIT_THINKING_IN_CHARACTER, CURRENTLY_TYPING_TRAIT)
 	say(message)
 	is_talking = FALSE
 
@@ -200,14 +196,14 @@
 	if(source)
 		addtimer(CALLBACK(src, PROC_REF(face_atom), source), rand(0.3 SECONDS, 0.7 SECONDS))
 
-	var/phrase
+	var/phrase = "Wow."
 	if (prob(50))
-		phrase = pick(socialrole.neutral_phrases)
+		phrase = pick(socialrole?.neutral_phrases)
 	else
 		if (gender == MALE)
-			phrase = pick(socialrole.male_phrases)
+			phrase = pick(socialrole?.male_phrases)
 		else
-			phrase = pick(socialrole.female_phrases)
+			phrase = pick(socialrole?.female_phrases)
 	realistic_say(phrase)
 
 /mob/living/carbon/human/npc/proc/handle_attacked(datum/source, atom/attacker, attack_flags)
@@ -221,7 +217,7 @@
 /mob/living/carbon/human/npc/proc/handle_bumped(mob/living/carbon/human/npc/source, mob/living/bumping)
 	SIGNAL_HANDLER
 
-	if (bumping.can_mobswap_with(source))
+	if (bumping.can_mobswap_with(source) && prob(25))
 		return
 
 	source.Annoy(bumping)

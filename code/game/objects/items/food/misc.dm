@@ -225,8 +225,9 @@
 	var/bad_food_amount = 0
 	for(var/datum/reagent/consumable/food_reagent in reagents.reagent_list)
 		var/amount_to_remove = food_reagent.volume * rand(6, 8) * 0.1 //around 60% to 80% of the volume is to be converted.
-		reagents.remove_reagent(food_reagent.type, amount_to_remove, safety = FALSE)
+		food_reagent.volume -= amount_to_remove
 		bad_food_amount += amount_to_remove
+	reagents.update_total()
 	reagents.add_reagent(/datum/reagent/toxin/bad_food, bad_food_amount, reagtemp = reagents.chem_temp)
 
 /obj/item/food/badrecipe/Destroy(force)
@@ -269,7 +270,7 @@
 		/datum/reagent/toxin = 2,
 	)
 	tastes = list("cobwebs" = 1)
-	foodtypes = MEAT | TOXIC | BUGS
+	foodtypes = MEAT | TOXIC | BUGS | EGG
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/food/spidereggs/processed
@@ -339,7 +340,7 @@
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/powercrepe
-	name = "Powercrepe"
+	name = "powercrepe"
 	desc = "With great power, comes great crepes.  It looks like a pancake filled with jelly but packs quite a punch."
 	icon_state = "powercrepe"
 	inhand_icon_state = "powercrepe"
@@ -467,6 +468,7 @@
 	venue_value = FOOD_PRICE_CHEAP
 	crafting_complexity = FOOD_COMPLEXITY_3
 	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT)
+	custom_price = 2 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/food/pesto
 	name = "pesto"
@@ -594,6 +596,7 @@
 	foodtypes = VEGETABLES|GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
+	custom_price = 1 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/food/onigiri/Initialize(mapload)
 	. = ..()
@@ -663,6 +666,7 @@
 	foodtypes = GRAIN | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
+	custom_price = 1 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/food/cheese_pierogi
 	name = "cheese pierogi"

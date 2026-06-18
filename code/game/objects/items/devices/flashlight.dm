@@ -60,7 +60,7 @@
 	init_slapcrafting()
 
 /obj/item/flashlight/proc/init_slapcrafting()
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/flashlight_eyes)
 
 	AddElement(
@@ -468,9 +468,15 @@
 		/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5,
 		/datum/material/plastic = SMALL_MATERIAL_AMOUNT * 0.5,
 	)
+	/// Lighting middleman, lets us do a flicker effect
+	var/datum/light_middleman/middleman
 
 /obj/item/flashlight/flare/Initialize(mapload)
 	. = ..()
+	if(IS_OVERLAY_LIGHT_SYSTEM(light_system))
+		middleman = new(src, "flashlight")
+		RegisterSignal(middleman, COMSIG_LIGHT_MIDDLEMAN_UPDATED, PROC_REF(light_updated))
+		middleman.being_overriding_light()
 	if(randomize_fuel)
 		fuel = rand(10 MINUTES, 15 MINUTES)
 	if(light_on)
@@ -489,6 +495,8 @@
 
 /obj/item/flashlight/flare/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	if(middleman)
+		QDEL_NULL(middleman)
 	return ..()
 
 /obj/item/flashlight/flare/afterattack(atom/target, mob/user, click_parameters)
@@ -521,6 +529,10 @@
 	force = initial(force)
 	damtype = initial(damtype)
 	update_brightness()
+
+/obj/item/flashlight/flare/proc/light_updated(datum/source)
+	SIGNAL_HANDLER
+	fire_flicker_middleman(middleman)
 
 /obj/item/flashlight/flare/extinguish()
 	. = ..()
@@ -587,7 +599,7 @@
 	light_range = 2
 	light_power = 1.5
 	light_color = LIGHT_COLOR_FIRE
-	fuel = 35 MINUTES
+	fuel = 1 HOURS // DARKPACK EDIT CHANGE - (QOL for longer candles)
 	randomize_fuel = FALSE
 	trash_type = /obj/item/trash/candle
 	can_be_extinguished = TRUE
@@ -1201,8 +1213,8 @@
 		return FALSE
 	var/datum/gas_mixture/environment = loc?.return_air()
 	var/affected_pressure = environment.return_pressure()
-	if(!light_on && (affected_pressure < ONE_ATMOSPHERE))
-		user.balloon_alert(user, "no pressure!")
+	if(!light_on && (affected_pressure < ONE_ATMOSPHERE - 1))
+		user.balloon_alert(user, "[affected_pressure < HAZARD_LOW_PRESSURE? "no" : "low"] pressure!")
 		return FALSE
 	. = ..()
 	if(light_on)

@@ -25,7 +25,7 @@
 
 		Aggro(H, FALSE)
 
-// DARKPACK TODO: create a police npc that just stands there
+// There was a todo here for creating a npc that stands still. But it seems like we did implement that behavoir
 /mob/living/carbon/human/npc/police/static
 	// fights_anyway = TRUE
 	staying = TRUE
@@ -33,7 +33,7 @@
 	my_backup_weapon_type = /obj/item/melee/baton/vamp
 
 /*
-/mob/living/carbon/human/npc/police/Initialize()
+/mob/living/carbon/human/npc/police/Initialize(mapload)
 	. = ..()
 
 	if(prob(66))

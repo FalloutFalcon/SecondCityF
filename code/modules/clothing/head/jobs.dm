@@ -124,6 +124,12 @@
 	icon_state = "capcap"
 	dog_fashion = null
 
+/obj/item/clothing/head/hats/caphat/bicorne
+	name = "captain's bicorne"
+	desc = "Why be king when you can be Emperor?"
+	icon_state = "capbicorne"
+	dog_fashion = null
+
 /obj/item/clothing/head/caphat/beret
 	name = "captain's beret"
 	desc = "For the Captains known for their sense of fashion."
@@ -132,6 +138,7 @@
 	post_init_icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_onfloor = /datum/greyscale_config/beret_badge/onfloor // DARKPACK EDIT ADD - ONFLOOR_ICONS
 	greyscale_colors = "#0070B7#FFCE5B"
 	hair_mask = /datum/hair_mask/standard_hat_middle
 
@@ -187,7 +194,6 @@
 	/// Cooldown for retrieving precious candy corn with rmb
 	COOLDOWN_DECLARE(candy_cooldown)
 
-
 /datum/armor/fedora_det_hat
 	melee = 25
 	bullet = 5
@@ -238,6 +244,12 @@
 
 /obj/item/clothing/head/fedora/det_hat/minor
 	flask_path = /obj/item/reagent_containers/cup/glass/flask/det/minor
+
+/obj/item/clothing/head/fedora/det_hat/noir
+	name = "detective's noir fedora"
+	desc = "There's only one man who can recklessly discharge a firearm into a crowded street while trying to stop a criminal, \
+		and he's likely wearing this hat."
+	icon_state = /obj/item/clothing/head/fedora::icon_state
 
 ///Detectives Fedora, but like Inspector Gadget. Not a subtype to not inherit candy corn stuff
 /obj/item/clothing/head/fedora/inspector_hat
@@ -295,7 +307,7 @@
 		var/obj/item/found_item = items_by_regex[found_regex]
 		. += span_notice("[icon2html(found_item, user)] You can remove [found_item] by saying <b>\"[prefix] [found_phrase]\"</b>!")
 
-/obj/item/clothing/head/fedora/inspector_hat/Hear(atom/movable/speaker, message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range, source) // DARKPACK EDIT, ORIGINAL: /obj/item/clothing/head/fedora/inspector_hat/Hear(atom/movable/speaker, message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range)
+/obj/item/clothing/head/fedora/inspector_hat/Hear(atom/movable/speaker, message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range, source) // DARKPACK EDIT CHANGE - ORIGINAL: /obj/item/clothing/head/fedora/inspector_hat/Hear(atom/movable/speaker, message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range)
 	. = ..()
 	var/mob/living/carbon/wearer = loc
 	if(!istype(wearer) || speaker != wearer) //if we are worn
@@ -393,6 +405,7 @@
 	post_init_icon_state = "beret"
 	greyscale_config = /datum/greyscale_config/beret
 	greyscale_config_worn = /datum/greyscale_config/beret/worn
+	greyscale_config_onfloor = /datum/greyscale_config/beret/onfloor // DARKPACK EDIT ADD - ONFLOOR_ICONS
 	greyscale_colors = "#972A2A"
 	flags_1 = IS_PLAYER_COLORABLE_1
 	hair_mask = /datum/hair_mask/standard_hat_middle
@@ -454,6 +467,7 @@
 	post_init_icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_onfloor = /datum/greyscale_config/beret_badge/onfloor // DARKPACK EDIT ADD - ONFLOOR_ICONS
 	greyscale_colors = "#39393f#f0cc8f"
 	hair_mask = /datum/hair_mask/standard_hat_middle
 
@@ -571,6 +585,7 @@
 	post_init_icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_onfloor = /datum/greyscale_config/beret_badge/onfloor // DARKPACK EDIT ADD - ONFLOOR_ICONS
 	greyscale_colors = "#a52f29#F2F2F2"
 	armor_type = /datum/armor/cosmetic_sec
 	strip_delay = 6 SECONDS
@@ -613,6 +628,7 @@
 	post_init_icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_onfloor = /datum/greyscale_config/beret_badge/onfloor // DARKPACK EDIT ADD - ONFLOOR_ICONS
 	greyscale_colors = "#7e1980#c9cbcb"
 
 //Medical
@@ -713,7 +729,7 @@
 	. = ..()
 	UnregisterSignal(user, COMSIG_MOB_EXAMINING_MORE)
 
-/obj/item/clothing/head/utility/head_mirror/proc/examining(mob/living/examiner, atom/examining, list/examine_list)
+/obj/item/clothing/head/utility/head_mirror/proc/examining(mob/living/examiner, atom/examining, list/examine_list, list/examine_overrides)
 	SIGNAL_HANDLER
 	if(!ishuman(examining) || examining == examiner || examiner.is_blind() || !examiner.Adjacent(examining))
 		return
@@ -797,6 +813,7 @@
 	post_init_icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_onfloor = /datum/greyscale_config/beret_badge/onfloor // DARKPACK EDIT ADD - ONFLOOR_ICONS
 	greyscale_colors = "#C5D4F3#ECF1F8"
 	armor_type = /datum/armor/beret_durathread
 
@@ -826,6 +843,7 @@
 	post_init_icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_onfloor = /datum/greyscale_config/beret_badge/onfloor // DARKPACK EDIT ADD - ONFLOOR_ICONS
 	greyscale_colors = "#46b946#f2c42e"
 	armor_type = /datum/armor/beret_centcom_formal
 	strip_delay = 10 SECONDS
@@ -855,5 +873,6 @@
 	post_init_icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_onfloor = /datum/greyscale_config/beret_badge/onfloor // DARKPACK EDIT ADD - ONFLOOR_ICONS
 	greyscale_colors = "#43523d#a2abb0"
 	armor_type = /datum/armor/cosmetic_sec

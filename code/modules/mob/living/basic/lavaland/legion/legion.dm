@@ -75,7 +75,7 @@
 /mob/living/basic/mining/legion/update_overlays()
 	. = ..()
 	if (stat != DEAD && has_emissive) // Shouldn't really happen but just in case
-		. += emissive_appearance(icon, "[icon_living]_e", src, effect_type = EMISSIVE_NO_BLOOM)
+		. += emissive_appearance(icon, "[icon_living]_e", src, effect_type = EMISSIVE_BLOOM)
 
 /// Put a corpse in this guy
 /mob/living/basic/mining/legion/proc/consume(mob/living/carbon/human/consumed)
@@ -164,17 +164,18 @@
 	pixel_x = -16
 	sentience_type = SENTIENCE_BOSS
 	has_emissive = FALSE
+	var/spawn_type = /mob/living/basic/mining/legion // APOC EDIT ADD - (Gray masses)
 
 /mob/living/basic/mining/legion/large/Initialize(mapload)
 	. = ..()
 	AddComponent(\
 		/datum/component/spawner,\
-		spawn_types = list(/mob/living/basic/mining/legion),\
+		spawn_types = list(spawn_type),\
 		spawn_time = 20 SECONDS,\
 		max_spawned = 3,\
 		spawn_text = "peels itself off from",\
 		faction = faction,\
-	)
+	) // APOC EDIT CHANGE - (Gray masses)
 
 /// Create what we want to drop on death, in proc form so we can always return a static list
 /mob/living/basic/mining/legion/large/get_loot_list()

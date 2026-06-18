@@ -1,4 +1,4 @@
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/durathread_vest
 	name = "Durathread Vest"
 	result = /obj/item/clothing/suit/armor/vest/durathread
@@ -118,13 +118,6 @@
 	time = 4 SECONDS
 	category = CAT_CLOTHING
  */
-/datum/crafting_recipe/grass_sheath
-	name = "Grass Sabre Sheath"
-	result = /obj/item/storage/belt/sheath/grass_sabre
-	reqs = list(/obj/item/food/grown/grass = 4,
-				/obj/item/food/grown/grass/fairy = 2)
-	time = 4 SECONDS
-	category = CAT_CONTAINERS
 
 /datum/crafting_recipe/fannypack
 	name = "Fannypack"
@@ -133,7 +126,42 @@
 				/obj/item/stack/sheet/leather = 1)
 	time = 2 SECONDS
 	category = CAT_CONTAINERS
-/* // DARKPACK EDIT REMOVE
+
+/datum/crafting_recipe/grass_sheath
+	name = "Grass Sabre Sheath"
+	result = /obj/item/storage/belt/sheath/grass_sabre
+	reqs = list(/obj/item/food/grown/grass = 4,
+				/obj/item/food/grown/grass/fairy = 2)
+	time = 4 SECONDS
+	category = CAT_CONTAINERS
+
+/* // DARKPACK EDIT REMOVAL
+/datum/crafting_recipe/gunsheath
+	name = "Gun Powered Sabre Sheath"
+	result = /obj/item/storage/belt/sheath/sabre/gunpowered
+	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WRENCH)
+	reqs = list(/datum/reagent/gunpowder = 15,
+		/obj/item/storage/belt/sheath/sabre = 1,
+		/obj/item/weaponcrafting/receiver = 1,
+		/obj/item/stack/cable_coil = 5,
+	)
+	time = 15 SECONDS
+	category = CAT_EQUIPMENT
+	crafting_flags = parent_type::crafting_flags | CRAFT_SKIP_MATERIALS_PARITY
+
+/datum/crafting_recipe/grass_gunsheath
+	name = "Gun Powered Grass Sabre Sheath"
+	result = /obj/item/storage/belt/sheath/grass_sabre/gunpowered
+	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WRENCH)
+	reqs = list(/datum/reagent/gunpowder = 15,
+		/obj/item/storage/belt/sheath/grass_sabre = 1,
+		/obj/item/weaponcrafting/receiver = 1,
+		/obj/item/stack/cable_coil = 5,
+	)
+	time = 15 SECONDS
+	category = CAT_EQUIPMENT
+	crafting_flags = parent_type::crafting_flags | CRAFT_SKIP_MATERIALS_PARITY
+
 /datum/crafting_recipe/hudsunsec
 	name = "Security HUDsunglasses"
 	result = /obj/item/clothing/glasses/hud/security/sunglasses
@@ -217,7 +245,7 @@
 	tool_behaviors = list(TOOL_WIRECUTTER)
 	reqs = list(/obj/item/bedsheet = 1)
 	category = CAT_CLOTHING
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/lizardboots
 	name = "Lizard Skin Boots"
 	result = /obj/item/clothing/shoes/cowboy/lizard
@@ -287,7 +315,7 @@
 		/obj/item/stack/sheet/animalhide/goliath_hide = 3,
 	)
 	category = CAT_CLOTHING
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/bonetalisman
 	name = "Bone Talisman"
 	result = /obj/item/clothing/accessory/talisman
@@ -357,7 +385,7 @@
 	time = 3 SECONDS
 	reqs = list(/obj/item/stack/sheet/bone = 4)
 	category = CAT_CLOTHING
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/goliathcloak
 	name = "Goliath Cloak"
 	result = /obj/item/clothing/suit/hooded/cloak/goliath
@@ -480,7 +508,7 @@
 	result = /obj/item/clothing/suit/pillow_suit
 	time = 2 SECONDS
 	reqs = list(
-		/obj/item/stack/sticky_tape = 10,
+		/obj/item/stack/medical/wrap/sticky_tape = 10,
 		/obj/item/pillow = 5,
 	)
 	category = CAT_CLOTHING
@@ -491,7 +519,7 @@
 	tool_behaviors = list(TOOL_WIRECUTTER, TOOL_KNIFE)
 	time = 2 SECONDS
 	reqs = list(
-		/obj/item/stack/sticky_tape = 5,
+		/obj/item/stack/medical/wrap/sticky_tape = 5,
 		/obj/item/pillow = 1,
 	)
 	category = CAT_CLOTHING
@@ -529,7 +557,7 @@
 	)
 
 	category = CAT_CLOTHING
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/atmospherics_gas_mask
 	name = "atmospherics gas mask"
 	result = /obj/item/clothing/mask/gas/atmos
@@ -551,7 +579,7 @@
 		/obj/item/paper = 1,
 	)
 	category = CAT_CLOTHING
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/biohood_sec
 	name = "security biohood"
 	result = /obj/item/clothing/head/bio_hood/security

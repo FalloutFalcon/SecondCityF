@@ -7,7 +7,7 @@
 /datum/discipline_power/animalism
 	name = "Animalism power name"
 	desc = "Animalism power description"
-	effect_sound = 'modular_darkpack/modules/deprecated/sounds/wolves.ogg'
+	effect_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/gifts/wolves.ogg'
 
 /datum/discipline_power/animalism/activate()
 	. = ..()
@@ -64,7 +64,7 @@
 
 /datum/discipline_power/animalism/summon_wolf/activate()
 	. = ..()
-	owner.add_beastmaster_minion(/mob/living/basic/pet/dog/darkpack/summoned)
+	owner.add_beastmaster_minion(/mob/living/basic/pet/dog/wolf/summoned)
 
 //SUMMON BAT
 /datum/discipline_power/animalism/summon_bat
@@ -138,6 +138,7 @@
 	melee_damage_lower = 3
 	melee_damage_upper = 8
 	obj_damage = 10
+	bloodpool = 2
 
 /mob/living/basic/mouse/vampire/summoned/Initialize(mapload)
 	AddElement(/datum/element/ai_retaliate)
@@ -153,6 +154,7 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 12
 	obj_damage = 15
+	bloodpool = 2
 
 /mob/living/basic/pet/cat/darkpack/summoned/Initialize(mapload)
 	. = ..()
@@ -160,7 +162,7 @@
 	if(old)
 		qdel(old)
 
-/mob/living/basic/pet/dog/darkpack/summoned
+/mob/living/basic/pet/dog/wolf/summoned
 	name = "wolf"
 	desc = "A wolf bound to its master's will."
 	ai_controller = /datum/ai_controller/basic_controller/beastmaster_summon
@@ -175,9 +177,10 @@
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
 	attack_sound = 'modular_darkpack/modules/deprecated/sounds/dog.ogg'
-	random_dog_color = FALSE
+	random_wolf_color = FALSE
+	bloodpool = 2
 
-/mob/living/basic/pet/dog/darkpack/summoned/Initialize(mapload)
+/mob/living/basic/pet/dog/wolf/summoned/Initialize(mapload)
 	. = ..()
 	var/datum/component/obeys_commands/old = GetComponent(/datum/component/obeys_commands)
 	if(old)
@@ -192,6 +195,7 @@
 	obj_damage = 10
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
+	bloodpool = 2
 
 /mob/living/basic/bat/summoned/Initialize(mapload)
 	. = ..()

@@ -82,6 +82,7 @@
 	reagents.clear_reagents()
 	seed.prepare_result(src)
 	transform *= TRANSFORM_USING_VARIABLE(seed.potency, 100) + 0.5 //Makes the resulting produce's sprite larger or smaller based on potency!
+	ADD_TRAIT(src, TRAIT_VALID_DNA_INFUSION, INNATE_TRAIT)
 
 	AddElement(/datum/element/contextual_screentip_sharpness, rmb_text = "Extract Seed") // DARKPACK EDIT ADD
 
@@ -107,11 +108,12 @@
 
 	return new trash_type(location || drop_location())
 
-/obj/item/food/grown/blend_requirements()
-	if(dry_grind && !HAS_TRAIT(src, TRAIT_DRIED))
-		to_chat(usr, span_warning("[src] needs to be dry before it can be ground up!"))
-		return
-	return TRUE
+/obj/item/food/grown/blend_requirements(atom/movable/grinder, mob/living/user)
+	if(!dry_grind || HAS_TRAIT(src, TRAIT_DRIED))
+		return TRUE
+	if (user)
+		to_chat(user, span_warning("[src] needs to be dry before it can be ground up!"))
+	return FALSE
 
 /// Turns the nutriments and vitamins into the distill reagent or fruit wine
 /obj/item/food/grown/proc/ferment()

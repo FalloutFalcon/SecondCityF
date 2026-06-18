@@ -1,5 +1,5 @@
 /obj/ritual_rune/thaumaturgy/gargoyle
-	name = "gargoyle transformation"
+	name = "at our command it breathes"
 	desc = "Create a Gargoyle from vampire bodies. One body creates a normal Gargoyle, two bodies create a perfect Gargoyle."
 	icon_state = "rune9"
 	word = "FORMA-GARGONEM"
@@ -11,18 +11,17 @@
 	var/list/valid_bodies = list()
 
 	for(var/mob/living/carbon/human/H in loc)
-		if(iskindred(H))
+		if(get_kindred_splat(H))
 			if(H == usr)
 				to_chat(usr, span_warning("You may not turn yourself into a Gargoyle!"))
 				return
-			else if(H.is_clan(/datum/vampire_clan/gargoyle))
+			else if(H.is_clan(/datum/subsplat/vampire_clan/gargoyle))
 				to_chat(usr, span_warning("You may not use this ritual on a Gargoyle!"))
 				return
 			else if(H.stat > SOFT_CRIT)
 				valid_bodies += H
 			else
 				H.adjust_agg_loss(50)
-				playsound(loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 10, FALSE)
 				to_chat(usr, "Your specimen must be incapacitated! The ritual has merely hurt them!")
 				return
 
@@ -36,9 +35,7 @@
 	to_chat(usr, span_notice("You begin invoking the ritual of Gargoyle Creation with [body_count] vampire bod[body_count == 1 ? "y" : "ies"]..."))
 	usr.visible_message(span_notice("[usr] begins invoking a ritual with [body_count] vampire bod[body_count == 1 ? "y" : "ies"]..."))
 
-	playsound(loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 50, FALSE)
-	// DARKPACK TODO - vicissitude, when its reintroduced re-path this
-	playsound(loc, 'modular_darkpack/modules/deprecated/sounds/vicissitude.ogg', 50, FALSE)
+	playsound(loc, 'modular_darkpack/modules/powers/sounds/vicissitude.ogg', 50, FALSE)
 
 	// Apply stun so that they cant just crawl away in crit - caster must also stay still
 	for(var/mob/living/carbon/human/H in valid_bodies)
@@ -106,7 +103,7 @@
 		addtimer(CALLBACK(src, PROC_REF(perfect_gargoyle_check_ai), G, last_activator), 31 SECONDS)
 
 		playsound(loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 50, FALSE)
-		playsound(loc, 'modular_darkpack/modules/deprecated/sounds/vicissitude.ogg', 50, FALSE)
+		playsound(loc, 'modular_darkpack/modules/powers/sounds/vicissitude.ogg', 50, FALSE)
 	else
 		// Create normal sentient gargoyle (1 body)
 		var/mob/living/carbon/human/target_body = bodies[1]
@@ -126,7 +123,7 @@
 		// Revive the specimen and turn them into a gargoyle kindred
 		target_body.revive(TRUE)
 		target_body.adjust_agg_loss(-100)
-		target_body.set_clan(/datum/vampire_clan/gargoyle)
+		target_body.set_clan(/datum/subsplat/vampire_clan/gargoyle)
 		target_body.blood_bond(usr)
 		target_body.real_name = old_name // the ritual for some reason is deleting their old name and replacing it with a random name.
 		target_body.name = old_name
@@ -138,7 +135,7 @@
 			target_body.forceMove(original_location)
 
 		playsound(loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 50, FALSE)
-		playsound(target_body.loc, 'modular_darkpack/modules/deprecated/sounds/vicissitude.ogg', 50, FALSE)
+		playsound(target_body.loc, 'modular_darkpack/modules/powers/sounds/vicissitude.ogg', 50, FALSE)
 
 		// Handle key assignment
 		if(!target_body.key)
@@ -202,7 +199,7 @@
 	maxbloodpool = 15
 	ai_controller = null // Start with no AI, will be assigned if no player takes it
 
-/mob/living/basic/gargoyle/perfect/Initialize()
+/mob/living/basic/gargoyle/perfect/Initialize(mapload)
 	. = ..()
 	// Make the perfect gargoyle slightly larger
 	transform = transform.Scale(1.10, 1.10)

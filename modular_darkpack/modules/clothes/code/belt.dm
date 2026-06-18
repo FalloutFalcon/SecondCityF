@@ -1,5 +1,5 @@
 /datum/storage/holster/darkpack
-	max_slots = 3 // Pistol + two mags // TODO: Gridventory
+	max_slots = 3 // Pistol + two mags
 	max_total_storage = 16
 	open_sound = 'sound/items/handling/holster_open.ogg'
 	open_sound_vary = TRUE
@@ -40,8 +40,8 @@
 
 /obj/item/storage/belt/holster/detective/darkpack/fbi/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/pistol/darkpack/glock21(src)
-	new /obj/item/ammo_box/magazine/glock45acp(src)
-	new /obj/item/ammo_box/magazine/glock45acp(src)
+	new /obj/item/ammo_box/magazine/glock45acp/hp(src)
+	new /obj/item/ammo_box/magazine/glock45acp/hp(src)
 
 /obj/item/storage/belt/holster/detective/darkpack/endron
 

@@ -38,9 +38,6 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	fire = 50
 	acid = 100
 
-/obj/item/stack/sheet/glass/grind_results()
-	return list(/datum/reagent/silicon = 20)
-
 /obj/item/stack/sheet/glass/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] begins to slice [user.p_their()] neck with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return BRUTELOSS
@@ -84,7 +81,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 			to_chat(user, span_warning("You need one rod and one sheet of glass to make reinforced glass!"))
 		return
 	return ..()
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 GLOBAL_LIST_INIT(pglass_recipes, list ( \
 	new/datum/stack_recipe("directional window", /obj/structure/window/plasma/unanchored, time = 0.5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_CHECK_DIRECTION, category = CAT_WINDOWS), \
 	new/datum/stack_recipe("fulltile window", /obj/structure/window/plasma/fulltile/unanchored, 2, time = 2 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_IS_FULLTILE, category = CAT_WINDOWS), \
@@ -108,16 +105,13 @@ GLOBAL_LIST_INIT(pglass_recipes, list ( \
 	pickup_sound = 'sound/items/handling/materials/glass_pick_up.ogg'
 	drop_sound = 'sound/items/handling/materials/glass_drop.ogg'
 
-/obj/item/stack/sheet/plasmaglass/grind_results()
-	return list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10)
-
 /obj/item/stack/sheet/plasmaglass/fifty
 	amount = 50
 
 /datum/armor/sheet_plasmaglass
 	fire = 75
 	acid = 100
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 /obj/item/stack/sheet/plasmaglass/get_main_recipes()
 	. = ..()
 	. += GLOB.pglass_recipes
@@ -171,7 +165,7 @@ GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
 	drop_sound = 'sound/items/handling/materials/glass_drop.ogg'
 
 /obj/item/stack/sheet/rglass/grind_results()
-	return list(/datum/reagent/silicon = 20, /datum/reagent/iron = 10)
+	return list(/datum/reagent/silicon = 10, /datum/reagent/iron = 10)
 
 /obj/item/stack/sheet/rglass/fifty
 	amount = 50
@@ -187,7 +181,7 @@ GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
 /obj/item/stack/sheet/rglass/get_main_recipes()
 	. = ..()
 	. += GLOB.reinforced_glass_recipes
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 GLOBAL_LIST_INIT(prglass_recipes, list ( \
 	new/datum/stack_recipe("directional reinforced window", /obj/structure/window/reinforced/plasma/unanchored, time = 0.5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_CHECK_DIRECTION, category = CAT_WINDOWS), \
 	new/datum/stack_recipe("fulltile reinforced window", /obj/structure/window/reinforced/plasma/fulltile/unanchored, 2, time = 2 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_IS_FULLTILE, category = CAT_WINDOWS), \
@@ -214,7 +208,7 @@ GLOBAL_LIST_INIT(prglass_recipes, list ( \
 	drop_sound = 'sound/items/handling/materials/glass_drop.ogg'
 
 /obj/item/stack/sheet/plasmarglass/grind_results()
-	return list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10, /datum/reagent/iron = 10)
+	return list(/datum/reagent/silicon = 10, /datum/reagent/toxin/plasma = 10, /datum/reagent/iron = 10)
 
 /datum/armor/sheet_plasmarglass
 	melee = 20
@@ -223,7 +217,7 @@ GLOBAL_LIST_INIT(prglass_recipes, list ( \
 
 /obj/item/stack/sheet/plasmarglass/fifty
 	amount = 50
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 /obj/item/stack/sheet/plasmarglass/get_main_recipes()
 	. = ..()
 	. += GLOB.prglass_recipes
@@ -254,7 +248,7 @@ GLOBAL_LIST_INIT(titaniumglass_recipes, list(
 /datum/armor/sheet_titaniumglass
 	fire = 80
 	acid = 100
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 /obj/item/stack/sheet/titaniumglass/get_main_recipes()
 	. = ..()
 	. += GLOB.titaniumglass_recipes
@@ -286,7 +280,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 /datum/armor/sheet_plastitaniumglass
 	fire = 80
 	acid = 100
-/* // DARKPACK EDIT REMOVE
+/* // DARKPACK EDIT REMOVAL
 /obj/item/stack/sheet/plastitaniumglass/get_main_recipes()
 	. = ..()
 	. += GLOB.plastitaniumglass_recipes

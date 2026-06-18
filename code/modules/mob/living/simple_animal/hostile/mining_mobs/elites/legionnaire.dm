@@ -53,6 +53,8 @@
 	/// Whether or not the legionnaire is currently charging, used to deny movement input if he is
 	var/charging = FALSE
 
+	var/bonfire_type = /obj/structure/legionnaire_bonfire // APOC EDIT ADD - (Gray masses)
+
 /datum/action/innate/elite_attack/legionnaire_charge
 	name = "Legionnaire Charge"
 	button_icon_state = "legionnaire_charge"
@@ -198,7 +200,7 @@
 /mob/living/simple_animal/hostile/asteroid/elite/legionnaire/proc/bonfire_teleport()
 	ranged_cooldown = world.time + 5
 	if(mypile == null)
-		var/obj/structure/legionnaire_bonfire/newpile = new /obj/structure/legionnaire_bonfire(loc)
+		var/obj/structure/legionnaire_bonfire/newpile = new bonfire_type(loc)
 		mypile = newpile
 		mypile.myowner = src
 		playsound(get_turf(src),'sound/items/fulton/fultext_deploy.ogg', 200, 1)
@@ -231,9 +233,7 @@
 		visible_message(span_boldwarning("[src] spews smoke from the tip of their spine!"))
 	else
 		visible_message(span_boldwarning("[src] spews smoke from its maw!"))
-	var/datum/effect_system/fluid_spread/smoke/smoke = new
-	smoke.set_up(2, holder = src, location = smoke_location)
-	smoke.start()
+	do_smoke(2, src, smoke_location)
 
 //The legionnaire's head.  Basically the same as any legion head, but we have to tell our creator when we die so they can generate another head.
 /mob/living/simple_animal/hostile/asteroid/elite/legionnairehead

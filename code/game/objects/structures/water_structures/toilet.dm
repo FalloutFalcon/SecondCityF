@@ -25,7 +25,7 @@
 	/// Does the toilet have a water recycler to recollect its water supply?
 	var/has_water_reclaimer = TRUE
 	/// Units of water to reclaim per second
-	var/reclaim_rate = 0.5
+	var/reclaim_rate = 50 // DARKPACK EDIT CHANGE - ORIGINAL: var/reclaim_rate = 0.5
 	/// What reagent does the toilet flush with
 	var/reagent_id = /datum/reagent/water
 	/// How much reagent can the cistern contain
@@ -46,7 +46,7 @@
 	create_reagents(reagent_capacity)
 	if(src.has_water_reclaimer)
 		reagents.add_reagent(reagent_id, reagent_capacity)
-	AddComponent(/datum/component/plumbing/simple_demand/extended)
+	// AddComponent(/datum/component/plumbing/simple_demand/extended) // DARKPACK EDIT REMOVAL
 
 /obj/structure/toilet/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -107,7 +107,8 @@
 		return
 	if(gone in fishes)
 		LAZYREMOVE(fishes, gone)
-		return
+	else if(gone == stuck_item)
+		stuck_item = null
 
 /obj/structure/toilet/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
@@ -234,10 +235,11 @@
 /obj/structure/toilet/dump_contents()
 	for(var/obj/toilet_item in (cistern_items + fishes))
 		toilet_item.forceMove(drop_location())
+	stuck_item?.forceMove(drop_location())
 
 /obj/structure/toilet/atom_deconstruct(dissambled = TRUE)
 	dump_contents()
-	drop_costum_materials()
+	drop_custom_materials()
 	if(has_water_reclaimer)
 		new /obj/item/stock_parts/water_recycler(drop_location())
 
@@ -425,7 +427,7 @@
 			if (suicide.transferItemToLoc(thing, newloc = src, silent = TRUE))
 				add_cistern_item(thing)
 		suicide.gib(DROP_BRAIN) //we delete everything but the brain, as it's going to be moved to the cistern
-		set_custom_materials(list(GET_MATERIAL_REF(/datum/material/meat/mob_meat, suicide) = SHEET_MATERIAL_AMOUNT))
+		set_custom_materials(list(SSmaterials.get_material(/datum/material/meat/mob_meat, suicide) = SHEET_MATERIAL_AMOUNT))
 	else
 		toilet_brain = new(drop_location())
 		set_custom_materials(list(/datum/material/meat = SHEET_MATERIAL_AMOUNT))

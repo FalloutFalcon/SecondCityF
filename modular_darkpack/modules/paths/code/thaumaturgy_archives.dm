@@ -1,9 +1,7 @@
 /obj/structure/retail/occult
+	icon_state = "menu"
 	owner_needed = FALSE
 	desc = "Use your occult research to reap the benefits of safeguarded knowledge and artifacts."
-
-	// Stock tracking - each item starts with 2 in stock, limited supply to cut down on powergaming
-	var/list/item_stock = list()
 
 	products_list = list(
 	// SPELLBOOKS
@@ -21,20 +19,20 @@
 
 	// ARTIFACTS
 	// Lower tier artifacts
-	new /datum/data/vending_product("Weekapaug Thistle", /obj/item/vtm_artifact/weekapaug_thistle, 75),
-	new /datum/data/vending_product("Mummywrap Fetish", /obj/item/vtm_artifact/mummywrap_fetish, 70),
-	new /datum/data/vending_product("Galdjum", /obj/item/vtm_artifact/galdjum, 70),
-	new /datum/data/vending_product("Bloodstar", /obj/item/vtm_artifact/bloodstar, 70),
+	new /datum/data/vending_product("Weekapaug Thistle", /obj/item/occult_artifact/vampire/weekapaug_thistle, 75),
+	new /datum/data/vending_product("Mummywrap Fetish", /obj/item/occult_artifact/vampire/mummywrap_fetish, 70),
+	new /datum/data/vending_product("Galdjum", /obj/item/occult_artifact/vampire/galdjum, 70),
+	new /datum/data/vending_product("Bloodstar", /obj/item/occult_artifact/vampire/bloodstar, 70),
 
 	// Mid tier artifacts
-	new /datum/data/vending_product("Fae Charm", /obj/item/vtm_artifact/fae_charm, 120),
-	new /datum/data/vending_product("Daimonori", /obj/item/vtm_artifact/daimonori, 120),
-	new /datum/data/vending_product("Key of Alamut", /obj/item/vtm_artifact/key_of_alamut, 130),
-	new /datum/data/vending_product("Heart of Eliza", /obj/item/vtm_artifact/heart_of_eliza, 140),
-	new /datum/data/vending_product("Bloodstone", /obj/item/vtm_artifact/bloodstone, 140),
+	new /datum/data/vending_product("Fae Charm", /obj/item/occult_artifact/vampire/fae_charm, 120),
+	new /datum/data/vending_product("Daimonori", /obj/item/occult_artifact/vampire/daimonori, 120),
+	new /datum/data/vending_product("Key of Alamut", /obj/item/occult_artifact/vampire/key_of_alamut, 130),
+	new /datum/data/vending_product("Heart of Eliza", /obj/item/occult_artifact/vampire/heart_of_eliza, 140),
+	new /datum/data/vending_product("Bloodstone", /obj/item/occult_artifact/vampire/bloodstone, 140),
 
 	// High tier artifacts
-	new /datum/data/vending_product("Odious Chalice", /obj/item/vtm_artifact/odious_chalice, 180),
+	new /datum/data/vending_product("Odious Chalice", /obj/item/occult_artifact/vampire/odious_chalice, 180),
 
 )
 
@@ -42,31 +40,33 @@
 	. = ..()
 	//each item starts with 2 in stock
 	for(var/datum/data/vending_product/prize in products_list)
-		item_stock[prize.product_path] = 2
+		prize.amount = 2
+		prize.max_amount = 10
 
 // are they antitribu?
 /obj/structure/retail/occult/proc/has_purchase_privileges(datum/job/job)
-	return is_type_in_list(job, list(/datum/job/vampire/regent,
-	/datum/job/vampire/archivist,
-	/datum/job/vampire/hound,
-	/datum/job/vampire/sheriff,
-	/datum/job/vampire/clerk,
-	/datum/job/vampire/prince)
+	return is_type_in_list(job, list(
+		/datum/job/vampire/regent,
+		/datum/job/vampire/archivist,
+		/datum/job/vampire/hound,
+		/datum/job/vampire/sheriff,
+		/datum/job/vampire/clerk,
+		/datum/job/vampire/prince)
 	)
 
 // find the regent
 /obj/structure/retail/occult/proc/find_regent()
-	for(var/mob/living/carbon/human/H in GLOB.human_list)
-		if(istype(H.mind?.assigned_role, /datum/job/vampire/regent))
-			return H
+	for(var/mob/living/carbon/human/human_user in GLOB.human_list)
+		if(istype(human_user.mind?.assigned_role, /datum/job/vampire/regent))
+			return human_user
 	return null
 
 // find all archivists
 /obj/structure/retail/occult/proc/find_archivists()
 	var/list/archivists = list()
-	for(var/mob/living/carbon/human/H in GLOB.human_list)
-		if(istype(H.mind?.assigned_role, /datum/job/vampire/archivist))
-			archivists += H
+	for(var/mob/living/carbon/human/human_user in GLOB.human_list)
+		if(istype(human_user.mind?.assigned_role, /datum/job/vampire/archivist))
+			archivists += human_user
 	return archivists
 
 // Non-Chantry non-Camarilla Tremeres, when spending their research points, give 30% of their purchase to the Regent, or distributed among all archivists
@@ -92,15 +92,11 @@
 			archivist.research_points += points_to_give
 			to_chat(archivist, span_notice("The Archives distribute [points_to_give] research points to you from [purchaser_name]'s purchase of [item_name]."))
 
-
 /obj/structure/retail/occult/proc/increment_stock(item_path)
-	if(item_path in item_stock)
-		item_stock[item_path]++
-	else
-		for(var/datum/data/vending_product/prize in products_list)
-			if(prize.product_path == item_path)
-				item_stock[item_path] = 1
-				break
+	for(var/datum/data/vending_product/prize in products_list)
+		if(prize.product_path == item_path)
+			prize.amount = min(prize.amount + 1, prize.max_amount)
+			return
 
 // SpellbookVendor.jsx in tgui/interfaces
 /obj/structure/retail/occult/ui_interact(mob/user, datum/tgui/ui)
@@ -113,14 +109,14 @@
 	. = list()
 	.["user"] = list()
 	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		.["user"]["points"] = H.research_points
-		.["user"]["name"] = "[H.real_name]"
-		.["user"]["job"] = "[H.mind?.assigned_role.title]"
-		.["user"]["has_thaumaturgy"] = HAS_TRAIT(H, TRAIT_THAUMATURGY_KNOWLEDGE)
-		.["user"]["has_necromancy"] = HAS_TRAIT(H, TRAIT_NECROMANCY_KNOWLEDGE)
-		.["user"]["is_regent"] = istype(H.mind?.assigned_role, /datum/job/vampire/regent)
-		.["user"]["has_privileges"] = has_purchase_privileges(H.mind?.assigned_role)
+		var/mob/living/carbon/human/human_user = user
+		.["user"]["points"] = human_user.research_points
+		.["user"]["name"] = "[human_user.real_name]"
+		.["user"]["job"] = "[human_user.mind?.assigned_role.title]"
+		.["user"]["has_thaumaturgy"] = !!human_user.get_discipline(/datum/discipline/thaumaturgy)
+		.["user"]["has_necromancy"] = !!human_user.get_discipline(/datum/discipline/necromancy)
+		.["user"]["is_regent"] = istype(human_user.mind?.assigned_role, /datum/job/vampire/regent)
+		.["user"]["has_privileges"] = has_purchase_privileges(human_user.mind?.assigned_role)
 	else
 		.["user"]["points"] = 0
 		.["user"]["name"] = "Unknown"
@@ -146,7 +142,7 @@
 
 	.["product_records"] = list()
 	for(var/datum/data/vending_product/prize in products_list)
-		var/stock_count = item_stock[prize.product_path] || 0
+		var/stock_count = prize.amount
 		var/obj/item/product_item = prize.product_path
 		var/list/product_data = list(
 			path = replacetext(replacetext("[prize.product_path]", "/obj/item/", ""), "/", "-"),
@@ -171,32 +167,32 @@
 	if(!ishuman(usr))
 		return
 
-	var/mob/living/carbon/human/H = usr
+	var/mob/living/carbon/human/human_user = usr
 
-	if(!iskindred(usr))
+	if(!get_kindred_splat(usr))
 		return
 
 	var/datum/data/vending_product/prize = locate(params["ref"]) in products_list
-	var/current_stock = item_stock[prize.product_path] || 0
+	var/current_stock = prize.amount
 	if(current_stock <= 0)
 		to_chat(usr, span_alert("Error: [prize.name] is out of stock!"))
 		return
 
-	if(prize.price > H.research_points)
+	if(prize.price > human_user.research_points)
 		to_chat(usr, span_alert("Error: Insufficient research points for [prize.name]! You need [prize.price] research points."))
 		return
 
-	H.research_points -= prize.price
+	human_user.research_points -= prize.price
 
 	// Check if user is loyal to the chantry/camarilla - if not, award 30% tribute to leadership
-	var/datum/job/user_role = H.mind?.assigned_role
+	var/datum/job/user_role = human_user.mind?.assigned_role
 	var/has_privileges = has_purchase_privileges(user_role)
 
 	if(!has_privileges)
-		distribute_research_points(prize.price, H.real_name, prize.name)
+		distribute_research_points(prize.price, human_user.real_name, prize.name)
 		to_chat(usr, span_notice("A portion of your research points flow through the Archives to the Chantry leadership as tribute."))
 
-	item_stock[prize.product_path]--
+	prize.amount -= 1
 
 	to_chat(usr, span_notice("The Archives emanate dark energy as it dispenses [prize.name]!"))
 	new prize.product_path(loc)
@@ -266,19 +262,19 @@
 //offer artifacts to the shop for research points AND increment stock
 /obj/structure/retail/occult/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	. = ..()
-	if(istype(tool, /obj/item/vtm_artifact))
-		var/obj/item/vtm_artifact/artifact = tool
+	if(istype(tool, /obj/item/occult_artifact))
+		var/obj/item/occult_artifact/artifact = tool
 
 		if(!ishuman(user))
 			return ITEM_INTERACT_BLOCKING
 
-		var/mob/living/carbon/human/H = user
+		var/mob/living/carbon/human/human_user = user
 
 		if(artifact.research_value <= 0)
 			to_chat(user, span_warning("The Archives find no value in this artifact."))
 			return ITEM_INTERACT_BLOCKING
 
-		H.research_points += artifact.research_value
+		human_user.research_points += artifact.research_value
 
 		increment_stock(artifact.type)
 
@@ -311,10 +307,10 @@
 		if(!ishuman(user))
 			return ITEM_INTERACT_BLOCKING
 
-		var/mob/living/carbon/human/H = user
+		var/mob/living/carbon/human/human_user = user
 
 		var/research_reward = 5 // base reward modified by spellbook
-		H.research_points += research_reward
+		human_user.research_points += research_reward
 
 		increment_stock(spellbook.type)
 

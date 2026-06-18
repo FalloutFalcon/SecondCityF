@@ -69,6 +69,17 @@
 	src.discipline = discipline
 	src.owner = discipline.owner
 
+/datum/discipline_power/Destroy(force)
+	for(var/i in length(duration_timers))
+		deltimer(duration_timers[i])
+	if(cooldown_timer)
+		deltimer(cooldown_timer)
+		cooldown_timer = null
+	QDEL_LIST(duration_timers)
+	grouped_powers = null
+	owner = null
+	return ..()
+
 /**
  * Returns the time left the cooldown timer, or
  * 0 if there is none. Returning 0 means not on
@@ -177,6 +188,11 @@
 			to_chat(owner, span_warning("[src] is still on cooldown for [DisplayTimeText(get_cooldown())]!"))
 		return FALSE
 
+	if(!check_discipline_flags(alert))
+		return FALSE
+	return TRUE
+
+/datum/discipline_power/proc/check_discipline_flags(alert = FALSE)
 	//status checks
 	if ((check_flags & DISC_CHECK_TORPORED) && HAS_TRAIT(owner, TRAIT_TORPOR))
 		if (alert)
@@ -301,7 +317,7 @@
 				to_chat(owner, span_warning("You can only cast [src] on other players!"))
 			return FALSE
 
-		if ((target_type & TARGET_VAMPIRE) && !iskindred(target))
+		if ((target_type & TARGET_VAMPIRE) && !get_kindred_splat(target))
 			if (alert)
 				to_chat(owner, span_warning("You can only cast [src] on Kindred!"))
 			return FALSE
@@ -507,7 +523,7 @@
 	if (toggled && (duration_length == 0))
 		return
 
-	//REFACTOR ME
+	// DARKPACK TODO - (REFACTOR ME)
 	var/full_duration_length = duration_length + owner.discipline_time_plus
 	duration_timers.Add(addtimer(CALLBACK(src, PROC_REF(duration_expire), target), full_duration_length, TIMER_STOPPABLE | TIMER_DELETE_ME))
 
@@ -674,6 +690,13 @@
 	return
 
 /**
+* Overridable proc that allows for code to affect the power's owner
+* when it is lost / deleted. Triggered by parent /datum/discipline/post_loss().
+*/
+/datum/discipline_power/proc/post_loss()
+	return
+
+/**
  * Handles refreshing toggled powers on a loop, spending necessary
  * resources and restarting the duration timer if it can proceed. If
  * it can't proceed, it directly deactivates the power.
@@ -717,6 +740,9 @@
  * duration_timer expire without calling the relevant proc.
  */
 /datum/discipline_power/proc/clear_duration_timer(to_clear = 1)
+	if(duration_override)
+		return
+
 	if (toggled && (duration_length == 0))
 		return
 

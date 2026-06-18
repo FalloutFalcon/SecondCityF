@@ -61,6 +61,7 @@
 		LOCKACCESS_JAZZ_CLUB,
 		LOCKACCESS_PRIMOGEN,
 		LOCKACCESS_JAZZ_CLUB_DELIVERY,
+		LOCKACCESS_PRINCE,
 	)
 	color = "#bd3327"
 
@@ -318,6 +319,12 @@
 	)
 	color = "#6a2e1d"
 
+/obj/item/vamp/keys/setite
+	name = "setite keys"
+	accesslocks = list(
+		LOCKACCESS_SETITE
+	)
+
 //===========================CLINIC KEYS===========================
 /obj/item/vamp/keys/clinic
 	name = "clinic keys"
@@ -368,7 +375,7 @@
 		LOCKACCESS_POLICE_CAPTAIN
 	)
 
-//===========================GAROU KEYS===========================
+//===========================FERA KEYS===========================
 
 /obj/item/vamp/keys/nps
 	name = "\improper Park Service keys"

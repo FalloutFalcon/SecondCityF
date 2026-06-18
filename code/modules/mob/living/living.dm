@@ -13,6 +13,8 @@
 	var/datum/atom_hud/data/diagnostic/diag_hud = GLOB.huds[DATA_HUD_DIAGNOSTIC]
 	diag_hud.add_atom_to_hud(src)
 	add_ally(src)
+	if(!pull_force)
+		remove_verb(src, /mob/living/verb/pulled)
 	GLOB.mob_living_list += src
 	SSpoints_of_interest.make_point_of_interest(src)
 	update_fov()
@@ -512,14 +514,11 @@
 
 //mob verbs are a lot faster than object verbs
 //for more info on why this is not atom/pull, see examinate() in mob.dm
-/mob/living/verb/pulled(atom/movable/AM as mob|obj in oview(1))
+/mob/living/verb/pulled(atom/movable/thing_pulled as mob|obj in oview(1))
 	set name = "Pull"
-	set category = "Object"
 
-	if(istype(AM) && Adjacent(AM))
-		start_pulling(AM)
-	else if(!combat_mode) //Don;'t cancel pulls if misclicking in combat mode.
-		stop_pulling()
+	if(istype(thing_pulled) && Adjacent(thing_pulled))
+		start_pulling(thing_pulled)
 
 /mob/living/stop_pulling()
 	if(ismob(pulling))
@@ -528,13 +527,8 @@
 	update_pull_movespeed()
 	update_pull_hud_icon()
 
-/mob/living/verb/stop_pulling1()
-	set name = "Stop Pulling"
-	set category = "IC"
-	stop_pulling()
-
 //same as above
-/mob/living/pointed(atom/A as mob|obj|turf in view(client.view, src))
+/mob/living/pointed(atom/A)
 	if(INCAPACITATED_IGNORING(src, INCAPABLE_RESTRAINTS))
 		return FALSE
 
@@ -618,7 +612,7 @@
 
 /mob/living/proc/mob_sleep()
 	set name = "Sleep"
-	set category = "IC"
+	set hidden = TRUE
 
 	if(IsSleeping())
 		to_chat(src, span_warning("You are already sleeping!"))
@@ -666,16 +660,13 @@
 /mob/living/proc/get_bank_account()
 	RETURN_TYPE(/datum/bank_account)
 	var/datum/bank_account/account
-	var/obj/item/card/credit/I = get_creditcard() // DARKPACK EDIT - ORIGINAL: var/obj/item/card/id/I = get_idcard()
+	var/obj/item/card/credit/I = get_creditcard() // DARKPACK EDIT CHANGE - ORIGINAL: var/obj/item/card/id/I = get_idcard()
 
 	if(I?.registered_account)
 		account = I.registered_account
 		return account
 
 /mob/living/proc/toggle_resting()
-	set name = "Rest"
-	set category = "IC"
-
 	set_resting(!resting, FALSE)
 
 
@@ -754,7 +745,7 @@
 	add_traits(list(TRAIT_UI_BLOCKED, TRAIT_PULL_BLOCKED, TRAIT_UNDENSE), LYING_DOWN_TRAIT)
 	if(HAS_TRAIT(src, TRAIT_FLOORED) && !(dir & (NORTH|SOUTH)))
 		setDir(pick(NORTH, SOUTH)) // We are and look helpless.
-	if(rotate_on_lying)
+	if(rotate_on_lying && !HAS_TRAIT(src, TRAIT_NO_LYING_ANGLE)) // DARKPACK EDIT CHANGE - WEREWOLF
 		add_offsets(LYING_DOWN_TRAIT, y_add = PIXEL_Y_OFFSET_LYING)
 
 /// Proc to append behavior related to lying down.
@@ -772,15 +763,17 @@
 
 /mob/living/update_rest_hud_icon()
 	. = ..()
-	if(!.)
+	if(!. || !hud_used)
 		return FALSE
-	if(!hud_used.sleep_icon || HAS_TRAIT(src, TRAIT_SLEEPIMMUNE))
+
+	var/atom/movable/screen/sleep/sleep_icon = hud_used.screen_objects[HUD_MOB_SLEEP]
+	if(!sleep_icon || HAS_TRAIT(src, TRAIT_SLEEPIMMUNE))
 		return TRUE
+
 	if(resting || HAS_TRAIT(src, TRAIT_FLOORED))
-		hud_used.static_inventory |= hud_used.sleep_icon
+		sleep_icon.RemoveInvisibility(INVISIBILITY_SOURCE_SLEEP_HUD_BUTTON)
 	else
-		hud_used.static_inventory -= hud_used.sleep_icon
-	hud_used.show_hud(hud_used.hud_version)
+		sleep_icon.SetInvisibility(INVISIBILITY_ABSTRACT, INVISIBILITY_SOURCE_SLEEP_HUD_BUTTON)
 	return TRUE
 
 //Recursive function to find everything a mob is holding. Really shitty proc tbh.
@@ -844,8 +837,8 @@
 /mob/living/update_health_hud()
 	var/severity = 0
 	var/healthpercent = (health/maxHealth) * 100
-	if(hud_used?.healthdoll) //to really put you in the boots of a simplemob
-		var/atom/movable/screen/healthdoll/living/livingdoll = hud_used.healthdoll
+	var/atom/movable/screen/healthdoll/living/livingdoll = hud_used?.screen_objects[HUD_MOB_HEALTHDOLL]
+	if(istype(livingdoll)) //to really put you in the boots of a simplemob
 		switch(healthpercent)
 			if(100 to INFINITY)
 				severity = 0
@@ -870,6 +863,8 @@
 				mob_mask = icon('icons/hud/screen_gen.dmi', health_doll_icon_state) //swap to something generic if they have no special doll
 			livingdoll.add_filter("mob_shape_mask", 1, alpha_mask_filter(icon = mob_mask))
 			livingdoll.add_filter("inset_drop_shadow", 2, drop_shadow_filter(size = -1))
+		livingdoll.health_overlay.maptext = MAPTEXT("<div align='center' valign='middle' style='position:relative'>[round(healthpercent, 1)]%</div>")
+
 	if(severity > 0)
 		overlay_fullscreen("brute", /atom/movable/screen/fullscreen/brute, severity)
 	else
@@ -1153,10 +1148,7 @@
 		return FALSE
 	return TRUE
 
-/mob/living/verb/resist()
-	set name = "Resist"
-	set category = "IC"
-
+/mob/living/proc/resist()
 	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(execute_resist)))
 
 ///proc extender of [/mob/living/verb/resist] meant to make the process queable if the server is overloaded when the verb is called
@@ -1165,7 +1157,9 @@
 		return
 	changeNext_move(CLICK_CD_RESIST)
 
-	SEND_SIGNAL(src, COMSIG_LIVING_RESIST, src)
+	if(SEND_SIGNAL(src, COMSIG_LIVING_RESIST) & COMPONENT_BLOCK_RESIST)
+		return
+
 	//resisting grabs (as if it helps anyone...)
 	if(!HAS_TRAIT(src, TRAIT_RESTRAINED) && pulledby)
 		log_combat(src, pulledby, "resisted grab")
@@ -1232,19 +1226,15 @@
 	//We only resist our grab state if we are currently in a grab equal to or greater than GRAB_AGGRESSIVE (1). Otherwise, break out immediately!
 	if(effective_grab_state >= GRAB_AGGRESSIVE)
 		// Grabber is the "action taker" so he is the "owner"
-		var/success = ROLL_SUCCESS
-		if(pulledby && isliving(pulledby))
-			var/mob/living/living_puller = pulledby
-			success = SSroll.opposed_roll(
-				player_a = living_puller,
-				player_b = src,
-				dice_a = living_puller.st_get_stat(STAT_STRENGTH)+living_puller.st_get_stat(STAT_BRAWL),
-				dice_b = st_get_stat(STAT_DEXTERITY)+st_get_stat(STAT_BRAWL),
-				show_player_a = TRUE,
-				show_player_b = TRUE,
-				alert_atom = src,
-				draw_goes_to_b = TRUE
-			)
+		var/success = ROLL_FAILURE
+		if(isliving(pulledby))
+			var/datum/storyteller_roll/grappling/pulled_roll = new()
+			var/puller_result = pulled_roll.st_roll(pulledby, src)
+			var/datum/storyteller_roll/grappled/our_roll = new()
+			var/our_result = our_roll.st_roll(src, pulledby)
+
+			if(puller_result > our_result)
+				success = ROLL_SUCCESS
 
 		if(!success)
 			visible_message(span_danger("[src] breaks free of [pulledby]'s grip!"), \
@@ -1259,7 +1249,7 @@
 							span_warning("You struggle as you fail to break free of [pulledby]'s grip!"), null, null, pulledby)
 			to_chat(pulledby, span_danger("[src] struggles as they fail to break free of your grip!"))
 		if(moving_resist && client) //we resisted by trying to move
-			client.move_delay = world.time + 4 SECONDS
+			client.move_delay = world.time + 1 TURNS
 	else
 		pulledby.stop_pulling()
 		return FALSE
@@ -1372,6 +1362,10 @@
 	return
 
 /mob/living/can_hold_items(obj/item/I)
+	// DARKPACK EDIT ADD START
+	if(I && (I.w_class <= WEIGHT_CLASS_SMALL) && HAS_TRAIT(src, TRAIT_SMALL_HANDS))
+		return FALSE
+	// DARKPACK EDIT ADD END
 	return ..() && HAS_TRAIT(src, TRAIT_CAN_HOLD_ITEMS) && usable_hands
 
 /mob/living/can_perform_action(atom/target, action_bitflags)
@@ -1408,10 +1402,6 @@
 		if(!can_hold_items(isitem(target) ? target : null)) // almost redundant if it weren't for mobs
 			to_chat(src, span_warning("You don't have the hands for this action!"))
 			return FALSE
-
-	if(!(action_bitflags & ALLOW_PAI) && ispAI(src))
-		to_chat(src, span_warning("Your holochasis does not allow you to do this!"))
-		return FALSE
 
 	if(!(action_bitflags & BYPASS_ADJACENCY) && ((action_bitflags & NOT_INSIDE_TARGET) || !recursive_loc_check(src, target)) && !target.IsReachableBy(src))
 		if(HAS_SILICON_ACCESS(src) && !ispAI(src))
@@ -1467,32 +1457,27 @@
 	update_stamina_hud()
 
 /mob/living/update_stamina_hud(shown_stamina_loss)
-	if(!client || !hud_used?.stamina)
+	if(!client || !hud_used)
+		return
+
+	var/atom/movable/screen/stamina/stamina = hud_used.screen_objects[HUD_MOB_STAMINA]
+	if (!stamina)
+		return
+
+	if(stat == DEAD)
+		stamina.icon_state = "stamina_dead"
 		return
 
 	var/stam_crit_threshold = maxHealth - crit_threshold
+	if(shown_stamina_loss == null)
+		shown_stamina_loss = get_stamina_loss()
 
-	if(stat == DEAD)
-		hud_used.stamina.icon_state = "stamina_dead"
+	if(shown_stamina_loss >= stam_crit_threshold)
+		stamina.icon_state = "stamina_crit"
+	else if(shown_stamina_loss > 0 && maxHealth > 0)
+		stamina.icon_state = "stamina_[ceil(shown_stamina_loss / (maxHealth * 0.2))]"
 	else
-
-		if(shown_stamina_loss == null)
-			shown_stamina_loss = get_stamina_loss()
-
-		if(shown_stamina_loss >= stam_crit_threshold)
-			hud_used.stamina.icon_state = "stamina_crit"
-		else if(shown_stamina_loss > maxHealth*0.8)
-			hud_used.stamina.icon_state = "stamina_5"
-		else if(shown_stamina_loss > maxHealth*0.6)
-			hud_used.stamina.icon_state = "stamina_4"
-		else if(shown_stamina_loss > maxHealth*0.4)
-			hud_used.stamina.icon_state = "stamina_3"
-		else if(shown_stamina_loss > maxHealth*0.2)
-			hud_used.stamina.icon_state = "stamina_2"
-		else if(shown_stamina_loss > 0)
-			hud_used.stamina.icon_state = "stamina_1"
-		else
-			hud_used.stamina.icon_state = "stamina_full"
+		stamina.icon_state = "stamina_full"
 
 /mob/living/carbon/alien/update_stamina()
 	return
@@ -1575,7 +1560,7 @@
 				/mob/living/basic/bot/dedbot = 25,
 				/mob/living/basic/bot/cleanbot = 25,
 				/mob/living/basic/bot/firebot = 25,
-				/mob/living/basic/bot/honkbot = 25,
+				/mob/living/basic/bot/secbot/honkbot = 25,
 				/mob/living/basic/bot/hygienebot = 25,
 				/mob/living/basic/bot/vibebot = 25,
 				/mob/living/basic/bot/medbot = 13,
@@ -1627,6 +1612,7 @@
 				/mob/living/basic/bear/russian,
 				/mob/living/basic/blob_minion/blobbernaut,
 				/mob/living/basic/blob_minion/spore,
+				/mob/living/basic/blood_worm/hatchling/polymorph,
 				/mob/living/basic/butterfly,
 				/mob/living/basic/carp,
 				/mob/living/basic/carp/mega,
@@ -1933,6 +1919,26 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	RETURN_TYPE(/mutable_appearance)
 	return null
 
+/// Create a fire overlay using the generic fire sprites
+/mob/living/proc/make_generic_fire_overlay()
+	var/fire_key = "[base_pixel_x]_[base_pixel_y]_fire"
+	if(!GLOB.fire_appearances[fire_key])
+		var/mutable_appearance/fire = mutable_appearance(
+			'icons/mob/effects/onfire.dmi',
+			"generic_fire",
+			ABOVE_ALL_MOB_LAYER,
+			appearance_flags = RESET_COLOR|KEEP_APART,
+		)
+		fire.pixel_x = -1 * base_pixel_x
+		fire.pixel_y = -1 * base_pixel_y
+		GLOB.fire_appearances[fire_key] = fire
+
+	return GLOB.fire_appearances[fire_key]
+
+/// Takes a fire overlay and generates an emissive appearance for it
+/mob/living/proc/make_fire_emissive(mutable_appearance/fire_overlay)
+	return emissive_appearance(fire_overlay.icon, fire_overlay.icon_state, src, fire_overlay.layer)
+
 /**
  * Handles effects happening when mob is on normal fire
  *
@@ -2040,8 +2046,12 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	real_name = name
 
 /mob/living/proc/mob_try_pickup(mob/living/user, instant=FALSE)
-	if(!ishuman(user))
-		return
+	if(!ishuman(user) && (user.mob_size <= mob_size || user.num_hands == 0))
+		if (!user.num_hands)
+			return
+		if (user.mob_size <= mob_size)
+			to_chat(user, span_warning("[src] is too big to pick up!"))
+			return
 	if(!user.get_empty_held_indexes())
 		to_chat(user, span_warning("Your hands are full!"))
 		return FALSE
@@ -2117,6 +2127,10 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 				return FALSE
 			update_transform(var_value/current_size)
 			. = TRUE
+		if(NAMEOF(src, pull_force))
+			set_pull_force(var_value)
+			. = TRUE
+
 
 	if(!isnull(.))
 		datum_flags |= DF_VAR_EDITED
@@ -2149,7 +2163,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 
 /mob/living/vv_get_dropdown()
 	. = ..()
-	VV_DROPDOWN_OPTION("", "---------")
+	VV_DROPDOWN_OPTION("", "--- /living ---")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_SPEECH_IMPEDIMENT, "Impede Speech (Slurring, stuttering, etc)")
 	VV_DROPDOWN_OPTION(VV_HK_ADD_MOOD, "Add Mood Event")
 	VV_DROPDOWN_OPTION(VV_HK_REMOVE_MOOD, "Remove Mood Event")
@@ -2165,33 +2179,21 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		return
 
 	if(href_list[VV_HK_GIVE_SPEECH_IMPEDIMENT])
-		if(!check_rights(NONE))
-			return
 		admin_give_speech_impediment(usr)
 
 	if(href_list[VV_HK_ADD_MOOD])
-		if(!check_rights(NONE))
-			return
 		admin_add_mood_event(usr)
 
 	if(href_list[VV_HK_REMOVE_MOOD])
-		if(!check_rights(NONE))
-			return
 		admin_remove_mood_event(usr)
 
 	if(href_list[VV_HK_GIVE_HALLUCINATION])
-		if(!check_rights(NONE))
-			return
 		admin_give_hallucination(usr)
 
 	if(href_list[VV_HK_GIVE_DELUSION_HALLUCINATION])
-		if(!check_rights(NONE))
-			return
 		admin_give_delusion(usr)
 
 	if(href_list[VV_HK_GIVE_GUARDIAN_SPIRIT])
-		if(!check_rights(NONE))
-			return
 		admin_give_guardian(usr)
 
 	if(href_list[VV_HK_ADMIN_RENAME])
@@ -2361,8 +2363,13 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 /mob/living/proc/end_look()
 	reset_perspective()
 	looking_vertically = NONE
+	if(!looking_holder)
+		return
+	on_looking_z_level_change(looking_holder.loc, get_turf(src))
 	QDEL_NULL(looking_holder)
 
+/mob/living/proc/on_looking_z_level_change(turf/old_loc, turf/new_loc)
+	SEND_SIGNAL(src, COMSIG_LIVING_LOOK_Z_CHANGE, old_loc, new_loc)
 
 /**
  * look_up Changes the perspective of the mob to any openspace turf above the mob
@@ -2385,6 +2392,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	looking_vertically = UP
 	looking_holder = new(above_turf, src, UP)
 	reset_perspective(looking_holder)
+	on_looking_z_level_change(get_turf(src), above_turf)
 
 /mob/living/proc/get_looking_turf(direction)
 	//down needs to check this floor
@@ -2434,7 +2442,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		return
 
 	if(. <= UNCONSCIOUS || new_stat >= UNCONSCIOUS)
-		update_body() // to update eyes
+		update_eyes()
 
 	switch(.) //Previous stat.
 		if(CONSCIOUS)
@@ -2452,7 +2460,9 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		if(HARD_CRIT)
 			if(stat != UNCONSCIOUS)
 				cure_blind(UNCONSCIOUS_TRAIT)
+			REMOVE_TRAIT(src, TRAIT_DEAF, STAT_TRAIT)
 		if(DEAD)
+			REMOVE_TRAIT(src, TRAIT_DEAF, STAT_TRAIT)
 			remove_from_dead_mob_list()
 			add_to_alive_mob_list()
 	switch(stat) //Current stat.
@@ -2480,17 +2490,14 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 			if(. != UNCONSCIOUS)
 				become_blind(UNCONSCIOUS_TRAIT)
 			ADD_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
+			ADD_TRAIT(src, TRAIT_DEAF, STAT_TRAIT)
 			log_combat(src, src, "entered hard crit")
 		if(DEAD)
 			REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
+			ADD_TRAIT(src, TRAIT_DEAF, STAT_TRAIT)
 			remove_from_alive_mob_list()
 			add_to_dead_mob_list()
 			log_combat(src, src, "died")
-	if(!can_hear())
-		stop_sound_channel(CHANNEL_AMBIENCE)
-	refresh_looping_ambience()
-
-
 
 ///Reports the event of the change in value of the buckled variable.
 /mob/living/proc/set_buckled(new_buckled)
@@ -2555,7 +2562,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		return
 	. = num_legs
 	num_legs = new_value
-
+	hud_used?.update_locked_slots()
 
 ///Proc to modify the value of usable_legs and hook behavior associated to this event.
 /mob/living/proc/set_usable_legs(new_value)
@@ -2605,7 +2612,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		return
 	. = num_hands
 	num_hands = new_value
-
+	hud_used?.update_locked_slots()
 
 ///Proc to modify the value of usable_hands and hook behavior associated to this event.
 /mob/living/proc/set_usable_hands(new_value)
@@ -2962,10 +2969,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	log_admin("[key_name(admin)] gave a guardian spirit controlled by [guardian_client] to [src].")
 	BLACKBOX_LOG_ADMIN_VERB("Give Guardian Spirit")
 
-/mob/living/verb/lookup()
-	set name = "Look Up"
-	set category = "IC"
-
+/mob/living/proc/lookup()
 	if(looking_vertically)
 		to_chat(src, "You set your head straight again.")
 		end_look()
@@ -2982,10 +2986,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	to_chat(src, "You tilt your head upwards.")
 	look_up()
 
-/mob/living/verb/lookdown()
-	set name = "Look Down"
-	set category = "IC"
-
+/mob/living/proc/lookdown()
 	if(looking_vertically)
 		to_chat(src, "You set your head straight again.")
 		end_look()
@@ -3073,3 +3074,15 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	if(HAS_TRAIT(src, TRAIT_ANALGESIA) && !force)
 		return
 	INVOKE_ASYNC(src, PROC_REF(emote), "scream")
+
+/mob/living/proc/set_pull_force(new_pull_force)
+	if(pull_force == new_pull_force)
+		return
+	pull_force = new_pull_force
+	pull_force_change()
+
+/mob/living/proc/pull_force_change()
+	if(!pull_force || HAS_TRAIT(src, TRAIT_PULL_BLOCKED))
+		remove_verb(src, /mob/living/verb/pulled)
+	else
+		add_verb(src, /mob/living/verb/pulled)

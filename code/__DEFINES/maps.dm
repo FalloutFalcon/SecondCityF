@@ -254,10 +254,8 @@ Always compile, always use that verb, and always make sure that it works for wha
 #define AWAYSTART_BEACH "AWAYSTART_BEACH"
 #define AWAYSTART_MUSEUM "AWAYSTART_MUSEUM"
 #define AWAYSTART_RESEARCH "AWAYSTART_RESEARCH"
-#define AWAYSTART_CAVES "AWAYSTART_CAVES"
 #define AWAYSTART_MOONOUTPOST "AWAYSTART_MOONOUTPOST"
 #define AWAYSTART_SNOWCABIN "AWAYSTART_SNOWCABIN"
-#define AWAYSTART_SNOWDIN "AWAYSTART_SNOWDIN"
 #define AWAYSTART_UNDERGROUND "AWAYSTART_UNDERGROUND"
 #define AWAYSTART_HERETIC "AWAYSTART_HERETIC"
 
@@ -265,3 +263,4 @@ Always compile, always use that verb, and always make sure that it works for wha
 #define MINETYPE_NONE "none"
 #define MINETYPE_LAVALAND "lavaland"
 #define MINETYPE_ICE "ice"
+#define MINETYPE_UMBRA_AND_EXTRA "umbra_and_extra" // APOC EDIT ADD - (Special Fran)

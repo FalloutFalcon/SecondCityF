@@ -55,9 +55,13 @@ endmap
 	minplayers 40
 endmap
 
-map westfieldmall
+map special_francisco
     votable
     default
+endmap
+
+map westfieldmall
+    votable
 endmap
 
 # Debug-only maps.

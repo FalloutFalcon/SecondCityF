@@ -268,6 +268,10 @@ GLOBAL_LIST_INIT(dye_registry, list(
 			new_greyscale_args["new_inhand_left"] = initial(target_type.greyscale_config_inhand_left)
 		if(initial(target_type.greyscale_config_inhand_right))
 			new_greyscale_args["new_inhand_right"] = initial(target_type.greyscale_config_inhand_right)
+		// DARKPACK EDIT ADD START - ONFLOOR_ICONS
+		if(initial(target_type.greyscale_config_onfloor))
+			new_greyscale_args["new_onfloor_config"] = initial(target_type.greyscale_config_onfloor)
+		// DARKPACK EIDT ADD END
 
 		if(new_greyscale_args.len)
 			new_greyscale_args["colors"] = initial(target_type.greyscale_colors) || COLOR_WHITE
@@ -356,18 +360,16 @@ GLOBAL_LIST_INIT(dye_registry, list(
 		. += "wm_panel"
 
 /obj/machinery/washing_machine/wrench_act(mob/living/user, obj/item/tool)
-	. = ..()
 	if(!panel_open || busy)
-		return FALSE
+		return NONE
 	default_unfasten_wrench(user, tool)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/washing_machine/screwdriver_act(mob/living/user, obj/item/tool)
-	if (!state_open)
-		default_deconstruction_screwdriver(user, null, null, tool)
-		update_appearance()
-		return ITEM_INTERACT_SUCCESS
-	return ITEM_INTERACT_BLOCKING
+	if(state_open)
+		return NONE
+
+	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/washing_machine/item_interaction(mob/living/user, obj/item/item, list/modifiers)
 	if(user.combat_mode)

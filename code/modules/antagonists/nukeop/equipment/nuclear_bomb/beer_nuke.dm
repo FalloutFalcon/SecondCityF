@@ -17,7 +17,10 @@
 	overflow_control = locate(/datum/round_event_control/scrubber_overflow/every_vent) in SSevents.control
 
 /obj/machinery/nuclearbomb/beer/Destroy()
-	UnregisterSignal(overflow_control, COMSIG_CREATED_ROUND_EVENT)
+	// DARKPACK EDIT CHANGE - this was causing runtimes as overflow_control is null if the associated event is not in SSevents
+	if(!isnull(overflow_control))
+		UnregisterSignal(overflow_control, COMSIG_CREATED_ROUND_EVENT)
+	// DARKPACK EDIT CHANGE END
 	. = ..()
 
 /obj/machinery/nuclearbomb/beer/examine(mob/user)
@@ -32,13 +35,11 @@
 		weapon.interact_with_atom(keg, user) // redirect refillable containers to the keg, allowing them to be filled
 		return TRUE // pretend we handled the attack, too.
 
-	if(istype(weapon, /obj/item/nuke_core_container))
-		to_chat(user, span_notice("[src] has had its plutonium core removed as a part of being decommissioned."))
-		return TRUE
-
 	return ..()
 
 /obj/machinery/nuclearbomb/beer/actually_explode()
+	if(core)
+		return ..()
 	//Unblock roundend, we're not actually exploding.
 	SSticker.roundend_check_paused = FALSE
 	var/turf/bomb_location = get_turf(src)
@@ -57,16 +58,12 @@
 	return ..()
 
 /obj/machinery/nuclearbomb/beer/proc/local_foam()
-	var/datum/reagents/tmp_holder = new/datum/reagents(1000)
-	tmp_holder.my_atom = src
-	tmp_holder.add_reagent(flood_reagent, 100)
-
-	var/datum/effect_system/fluid_spread/foam/foam = new
-	foam.set_up(200, holder = src, location = get_turf(src), carry = tmp_holder)
-	foam.start()
+	do_foam(200, src, get_turf(src), flood_reagent, 100)
 	disarm_nuke()
 
 /obj/machinery/nuclearbomb/beer/really_actually_explode(detonation_status)
+	if(core)
+		return ..()
 	//if it's always hooked in it'll override admin choices
 	RegisterSignal(overflow_control, COMSIG_CREATED_ROUND_EVENT, PROC_REF(on_created_round_event))
 	disarm_nuke()

@@ -6,15 +6,19 @@
 	icon_state = "necromancy"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/necromancy
+	signature_clan = VAMPIRE_CLAN_GIOVANNI
 
 /datum/discipline/necromancy/post_gain()
 	. = ..()
-
-	owner.add_faction(VAMPIRE_CLAN_GIOVANNI)
 	var/datum/action/ritual_drawing/necromancy/ritualist = new()
-	ADD_TRAIT(owner, TRAIT_NECROMANCY_KNOWLEDGE, DISCIPLINE_TRAIT)
 	ritualist.Grant(owner)
 	ritualist.level = level
+
+/datum/discipline/necromancy/post_loss()
+	. = ..()
+	for(var/datum/action/action as anything in owner.actions)
+		if(istype(action, /datum/action/ritual_drawing/necromancy))
+			qdel(action)
 
 /datum/discipline_power/necromancy/pre_activation_checks(mob/living/target)
 	. = ..()
@@ -24,7 +28,14 @@
 	name = "Necromancy power name"
 	desc = "Necromancy power description"
 
-//SHROUDSIGHT
+//SHROUDSIGHT V20 p. 163
+/datum/storyteller_roll/shroudsight
+	bumper_text = "shroudsight"
+	applicable_stats = list(STAT_PERCEPTION, STAT_AWARENESS)
+	difficulty = 7
+	reroll_cooldown = 1 SCENES
+	roll_output_type = ROLL_PRIVATE
+
 /datum/discipline_power/necromancy/shroudsight
 	name = "Shroudsight"
 	desc = "See in darkness clearly and see ghosts present."
@@ -36,15 +47,22 @@
 	activate_sound = 'modular_darkpack/modules/ritual_necromancy/sounds/necromancy1on.ogg'
 	deactivate_sound = 'modular_darkpack/modules/ritual_necromancy/sounds/necromancy1off.ogg'
 
-	toggled = TRUE
+	cooldown_length = 1 SCENES
+	duration_length = 1 SCENES
 
+	var/datum/storyteller_roll/shroudsight/roll_datum
 
 /datum/discipline_power/necromancy/shroudsight/activate()
 	. = ..()
+	if(!roll_datum)
+		roll_datum = new()
 
-	ADD_TRAIT(owner, TRAIT_NIGHT_VISION, NECROMANCY_TRAIT)
+	var/roll_result = roll_datum.st_roll(owner)
+
+	if(roll_result != ROLL_SUCCESS)
+		return
+
 	ADD_TRAIT(owner, TRAIT_GHOST_VISION, NECROMANCY_TRAIT)
-
 	owner.update_sight()
 
 	to_chat(owner, span_notice("You peek beyond the Shroud."))
@@ -52,9 +70,7 @@
 /datum/discipline_power/necromancy/shroudsight/deactivate()
 	. = ..()
 
-	REMOVE_TRAIT(owner, TRAIT_NIGHT_VISION, NECROMANCY_TRAIT)
 	REMOVE_TRAIT(owner, TRAIT_GHOST_VISION, NECROMANCY_TRAIT)
-
 	owner.update_sight()
 
 	to_chat(owner, span_warning("Your vision returns to the mortal realm."))
@@ -81,22 +97,9 @@
 
 /datum/discipline_power/necromancy/ethereal_horde/activate()
 	. = ..()
-
-	//var/limit = 2 + owner.st_get_stat(STAT_LEADERSHIP)
-	//var/diff = limit - length(owner.beastmaster)
-	//if(diff <= 0)
-		//to_chat(owner, span_warning("The vitae cools - you cannot extend your will to any more followers."))
-		//return
-
 	owner.visible_message(span_warning("Wailing shades step forth from [owner]'s shadow."))
 	owner.add_beastmaster_minion(/mob/living/basic/beastmaster/giovanni_zombie/level1)
 	owner.add_beastmaster_minion(/mob/living/basic/beastmaster/giovanni_zombie/level1)
-	//if(diff != 1)
-		//var/mob/living/simple_animal/hostile/beastmaster/giovanni_zombie/zombie2 = new /mob/living/simple_animal/hostile/beastmaster/giovanni_zombie/level1(owner.loc)
-		//zombie2.my_creator = owner
-		//owner.beastmaster |= zombie2
-		//zombie2.beastmaster_owner = owner
-
 
 //ASHES TO ASHES
 /datum/discipline_power/necromancy/ashes_to_ashes
@@ -149,7 +152,7 @@
 		owner.visible_message(span_warning("[owner] motions towards [target]."))
 		dusted.visible_message(span_danger("[target]'s body dissolves into dust before your very eyes!"))
 		to_chat(owner, span_warning("You've absorbed the body's residual lifeforce. You gain <b>BLOOD</b> and <b>A SOUL</b>."))
-		dusted.dust()
+		dusted.dust(just_ash = TRUE)
 		owner.adjust_blood_pool(2) // corpses = 2 blood
 		if(isliving(owner))
 			owner.collected_souls += 1
@@ -198,7 +201,7 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/human/corpsebuff = target
 		// removed iscathayan(target) || from line 183 DARKPACK TODO - readd KJs Kuei-Jin
-		if(iskindred(target) || iszombie(target)) //undead become spongier, but move slightly slower
+		if(get_kindred_splat(target) || iszombie(target)) //undead become spongier, but move slightly slower
 			corpsebuff.visible_message(span_danger("[target]'s body seizes with rigor mortis."), span_danger("Your senses dull to pain and everything else."))
 
 			for(var/obj/item/bodypart/part as anything in corpsebuff.bodyparts)
@@ -232,7 +235,7 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/human/corpsebuff = target
 		// || iscathayan(target) removed that from line 211 DARKPACK TODO -- readd KJS Kuei-Jin
-		if(iskindred(target))
+		if(get_kindred_splat(target))
 			corpsebuff.visible_message(span_notice("[target]'s body regains its luster."), span_notice("Feeling comes flooding back into your body."))
 			for(var/obj/item/bodypart/part as anything in corpsebuff.bodyparts)
 				part.brute_modifier = initial(part.brute_modifier)
@@ -271,11 +274,7 @@
 
 /datum/discipline_power/necromancy/shambling_horde/activate(mob/living/target)
 	. = ..()
-	//var/limit = 2 + owner.st_get_stat(STAT_LEADERSHIP)
-	//var/diff = limit - length(owner.beastmaster)
 	if (target.stat == DEAD)
-			//to_chat(owner, span_warning("The vitae cools - you cannot extend your will to any more followers."))
-			//return
 		owner.visible_message(span_warning("[owner] gestures over [target]'s carcass."))
 		target.visible_message(span_danger("[target] twitches and rises, puppeteered by an invisible force."))
 		if(iscarbon(target))

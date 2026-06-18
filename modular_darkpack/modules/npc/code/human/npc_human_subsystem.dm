@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(humannpcpool)
 	name = "Human NPC Pool"
-	flags = SS_POST_FIRE_TIMING|SS_BACKGROUND
+	ss_flags = SS_POST_FIRE_TIMING|SS_BACKGROUND
 	priority = FIRE_PRIORITY_NPC
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	wait = 0.3 SECONDS
@@ -34,6 +34,11 @@ SUBSYSTEM_DEF(humannpcpool)
 	while(currentrun.len)
 		var/mob/living/carbon/human/npc/NPC = currentrun[currentrun.len]
 		--currentrun.len
+
+		if (QDELETED(NPC))
+			GLOB.npc_list -= NPC
+			stack_trace("Found a null in npc_list [NPC.type]!")
+			continue
 
 		if (MC_TICK_CHECK)
 			return

@@ -189,6 +189,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		plural_form = "[name]\s"
 	if(!examine_limb_id)
 		examine_limb_id = id
+	// Carbons determine bodypart order by this list, so we need to make sure it's sorted properly
+	sortTim(bodypart_overrides, GLOBAL_PROC_REF(cmp_bodypart_by_body_part_asc), associative = TRUE)
 
 	return ..()
 
@@ -389,7 +391,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	human_who_gained_species.butcher_results = knife_butcher_results?.Copy()
 
 	//update body zones to match what they are supposed to have
-	human_who_gained_species.hud_used?.healthdoll.update_body_zones()
+	var/atom/movable/screen/healthdoll/doll = human_who_gained_species.hud_used?.screen_objects[HUD_MOB_HEALTHDOLL]
+	if (doll)
+		doll.update_body_zones()
 
 	if(old_species.type != type)
 		replace_body(human_who_gained_species, src)
@@ -441,7 +445,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	human_who_gained_species.living_flags &= ~STOP_OVERLAY_UPDATE_BODY_PARTS
 
 	//we don't allow it to update during species transition, so update it now
-	human_who_gained_species.hud_used?.healthdoll.update_appearance()
+	human_who_gained_species.hud_used?.screen_objects[HUD_MOB_HEALTHDOLL]?.update_appearance()
 
 /**
  * Proc called when a carbon is no longer this species.
@@ -548,11 +552,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	return new_features
 
-/datum/species/proc/spec_life(mob/living/carbon/human/H, seconds_per_tick)
-	SHOULD_CALL_PARENT(TRUE)
-	if(HAS_TRAIT(H, TRAIT_NOBREATH) && (H.health < H.crit_threshold) && !HAS_TRAIT(H, TRAIT_NOCRITDAMAGE))
-		H.adjust_brute_loss(0.5 * seconds_per_tick)
-
 /datum/species/proc/can_equip(obj/item/I, slot, disable_warning, mob/living/carbon/human/H, bypass_equip_delay_self = FALSE, ignore_equipped = FALSE, indirect_action = FALSE)
 	if(no_equip_flags & slot)
 		if(!I.species_exception || !is_type_in_list(src, I.species_exception))
@@ -599,7 +598,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if(ITEM_SLOT_FEET)
 			if(H.num_legs < 2)
 				return FALSE
-			if((H.bodyshape & BODYSHAPE_DIGITIGRADE) && !(I.item_flags & IGNORE_DIGITIGRADE))
+			if((H.bodytype & BODYTYPE_DIGITIGRADE) && !(I.item_flags & IGNORE_DIGITIGRADE))
 				if(!(I.supports_variations_flags & DIGITIGRADE_VARIATIONS))
 					if(!disable_warning)
 						to_chat(H, span_warning("The footwear around here isn't compatible with your feet!"))
@@ -771,17 +770,17 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	user.do_cpr(target)
 
+// DARKPACK EDIT CHANGE START - STORYTELLER_DICE - (This proc required a MAJOR rewrite to be more ttrpg accurate and use dice)
 ///This proc handles punching damage. IMPORTANT: Our owner is the TARGET and not the USER in this proc. For whatever reason...
 /datum/species/proc/harm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM) && !attacker_style?.pacifist_style)
 		to_chat(user, span_warning("You don't want to harm [target]!"))
 		return FALSE
 
-	var/obj/item/organ/brain/brain = user.get_organ_slot(ORGAN_SLOT_BRAIN)
-	var/obj/item/bodypart/attacking_bodypart = attacker_style?.get_attacking_limb(user, target) || brain?.get_attacking_limb(target) || user.get_active_hand()
-
-	// Whether or not we get some protein for a successful attack. Nom.
-	var/biting = FALSE
+	var/obj/item/bodypart/attacking_bodypart = user.get_attacking_limb(target, attacker_style)
+	if(!attacking_bodypart)
+		user.balloon_alert(user, "can't attack!")
+		return FALSE
 
 	var/atk_verb_index = rand(1, length(attacking_bodypart.unarmed_attack_verbs))
 	var/atk_verb = attacking_bodypart.unarmed_attack_verbs[atk_verb_index]
@@ -791,20 +790,26 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	var/atk_effect = attacking_bodypart.unarmed_attack_effect
 
+	var/attack_roll_type = /datum/storyteller_roll/attack/punch
+	var/damage_roll_type = /datum/storyteller_roll/damage/punch
+
+	var/attack_difficulty_bonus = 0
+	var/attack_bonus_dice = 0
+	var/damage_difficulty_bonus = 0
+	var/damage_bonus_dice = 0
+
 	if(atk_effect == ATTACK_EFFECT_BITE)
-		if(!user.is_mouth_covered(ITEM_SLOT_MASK))
-			biting = TRUE
-		else if(user.get_active_hand()) //In the event we can't bite, emergency swap to see if we can attack with a hand.
-			attacking_bodypart = user.get_active_hand()
-			atk_verb_index = rand(1, length(attacking_bodypart.unarmed_attack_verbs))
-			atk_verb = attacking_bodypart.unarmed_attack_verbs[atk_verb_index]
-			atk_verb_continuous = "[atk_verb]s"
-			if (length(attacking_bodypart.unarmed_attack_verbs_continuous) >= atk_verb_index) // Just in case
-				atk_verb_continuous = attacking_bodypart.unarmed_attack_verbs_continuous[atk_verb_index]
-			atk_effect = attacking_bodypart.unarmed_attack_effect
-		else  //Nothing? Okay. Fail.
-			user.balloon_alert(user, "can't attack!")
-			return FALSE
+		attack_roll_type = /datum/storyteller_roll/attack/bite
+		damage_roll_type = /datum/storyteller_roll/damage/bite
+		damage_bonus_dice++
+	else if(atk_effect == ATTACK_EFFECT_KICK)
+		attack_roll_type = /datum/storyteller_roll/attack/kick
+		damage_roll_type = /datum/storyteller_roll/damage/kick
+		damage_bonus_dice++
+	else if(atk_effect == ATTACK_EFFECT_CLAW)
+		attack_roll_type = /datum/storyteller_roll/attack/claw
+		damage_roll_type = /datum/storyteller_roll/damage/claw
+		damage_bonus_dice += 2
 
 	user.do_attack_animation(target, atk_effect)
 
@@ -814,24 +819,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	//Someone in a grapple is much more vulnerable to being harmed by punches.
 	var/grappled = (target.pulledby && target.pulledby.grab_state >= GRAB_AGGRESSIVE)
 
-	// Our lower and upper unarmed damage values. Damage is rolled between these two values.
-	var/lower_unarmed_damage = attacking_bodypart.unarmed_damage_low
-	var/upper_unarmed_damage = attacking_bodypart.unarmed_damage_high
-
-	// The presence of TRAIT_STRENGTH increases our upper unarmed damage. This is a damage cap increase.
-	upper_unarmed_damage += HAS_TRAIT(user, TRAIT_STRENGTH) ? 2 : 0
-
-	// DARKPACK EDIT ADD - Storyteller Stats
-	var/damage_multiplier = 1 + ((user.st_get_stat(STAT_STRENGTH) - 2) / 5)
-	upper_unarmed_damage *= damage_multiplier
-	// DARKPACK EDIT ADD - Storyteller Stats
-
-	// Out athletics skill is used to set our potential base damage roll. It won't increase our potential damage roll, but will make our unarmed attack more consistent.
-	// For a normal human arm, this would cap at 10, and for a normal human leg, this would go up to 14.
-	lower_unarmed_damage = min(lower_unarmed_damage + user.st_get_stat(STAT_BRAWL), upper_unarmed_damage) // DARKPACK EDIT CHANGE - STORYTELLER_STATS
-
-	// The actual damage roll. May still be augmented by further factors.
-	var/damage = rand(lower_unarmed_damage, upper_unarmed_damage)
 	// Limb accuracy is used to determine miss probabilities (higher the value, the less likely you are to miss), armor penetration (if entitled) and the possible result from a stagger combo hit.
 	var/limb_accuracy = attacking_bodypart.unarmed_effectiveness
 	// Limb sharpness determines the type of wounds this unarmed strike could possibly roll. By default, most limbs are blunt and have no sharpness.
@@ -839,11 +826,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	if(grappled)
 		var/pummel_bonus = attacking_bodypart.unarmed_pummeling_bonus
-		damage = floor(damage * pummel_bonus)
-		limb_accuracy = floor(limb_accuracy * pummel_bonus)
-
-	//Get our puncher's combined brute and burn damage.
-	var/puncher_brute_and_burn = (user.get_fire_loss() + user.get_brute_loss())
+		attack_bonus_dice += round(1 * pummel_bonus)
 
 	//Get our targets combined brute and burn damage.
 	var/target_brute_and_burn = (target.get_fire_loss() + target.get_brute_loss())
@@ -854,32 +837,49 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	if(user_drunkenness)
 		if(HAS_TRAIT(user, TRAIT_DRUNKEN_BRAWLER)) // Drunken brawlers only need to be intoxicated, doesn't matter how much
-			limb_accuracy += clamp(puncher_brute_and_burn / 2, 10, 200)
-			damage += damage * clamp(puncher_brute_and_burn / 100, 0.3, 2) //Basically a multiplier of how much extra damage you get based on how low your health is overall. A floor of about a 30%.
+			attack_bonus_dice++
+			damage_bonus_dice++
 			var/drunken_martial_descriptor = pick("Drunken", "Intoxicated", "Tipsy", "Inebriated", "Delirious", "Day-Drinker's", "Firegut", "Blackout")
 			atk_verb = "[drunken_martial_descriptor] [capitalize(atk_verb)]"
 			atk_verb_continuous = "[drunken_martial_descriptor] [capitalize(atk_verb_continuous)]"
 
 		else if(user_drunkenness >= 60)
-			limb_accuracy = -limb_accuracy // good luck landing a punch now, you drunk fuck
+			attack_difficulty_bonus++ // good luck landing a punch now, you drunk fuck
 			user.adjust_disgust(5)
 
 		else if(user_drunkenness >= 30)
-			limb_accuracy *= 1.2
 			user.adjust_disgust(2)
 
 	// Select a zone to hit, blacklisting the part we're attacking with if we're attacking ourselves.
 	var/hit_zone = target.get_random_valid_zone(user.zone_selected, blacklisted_parts = (user == target ? list(attacking_bodypart.body_zone) : null))
 	var/obj/item/bodypart/affecting = target.get_bodypart(hit_zone)
 
-	var/miss_chance = 100//calculate the odds that a punch misses entirely. considers stamina and brute damage of the puncher. punches miss by default to prevent weird cases
-	if(lower_unarmed_damage)
-		if((target.body_position == LYING_DOWN) || HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER) || staggered || user_drunkenness && HAS_TRAIT(user, TRAIT_DRUNKEN_BRAWLER)) //kicks and attacks against staggered targets never miss (provided your species deals more than 0 damage). Drunken brawlers while drunk also don't miss
-			miss_chance = 0
-		else
-			miss_chance = clamp(UNARMED_MISS_CHANCE_BASE - limb_accuracy + (puncher_brute_and_burn / 2), 0, UNARMED_MISS_CHANCE_MAX) //Limb miss chance + various damage. capped at 80 so there is at least a chance to land a hit.
+	if(target.body_position == LYING_DOWN)
+		attack_bonus_dice++
+	if(staggered)
+		attack_bonus_dice++
+	if(user_drunkenness && HAS_TRAIT(user, TRAIT_DRUNKEN_BRAWLER))
+		attack_bonus_dice++
 
-	if(!damage || !affecting || prob(miss_chance))//future-proofing for species that have 0 damage/weird cases where no zone is targeted
+	var/attack_landed = FALSE
+	if(HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER) || grappled)
+		attack_landed = TRUE
+	else
+		var/datum/storyteller_roll/attack/attack_roll = new attack_roll_type()
+		attack_roll.difficulty += attack_difficulty_bonus
+		if(attack_roll.st_roll(user, target, attack_bonus_dice) == ROLL_SUCCESS)
+			attack_landed = TRUE
+
+	var/damage = 0
+	if(attack_landed)
+		if(HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER))
+			damage = user.st_get_stat(STAT_STRENGTH) TTRPG_DAMAGE
+		else
+			var/datum/storyteller_roll/damage/damage_roll = new damage_roll_type()
+			damage_roll.difficulty += damage_difficulty_bonus
+			damage = damage_roll.st_roll(user, target, damage_bonus_dice) TTRPG_DAMAGE
+
+	if(damage <= 0 || !affecting || !attack_landed)
 		playsound(target.loc, attacking_bodypart.unarmed_miss_sound, 25, TRUE, -1)
 		target.visible_message(span_danger("[user]'s [atk_verb] misses [target]!"), \
 						span_danger("You avoid [user]'s [atk_verb]!"), span_hear("You hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
@@ -924,17 +924,18 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/attack_direction = get_dir(user, target)
 	var/attack_type = attacking_bodypart.attack_type
 	var/kicking = (atk_effect == ATTACK_EFFECT_KICK)
-	var/final_armor_block = armor_block
-	if(kicking || grappled) //kicks and punches when grappling bypass armor slightly.
-		if(damage >= 9)
-			target.force_say()
-		log_combat(user, target, grappled ? "grapple punched" : "kicked")
-		final_armor_block -= limb_accuracy
-		target.apply_damage(damage, attack_type, affecting, final_armor_block, attack_direction = attack_direction, sharpness = limb_sharpness)
-	else // Normal attacks do not gain the benefit of armor penetration.
-		target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction, sharpness = limb_sharpness)
-		if(damage >= 9)
-			target.force_say()
+	var/biting = (atk_effect == ATTACK_EFFECT_BITE)
+
+	if(damage >= 1 TTRPG_DAMAGE)
+		target.force_say()
+	target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction, sharpness = limb_sharpness)
+	if(grappled)
+		log_combat(user, target, "grapple punched")
+	else if(kicking)
+		log_combat(user, target, "kicked")
+	else if(biting)
+		log_combat(user, target, "bit")
+	else
 		log_combat(user, target, "punched")
 
 	if(user != target && biting && (target.mob_biotypes & MOB_ORGANIC)) //Good for you. You probably just ate someone alive.
@@ -942,24 +943,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		tasty_meal.add_reagent(/datum/reagent/consumable/nutriment/protein, round(damage/3, 1))
 		tasty_meal.trans_to(user, tasty_meal.total_volume, transferred_by = user, methods = INGEST)
 
-	SEND_SIGNAL(target, COMSIG_HUMAN_GOT_PUNCHED, user, damage, attack_type, affecting, final_armor_block, kicking, limb_sharpness)
-	SEND_SIGNAL(user, COMSIG_HUMAN_PUNCHED, target, damage, attack_type, affecting, final_armor_block, kicking, limb_sharpness)
-
-	// DARKPACK EDIT ADD - Knockdown chance system from old harm proc
-	if((target.stat != DEAD) && (!target.IsKnockdown()))
-		var/roll = SSroll.storyteller_roll(
-			dice = user.st_get_stat(STAT_STRENGTH),
-			difficulty = target.st_get_stat(STAT_DEXTERITY),
-			mobs_to_show_output = list(target, user))
-
-		if(roll == ROLL_SUCCESS)
-			target.visible_message(span_danger("[user] knocks [target] down!"), \
-				span_userdanger("You're knocked down by [user]!"), \
-				span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-			to_chat(user, span_danger("You knock [target] down!"))
-			target.apply_effect(2 SECONDS, EFFECT_KNOCKDOWN, armor_block)
-			log_combat(user, target, "got a stun punch with their previous punch")
-	// DARKPACK EDIT END
+	SEND_SIGNAL(target, COMSIG_HUMAN_GOT_PUNCHED, user, damage, attack_type, affecting, armor_block, kicking, limb_sharpness)
+	SEND_SIGNAL(user, COMSIG_HUMAN_PUNCHED, target, damage, attack_type, affecting, armor_block, kicking, limb_sharpness)
 
 	// If our target is staggered and has sustained enough damage, we can apply a randomly determined status effect to inflict when we punch them.
 	// The effects are based on the punching effectiveness of our attacker. Some effects are not reachable by the average human, and require augmentation to reach or being a species with a heavy punch effectiveness.
@@ -971,6 +956,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/effective_armor = max(armor_block, UNARMED_COMBO_HIT_HEALTH_BASE) - limb_accuracy
 	if(staggered && target_brute_and_burn >= clamp(effective_armor, 0, 200))
 		stagger_combo(user, target, atk_verb, limb_accuracy, armor_block)
+// DARKPACK EDIT CHANGE END
 
 /// Handles the stagger combo effect of our punch. Follows the same logic as the above proc, target is our owner, user is our attacker.
 /datum/species/proc/stagger_combo(mob/living/carbon/human/user, mob/living/carbon/human/target, atk_verb = "hit", limb_accuracy = 0, armor_block = 0)
@@ -1301,7 +1287,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		return
 
 	// Lets pick a random body part and check for an existing burn
-	var/obj/item/bodypart/bodypart = pick(humi.bodyparts)
+	var/obj/item/bodypart/bodypart = pick(humi.get_bodyparts())
 	var/datum/wound/existing_burn
 	for (var/datum/wound/iterated_wound as anything in bodypart.wounds)
 		var/datum/wound_pregen_data/pregen_data = iterated_wound.get_pregen_data()
@@ -2007,7 +1993,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		final_bodypart_overrides[BODY_ZONE_R_LEG] = /obj/item/bodypart/leg/right/digitigrade
 		final_bodypart_overrides[BODY_ZONE_L_LEG] = /obj/item/bodypart/leg/left/digitigrade
 
-	for(var/obj/item/bodypart/old_part as anything in target.bodyparts)
+	for(var/obj/item/bodypart/old_part as anything in target.get_bodyparts())
 		if((old_part.change_exempt_flags & BP_BLOCK_CHANGE_SPECIES) || (old_part.bodypart_flags & BODYPART_IMPLANTED))
 			continue
 
@@ -2079,7 +2065,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 /// Remove body markings
 /datum/species/proc/remove_body_markings(mob/living/carbon/human/hooman)
-	for(var/obj/item/bodypart/part as anything in hooman.bodyparts)
+	for(var/obj/item/bodypart/part as anything in hooman.get_bodyparts())
 		for(var/datum/bodypart_overlay/simple/body_marking/marking in part.bodypart_overlays)
 			part.remove_bodypart_overlay(marking)
 

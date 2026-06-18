@@ -14,36 +14,59 @@
 	var/level = 1
 	var/list/sacrifices = list()
 	var/activation_color
-	var/cost = 2
+	var/cost = 1 // this needs to be set in subtypes
 	var/ritual_name
+	var/difficulty = 6 // set in subtypes
 
-	// TRAIT_MYSTICISM_KNOWLEDGE, TRAIT_THAUMATURGY_KNOWLEDGE, TRAIT_NECROMANCY_KNOWLEDGE
-	var/required_trait
+	/// What discipline is required (if any) to use this rune.
+	var/required_discipline
 
+	var/datum/storyteller_roll/ritual_roll/ritual_roll_datum
+
+/datum/storyteller_roll/ritual_roll
+	bumper_text = "ritual"
+	applicable_stats = list(STAT_INTELLIGENCE, STAT_OCCULT)
 
 /obj/ritual_rune/Initialize(mapload)
 	. = ..()
 	ritual_name = name
 	name = "[name] rune"
-	RegisterSignal(src, COMSIG_CLICK_ALT, PROC_REF(on_alt_click))
 
-/obj/ritual_rune/proc/on_alt_click(datum/source, mob/user)
-	SIGNAL_HANDLER
+/obj/ritual_rune/click_alt(mob/user)
 	qdel(src)
+	return CLICK_ACTION_SUCCESS
 
+/*
+*What happens when the ritual rune executes successfully
+*/
 /obj/ritual_rune/proc/complete()
 	return
 
+/*
+*What happens when the ritual rune executes with a failure
+*/
+/obj/ritual_rune/proc/ritual_failure()
+	return
+
+/*
+*What happens when the ritual rune executes with a botch
+*/
+/obj/ritual_rune/proc/ritual_botch()
+	return
+
+/*
+* What happens when the user clicks on the rune. Ideally shouldn't be overriden.
+*/
 /obj/ritual_rune/attack_hand(mob/user)
 	if(activated)
 		return
 
-	if(!required_trait || !HAS_TRAIT(user, required_trait))
+	var/mob/living/living_user = astype(user)
+	if(!living_user || (required_discipline && !living_user.get_discipline(required_discipline)))
 		return
 
-	var/mob/living/L = user
-	L.say(word)
-	L.Immobilize(30)
+	living_user.say(word)
+	living_user.Immobilize(30)
 	last_activator = user
 	if(activation_color)
 		animate(src, color = activation_color, time = 10)
@@ -51,7 +74,21 @@
 		if(!check_and_consume_sacrifices(user))
 			return
 
-	complete()
+	if(!ritual_roll_datum)
+		ritual_roll_datum = new()
+		ritual_roll_datum.difficulty = difficulty
+
+	var/roll_result = ritual_roll_datum.st_roll(last_activator, last_activator)
+	switch(roll_result)
+		if(ROLL_SUCCESS)
+			complete()
+			return TRUE
+		if(ROLL_FAILURE)
+			ritual_failure()
+			return FALSE
+		if(ROLL_BOTCH)
+			ritual_botch()
+			return FALSE
 
 /obj/ritual_rune/proc/check_and_consume_sacrifices(mob/user)
 	var/list/found_items = list()

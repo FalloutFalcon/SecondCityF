@@ -15,23 +15,15 @@
 /obj/projectile/bullet/darkpack/vamp9mm/silver
 	name = "9mm silver bullet"
 
-/*
 /obj/projectile/bullet/darkpack/vamp9mm/silver/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
-	if(iswerewolf(target) || isgarou(target))
-		var/mob/living/carbon/M = target
-		if(M.auspice.gnosis)
-			if(prob(50))
-				adjust_gnosis(-1, M)
+	fera_silver_damage(target, 2)
 
-		M.apply_damage(10, AGGRAVATED)
-		M.apply_status_effect(STATUS_EFFECT_SILVER_SLOWDOWN)
-*/
 // .45 ACP
 /obj/projectile/bullet/darkpack/vamp45acp
 	name = ".45 ACP bullet"
 	damage = 20
-	armour_penetration = 2
+	armour_penetration = 5
 
 /obj/projectile/bullet/darkpack/vamp45acp/HP
 	name = ".45 ACP hollow point bullet"
@@ -43,18 +35,10 @@
 /obj/projectile/bullet/darkpack/vamp45acp/silver
 	name = ".45 ACP silver bullet"
 
-/*
 /obj/projectile/bullet/darkpack/vamp45acp/silver/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
-	if(iswerewolf(target) || isgarou(target))
-		var/mob/living/carbon/M = target
-		if(M.auspice.gnosis)
-			if(prob(50))
-				adjust_gnosis(-1, M)
+	fera_silver_damage(target, 3)
 
-		M.apply_damage(15, AGGRAVATED)
-		M.apply_status_effect(STATUS_EFFECT_SILVER_SLOWDOWN)
-*/
 // .44 Magnum
 /obj/projectile/bullet/darkpack/vamp44
 	name = ".44 bullet"
@@ -67,18 +51,10 @@
 	name = ".44 silver bullet"
 	//icon_state = "s44"
 
-/*
 /obj/projectile/bullet/darkpack/vamp44/silver/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
-	if(iswerewolf(target) || isgarou(target))
-		var/mob/living/carbon/M = target
-		if(M.auspice.gnosis)
-			if(prob(50))
-				adjust_gnosis(-1, M)
+	fera_silver_damage(target, 4)
 
-		M.apply_damage(20, AGGRAVATED)
-		M.apply_status_effect(STATUS_EFFECT_SILVER_SLOWDOWN)
-*/
 // .50 BMG/AE
 /obj/projectile/bullet/darkpack/vamp50
 	name = ".50 BMG bullet"
@@ -89,7 +65,7 @@
 
 /obj/projectile/bullet/darkpack/vamp50ae
 	name = ".50 AE bullet"
-	damage = 70
+	damage = 40
 	armour_penetration = 20
 	exposed_wound_bonus = 5
 	wound_bonus = 5
@@ -118,25 +94,17 @@
 	name = "5.56mm silver bullet"
 	armour_penetration = 20
 
-/*
 /obj/projectile/bullet/darkpack/vamp556mm/silver/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
-	if(iswerewolf(target) || isgarou(target))
-		var/mob/living/carbon/M = target
-		if(M.auspice.gnosis)
-			if(prob(50))
-				adjust_gnosis(-1, M)
+	fera_silver_damage(target, 2)
 
-		M.apply_damage(20, AGGRAVATED)
-		M.apply_status_effect(STATUS_EFFECT_SILVER_SLOWDOWN)
-*/
 // 5.45x39mm
 /obj/projectile/bullet/darkpack/vamp545mm
 	name = "5.45mm bullet"
 	damage = 40
 	armour_penetration = 30
-	exposed_wound_bonus = 5
-	wound_bonus = -5
+	exposed_wound_bonus = -5
+	wound_bonus = 5
 
 // 4.6mm HK
 /obj/projectile/bullet/darkpack/vamp46mm
@@ -151,44 +119,71 @@
 	name = "12g shotgun slug"
 	damage = 70
 	armour_penetration = 15
-	exposed_wound_bonus = 10
-	wound_bonus = 5
+	exposed_wound_bonus = 5
+	wound_bonus = 10
+
+/obj/projectile/bullet/shotgun_slug/vamp/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/hit_person = target
+		var/datum/storyteller_roll/knockdown_roll = new()
+		knockdown_roll.applicable_stats = list(STAT_STRENGTH, STAT_DEXTERITY, STAT_ATHLETICS)
+		knockdown_roll.difficulty = 3 + (!isnull(firer) ? rand(1,2) : 0)
+		if(knockdown_roll.st_roll(target, firer ? firer : src) == ROLL_FAILURE)
+			hit_person.Knockdown(20)
+			to_chat(hit_person, span_danger("The force of a projectile sends you sprawling!"))
+
+/obj/projectile/bullet/shotgun_slug/vamp/silver
+	name = "12g silver shotgun slug"
+	armour_penetration = 10
+
+/obj/projectile/bullet/shotgun_slug/vamp/silver/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	fera_silver_damage(target, 3)
 
 /obj/projectile/bullet/darkpack/rubber
 	name = "12g shotgun rubber shot"
 	damage = 5
 	stamina = 50
+	exposed_wound_bonus = 5
+	wound_bonus = -5
 
 /obj/projectile/bullet/darkpack/incap
 	name = "12g shotgun incapacitation shot"
 	damage = 15
 	stamina = 80
 
-/obj/projectile/bullet/shotgun_slug/vamp/on_hit(atom/target, blocked = 0, pierce_hit)
-	. = ..()
-	if(iscarbon(target))
-		var/mob/living/carbon/hit_person = target
-		if(SSroll.storyteller_roll(
-			dice = hit_person.st_get_stat(STAT_STRENGTH) + min(hit_person.st_get_stat(STAT_DEXTERITY) + hit_person.st_get_stat(STAT_ATHLETICS)),
-			difficulty = 3 + (!isnull(firer) ? rand(1,2) : 0),
-			mobs_to_show_output = target
-		) == ROLL_FAILURE)
-			hit_person.Knockdown(20)
-			to_chat(hit_person, span_danger("The force of a projectile sends you sprawling!"))
-
 /obj/projectile/bullet/darkpack/shotpellet
 	name = "12g shotgun pellet"
 	damage = 9
 	range = 22 //range of where you can see + one screen after
-	armour_penetration = 15
-	exposed_wound_bonus = 5
-	wound_bonus = 0
+	armour_penetration = 10
+	exposed_wound_bonus = 10
+	wound_bonus = -5
 
 /obj/projectile/bullet/darkpack/shotpellet/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
 		M.Stun(4)
+
+/obj/projectile/bullet/darkpack/dragonsbreath
+	name = "12g shotgun incendiary pellet"
+	damage = 6
+	damage_type = BURN
+	range = 22 //range of where you can see + one screen after
+	armour_penetration = 0
+	exposed_wound_bonus = 0
+	wound_bonus = 0
+	var/fire_stacks = 1 // 1 stack per pellet but we have 9 pellets so it adds up
+
+/obj/projectile/bullet/darkpack/dragonsbreath/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	do_sparks(2, TRUE, src)
+	if(iscarbon(target))
+		var/mob/living/carbon/M = target
+		M.adjust_fire_stacks(fire_stacks)
+		M.ignite_mob()
 
 // Crossbow Bolt
 /obj/projectile/bullet/crossbow_bolt
@@ -217,21 +212,13 @@
 		M.adjust_fire_stacks(fire_stacks)
 		M.ignite_mob()
 
-
 /obj/projectile/bullet/darkpack/vamp762x51mm/silver
 	name = "7.62x51mm silver bullet"
-/*
-/obj/projectile/bullet/darkpack/vamp762x51mm/silver/on_hit(atom/target, blocked = FALSE)
-	. = ..()
-	if(iswerewolf(target) || isgarou(target))
-		var/mob/living/carbon/M = target
-		if(M.auspice.gnosis)
-			if(prob(50))
-				adjust_gnosis(-1, M)
+	armour_penetration = 20
 
-		M.apply_damage(20, CLONE)
-		M.apply_status_effect(STATUS_EFFECT_SILVER_SLOWDOWN)
-*/
+/obj/projectile/bullet/darkpack/vamp762x51mm/silver/on_hit(atom/target, blocked = FALSE, pierce_hit)
+	. = ..()
+	fera_silver_damage(target, 4)
 
 /obj/projectile/bullet/darkpack/vamp75
 	name = ".75 ball"
@@ -239,3 +226,11 @@
 	armour_penetration = 5
 	exposed_wound_bonus = 5
 	wound_bonus = 5
+
+/obj/projectile/bullet/darkpack/vamp75/silver
+	name = ".75 silver ball"
+	armour_penetration = 0
+
+/obj/projectile/bullet/darkpack/vamp75/silver/on_hit(atom/target, blocked = FALSE, pierce_hit)
+	. = ..()
+	fera_silver_damage(target, 5) //Same as silver longsword; it's a solid silver ball. As the founding fathers intended.

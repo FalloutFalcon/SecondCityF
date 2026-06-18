@@ -243,7 +243,7 @@
 				type = alt_type
 				. = FALSE
 
-		if(type & MSG_AUDIBLE && !can_hear())//Hearing related
+		if(type & MSG_AUDIBLE && HAS_TRAIT(src, TRAIT_DEAF))//Hearing related
 			if(!alt_msg)
 				return FALSE
 			else
@@ -292,15 +292,22 @@
 	var/raw_msg = message
 	var/space = should_have_space_before_emote(html_decode(message)[1]) ? " " : "" // DARKPACK EDIT ADD
 	if(visible_message_flags & WITH_EMPHASIS_MESSAGE)
-		message = apply_message_emphasis(message)
+		raw_msg = apply_message_emphasis(message) // DARKPACK EDIT CHANGE - ORIGINAL: message = apply_message_emphasis(message)
+	/* // DARKPACK EDIT REMOVAL START
 	if(visible_message_flags & EMOTE_MESSAGE)
-		message = span_emote("<b>[src]</b>[space][message]") // DARKPACK EDIT CHANGE, ORIGINAL: message = span_emote("<b>[src]</b> [message]")
+		message = span_emote("<b>[src]</b> [message]")
+	*/ // DARKPACK EDIT REMOVAL END
 
 	for(var/mob/hearing_mob as anything in hearers)
 		if(!hearing_mob?.client)
 			continue
 		if(self_message && hearing_mob == src)
 			continue
+
+		// DARKPACK EDIT ADD START
+		if(visible_message_flags & EMOTE_MESSAGE)
+			message = span_emote("<b>[GET_GUESTBOOK_NAME(hearing_mob, src)]</b>[space][raw_msg]")
+		// DARKPACK EDIT ADD END
 
 		//This entire if/else chain could be in two lines but isn't for readibilties sake.
 		var/msg = message
@@ -336,7 +343,7 @@
 	if(visible_message_flags & WITH_EMPHASIS_MESSAGE)
 		self_message = apply_message_emphasis(self_message)
 	if(visible_message_flags & EMOTE_MESSAGE)
-		self_message = span_emote("<b>[src]</b>[space][self_message]") // May make more sense as "You do x" // DARKPACK EDIT CHANGE, ORIGINAL: self_message = span_emote("<b>[src]</b> [self_message]")
+		self_message = span_emote("<b>[real_name]</b>[space][self_message]") // May make more sense as "You do x" // DARKPACK EDIT CHANGE - ORIGINAL: self_message = span_emote("<b>[src]</b> [self_message]")
 
 	if(visible_message_flags & ALWAYS_SHOW_SELF_MESSAGE)
 		to_chat(src, self_message, avoid_highlighting = block_self_highlight)
@@ -364,15 +371,21 @@
 	var/raw_msg = message
 	var/space = should_have_space_before_emote(html_decode(message)[1]) ? " " : "" // DARKPACK EDIT ADD
 	if(audible_message_flags & WITH_EMPHASIS_MESSAGE)
-		message = apply_message_emphasis(message)
+		raw_msg = apply_message_emphasis(message) // DARKPACK EDIT CHANGE - ORIGINAL: message = apply_message_emphasis(message)
+	/* // DARKPACK EDIT REMOVAL START
 	if(audible_message_flags & EMOTE_MESSAGE)
-		message = span_emote("<b>[src]</b>[space][message]") // DARKPACK EDIT CHANGE, ORIGINAL: message = span_emote("<b>[src]</b> [message]")
+		message = span_emote("<b>[src]</b> [message]")
+	*/ // DARKPACK EDIT REMOVAL END
 	for(var/mob/hearing_mob as anything in hearers)
 		if(!hearing_mob?.client)
 			continue
 		if(self_message && hearing_mob == src)
 			continue
-		if(audible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(hearing_mob, audible_message_flags) && hearing_mob.can_hear())
+		// DARKPACK EDIT ADD START
+		if(audible_message_flags & EMOTE_MESSAGE)
+			message = span_emote("<b>[GET_GUESTBOOK_NAME(hearing_mob, src)]</b>[space][raw_msg]")
+		// DARKPACK EDIT ADD END
+		if(audible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(hearing_mob, audible_message_flags) && !HAS_TRAIT(hearing_mob, TRAIT_DEAF))
 			hearing_mob.create_chat_message(src, raw_message = raw_msg, runechat_flags = audible_message_flags)
 		hearing_mob.show_message(message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
 
@@ -398,7 +411,7 @@
 	if(audible_message_flags & WITH_EMPHASIS_MESSAGE)
 		self_message = apply_message_emphasis(self_message)
 	if(audible_message_flags & EMOTE_MESSAGE)
-		self_message = span_emote("<b>[src]</b>[space][self_message]") // DARKPACK EDIT CHANGE, ORIGINAL: self_message = span_emote("<b>[src]</b> [self_message]")
+		self_message = span_emote("<b>[GET_GUESTBOOK_NAME(src, src)]</b>[space][self_message]") // DARKPACK EDIT CHANGE - ORIGINAL: self_message = span_emote("<b>[src]</b> [self_message]")
 
 	if(audible_message_flags & ALWAYS_SHOW_SELF_MESSAGE)
 		to_chat(src, self_message, avoid_highlighting = block_self_highlight)
@@ -441,6 +454,12 @@
 		return FALSE
 	return TRUE
 
+/mob/dead/observer/runechat_prefs_check(mob/target, visible_message_flags = NONE)
+	if(!..())
+		return FALSE
+	if(!target.client?.prefs.read_preference(/datum/preference/toggle/enable_runechat_ghosts))
+		return FALSE
+	return TRUE
 
 ///Get the item on the mob in the storage slot identified by the id passed in
 /mob/proc/get_item_by_slot(slot_id) as /obj/item
@@ -545,7 +564,6 @@
  */
 /mob/verb/examinate(atom/examinify as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
 	set name = "Examine"
-	set category = "IC"
 
 	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(run_examinate), examinify))
 
@@ -588,7 +606,10 @@
 		var/list/result = examinify.examine(src)
 		var/atom_title = examinify.examine_title(src, thats = TRUE)
 		examining(examinify, result)
-		SEND_SIGNAL(src, COMSIG_MOB_EXAMINING, examinify, result)
+		var/alist/overrides = alist()
+		SEND_SIGNAL(src, COMSIG_MOB_EXAMINING, examinify, result, overrides)
+		if (length(overrides))
+			result = overrides[max(overrides)]
 		if(removes_double_click)
 			result += span_notice("<i>You can <a href=byond://?src=[REF(src)];run_examinate=[REF(examinify)]>examine</a> [examinify] closer...</i>")
 		result_combined = (atom_title ? fieldset_block("[atom_title].", jointext(result, "<br>"), "boxed_message") : boxed_message(jointext(result, "<br>")))
@@ -764,13 +785,13 @@
 
 ///Update the pulling hud icon
 /mob/proc/update_pull_hud_icon()
-	hud_used?.pull_icon?.update_appearance()
+	hud_used?.screen_objects[HUD_MOB_PULL]?.update_appearance()
 
 ///Update the resting hud icon
 /mob/proc/update_rest_hud_icon()
 	if(!hud_used)
 		return FALSE
-	hud_used.rest_icon?.update_appearance()
+	hud_used.screen_objects[HUD_MOB_REST]?.update_appearance()
 	return TRUE
 
 /**
@@ -778,11 +799,7 @@
  *
  * Calls attack self on the item and updates the inventory hud for hands
  */
-/mob/verb/mode()
-	set name = "Activate Held Object"
-	set category = "Object"
-	set src = usr
-
+/mob/proc/mode()
 	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(execute_mode)))
 
 ///proc version to finish /mob/verb/mode() execution. used in case the proc needs to be queued for the tick after its first called
@@ -905,37 +922,14 @@
 
 /// Adds this list to the output to the stat browser
 /mob/proc/get_status_tab_items()
-	. = list("") //we want to offset unique stuff from standard stuff
+	// DARKPACK EDIT CHANGE START - MERITS/FLAWS - (Time sense)
+	. = list()
+	. += get_time_status()
+	. += "" //we want to offset unique stuff from standard stuff
+	// DARKPACK EDIT CHANGE END
 	SEND_SIGNAL(src, COMSIG_MOB_GET_STATUS_TAB_ITEMS, .)
 	return .
 
-/**
- * Convert a list of spells into a displyable list for the statpanel
- *
- * Shows charge and other important info
- */
-/mob/proc/get_actions_for_statpanel()
-	var/list/data = list()
-	for(var/datum/action/cooldown/action in actions)
-		var/list/action_data = action.set_statpanel_format()
-		if(!length(action_data))
-			return
-
-		data += list(list(
-			// the panel the action gets displayed to
-			// in the future, this could probably be replaced with subtabs (a la admin tabs)
-			action_data[PANEL_DISPLAY_PANEL],
-			// the status of the action, - cooldown, charges, whatever
-			action_data[PANEL_DISPLAY_STATUS],
-			// the name of the action
-			action_data[PANEL_DISPLAY_NAME],
-			// a ref to the action button of this action for this mob
-			// it's a ref to the button specifically, instead of the action itself,
-			// because statpanel href calls click(), which the action button (not the action itself) handles
-			REF(action.viewers[hud_used]),
-		))
-
-	return data
 
 /mob/proc/swap_hand(held_index, silent = FALSE)
 	SHOULD_NOT_OVERRIDE(TRUE) // Override perform_hand_swap instead
@@ -948,7 +942,7 @@
 
 	var/result = perform_hand_swap(held_index)
 	if (result)
-		SEND_SIGNAL(src, COMSIG_MOB_SWAP_HANDS)
+		SEND_SIGNAL(src, COMSIG_MOB_SWAP_HANDS, get_active_held_item(), held_item)
 
 	return result
 
@@ -966,14 +960,8 @@
 
 	var/previous_index = active_hand_index
 	active_hand_index = held_index
-	if(hud_used)
-		var/atom/movable/screen/inventory/hand/held_location
-		held_location = hud_used.hand_slots["[previous_index]"]
-		if(!isnull(held_location))
-			held_location.update_appearance()
-		held_location = hud_used.hand_slots["[held_index]"]
-		if(!isnull(held_location))
-			held_location.update_appearance()
+	hud_used?.update_inventory_slot(ITEM_SLOT_HANDS, previous_index)
+	hud_used?.update_inventory_slot(ITEM_SLOT_HANDS, held_index)
 	return TRUE
 
 /mob/proc/activate_hand(selected_hand)
@@ -1381,7 +1369,7 @@
  */
 /mob/vv_get_dropdown()
 	. = ..()
-	VV_DROPDOWN_OPTION("", "---------")
+	VV_DROPDOWN_OPTION("", "--- /mob ---")
 	VV_DROPDOWN_OPTION(VV_HK_GIB, "Gib")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_AI, "Give AI Controller")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_AI_SPEECH, "Give Random AI Speech")
@@ -1409,13 +1397,9 @@
 		return
 
 	if(href_list[VV_HK_REGEN_ICONS])
-		if(!check_rights(NONE))
-			return
 		regenerate_icons()
 
 	if(href_list[VV_HK_REGEN_ICONS_FULL])
-		if(!check_rights(NONE))
-			return
 		cut_overlays()
 		regenerate_icons()
 
@@ -1466,8 +1450,6 @@
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/cmd_give_direct_control, src)
 
 	if(href_list[VV_HK_OFFER_GHOSTS])
-		if(!check_rights(NONE))
-			return
 		offer_control(src)
 
 	if(href_list[VV_HK_VIEW_PLANES])
@@ -1476,8 +1458,6 @@
 		usr.client.edit_plane_masters(src)
 
 	if(href_list[VV_HK_GIVE_ACCESS])
-		if(!check_rights(NONE))
-			return
 		AddComponent(/datum/component/simple_access, SSid_access.get_region_access_list(list(REGION_ALL_GLOBAL)))
 		to_chat(usr, span_notice("Access granted."))
 /**
@@ -1492,13 +1472,6 @@
 /mob/vv_auto_rename(new_name)
 	//Do not do parent's actions, as we *usually* do this differently.
 	fully_replace_character_name(real_name, new_name)
-
-///Show the language menu for this mob
-/mob/verb/open_language_menu_verb()
-	set name = "Open Language Menu"
-	set category = "IC"
-
-	get_language_holder().open_language_menu(usr)
 
 ///Adjust the nutrition of a mob
 /mob/proc/adjust_nutrition(change, forced = FALSE) //Honestly FUCK the oldcoders for putting nutrition on /mob someone else can move it up because holy hell I'd have to fix SO many typechecks
@@ -1534,7 +1507,9 @@
 /// Updates nutrition related effects
 /mob/living/proc/update_nutrition()
 	mob_mood?.update_nutrition_moodlets()
-	hud_used?.hunger?.update_hunger_bar()
+	var/atom/movable/screen/hunger/hunger_bar = hud_used?.screen_objects[HUD_MOB_HUNGER]
+	if (hunger_bar)
+		hunger_bar.update_hunger_bar()
 	SEND_SIGNAL(src, COMSIG_LIVING_UPDATE_NUTRITION)
 
 /// Apply a proper movespeed modifier based on items we have equipped
@@ -1618,10 +1593,7 @@
 	canon_client = null
 
 ///Shows a tgui window with memories
-/mob/verb/memory()
-	set name = "Memories"
-	set category = "IC"
-	set desc = "View your character's memories."
+/mob/proc/open_memory_panel()
 	if(!mind)
 		var/fail_message = "You have no mind!"
 		if(isobserver(src))
@@ -1671,12 +1643,6 @@
 
 	data["memories"] = memories
 	return data
-
-/mob/verb/view_skills()
-	set category = "IC"
-	set name = "View Skills"
-
-	mind?.print_levels(src)
 
 /mob/key_down(key, client/client, full_key)
 	..()

@@ -20,6 +20,9 @@
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
 	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT // Should really be suit storage
+	force_unwielded = 10
+	force_wielded = 40
 	pixel_w = -8
 	custom_price = 1800
 
@@ -32,6 +35,8 @@
 	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	pixel_w = -8
+	custom_price = 1300
+	slot_flags = ITEM_SLOT_BELT
 
 /obj/item/katana/vamp/Initialize(mapload)
 	. = ..()
@@ -78,40 +83,6 @@
 		var/mob/living/burnt_mob = target
 		burnt_mob.apply_damage(15, AGGRAVATED)
 
-/obj/item/melee/sabre/rapier
-	name = "rapier"
-	desc = "A thin, elegant sword, the rapier is a weapon of the duelist, designed for thrusting."
-	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
-	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
-	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
-	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
-	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
-	icon_state = "rapier"
-
-
-/obj/item/melee/sabre/rapier/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/selling, 700, "rapier", FALSE)
-
-
-/obj/item/claymore/machete
-	name = "machete"
-	desc = "A certified chopper fit for the jungles...but you don't see any vines around. Well-weighted enough to be thrown."
-	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
-	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
-	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
-	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
-	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
-	icon_state = "machete"
-	inhand_icon_state = "machete"
-	pixel_w = -8
-	masquerade_violating = FALSE
-	custom_price = 500
-
-/obj/item/claymore/machete/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/selling, 70, "machete", FALSE)
-
 /obj/item/melee/sabre/vamp
 	name = "sabre"
 	desc = "A curved sword, the sabre is a weapon of the cavalry, designed for slashing and thrusting."
@@ -122,10 +93,26 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "sabre"
 	var/value = 1000 // DARKPACK TODO: Move this up at some point. I hate the selling component with all my heart.
+	armour_penetration = 50		//Normally 75 pen, that pens army armor. Instead, 50. Pens bullet proof.
 
 /obj/item/melee/sabre/vamp/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/selling, value, "sabre", FALSE)
+
+/obj/item/melee/sabre/rapier
+	name = "rapier"
+	desc = "A thin, elegant sword, the rapier is a weapon of the duelist, designed for thrusting."
+	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
+	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
+	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
+	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
+	icon_state = "rapier"
+	armour_penetration = 50
+
+/obj/item/melee/sabre/rapier/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/selling, 700, "rapier", FALSE)
 
 /obj/item/melee/sabre/vamp/training
 	name = "foam sabre"
@@ -143,11 +130,31 @@
 	icon_state = "longsword"
 	inhand_icon_state = "longsword"
 
-
 /obj/item/claymore/longsword/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/selling, 600, "longsword", FALSE)
 
+/obj/item/claymore/machete
+	name = "machete"
+	desc = "A certified chopper fit for the jungles...but you don't see any vines around. Well-weighted enough to be thrown."
+	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
+	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
+	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
+	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
+	icon_state = "machete"
+	inhand_icon_state = "machete"
+	pixel_w = -8
+	masquerade_violating = FALSE
+	custom_price = 500
+	force = 35			//Short equivelant of longsword. Less damage and block
+	block_chance = 30
+
+/obj/item/claymore/machete/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/selling, 70, "machete", FALSE)
+
+// "Keepers" derived from "my brother's keeper" are an epithet for Lasombra but this seems to be a wholly unqiue item not found in any book.
 /obj/item/claymore/longsword/keeper
 	name = "The Brother's Keeper"
 	desc = "The ancient yet classic weapon of times gone, this is a longsword. This exemplar is surprisingly well taken care of, despite its age, to the point that whatever blood or vitae it may have drawn in the past is not visible at all, while still functioning as well as it first did however long ago. Upon the flat side of this blade, a simple well-worn inscription is engraved in Latin. 'In Death, I Rise.'"
@@ -156,31 +163,23 @@
 	force = 50
 	block_chance = 45
 	armour_penetration = 40
-	sharpness = SHARP_EDGED
 	attack_verb_continuous = list("slashes", "cuts")
 	attack_verb_simple = list("slash", "cut")
 	hitsound = 'sound/items/weapons/rapierhit.ogg'
 	wound_bonus = 5
-	resistance_flags = FIRE_PROOF
-	masquerade_violating = FALSE
 	//is_iron = FALSE DARKPACK TODO - Kiasyd
 
-/obj/item/claymore/longsword/keeper/afterattack(atom/target, mob/living/carbon/user, proximity)
+/obj/item/claymore/longsword/keeper/afterattack(atom/target, mob/user, list/modifiers, list/attack_modifiers)
 	. = ..()
-	/* DARKPACK TODO - WEREWOLF - (this is a silver longsword)
-	if(iswerewolf(target) || isgarou(target) && proximity)
-		var/mob/living/carbon/M = target
-		if(M.auspice.gnosis)
-			if(prob(50))
-				adjust_gnosis(-1, M)
-
-		M.apply_damage(25, CLONE)
-		M.apply_status_effect(STATUS_EFFECT_SILVER_SLOWDOWN)
-	*/
+	fera_silver_damage(target, 5, 1)
 
 /obj/item/melee/baseball_bat/vamp
 	name = "baseball bat"
 	desc = "There ain't a skull in the league that can withstand a swatter."
+	w_class = WEIGHT_CLASS_BULKY	//TG parent bat is huge
+	force = 30
+	exposed_wound_bonus = 10
+	wound_bonus = -5
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
@@ -188,6 +187,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "baseball"
 	inhand_icon_state = "baseball"
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT // Should really be suit storage
 	custom_price = 50
 
 /obj/item/melee/baseball_bat/vamp/Initialize(mapload)
@@ -295,6 +295,8 @@
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
 	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
+	force_on = 60
+	force = 30
 	custom_price = 2000
 
 /obj/item/shovel/vamp
@@ -307,6 +309,19 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "shovel"
 	custom_price = 150
+	force = 30	//It's sharp.. somehow.
+
+/obj/item/shovel/vamp/attack(mob/living/target, mob/living/user)
+	. = ..()
+	if(prob(10))
+		to_chat(user, span_warning("You smash [target] over the head with the shovel!"))
+		target.visible_message(
+			span_userdanger("You are smashed over the head by [user]!"),
+			span_warning("You see stars!"),
+			span_hear("You hear a dull THUNK!"))
+		var/head_protection = target.run_armor_check(BODY_ZONE_HEAD, MELEE)
+		target.apply_effect(5 SECONDS, EFFECT_KNOCKDOWN, head_protection)
+		target.drop_all_held_items()
 
 /obj/item/scythe/vamp
 	name = "scythe"
@@ -318,7 +333,10 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "kosa"
 	inhand_icon_state = "kosa"
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
+	force = 30
+	armour_penetration = 30
 
 /obj/item/instrument/eguitar/vamp
 	name = "electric guitar"
@@ -328,6 +346,7 @@
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
 	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
 	icon_state = "rock0"
 	inhand_icon_state = "rock0"
 
@@ -336,6 +355,7 @@
 	desc = "Blunt instrument of justice."
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	icon_state = "baton"
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 2)
 
 /obj/item/switchblade/vamp
@@ -392,6 +412,7 @@
 	lefthand_file = 'modular_darkpack/modules/weapons/icons/melee_lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/weapons/icons/melee_righthand.dmi'
 	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	force = 45
 	throwforce = 10
 	w_class = WEIGHT_CLASS_BULKY
@@ -406,8 +427,7 @@
 	resistance_flags = FIRE_PROOF
 	masquerade_violating = FALSE
 	custom_price = 1200
-	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi') // DARKPACK EDIT ADD
 
-/obj/item/darkpack/spear/Initialize()
+/obj/item/darkpack/spear/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/selling, 400, "spear", FALSE)

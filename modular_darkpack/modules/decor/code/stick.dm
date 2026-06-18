@@ -14,7 +14,7 @@
 		'modular_darkpack/modules/decor/sound/stick_snap5.ogg',
 		'modular_darkpack/modules/decor/sound/stick_snap6.ogg')
 
-/obj/effect/mine/stick/Initialize()
+/obj/effect/mine/stick/Initialize(mapload)
 	. = ..()
 	if(!stick_type)
 		stick_type = rand(1,variants)
@@ -43,8 +43,12 @@
 		if(isliving(triggerer))
 			var/mob/living/stepper = triggerer
 			if(stepper.mob_size >= MOB_SIZE_HUMAN)
-				var/roll = SSroll.storyteller_roll(stepper.st_get_stat(STAT_PERCEPTION) + stepper.st_get_stat(STAT_STEALTH), 6, stepper)
-				if(!roll == ROLL_SUCCESS)
+				var/datum/storyteller_roll/step_roll = new()
+				step_roll.applicable_stats = list(STAT_PERCEPTION, STAT_STEALTH)
+				step_roll.roll_output_type = ROLL_PRIVATE
+				step_roll.spammy_roll = TRUE
+				var/roll_result = step_roll.st_roll(triggerer, src)
+				if(roll_result != ROLL_SUCCESS)
 					mineEffect(triggerer)
 
 	if(isitem(triggerer))
