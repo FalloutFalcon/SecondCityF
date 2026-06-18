@@ -37,7 +37,7 @@ the same goes for Remove(). if you override Remove(), call parent or else your p
 
 /datum/action/imbued_edge/Trigger(trigger_flags)
 	var/mob/user = owner
-	if(!user || !isimbued(user))
+	if(!user || !get_imbued_splat(user))
 		return
 	try_edge(user)
 
@@ -61,7 +61,7 @@ the same goes for Remove(). if you override Remove(), call parent or else your p
 /datum/action/imbued_edge/proc/try_edge(mob/living/user, mob/living/target)
 	if(!can_use_edge(user, target))
 		return FALSE
-	if(!isimbued(user))
+	if(!get_imbued_splat(user))
 		return
 	var/mob/living/carbon/human/imbued = user
 	if(edge_action(user, target))
@@ -84,7 +84,7 @@ the same goes for Remove(). if you override Remove(), call parent or else your p
 
 // Fairly important to remember to return 1 on success >.< // Return TRUE not 1 >.<
 /datum/action/imbued_edge/proc/can_use_edge(mob/living/user, mob/living/target)
-	if(!isimbued(user))
+	if(!get_imbued_splat(user))
 		return
 	var/mob/living/carbon/human/imbued = user
 	if(imbued.conviction < get_conviction_cost())

@@ -24,7 +24,7 @@
 	var/static/list/imbued_powers = typecacheof(/datum/action/imbued_edge, ignore_root_path = TRUE)
 	*/
 
-/proc/isimbued(mob/character)
+/proc/get_imbued_splat(mob/character)
 	RETURN_TYPE(/datum/splat/imbued)
 
 	return character.get_splat(/datum/splat/imbued)

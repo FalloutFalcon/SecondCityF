@@ -48,7 +48,7 @@
 	)
 
 /datum/atom_hud/alternate_appearance/basic/imbued/mobShouldSee(mob/M)
-	if(isimbued(M))
+	if(get_imbued_splat(M))
 		return TRUE
 	return FALSE
 

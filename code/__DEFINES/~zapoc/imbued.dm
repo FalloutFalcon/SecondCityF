@@ -1,6 +1,5 @@
 #define STATUS_EFFECT_SECOND_SIGHT /datum/status_effect/imbued/second_sight
 
-#warn need to be added to ALL_SPLATS
 #define SPLAT_IMBUED "splat_imbued"
 
 // Imbued trait source
