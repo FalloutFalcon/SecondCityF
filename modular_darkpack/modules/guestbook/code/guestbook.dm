@@ -155,19 +155,24 @@
 		if(!silent)
 			to_chat(user, span_warning("You can't see their face very well!"))
 		return FALSE
-	if(get_dist(user, guest) > 4)
-		if(!silent)
-			to_chat(user, span_warning("You need to take a closer look at them!"))
-		return FALSE
 	return TRUE
 
 /mob/living/carbon/human/proc/attempt_guestbook_add(datum/source, atom/A)
 	SIGNAL_HANDLER
 
-	if(!ishuman(A) || in_range(A, src))
+	var/mob/living/carbon/human/targeted_human = astype(A)
+	if(!targeted_human || can_try_guestbook(A))
 		return
-	var/mob/living/carbon/human/targeted_human = A
 	if(!targeted_human.mind?.guestbook)
 		return
 	INVOKE_ASYNC(mind.guestbook, TYPE_PROC_REF(/datum/guestbook, try_add_guest), src, targeted_human, FALSE)
 	return COMSIG_MOB_CANCEL_CLICKON
+
+/mob/living/carbon/human/proc/can_try_guestbook(mob/living/carbon/human/targeted_human)
+	if(!istype(targeted_human))
+		return FALSE
+
+	if(in_range(targeted_human, src)) // overlaps with handing over items
+		return FALSE
+
+	return TRUE

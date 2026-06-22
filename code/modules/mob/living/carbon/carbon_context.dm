@@ -10,6 +10,11 @@
 
 	var/mob/living/carbon/human/human_user = user
 
+	// DARKPACK EDIT ADD START - GUESTBOOK
+	if(human_user.can_try_guestbook(src))
+		context[SCREENTIP_CONTEXT_CTRL_SHIFT_LMB] = "Memorize name"
+	// DARKPACK EDIT ADD END
+
 	if (human_user.combat_mode)
 		context[SCREENTIP_CONTEXT_LMB] = "Attack"
 	else if (human_user == src)
