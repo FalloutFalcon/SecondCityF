@@ -55,7 +55,8 @@
 		var/real_name = read_preference(/datum/preference/name/real_name)
 		var/message = "Some stats on [real_name] failed to load and wont be saved. You likely need to reset your stats. Bad entries:<br>[jointext(failed_loads, "<br>")]"
 
-		to_chat(parent, boxed_message(span_warning(message)))
+		if(parent)
+			to_chat(parent, boxed_message(span_warning(message)))
 
 		log_stats("Game loaded [real_name] but had bad stats saved: <br> [jointext(failed_loads, " <br> ")]")
 
@@ -79,5 +80,6 @@
 		passed_list[stat_path] = stat
 		new_stats += stat.name
 
-	if(new_stats && usr)
-		to_chat(usr, boxed_message(span_notice("Gained new stats:<br>[jointext(new_stats, ", ")]")))
+	if(new_stats.len && parent)
+		var/real_name = read_preference(/datum/preference/name/real_name)
+		to_chat(parent, boxed_message(span_notice("Gained new stats on [real_name]:<br>[jointext(new_stats, ", ")]")))
