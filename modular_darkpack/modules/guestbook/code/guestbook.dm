@@ -161,7 +161,7 @@
 	SIGNAL_HANDLER
 
 	var/mob/living/carbon/human/targeted_human = astype(A)
-	if(!targeted_human || can_try_guestbook(A))
+	if(!targeted_human || !can_try_guestbook(A))
 		return
 	if(!targeted_human.mind?.guestbook)
 		return
