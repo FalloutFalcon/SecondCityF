@@ -33,6 +33,11 @@
 	base_icon_state = "police"
 
 
+/obj/structure/barrier_tape/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/contextual_screentip_bare_hands, lmb_text = "Lift", lmb_text_combat_mode = "Tear")
+
+
 /obj/structure/barrier_tape/CanAllowThrough(atom/movable/mover, border_dir)
 	. = ..()
 	if(.)
@@ -43,7 +48,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/barrier_tape/attack_hand(mob/living/user)
+/obj/structure/barrier_tape/attack_hand(mob/living/user, list/modifiers)
 	if(user.combat_mode)
 		user.visible_message(span_notice("[user] tears down [src]!"))
 		playsound(src, 'sound/items/poster/poster_ripped.ogg', 100, TRUE)
@@ -61,15 +66,10 @@
 	lifted = FALSE
 	density = TRUE
 
-/obj/structure/barrier_tape/Bumped(atom/movable/AM)
-	if(iscarbon(AM))
-		var/mob/living/carbon/C = AM
-		to_chat(C, "<span class='notice'>You can lift [src] by right-clicking on it.</span>")
-
-/obj/item/barrier_tape/attack_self(mob/user)
+/obj/item/barrier_tape/attack_self(mob/user, modifiers)
 	if(!placing)
 		start = get_turf(src)
-		to_chat(user, "<span class='notice'>You place the first end of [src].</span>")
+		to_chat(user, span_notice("You place the first end of [src]."))
 		icon_state = "[base_icon_state]_stop"
 		placing = TRUE
 	else
@@ -77,7 +77,7 @@
 		icon_state = "[base_icon_state]_start"
 		end = get_turf(src)
 		if(start.y != end.y && start.x != end.x || start.z != end.z)
-			to_chat(user, "<span class='notice'>[src] can only be laid horizontally or vertically.</span>")
+			to_chat(user, span_notice("[src] can only be laid horizontally or vertically."))
 			return
 
 		var/turf/cur = start
@@ -105,7 +105,7 @@
 			cur = get_step_towards(cur,end)
 
 		if(!can_place)
-			to_chat(user, "<span class='notice'>You can't run \the [src] through that!</span>")
+			to_chat(user, span_notice("You can't run \the [src] through that!"))
 			return
 
 		cur = start
@@ -119,7 +119,7 @@
 				P.icon_state = "[P.base_icon_state]_[dir]"
 				P.tape_dir = dir
 			cur = get_step_towards(cur,end)
-		to_chat(user, "<span class='notice'>You finish placing [src].</span>")
+		to_chat(user, span_notice("You finish placing [src]."))
 
 /obj/item/barrier_tape/afterattack(atom/A, mob/user, proximity)
 	if(proximity && istype(A, /obj/structure/vampdoor))
@@ -127,7 +127,7 @@
 		var/obj/structure/barrier_tape/P = new tape_type(T)
 		P.icon_state = "[base_icon_state]_door"
 		P.layer = ABOVE_ALL_MOB_LAYER + 0.1
-		to_chat(user, "<span class='notice'>You finish placing [src].</span>")
+		to_chat(user, span_notice("You finish placing [src]."))
 
 /obj/structure/barrier_tape/proc/crumple()
 	if(!crumpled)
