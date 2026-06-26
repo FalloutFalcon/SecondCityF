@@ -7169,6 +7169,7 @@
 #include "modular_darkpack\modules\areas\code\outsides\forest.dm"
 #include "modular_darkpack\modules\ashtray\code\ashtray.dm"
 #include "modular_darkpack\modules\barrier_tape\code\barrier_tape.dm"
+#include "modular_darkpack\modules\barrier_tape\code\subtypes.dm"
 #include "modular_darkpack\modules\battering_ram\code\battering_ram.dm"
 #include "modular_darkpack\modules\beastmaster\code\beastmaster_actions.dm"
 #include "modular_darkpack\modules\beastmaster\code\beastmaster_ai.dm"

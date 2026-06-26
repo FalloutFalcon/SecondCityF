@@ -1,7 +1,7 @@
 /obj/item/barrier_tape
 	name = "barrier tape roll"
 	icon = 'modular_darkpack/modules/barrier_tape/icons/barriertape.dmi'
-	icon_state = "rollstart"
+	icon_state = "tape"
 	abstract_type = /obj/item/barrier_tape
 	w_class = WEIGHT_CLASS_SMALL
 	var/turf/start
@@ -9,34 +9,116 @@
 	var/tape_type = /obj/structure/barrier_tape
 	var/placing = FALSE
 
+/obj/item/barrier_tape/update_overlays()
+	. = ..()
+	if(ismob(loc))
+		var/image/overlay = image(icon = src.icon)
+		overlay.appearance_flags = RESET_COLOR
+		if(!placing)
+			overlay.icon_state = "start"
+		else
+			overlay.icon_state = "stop"
+		. += overlay
+
+
+/obj/item/barrier_tape/dropped(mob/user, silent)
+	. = ..()
+	update_icon(UPDATE_ICON)
+
+/obj/item/barrier_tape/pickup(mob/user)
+	. = ..()
+	update_icon(UPDATE_ICON)
+
+/obj/item/barrier_tape/attack_hand(mob/user, list/modifiers)
+	. = ..()
+	update_icon(UPDATE_ICON)
+
+/obj/item/barrier_tape/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(istype(interacting_with, /obj/structure/vampdoor))
+		var/turf/T = get_turf(interacting_with)
+		var/obj/structure/barrier_tape/P = new tape_type(T)
+		update_icon(UPDATE_ICON)
+		P.layer = ABOVE_ALL_MOB_LAYER + 0.1
+		to_chat(user, span_notice("You finish placing [src]."))
+		return ITEM_INTERACT_SUCCESS
+
+/obj/item/barrier_tape/attack_self(mob/user, modifiers)
+	if(!do_after(user, 1 SECONDS, src))
+		return FALSE
+
+	if(!placing)
+		start = get_turf(src)
+		to_chat(user, span_notice("You place the first end of [src]."))
+		placing = TRUE
+		update_icon(UPDATE_ICON)
+	else
+		placing = FALSE
+		update_icon(UPDATE_ICON)
+		end = get_turf(src)
+		if(start.y != end.y && start.x != end.x || start.z != end.z)
+			to_chat(user, span_notice("[src] can only be laid horizontally or vertically."))
+			return
+
+		var/turf/current_turf = start
+		var/dir = 0
+		if(start.x == end.x)
+			var/d = end.y-start.y
+			if(d)
+				d = d/abs(d)
+			end = get_turf(locate(end.x,end.y+d,end.z))
+		else
+			var/d = end.x-start.x
+			if(d)
+				d = d/abs(d)
+			end = get_turf(locate(end.x+d,end.y,end.z))
+
+		var/can_place = TRUE
+		while(current_turf != end && can_place)
+			if(current_turf.density || istype(current_turf, /turf/open/space))
+				can_place = FALSE
+			else
+				for(var/obj/O in current_turf)
+					if(!istype(O, /obj/structure/barrier_tape) && O.density)
+						can_place = FALSE
+						break
+			current_turf = get_step_towards(current_turf,end)
+
+		if(!can_place)
+			to_chat(user, span_notice("You can't run \the [src] through that!"))
+			return
+
+		current_turf = start
+		var/existing_tape = FALSE
+		while(current_turf != end)
+			for(var/obj/structure/barrier_tape/tape_on_turf in current_turf)
+				if(tape_on_turf.tape_dir == dir)
+					existing_tape = TRUE
+			if(!existing_tape)
+				var/obj/structure/barrier_tape/P = new tape_type(current_turf)
+				P.tape_dir = dir
+				update_icon(UPDATE_ICON)
+			current_turf = get_step_towards(current_turf,end)
+		to_chat(user, span_notice("You finish placing [src]."))
+		return TRUE
+
+
 /obj/structure/barrier_tape
 	name = "barrier tape"
 	icon = 'modular_darkpack/modules/barrier_tape/icons/barriertape.dmi'
+	icon_state = "tape"
+	base_icon_state = "tape"
 	abstract_type = /obj/structure/barrier_tape
 	anchored = TRUE
 	density = TRUE
 	var/lifted = FALSE
 	var/crumpled = FALSE
-	var/tape_dir
-
-
-/obj/item/barrier_tape/police
-	name = "police tape"
-	desc = "A roll of police tape used to block off crime scenes from the public."
-	icon_state = "police_start"
-	base_icon_state = "police"
-	tape_type = /obj/structure/barrier_tape/police
-
-/obj/structure/barrier_tape/police
-	name = "police tape"
-	desc = "A length of police tape. Do not cross."
-	base_icon_state = "police"
-
+	var/tape_dir = 0
+	var/detail_overlay
+	var/detail_color
 
 /obj/structure/barrier_tape/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/contextual_screentip_bare_hands, lmb_text = "Lift", lmb_text_combat_mode = "Tear")
-
 
 /obj/structure/barrier_tape/CanAllowThrough(atom/movable/mover, border_dir)
 	. = ..()
@@ -48,6 +130,42 @@
 		return TRUE
 	return FALSE
 
+/obj/structure/barrier_tape/update_icon_state()
+	. = ..()
+	//Possible directional bitflags: 0 (AIRLOCK), 1 (NORTH), 2 (SOUTH), 4 (EAST), 8 (WEST), 3 (VERTICAL), 12 (HORIZONTAL)
+	var/new_state
+	switch(tape_dir)
+		if(0) // door
+			new_state = "[base_icon_state]_door"
+		if(3) // VERTICAL
+			new_state = "[base_icon_state]_v"
+		if(12) // HORIZONTAL
+			new_state = "[base_icon_state]_h"
+		else // END POINT (1|2|4|8)
+			new_state = "[base_icon_state]_dir"
+			dir = tape_dir
+	icon_state = "[new_state]_[crumpled]"
+
+/obj/structure/barrier_tape/update_overlays()
+	. = ..()
+	if(detail_overlay)
+		var/new_state
+		switch(tape_dir)
+			if(0)
+				new_state = "[base_icon_state]_door"
+			if(3)
+				new_state = "[base_icon_state]_v"
+			if(12)
+				new_state = "[base_icon_state]_h"
+			else
+				new_state = "[base_icon_state]_dir"
+				dir = tape_dir
+		var/image/detail = image(icon = src.icon, icon_state = "[new_state]_[detail_overlay]")
+		detail.appearance_flags = RESET_COLOR
+		detail.color = detail_color
+		. += detail
+
+
 /obj/structure/barrier_tape/attack_hand(mob/living/user, list/modifiers)
 	if(user.combat_mode)
 		user.visible_message(span_notice("[user] tears down [src]!"))
@@ -55,82 +173,48 @@
 		qdel(src)
 	else
 		user.visible_message(span_notice("[user] lifts [src], allowing passage."))
-		lift_tape()
+		for(var/obj/structure/barrier_tape/connected_tape in get_connected_tape())
+			connected_tape.lift_tape()
 
 /obj/structure/barrier_tape/proc/lift_tape()
 	lifted = TRUE
 	density = FALSE
+	layer = ABOVE_ALL_MOB_LAYER
 	addtimer(CALLBACK(src, PROC_REF(drop_tape)), 2 SECONDS)
 
 /obj/structure/barrier_tape/proc/drop_tape()
 	lifted = FALSE
 	density = TRUE
-
-/obj/item/barrier_tape/attack_self(mob/user, modifiers)
-	if(!placing)
-		start = get_turf(src)
-		to_chat(user, span_notice("You place the first end of [src]."))
-		icon_state = "[base_icon_state]_stop"
-		placing = TRUE
-	else
-		placing = FALSE
-		icon_state = "[base_icon_state]_start"
-		end = get_turf(src)
-		if(start.y != end.y && start.x != end.x || start.z != end.z)
-			to_chat(user, span_notice("[src] can only be laid horizontally or vertically."))
-			return
-
-		var/turf/cur = start
-		var/dir
-		if(start.x == end.x)
-			var/d = end.y-start.y
-			if(d) d = d/abs(d)
-			end = get_turf(locate(end.x,end.y+d,end.z))
-			dir = "v"
-		else
-			var/d = end.x-start.x
-			if(d) d = d/abs(d)
-			end = get_turf(locate(end.x+d,end.y,end.z))
-			dir = "h"
-
-		var/can_place = TRUE
-		while(cur != end && can_place)
-			if(cur.density || istype(cur, /turf/open/space))
-				can_place = FALSE
-			else
-				for(var/obj/O in cur)
-					if(!istype(O, /obj/structure/barrier_tape) && O.density)
-						can_place = FALSE
-						break
-			cur = get_step_towards(cur,end)
-
-		if(!can_place)
-			to_chat(user, span_notice("You can't run \the [src] through that!"))
-			return
-
-		cur = start
-		var/tapetest = FALSE
-		while(cur != end)
-			for(var/obj/structure/barrier_tape/Ptest in cur)
-				if(Ptest.tape_dir == dir)
-					tapetest = TRUE
-			if(!tapetest)
-				var/obj/structure/barrier_tape/P = new tape_type(cur)
-				P.icon_state = "[P.base_icon_state]_[dir]"
-				P.tape_dir = dir
-			cur = get_step_towards(cur,end)
-		to_chat(user, span_notice("You finish placing [src]."))
-
-/obj/item/barrier_tape/afterattack(atom/A, mob/user, proximity)
-	if(proximity && istype(A, /obj/structure/vampdoor))
-		var/turf/T = get_turf(A)
-		var/obj/structure/barrier_tape/P = new tape_type(T)
-		P.icon_state = "[base_icon_state]_door"
-		P.layer = ABOVE_ALL_MOB_LAYER + 0.1
-		to_chat(user, span_notice("You finish placing [src]."))
+	layer = initial(layer)
 
 /obj/structure/barrier_tape/proc/crumple()
 	if(!crumpled)
 		crumpled = TRUE
-		icon_state = "[icon_state]_c"
+		update_icon(UPDATE_ICON)
 		name = "crumpled [name]"
+
+// Returns a list of all tape objects connected to src, including itself.
+/obj/structure/barrier_tape/proc/get_connected_tape()
+	var/list/dirs = list()
+	if(tape_dir & NORTH)
+		dirs += NORTH
+	if(tape_dir & SOUTH)
+		dirs += SOUTH
+	if(tape_dir & WEST)
+		dirs += WEST
+	if(tape_dir & EAST)
+		dirs += EAST
+
+	var/list/obj/structure/barrier_tape/tapeline = list()
+	for (var/obj/structure/barrier_tape/T in get_turf(src))
+		tapeline += T
+	for(var/dir in dirs)
+		var/turf/current_turf = get_step(src, dir)
+		var/not_found = 0
+		while (!not_found)
+			not_found = 1
+			for (var/obj/structure/barrier_tape/T in current_turf)
+				tapeline += T
+				not_found = 0
+			current_turf = get_step(current_turf, dir)
+	return tapeline
