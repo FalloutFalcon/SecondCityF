@@ -110,6 +110,7 @@
 	abstract_type = /obj/structure/barrier_tape
 	anchored = TRUE
 	density = TRUE
+	max_integrity = 20
 	var/lifted = FALSE
 	var/crumpled = FALSE
 	var/tape_dir = 0
@@ -170,11 +171,16 @@
 	if(user.combat_mode)
 		user.visible_message(span_notice("[user] tears down [src]!"))
 		playsound(src, 'sound/items/poster/poster_ripped.ogg', 100, TRUE)
-		qdel(src)
+		atom_destruction(MELEE)
 	else
 		user.visible_message(span_notice("[user] lifts [src], allowing passage."))
 		for(var/obj/structure/barrier_tape/connected_tape in get_connected_tape())
 			connected_tape.lift_tape()
+
+/obj/structure/barrier_tape/atom_deconstruct(disassembled)
+	. = ..()
+	var/obj/effect/decal/cleanable/plastic/trash = new(drop_location())
+	transfer_fingerprints_to(trash)
 
 /obj/structure/barrier_tape/proc/lift_tape()
 	lifted = TRUE
