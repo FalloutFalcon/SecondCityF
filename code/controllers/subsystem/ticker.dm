@@ -150,6 +150,7 @@ SUBSYSTEM_DEF(ticker)
 				send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.current_map.map_name]!"), channel_tag)
 			current_state = GAME_STATE_PREGAME
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
+			check_preround_delay() // APOC EDIT ADD - DELAY_ROUND
 
 			fire()
 		if(GAME_STATE_PREGAME)
