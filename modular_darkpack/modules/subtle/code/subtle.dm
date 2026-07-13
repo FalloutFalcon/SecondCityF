@@ -78,6 +78,9 @@
 	key_third_person = "subtler"
 	message = null
 
+/datum/emote/living/custom/subtler/get_custom_emote_from_user()
+	return tgui_input_text(user, "Choose an emote to display.", "Subtler" , max_length = SUBTLE_MESSAGE_LEN, multiline = TRUE)
+
 /datum/emote/living/custom/subtler/run_emote(mob/user, params, type_override, intentional)
 	var/subtler_message
 	var/subtler_emote = params
@@ -85,7 +88,7 @@
 	var/subtler_range = SUBTLE_DEFAULT_DISTANCE
 
 	if(!subtler_emote)
-		subtler_emote = tgui_input_text(user, "Choose an emote to display.", "Subtler" , max_length = SUBTLE_MESSAGE_LEN, multiline = TRUE)
+		subtler_emote = get_custom_emote_from_user()
 		if(!subtler_emote)
 			return FALSE
 
@@ -167,9 +170,14 @@
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 
+	var/list/message_mods = list()
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
+	message = get_message_mods(message, message_mods)
 
-	QUEUE_OR_CALL_VERB_FOR(VERB_CALLBACK(src, TYPE_PROC_REF(/mob, emote), "subtle", NONE, message, TRUE), SSspeech_controller)
+	if(message_mods[WHISPER_MODE])
+		QUEUE_OR_CALL_VERB_FOR(VERB_CALLBACK(src, TYPE_PROC_REF(/mob, emote), "subtler", NONE, message, TRUE), SSspeech_controller)
+	else
+		QUEUE_OR_CALL_VERB_FOR(VERB_CALLBACK(src, TYPE_PROC_REF(/mob, emote), "subtle", NONE, message, TRUE), SSspeech_controller)
 
 /*
 *	VERB CODE 2

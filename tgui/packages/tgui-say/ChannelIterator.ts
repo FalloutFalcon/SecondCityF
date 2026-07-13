@@ -1,4 +1,4 @@
-export type Channel = 'Say' | 'Radio' | 'Me' | 'Do' | 'OOC' | 'LOOC' | 'Admin' | 'Pray'; // DARKPACK EDIT CHANGE - LOOC,DO_EMOTES
+export type Channel = 'Say' | 'Radio' | 'Me' | 'Do' | 'Subtle' | 'OOC' | 'LOOC' | 'Admin' | 'Pray'; // DARKPACK EDIT CHANGE - LOOC,DO_EMOTES,SUBTLE
 
 /**
  * ### ChannelIterator
@@ -8,7 +8,7 @@ export type Channel = 'Say' | 'Radio' | 'Me' | 'Do' | 'OOC' | 'LOOC' | 'Admin' |
  */
 export class ChannelIterator {
   private index: number = 0;
-  private readonly channels: Channel[] = ['Say', 'Radio', 'Me', 'Do', 'OOC', 'LOOC', 'Admin', 'Pray']; // DARKPACK EDIT CHANGE - LOOC,DO_EMOTES
+  private readonly channels: Channel[] = ['Say', 'Radio', 'Me', 'Do', 'Subtle', 'OOC', 'LOOC', 'Admin', 'Pray']; // DARKPACK EDIT CHANGE - LOOC,DO_EMOTES,SUBTLE
   private readonly blacklist: Channel[] = ['Admin'];
   private readonly quiet: Channel[] = ['OOC', 'LOOC', 'Admin', 'Pray']; // DARKPACK EDIT CHANGE - LOOC
 

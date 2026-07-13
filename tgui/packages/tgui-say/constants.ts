@@ -18,7 +18,7 @@ export enum LineLength {
  * Displays the name in the left button, tags a css class.
  */
 export const RADIO_PREFIXES = {
-  /* // DARKPACK EDIT REMOVAL START
+  /* // DARKPACK EDIT REMOVAL START - RADIOS
   ':a ': 'Hive',
   ':b ': 'io',
   ':c ': 'Cmd',
@@ -29,14 +29,14 @@ export const RADIO_PREFIXES = {
   ':o ': 'AI',
   */ // DARKPACK EDIT REMOVAL END
   ':p ': 'Ent',
-  /* // DARKPACK EDIT REMOVAL START
+  /* // DARKPACK EDIT REMOVAL START - RADIOS
   ':s ': 'Sec',
   ':t ': 'Synd',
   ':u ': 'Supp',
   ':v ': 'Svc',
   ':y ': 'CCom',
   */ // DARKPACK EDIT REMOVAL END
-  // DARKPACK EDIT ADD START
+  // DARKPACK EDIT ADD START - RADIOS
   ':s ': 'SFPD',
   ':m ': 'SFMC',
   ':a ': 'Army',

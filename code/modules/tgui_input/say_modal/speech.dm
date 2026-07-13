@@ -63,6 +63,11 @@
 			client.mob.do_verb(entry)
 			return TRUE
 		// DARKPACK EDIT ADD END
+		// DARKPACK EDIT ADD START - SUBTLE
+		if(SUBTLE_CHANNEL)
+			client.mob.subtle_verb(entry)
+			return TRUE
+		// DARKPACK EDIT ADD END
 	return FALSE
 
 /**

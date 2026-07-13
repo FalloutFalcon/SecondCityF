@@ -20,9 +20,14 @@
 	if(!mob)
 		return
 
+	var/list/message_mods = list()
 	msg = copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN)
+	msg = mob.get_message_mods(msg, message_mods)
 	if(!msg)
 		return
+
+	if(message_mods[WHISPER_MODE])
+		wall_pierce = TRUE
 
 	if(!holder)
 		if(!GLOB.looc_allowed)
