@@ -78,7 +78,7 @@
 	key_third_person = "subtler"
 	message = null
 
-/datum/emote/living/custom/subtler/get_custom_emote_from_user()
+/datum/emote/living/custom/subtler/get_custom_emote_from_user(mob/user)
 	return tgui_input_text(user, "Choose an emote to display.", "Subtler" , max_length = SUBTLE_MESSAGE_LEN, multiline = TRUE)
 
 /datum/emote/living/custom/subtler/run_emote(mob/user, params, type_override, intentional)
@@ -88,7 +88,7 @@
 	var/subtler_range = SUBTLE_DEFAULT_DISTANCE
 
 	if(!subtler_emote)
-		subtler_emote = get_custom_emote_from_user()
+		subtler_emote = get_custom_emote_from_user(user)
 		if(!subtler_emote)
 			return FALSE
 
