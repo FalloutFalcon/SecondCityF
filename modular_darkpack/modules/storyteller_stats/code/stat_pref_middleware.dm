@@ -14,7 +14,7 @@
 		var/datum/st_stat/stat = preferences.preference_storyteller_stats[typepath]
 		var/list/stat_data = list()
 		stat_data["name"] = stat.name
-		stat_data["desc"] = stat.description
+		stat_data["desc"] = stat.get_tooltip()
 		stat_data["editable"] = stat.editable
 		stat_data["category"] = stat.category
 		stat_data["subcategory"] = stat.subcategory

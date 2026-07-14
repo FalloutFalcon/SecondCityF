@@ -195,3 +195,23 @@
 	points -= amount
 	freebie_cost_spent += amount
 	return TRUE
+
+
+/datum/st_stat/proc/get_tooltip()
+	. = description
+
+	var/static/alist/usecases
+	if(!usecases)
+		usecases = alist()
+		var/list/all_rolls = list()
+		for(var/type in valid_subtypesof(/datum/storyteller_roll))
+			all_rolls += new type()
+
+		for(var/stat_type in valid_subtypesof(/datum/st_stat))
+			usecases[stat_type] = list()
+			for(var/datum/storyteller_roll/roll_datum in all_rolls)
+				if(stat_type in roll_datum.applicable_stats)
+					usecases[stat_type] |= roll_datum.bumper_text
+
+	if(usecases[type] && length(usecases[type]))
+		. += "Stat used in rolls: [jointext(usecases[type], ", ")]."
