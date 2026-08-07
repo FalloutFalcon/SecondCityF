@@ -12,6 +12,51 @@
 		LAZYADD(outfit.backpack_contents, outfit.mask)
 	outfit.mask = item_path
 
+
+/*
+/datum/loadout_item/mask/get_item_information()
+	. = ..()
+	var/obj/item/clothing/mask/mask_type = item_path
+	if(ispath(mask_type) && (mask_type::flags_inv & HIDEFACE))
+		.[FA_ICON_MASK_VENTILATOR] = "Hide Face"
+*/
+
+/datum/loadout_item/mask/on_equip_item(obj/item/equipped_item, list/item_details, mob/living/carbon/human/equipper, datum/outfit/job/outfit, visuals_only = FALSE)
+	. = ..()
+	if(isnull(equipped_item))
+		return
+	var/remove_block = item_details[INFO_LAYER]
+	var/obj/item/clothing/mask/mask_item = astype(equipped_item)
+	if(remove_block && mask_item)
+		mask_item.flags_inv &= HIDEFACE
+
+/datum/loadout_item/mask/get_ui_buttons()
+	. = ..()
+	var/obj/item/clothing/mask/mask_type = item_path
+	if(ispath(mask_type) && (mask_type::flags_inv & HIDEFACE))
+		UNTYPED_LIST_ADD(., list(
+			"label" = "Prevent Hide Face",
+			"act_key" = "toggle_hide_face",
+			"button_icon" = FA_ICON_MASK_VENTILATOR,
+			"active_key" = INFO_LAYER,
+		))
+
+	return .
+
+/datum/loadout_item/mask/handle_loadout_action(datum/preference_middleware/loadout/manager, mob/user, action, params)
+	switch(action)
+		if("toggle_hide_face")
+			var/list/their_loadout = manager.preferences.read_preference(/datum/preference/loadout)
+			var/old_option = their_loadout?[item_path]?[INFO_LAYER]
+			their_loadout = manager.preferences.read_preference(/datum/preference/loadout) // after sleep: sanity check
+			if(their_loadout?[item_path]) // Validate they still have it equipped
+				their_loadout[item_path][INFO_LAYER] = !old_option
+				manager.preferences.update_preference(GLOB.preference_entries[/datum/preference/loadout], their_loadout)
+			return TRUE // Update UI
+
+	return ..()
+
+
 /datum/loadout_item/mask/work
 	group = "Profession Masks"
 	abstract_type = /datum/loadout_item/mask/work
