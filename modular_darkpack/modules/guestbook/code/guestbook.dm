@@ -136,11 +136,24 @@
 	if(guest)
 		if(user == guest)
 			return guest.real_name
-		var/mob/living/carbon/carbon_guest = astype(guest)
-		if((carbon_guest?.get_face_name() == "Unknown") && !carbon_guest.client?.prefs.read_preference(/datum/preference/toggle/show_identity_when_masked))
+		if(!guest.is_identify_visible())
 			return null
 		checked_name = guest.real_name
 	return LAZYACCESS(known_names, checked_name)
+
+/mob/living/proc/is_identify_visible()
+	return TRUE
+
+/mob/living/carbon/human/is_identify_visible()
+	if(HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE))
+		return FALSE //We're Unknown, no face information for you
+	if((obscured_slots & HIDEFACE) && !client?.prefs.read_preference(/datum/preference/toggle/show_identity_when_masked))
+		return FALSE
+	var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
+	if(isnull(head) || HAS_TRAIT(head, TRAIT_DISFIGURED) || HAS_TRAIT(src, TRAIT_INVISIBLE_MAN)) //disfigured. use id-name if possible
+		return FALSE
+	return TRUE
+
 
 /datum/guestbook/proc/visibility_checks(mob/user, mob/living/carbon/human/guest, silent = FALSE)
 	if(QDELETED(guest))
