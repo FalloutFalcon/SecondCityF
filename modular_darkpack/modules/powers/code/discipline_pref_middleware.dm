@@ -12,6 +12,24 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	// melpominee not yet implemented but will go here
 ))
 
+
+GLOBAL_LIST_INIT(disc_point_costs, list(
+	2,
+	1,
+	2,
+	3,
+	4,
+	5,
+	6,
+))
+
+// Reminder that byond lists are indexed by one..
+/proc/get_disc_level_cost(level)
+	if(!level)
+		return 0
+	return GLOB.disc_point_costs[level]
+
+
 // warns a player if they have no discipline dots assigned before joining
 // returns TRUE if they want to proceed, FALSE if they want to go back and fix their disciplines
 /mob/dead/new_player/proc/check_discipline_warning()
@@ -112,7 +130,9 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	for(var/discipline in preferences.discipline_levels)
 		var/level = preferences.discipline_levels[discipline]
 		data["discipline_levels"]["[discipline]"] = level
-		points_spent += level
+		if(isnum(preferences.discipline_levels[discipline]))
+			for(var/i in 1 to preferences.discipline_levels[discipline])
+				points_spent += get_disc_level_cost(i)
 
 	var/is_ghoul = ispath(preferences.read_preference(/datum/preference/choiced/splats), /datum/splat/vampire/ghoul)
 	data["clan_disciplines"] = list()
@@ -126,6 +146,28 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 				if(ispath(disc_type, /datum/discipline))
 					data["clan_disciplines"] += "[disc_type]"
 
+	var/discipline_count = get_disc_count(is_ghoul, clan_value)
+
+	var/immortal_age = preferences.read_preference(/datum/preference/numeric/immortal_age)
+	var/list/budget_info = get_budget_info(is_ghoul, discipline_count, immortal_age)
+	data["discipline_points_available"] = budget_info["points"]
+	data["discipline_points_spent"] = points_spent
+	data["discipline_tier"] = budget_info["tier"]
+	data["discipline_tier_details"] = budget_info["details"]
+	data["is_trusted"] = preferences.discipline_trusted || FALSE
+	data["max_trusted_generation"] = MAX_TRUSTED_GENERATION
+	data["max_public_generation"] = MAX_PUBLIC_GENERATION
+	data["highest_generation_limit"] = HIGHEST_GENERATION_LIMIT
+
+	return data
+
+/datum/preference_middleware/disciplines/proc/get_budget_info(is_ghoul = FALSE, discipline_count, immortal_age)
+	if(is_ghoul)
+		return get_ghoul_discipline_budget(discipline_count)
+	else
+		return get_discipline_point_budget(immortal_age)
+
+/datum/preference_middleware/disciplines/proc/get_disc_count(is_ghoul, clan_value)
 	var/discipline_count = 0
 	var/list/counted_discs = list()
 	for(var/disc in preferences.discipline_levels)
@@ -140,18 +182,7 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 				if(ispath(disc_type, /datum/discipline) && !("[disc_type]" in counted_discs))
 					discipline_count++
 
-	var/immortal_age = preferences.read_preference(/datum/preference/numeric/immortal_age)
-	var/list/budget_info = is_ghoul ? get_ghoul_discipline_budget(discipline_count) : get_discipline_point_budget(immortal_age)
-	data["discipline_points_available"] = budget_info["points"]
-	data["discipline_points_spent"] = points_spent
-	data["discipline_tier"] = budget_info["tier"]
-	data["discipline_tier_details"] = budget_info["details"]
-	data["is_trusted"] = preferences.discipline_trusted || FALSE
-	data["max_trusted_generation"] = MAX_TRUSTED_GENERATION
-	data["max_public_generation"] = MAX_PUBLIC_GENERATION
-	data["highest_generation_limit"] = HIGHEST_GENERATION_LIMIT
-
-	return data
+	return discipline_count
 
 /datum/preference_middleware/disciplines/proc/get_discipline_point_budget(immortal_age)
 	if(immortal_age <= 10)
@@ -175,7 +206,7 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 
 /datum/preference_middleware/disciplines/proc/get_ghoul_discipline_budget(discipline_count = 0)
 	return list(
-		"points" = max(3, discipline_count), // pool expands for each additional discipline they've been taught, but they can never assign more than 1 per
+		"points" = max(3, discipline_count) * get_disc_level_cost(1), // pool expands for each additional discipline they've been taught, but they can never assign more than 1 per
 		"tier" = "Ghoul",
 		"details" = "As a Ghoul, you are the working class of Kindred society. Not quite Kine, not quite Kindred. An outsider in both worlds. You might have a Domitor, or maybe an 'employer', a Kindred who supplies you regular donations of Kindred blood that sustains your long, ageless life and supernatural abilities. Or, more rarely, you might be a freelancing ghoul that takes Kindred blood where you can find it, a practice heavily frowned upon and could get you killed if the Camarilla ever found out. You keep your head down for the most part and do what you're told, because one wrong look and the only price a Kindred might have to pay for ending your life is a small favor to the Kindred that holds your leash. You're able to run errands for your Domitor during the day time, and use basic forms of the supernatural abilities drawn from the blood you drink.. but for as long as you continue to drink, you will continue to inherit their clan curse, too.")
 
@@ -233,18 +264,31 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 				if("[disc_type]" == discipline)
 					return FALSE
 
+	var/is_ghoul = ispath(preferences.read_preference(/datum/preference/choiced/splats), /datum/splat/vampire/ghoul)
+	var/clan_value = preferences.read_preference(/datum/preference/choiced/subsplat/vampire_clan)
+	var/discipline_count = get_disc_count(is_ghoul, clan_value)
+
 	var/immortal_age = preferences.read_preference(/datum/preference/numeric/immortal_age)
-	var/list/budget_info = get_discipline_point_budget(immortal_age)
+	var/list/budget_info = get_budget_info(is_ghoul, discipline_count, immortal_age)
 	var/point_budget = budget_info["points"]
 	var/old_level = preferences.discipline_levels[discipline] || 0
 	var/current_total = 0
 
 	for(var/disc in preferences.discipline_levels)
-		current_total += preferences.discipline_levels[disc]
-	var/new_total = current_total - old_level + new_level
+		#warn why do we have entires here that arent numbers
+		if(isnum(preferences.discipline_levels[disc]))
+			for(var/i in 1 to preferences.discipline_levels[disc])
+				current_total += get_disc_level_cost(i)
 
-	if(new_level > old_level && new_total > point_budget) // you can go down, but not up, if you're overbudget. for when adminbus gives you more than you can chew
-		return FALSE
+	#warn this is not catching jumps. Like 1 to 3.
+	if(new_level > old_level)
+		var/new_total = current_total
+
+		for(var/i in old_level + 1 to new_level)
+			new_total += get_disc_level_cost(i)
+
+		if(new_total > point_budget) // you can go down, but not up, if you're overbudget. for when adminbus gives you more than you can chew
+			return FALSE
 
 	preferences.discipline_levels[discipline] = new_level
 

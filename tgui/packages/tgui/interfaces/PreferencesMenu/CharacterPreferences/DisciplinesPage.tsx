@@ -138,9 +138,7 @@ function DisciplinesInner(props: DisciplinesInnerProps) {
   const disciplineEntries = Object.entries(disciplines).filter(
     ([path]) => clanDisciplines.has(path) || path in disciplineLevels,
   );
-  const pointsAvailable = isGhoul
-    ? Math.max(3, disciplineEntries.length)
-    : data.discipline_points_available ?? 12;
+  const pointsAvailable = data.discipline_points_available ?? 12;
   const pointsRemaining = pointsAvailable - pointsSpent;
   const overBudget = pointsSpent > pointsAvailable;
 
