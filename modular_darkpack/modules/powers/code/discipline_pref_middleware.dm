@@ -199,7 +199,7 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 
 	return data
 
-	var/something = 1
+	var/something = 4
 
 // sets the character's level in a given discipline
 // if you dont put any dots in it, aka level 0, it means you don't spawn in with that discipline
