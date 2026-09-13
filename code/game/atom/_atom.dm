@@ -357,7 +357,7 @@
  * or deletes them if they're not.
  * The proc can be overriden by subtypes, as long as it always call parent.
  */
-/atom/proc/on_craft_completion(list/components, datum/crafting_recipe/current_recipe, atom/crafter)
+/atom/proc/on_craft_completion(list/components, datum/crafting_recipe/current_recipe, atom/crafter, roll_result) // DARKPACK EDIT CHANGE - STORYTELLER_STATS
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(isliving(crafter))
@@ -366,6 +366,8 @@
 			ADD_TRAIT(src, TRAIT_HANDMADE, REF(person.mind))
 
 	SEND_SIGNAL(src, COMSIG_ATOM_ON_CRAFT, components, current_recipe)
+
+	crafted_skill_roll_result = roll_result
 
 	var/list/remaining_parts = LAZYLISTDUPLICATE(current_recipe?.parts)
 	var/list/parts_by_type = LAZYLISTDUPLICATE(remaining_parts)

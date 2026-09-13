@@ -250,6 +250,8 @@
 	if(fail_message)
 		return fail_message
 
+	var/roll_result = 1 // DARKPACK EDIT ADD - STORYTELLER_STATS
+
 	//If we're a mob we'll try a do_after; non mobs will instead instantly construct the item
 	if(!(ignored_flags & CRAFT_IGNORE_DO_AFTER))
 		var/recipe_time = recipe.time
@@ -280,8 +282,8 @@
 		var/mob/living/carbon/human/human_crafter
 		if(ishuman(crafter))
 			human_crafter = crafter
-			var/datum/st_stat/recipe_skill = recipe.skill_required_for_use
-			var/level_required = recipe.skill_dots_minimum
+			var/datum/st_stat/recipe_skill = recipe.craft_roll_ability
+			var/level_required = recipe.ability_dots_minimum
 			if(recipe_skill)
 				if(!isnull(level_required) && human_crafter.st_get_stat(recipe_skill) < level_required)
 					return ", you dont know how to craft! You need at least [level_required] in [recipe_skill::name]!"
@@ -290,6 +292,25 @@
 
 		if(!do_after(crafter, round(recipe_time, 0.1 SECONDS), target = crafter))
 			return "."
+
+		// DARKPACK EDIT ADD START - STORYTELLER_STATS
+		if(recipe.roll_difficulty)
+			var/datum/storyteller_roll/crafting/roll_datum = new()
+			roll_datum.applicable_stats = list()
+			if(recipe.craft_roll_attribute)
+				roll_datum.applicable_stats += recipe.craft_roll_attribute
+			if(recipe.craft_roll_ability)
+				roll_datum.applicable_stats += recipe.craft_roll_ability
+			roll_result = roll_datum.st_roll(crafter) // This should pass in a tool we use for apescraft blessing when we have that..
+			/*
+			switch(roll_result)
+				if(-INFINITY to -1) // I would love for this to consume the material, but oh god just looking below thats a pain.
+					return ", BOTCHED roll!"
+				if(0)
+					return ", failed roll."
+			*/
+
+		// DARKPACK EDIT ADD END
 		contents = get_surroundings(crafter, recipe.blacklist)
 		fail_message = perform_all_checks(crafter, recipe, contents, check_tools_last = TRUE)
 		if(fail_message)
@@ -335,7 +356,7 @@
 			holder.trans_to(result.reagents, holder.total_volume, no_react = TRUE)
 		stuff_to_use -= holder //This is the only non-movable in our list, we need to remove it.
 		qdel(holder)
-	result.on_craft_completion(stuff_to_use, recipe, crafter)
+	result.on_craft_completion(stuff_to_use, recipe, crafter, roll_result) // DARKPACK EDIT CHANGE - STORYTELLER_STATS
 	if(set_materials)
 		result.set_custom_materials(total_materials)
 	for(var/atom/movable/component as anything in stuff_to_use) //delete anything that wasn't stored inside the object

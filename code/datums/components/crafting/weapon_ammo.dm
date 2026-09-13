@@ -105,7 +105,7 @@
 	time = 1.2 SECONDS
 	category = CAT_WEAPON_AMMO
 	crafting_flags = CRAFT_SKIP_MATERIALS_PARITY
-	skill_dots_minimum = 3 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 3 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/trashball
 	name = "Trashball"

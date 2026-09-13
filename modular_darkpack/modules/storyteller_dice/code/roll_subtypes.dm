@@ -160,3 +160,8 @@
 	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
 	reroll_cooldown = 1 TURNS
 	difficulty = 9
+
+/datum/storyteller_roll/crafting
+	bumper_text = "crafting"
+	applicable_stats = list(STAT_WITS, STAT_CRAFTS)
+	numerical = TRUE

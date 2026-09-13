@@ -1,7 +1,7 @@
 // TODO: [Rebase] - Gas should be handled as a reagent
 /obj/item/liquid_flamethrower
 	name = "flamethrower"
-	desc = "Well fire weapon."
+	desc = "Now we are cooking with gas."
 	icon_state = "flamethrower4"
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
@@ -81,3 +81,8 @@
 		sleep(0.1 SECONDS)
 		previousturf = T
 	operating = FALSE
+
+/obj/item/liquid_flamethrower/on_craft_completion(list/components, datum/crafting_recipe/current_recipe, atom/crafter, roll_result)
+	. = ..()
+	oil = 0
+	icon_state = "flamethrower1" // I hate this, rewrite code asap please

@@ -21,8 +21,8 @@
 	reqs = list(/obj/item/paper = 3, /obj/item/reagent_containers/blood = 2)
 	result = /obj/item/ritual_tome/arcane
 	category = CAT_MISC
-	skill_required_for_use = STAT_OCCULT
-	skill_dots_minimum = 1
+	craft_roll_ability = STAT_OCCULT
+	ability_dots_minimum = 1
 
 /datum/crafting_recipe/arctome/is_recipe_available(mob/user)
 	. = ..()

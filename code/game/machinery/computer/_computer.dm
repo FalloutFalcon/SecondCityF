@@ -11,7 +11,7 @@
 	// DARKPACK EDIT ADD START - STORYTELER_STATS
 	skill_required_for_use = STAT_COMPUTER
 	// V20 p. 108 says for 1 dot "Student: You can navigate touch-screen and traditional point-and-click GUIs"
-	skill_dots_minimum = 1
+	ability_dots_minimum = 1
 	// DARKPACK EDIT ADD END
 	/// How bright we are when turned on.
 	var/brightness_on = 1

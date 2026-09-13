@@ -31,7 +31,7 @@
 	)
 	time = 10 SECONDS
 	category = CAT_WEAPON_RANGED
-	skill_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/riflestock
 	name = "Wooden Rifle Stock"
@@ -43,7 +43,7 @@
 	)
 	time = 5 SECONDS
 	category = CAT_WEAPON_RANGED
-	skill_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/gun_maint_kit
 	name = "Makeshift Gun Maintenance Kit"
@@ -57,7 +57,7 @@
 	)
 	time = 5 SECONDS
 	category = CAT_WEAPON_RANGED
-	skill_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/advancedegun
@@ -174,10 +174,10 @@
 	)
 	time = 5 SECONDS
 	category = CAT_WEAPON_RANGED
-	skill_dots_minimum = 5 // DARKPACK EDIT ADD - STORYTELER_STATS
-/*
+	ability_dots_minimum = 5 // DARKPACK EDIT ADD - STORYTELER_STATS
+
 /datum/crafting_recipe/flamethrower
-	name = "Flamethrower"
+	name = "Gas flamethrower" // DARKPACK EDIT CHANGE
 	result = /obj/item/flamethrower
 	reqs = list(
 		/obj/item/weldingtool = 1,
@@ -191,7 +191,9 @@
 	tool_behaviors = list(TOOL_SCREWDRIVER)
 	time = 1 SECONDS
 	category = CAT_WEAPON_RANGED
-*/
+	craft_roll_ability = STAT_SCIENCE
+	ability_dots_minimum = 2 // DARKPACK EDIT ADD - STORYTELER_STATS
+	roll_difficulty = 7 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/pipegun
 	name = "Pipegun"
@@ -206,7 +208,7 @@
 	tool_behaviors = list(TOOL_SCREWDRIVER)
 	time = 5 SECONDS
 	category = CAT_WEAPON_RANGED
-	skill_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/pipepistol
 	name = "Pipe Pistol"
@@ -223,7 +225,7 @@
 	tool_behaviors = list(TOOL_SCREWDRIVER)
 	time = 5 SECONDS
 	category = CAT_WEAPON_RANGED
-	skill_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/rebarxbow
 	name = "Heated Rebar Crossbow"
@@ -239,7 +241,7 @@
 	tool_behaviors = list(TOOL_WELDER)
 	time = 5 SECONDS
 	category = CAT_WEAPON_RANGED
-	skill_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/rebarxbowforced
 	name = "Forced Rebar Crossbow"
@@ -255,7 +257,7 @@
 	tool_behaviors = list(TOOL_CROWBAR)
 	time = 1 SECONDS
 	category = CAT_WEAPON_RANGED
-	skill_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/pipegun_prime
 	name = "Regal Pipegun"
@@ -335,7 +337,7 @@
 	time = 15 SECONDS
 	category = CAT_WEAPON_RANGED
 	crafting_flags = CRAFT_CHECK_DENSITY
-	skill_dots_minimum = 5 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 5 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/ratvarian_repeater
@@ -378,7 +380,7 @@
 	time = 8 SECONDS
 	category = CAT_WEAPON_RANGED
 	crafting_flags = CRAFT_CHECK_DENSITY
-	skill_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/trash_cannon
 	name = "Trash Cannon"

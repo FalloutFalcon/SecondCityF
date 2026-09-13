@@ -13,7 +13,7 @@
 	light_color = LIGHT_COLOR_GREEN
 	// DARKPACK EDIT ADD START - STORYTELER_STATS
 	skill_required_for_use = STAT_MEDICINE
-	skill_dots_minimum = 1
+	ability_dots_minimum = 1
 	// DARKPACK EDIT ADD END
 
 	/// Linked operating table, if any

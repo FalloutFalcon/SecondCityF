@@ -160,7 +160,7 @@
 	// 0 minimum means you have to have an active DEBUFF rather then just no dots.
 	// As this would otherwise be insanely frustating to apply to all devices and not representive of the tech skill.
 	/// You need ATLEAST this many dots in a skill to use.
-	var/skill_dots_minimum = 0
+	var/ability_dots_minimum = 0
 	// DARKPACK EDIT ADD END
 
 /datum/armor/obj_machinery
@@ -720,14 +720,14 @@
 		var/bad_at_device = FALSE
 
 		var/dots = living_user.st_get_stat(skill_required_for_use)
-		if(dots < skill_dots_minimum)
-			to_chat(user, span_warning("[src] requires atleast [skill_dots_minimum] dots in [skill_required_for_use::name] for proper use."))
+		if(dots < ability_dots_minimum)
+			to_chat(user, span_warning("[src] requires atleast [ability_dots_minimum] dots in [skill_required_for_use::name] for proper use."))
 			bad_at_device = TRUE
 			if(CONFIG_GET(flag/punishing_zero_dots) && dots <= 0)
 				return
 
 		/* I cant verify the lore accuracy of "rejection past your embrace age" and we dont have a invention date for tech to represent it either
-		if(skill_dots_minimum > 0 && HAS_TRAIT(user, TRAIT_REJECTED_BY_TECHNOLOGY))
+		if(ability_dots_minimum > 0 && HAS_TRAIT(user, TRAIT_REJECTED_BY_TECHNOLOGY))
 			if(skill_required_for_use in list(STAT_COMPUTER, STAT_TECHNOLOGY))
 				bad_at_device = TRUE
 		*/

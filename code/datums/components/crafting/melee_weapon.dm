@@ -8,7 +8,7 @@
 	)
 	time = 4 SECONDS
 	category = CAT_WEAPON_MELEE
-	skill_dots_minimum = 2 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 2 // DARKPACK EDIT ADD - STORYTELER_STATS
 /* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/teleprod
 	name = "Teleprod"
@@ -134,7 +134,7 @@
 	tool_behaviors = list(TOOL_WELDER)
 	time = 5 SECONDS
 	category = CAT_WEAPON_MELEE
-	skill_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/chainsaw/dual
 	name = "Double-ended chainsaw spear"
@@ -159,7 +159,7 @@
 	)
 	time = 4 SECONDS
 	category = CAT_WEAPON_MELEE
-	skill_dots_minimum = 1 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 1 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/wireprod
 	name = "Wireprod assembly"
@@ -188,7 +188,7 @@
 	time = 2 SECONDS
 	reqs = list(/obj/item/stack/sheet/bone = 2)
 	category = CAT_WEAPON_MELEE
-	skill_dots_minimum = 2 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 2 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/bonespear
 	name = "Bone Spear"
@@ -199,7 +199,7 @@
 		/obj/item/stack/sheet/sinew = 1,
 	)
 	category = CAT_WEAPON_MELEE
-	skill_dots_minimum = 2 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 2 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/boneaxe
 	name = "Bone Axe"
@@ -210,7 +210,7 @@
 		/obj/item/stack/sheet/sinew = 3,
 	)
 	category = CAT_WEAPON_MELEE
-	skill_dots_minimum = 2 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 2 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /datum/crafting_recipe/house_edge
 	name = "House Edge"
@@ -272,7 +272,7 @@
 	)
 	time = 8 SECONDS
 	category = CAT_WEAPON_MELEE
-	skill_dots_minimum = 2 // DARKPACK EDIT ADD - STORYTELER_STATS
+	ability_dots_minimum = 2 // DARKPACK EDIT ADD - STORYTELER_STATS
 
 /* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/sm_sword
