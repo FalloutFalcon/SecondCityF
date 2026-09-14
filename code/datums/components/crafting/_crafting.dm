@@ -725,6 +725,11 @@
 			data["name"] = "[data["name"]] [recipe.result_amount]x"
 		data["desc"] = recipe.desc || initial(atom.desc)
 
+	// DARKPACK EDIT ADD START - STORYTELLER_STATS
+	if(recipe.ability_dots_minimum)
+		data["desc"] += " It requires [recipe.ability_dots_minimum] dots in [recipe.craft_roll_ability::name] to craft."
+	// DARKPACK EDIT ADD END
+
 	if(ispath(recipe.result, /obj/item/food))
 		var/obj/item/food/food = recipe.result
 		data["has_food_effect"] = !!food.crafted_food_buff
