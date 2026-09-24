@@ -105,6 +105,14 @@
 /obj/item/defibrillator/compact,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/clinic)
+"bX" = (
+/obj/machinery/conveyor_switch/oneway{
+	dir = 8;
+	id = "garbage";
+	name = "disposal conveyor"
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/outside/pacificheights)
 "ca" = (
 /turf/closed/wall/vampwall/old,
 /area/vtm/outside/ghetto)
@@ -539,6 +547,9 @@
 /obj/effect/spawner/random/stray_animal,
 /turf/open/misc/beach/vamp,
 /area/vtm/outside/pacificheights)
+"jy" = (
+/turf/open/misc/dirt,
+/area/vtm/outside/pacificheights)
 "jD" = (
 /obj/structure/railing{
 	dir = 5
@@ -559,6 +570,13 @@
 /obj/effect/abstract/cargo_landing_spot,
 /turf/open/misc/dirt,
 /area/vtm/outside/supply)
+"jP" = (
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "garbage"
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/outside/pacificheights)
 "jQ" = (
 /obj/structure/vampfence/rich{
 	dir = 4
@@ -950,6 +968,13 @@
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/pacificheights)
+"pC" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "garbage"
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/outside/pacificheights)
 "pG" = (
 /obj/effect/landmark/npcbeacon,
 /obj/effect/turf_decal/bordur/corner{
@@ -968,6 +993,10 @@
 /obj/effect/turf_decal/bordur,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
+"pZ" = (
+/obj/effect/spawner/random/trash,
+/turf/open/misc/dirt,
+/area/vtm/outside/pacificheights)
 "qc" = (
 /turf/open/floor/iron/smooth_large,
 /area/vtm/outside/pacificheights)
@@ -1145,6 +1174,10 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/techshop)
+"sx" = (
+/obj/item/melee/vamp/tire,
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/outside/pacificheights)
 "sB" = (
 /obj/effect/decal/wallpaper/paper/stripe,
 /turf/closed/wall/vampwall/market,
@@ -1444,6 +1477,11 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights)
+"xp" = (
+/obj/effect/turf_decal/bordur,
+/obj/machinery/mineral/stacking_unit_console,
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/outside/pacificheights)
 "xv" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood/smooth/old,
@@ -1496,6 +1534,10 @@
 "yk" = (
 /turf/closed/wall/vampwall/brick,
 /area/vtm/interior/supply)
+"yn" = (
+/obj/item/fireaxe/vamp,
+/turf/open/misc/dirt,
+/area/vtm/outside/pacificheights)
 "yq" = (
 /obj/structure/barrels/rand,
 /obj/structure/sign/city/chinese/alt2/directional/west,
@@ -1566,6 +1608,10 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/sewer)
+"zI" = (
+/obj/structure/garbage_pile/temporary,
+/turf/open/misc/dirt,
+/area/vtm/outside/pacificheights)
 "zM" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood/smooth/old,
@@ -1577,6 +1623,10 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/gasstation)
+"Ac" = (
+/obj/item/melee/vamp/tire,
+/turf/open/misc/dirt,
+/area/vtm/outside/pacificheights)
 "Ag" = (
 /obj/effect/decal/cleanable/litter,
 /obj/effect/spawner/random/stray_animal,
@@ -1718,6 +1768,10 @@
 /obj/item/reagent_containers/blood/vitae,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/clinic)
+"Dg" = (
+/obj/structure/garbage_pile,
+/turf/open/misc/dirt,
+/area/vtm/outside/pacificheights)
 "Dh" = (
 /obj/effect/turf_decal/bordur,
 /obj/darkpack_car/rand/anarch{
@@ -1825,6 +1879,10 @@
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/clinic)
+"Eu" = (
+/obj/effect/decal/cleanable/trash/big,
+/turf/open/misc/dirt,
+/area/vtm/outside/pacificheights)
 "Ev" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "debughouse"
@@ -1913,6 +1971,16 @@
 /obj/structure/table/countertop/bacotell,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/pharmacy)
+"Gg" = (
+/obj/machinery/mineral/stacking_machine{
+	input_dir = 2
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "garbage"
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/outside/pacificheights)
 "Gm" = (
 /obj/structure/vampdoor/prison,
 /turf/open/floor/plating/rough,
@@ -3283,6 +3351,16 @@
 	dir = 1
 	},
 /obj/structure/roadsign/speedlimit,
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/outside/pacificheights)
+"YV" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "garbage"
+	},
+/obj/machinery/recycler{
+	dir = 8
+	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/pacificheights)
 "YY" = (
@@ -6762,14 +6840,14 @@ Oi
 Oi
 NR
 NR
-NR
-NR
-NR
-NR
-NR
-NR
-NR
-NR
+yn
+zI
+jy
+Dg
+jy
+Dg
+sx
+pC
 cj
 ik
 VQ
@@ -6830,14 +6908,14 @@ Oi
 Oi
 NR
 NR
-NR
-NR
-NR
-NR
-NR
-NR
-NR
-NR
+Dg
+jy
+pZ
+jy
+jy
+zI
+bX
+YV
 cj
 ik
 VQ
@@ -6898,14 +6976,14 @@ Oi
 Oi
 Oi
 NR
-NR
-NR
-NR
-NR
-NR
-NR
-NR
-NR
+jy
+Ac
+jy
+jy
+Dg
+pZ
+jP
+pC
 bp
 ik
 VQ
@@ -6966,15 +7044,15 @@ Oi
 Oi
 Oi
 Oi
-Oi
-NR
-NR
-NR
-NR
-NR
-NR
-NR
-cj
+Dg
+jy
+Dg
+jy
+jy
+zI
+Gg
+pC
+xp
 rW
 rW
 rW
@@ -7035,8 +7113,8 @@ Zz
 Zz
 oD
 oD
-oD
-NR
+jy
+Eu
 Aq
 GV
 GV
