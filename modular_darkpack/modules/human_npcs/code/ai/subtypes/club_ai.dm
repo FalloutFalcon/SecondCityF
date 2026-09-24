@@ -5,7 +5,7 @@
 /mob/living/carbon/human/npc/average/club/Life(seconds_per_tick)
 	. = ..()
 
-	if(stat >= UNCONSCIOUS)
+	if(IS_UNCONSCIOUS_OR_CRIT(src))
 		return
 	if(!SPT_PROB_RATE(5, seconds_per_tick))
 		return

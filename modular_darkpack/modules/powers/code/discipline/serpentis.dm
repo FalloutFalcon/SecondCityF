@@ -1,6 +1,11 @@
 /datum/discipline/serpentis
 	name = "Serpentis"
-	desc = "Act like a cobra, get the powers to stun targets with your gaze and your tongue, praise the mummy traditions and spread them to your childe. Violates Masquerade."
+	desc = {"Act like a cobra, get the powers to stun targets with your gaze and your tongue, praise the mummy traditions and spread them to your childe. Violates Masquerade.
+● The Eyes of the Serpent: Passive
+●● The Tongue of the Asp: Strength (difficulty 6)
+●●● The Skin of the Adder: Passive
+●●●● The Form of the Cobra: Passive
+●●●●● The Heart of Darkness: Passive"}
 	icon_state = "serpentis"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/serpentis
@@ -26,6 +31,7 @@
 	aggravating = FALSE
 	hostile = FALSE
 	violates_masquerade = TRUE
+	frenzy_usable = FALSE
 
 	multi_activate = TRUE
 	duration_length = 5 SECONDS
@@ -67,10 +73,10 @@
 	target.visible_message(span_hypnophrase("<b>[owner] hypnotizes [target] with [owner.p_their()] eyes!</b>"), span_warning("<b>[owner] hypnotizes you! Their words seem to become more convincing and hypnotic...</b>"))
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		H.remove_overlay(MUTATIONS_LAYER)
-		var/mutable_appearance/serpentis_overlay = mutable_appearance('modular_darkpack/modules/powers/icons/serpentis.dmi', "serpentis", -MUTATIONS_LAYER)
-		H.overlays_standing[MUTATIONS_LAYER] = serpentis_overlay
-		H.apply_overlay(MUTATIONS_LAYER)
+		H.remove_overlay(POWERS_LAYER)
+		var/mutable_appearance/serpentis_overlay = mutable_appearance('modular_darkpack/modules/powers/icons/serpentis.dmi', "serpentis", -POWERS_LAYER)
+		H.overlays_standing[POWERS_LAYER] = serpentis_overlay
+		H.apply_overlay(POWERS_LAYER)
 	immobilize_target(target)
 
 /datum/discipline_power/serpentis/the_eyes_of_the_serpent/deactivate(mob/living/target)
@@ -78,7 +84,7 @@
 	release_target(target)
 	if (ishuman(target))
 		var/mob/living/carbon/human/human_target = target
-		human_target.remove_overlay(MUTATIONS_LAYER)
+		human_target.remove_overlay(POWERS_LAYER)
 
 //THE TONGUE OF THE ASP
 /datum/discipline_power/serpentis/the_tongue_of_the_asp
@@ -106,7 +112,7 @@
 
 /datum/discipline_power/serpentis/the_tongue_of_the_asp/pre_activation_checks(mob/living/target)
 	. = ..()
-	successes = SSroll.storyteller_roll(owner.st_get_stat(STAT_STRENGTH), 6, owner, numerical = TRUE)
+	successes = SSroll.storyteller_roll_datum(owner, applic_stats = list(STAT_STRENGTH), numerical = TRUE)
 	if(successes > 0)
 		return TRUE
 	else
@@ -129,7 +135,7 @@
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING
 	toggled = TRUE
 	vitae_cost = 0 //handling blood cost in pre_activation because this power asks for one bloodpoint, but can be on forever without consuming more
-	violates_masquerade = TRUE
+	violates_masquerade = FALSE
 	var/choice
 
 /datum/discipline_power/serpentis/the_skin_of_the_adder/pre_activation_checks()
@@ -147,7 +153,7 @@
 	else
 		owner.st_add_stat_mod(STAT_STAMINA, 2, "Serpentis") // permanently on with no downsides according to dav20. its staying at fort one bro
 	ADD_TRAIT(owner, TRAIT_SERPENTIS_SKIN, DISCIPLINE_TRAIT(type)) //ideally this would either be blatantly obvious or not so much depending on the choice. I guess masq violating face trait will work for obvious.
-	owner.st_add_stat_mod(STAT_APPEARANCE, -(owner.st_get_stat(STAT_APPEARANCE) - 1), "Serpentis")
+	owner.st_add_stat_clamp(STAT_APPEARANCE, 0, "Serpentis")
 	/*
 	owner.Stun(duration_length)
 	owner.petrify(duration_length, "Serpentis")
@@ -162,7 +168,7 @@
 	else
 		owner.st_remove_stat_mod(STAT_STAMINA, 2, "Serpentis")
 	REMOVE_TRAIT(owner, TRAIT_SERPENTIS_SKIN, DISCIPLINE_TRAIT(type))
-	owner.st_remove_stat_mod(STAT_APPEARANCE, "Serpentis")
+	owner.st_remove_stat_clamp(STAT_APPEARANCE, "Serpentis")
 
 
 //THE FORM OF THE COBRA
@@ -261,6 +267,7 @@
 	vitae_cost = 0
 
 	violates_masquerade = TRUE
+	frenzy_usable = FALSE
 
 	cooldown_length = 20 SECONDS
 

@@ -12,7 +12,7 @@
 			var/blood_data = B.data
 			if(blood_data)
 				var/generation = blood_data["generation"]
-				var/clan = blood_data["clan"]
+				var/clan = LOWER_TEXT(blood_data["clan"])
 				var/real_name = blood_data["real_name"]
 				var/message = generate_message(generation, clan, real_name)
 				to_chat(last_activator, "[message]")
@@ -44,7 +44,6 @@
 		else
 			if(generation >= 14)
 				message += "This is the vitae of a thinblood!\n"
-	clan = lowertext(clan)
 	switch(clan)
 		if(VAMPIRE_CLAN_TOREADOR, VAMPIRE_CLAN_DAUGHTERS_OF_CACOPHONY)
 			message += "The blood is sweet and rich. The owner must, too, be beautiful.\n"

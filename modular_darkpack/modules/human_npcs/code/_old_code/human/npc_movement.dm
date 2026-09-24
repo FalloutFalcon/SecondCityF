@@ -99,6 +99,8 @@
 		return
 	if (!walktarget)
 		walktarget = ChoosePath()
+	if(walktarget)
+		EVLOG_PATH(src, EVLOG_CATEGORY_MOVELOOPS, "Set walktarget: [walktarget]", list(loc, get_turf(walktarget)))
 	if (loc == tupik_loc)
 		tupik_steps += 1
 	else
@@ -115,7 +117,10 @@
 		return
 	if (observed_by_player())
 		return
-	forceMove(get_turf(walktarget))
+	var/turf/old_loc = loc
+	var/turf/new_loc = get_turf(walktarget)
+	forceMove(new_loc)
+	EVLOG_PATH(src, EVLOG_CATEGORY_MOVELOOPS, "Teleported using evil russian shitcode", list(old_loc, new_loc))
 
 /mob/living/carbon/human/npc/proc/CreateWay(direction)
 	var/turf/location = get_turf(src)
@@ -281,7 +286,7 @@
 					GLOB.move_manager.move_to(src, danger_source, 1, cached_multiplicative_slowdown)
 
 		// Deaggro if the danger source has been beaten up
-		if (danger_source.stat > UNCONSCIOUS)
+		if (IS_UNCONSCIOUS_OR_CRIT(danger_source))
 			end_combat()
 
 		// Deaggro if 30 second have passed since being antagonised

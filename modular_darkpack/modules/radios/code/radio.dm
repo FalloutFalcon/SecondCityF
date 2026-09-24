@@ -12,7 +12,7 @@
 	name = "military radio"
 	radio_network = NETWORK_MILITARY
 
-/obj/item/radio/headset/darkpack/military/Initialize()
+/obj/item/radio/headset/darkpack/military/Initialize(mapload)
 	. = ..()
 	set_frequency(FREQ_MILITARY)
 	radio_id = rand(1, 999) // Since we wont have a tranceiver for these, we're just auto-assigning a random ID. This isn't foolproof.
@@ -21,7 +21,7 @@
 	name = "military radio"
 	radio_network = NETWORK_ENDRON
 
-/obj/item/radio/headset/darkpack/pmc/Initialize()
+/obj/item/radio/headset/darkpack/pmc/Initialize(mapload)
 	. = ..()
 	set_frequency(FREQ_ENDRON)
 	AddElement(/datum/element/earhealing)
@@ -33,6 +33,7 @@
 	name = "police radio"
 	icon_state = "pp25"
 	COOLDOWN_DECLARE(emergency_cooldown)
+	custom_price = 50
 
 /obj/item/radio/headset/darkpack/police/examine(mob/user)
 	. = ..()

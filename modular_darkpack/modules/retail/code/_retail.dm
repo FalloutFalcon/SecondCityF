@@ -10,6 +10,7 @@
 	density = FALSE
 	anchored = TRUE
 	anchored_tabletop_offset = 6
+	var/take_area_name = TRUE
 	var/owner_needed = TRUE //Does an npc need to be here for this
 	var/mob/living/carbon/human/npc/my_owner //tracks existence of owner
 	var/payment_department = ACCOUNT_SRV
@@ -18,7 +19,7 @@
 	// Equivlenet to products list if you dont need to pass args. Will likely phase out the evil news in our type path definitions
 	var/list/product_types = list()
 
-/obj/structure/retail/Initialize()
+/obj/structure/retail/Initialize(mapload)
 	. = ..()
 	if(owner_needed == TRUE)
 		my_owner = locate(/mob/living/carbon/human/npc) in range(2, src)
@@ -26,7 +27,12 @@
 			RegisterSignal(my_owner, COMSIG_QDELETING, PROC_REF(cleanup_owner))
 	build_inventory()
 
+	if(take_area_name)
+		name = get_area_name(src, TRUE)
+
 /obj/structure/retail/proc/cleanup_owner()
+	SIGNAL_HANDLER
+
 	my_owner = null
 
 //whether or not the user can shop at this store.
