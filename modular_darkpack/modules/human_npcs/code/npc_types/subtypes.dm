@@ -17,7 +17,16 @@
 /mob/living/carbon/human/npc/poor
 	outfit_type = /datum/outfit/npc/poor
 
+/mob/living/carbon/human/npc/poor/Initialize(mapload)
+	. = ..()
+	ai_controller?.set_blackboard_key(BB_NPC_ATTRIBUTE_ENERGY, 5)
+
+
 /mob/living/carbon/human/npc/shop
+	ai_controller = /datum/ai_controller/npc/stand_still
+	outfit_type = /datum/outfit/npc/shop
+
+/mob/living/carbon/human/npc/illegal
 	ai_controller = /datum/ai_controller/npc/stand_still
 	outfit_type = /datum/outfit/npc/shop
 
