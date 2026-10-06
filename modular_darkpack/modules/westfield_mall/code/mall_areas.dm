@@ -1,8 +1,10 @@
 /area/vtm/westfield_mall
 	name = "Mall Exterior"
-	outdoors = TRUE
 	icon_state = "outside"
 	icon = 'modular_darkpack/modules/westfield_mall/icons/mall_areas.dmi'
+	sound_environment = SOUND_ENVIRONMENT_CITY
+	ambient_buzz = 'modular_darkpack/modules/ambience/sounds/outdoors_generic.ogg'
+	outdoors = TRUE
 
 /area/vtm/westfield_mall/skatepark
 	name = "Westfield Drive Skatepark"
@@ -11,7 +13,10 @@
 /area/vtm/westfield_mall/interior
 	name = "Westfield Mall"
 	icon_state = "interior"
+	sound_environment = SOUND_ENVIRONMENT_ROOM
 	ambience_index = AMBIENCE_OFFICE
+	ambient_buzz = 'modular_darkpack/modules/ambience/sounds/interior_generic.ogg'
+	ambient_buzz_vol = 30
 	outdoors = FALSE
 
 /area/vtm/westfield_mall/interior/skatepark

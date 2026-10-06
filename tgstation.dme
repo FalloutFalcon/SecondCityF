@@ -8341,4 +8341,6 @@
 #include "modular_darkpack\modules\z_travel\code\helpers.dm"
 #include "modular_darkpack\modules\z_travel\code\manhole.dm"
 #include "modular_darkpack\modules\z_travel\code\transfer_point.dm"
+#include "modular_darkpack\modules\zombie_hoard\code\zombie_ai.dm"
+#include "modular_darkpack\modules\zombie_hoard\code\zombie_controller.dm"
 // END_INCLUDE

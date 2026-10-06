@@ -31,6 +31,7 @@
 
 /mob/living/basic/zombie/darkpack/Initialize(mapload)
 	. = ..()
+	GLOB.alive_zombies += src
 	// the parent is causing them to appear as space station 13 zombies - this removes that.
 	icon = 'modular_darkpack/modules/npc/icons/zombies.dmi'
 	icon_state = icon_living
@@ -39,10 +40,19 @@
 	AddElement(/datum/element/ai_retaliate)
 
 /mob/living/basic/zombie/darkpack/Destroy()
+	GLOB.alive_zombies -= src
 	if(source_grave)
 		source_grave.spawned_zombies -= src
 	source_grave = null
 	return ..()
+
+/mob/living/basic/zombie/darkpack/revive(full_heal_flags, excess_healing, force_grab_ghost)
+	. = ..()
+	GLOB.alive_zombies |= src
+
+/mob/living/basic/zombie/darkpack/death(gibbed)
+	. = ..()
+	GLOB.alive_zombies -= src
 
 /mob/living/basic/zombie/darkpack/skeleton
 	name = "Skeleton"
@@ -75,6 +85,9 @@
 	icon_state = "zombieup"
 	icon_dead = "zombieup_dead"
 
+/mob/living/basic/zombie/darkpack/suit_zombie/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/death_drops, /obj/item/stack/dollar/rand/hundred)
 
 // need a custom targeting strategy so they don't kill other zombies
 /datum/targeting_strategy/basic/zombie_darkpack
@@ -134,9 +147,12 @@
 /datum/ai_controller/basic_controller/zombie/darkpack
 	blackboard = list(
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic/zombie_darkpack,
-		BB_TARGET_MINIMUM_STAT = DEAD,
+		BB_TARGET_MINIMUM_STAT = HARD_CRIT,
 		BB_VISION_RANGE = 9,
 	)
 	ai_movement = /datum/ai_movement/basic_avoidance
 
-	behavior_tree_json = "code/datums/ai/basic_mobs/simple_hostile.bt.json"
+	// We need them to navigate even at great distances.
+	ai_traits = parent_type::ai_traits | RUN_WHILE_UNWATCHED
+
+	behavior_tree_json = "modular_darkpack/modules/npc/code/nonhuman/hostile/zombie.bt.json"
