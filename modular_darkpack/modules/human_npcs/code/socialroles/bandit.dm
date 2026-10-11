@@ -20,7 +20,7 @@
 	preferred_gender = MALE
 	male_names = null
 	surnames = null
-	is_criminal = TRUE
+	// is_criminal = TRUE
 
 	hair_colors = list(
 		"#040404",	//Black

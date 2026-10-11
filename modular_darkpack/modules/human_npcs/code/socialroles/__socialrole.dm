@@ -233,19 +233,19 @@
 		"What the fuck!?",
 	)
 
-	var/is_criminal = FALSE
+	// var/is_criminal = FALSE
 
-/mob/living/carbon/human/npc/proc/AssignSocialRole(datum/socialrole/S, dont_random)
-	socialrole = GLOB.npc_social_roles[S]
+/mob/living/carbon/human/npc/proc/AssignSocialRole(datum/socialrole/social_role_type, dont_random)
+	socialrole = GLOB.npc_social_roles[social_role_type]
 
 	fully_replace_character_name(name, real_name)
 
 
-	maxHealth = round(initial(maxHealth)+(initial(maxHealth)/3)*(st_get_stat(STAT_STAMINA)))
-	health = round(initial(health)+(initial(health)/3)*(st_get_stat(STAT_STAMINA)))
-	last_health = health
+	// maxHealth = round(initial(maxHealth)+(initial(maxHealth)/3)*(st_get_stat(STAT_STAMINA)))
+	// health = round(initial(health)+(initial(health)/3)*(st_get_stat(STAT_STAMINA)))
+	// last_health = health
 
-	is_criminal = socialrole.is_criminal
+	// is_criminal = socialrole.is_criminal
 
 	if(!dont_random)
 		gender = pick(MALE, FEMALE)

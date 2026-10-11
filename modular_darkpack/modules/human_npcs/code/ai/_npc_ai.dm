@@ -1,6 +1,9 @@
 /datum/ai_controller/npc
 	ai_movement = /datum/ai_movement/basic_avoidance // /datum/ai_movement/jps
 	movement_delay = 0.8 SECONDS
+
+	ai_traits = parent_type::ai_traits | RUN_WHILE_UNWATCHED
+	
 	behavior_tree_json = "modular_darkpack/modules/human_npcs/code/ai/npc.bt.json"
 	/*
 	planning_subtrees = list(

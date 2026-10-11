@@ -1,7 +1,3 @@
-/// Landmarks that NPCs will spawn at
-GLOBAL_LIST_EMPTY(npc_spawn_points)
-GLOBAL_LIST_EMPTY(npc_beacons)
-
 /obj/effect/landmark/npc_spawn_point
 	icon = 'modular_darkpack/modules/deprecated/icons/effects/landmarks_static.dmi'
 	icon_state = "spawn"

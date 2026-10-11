@@ -1,9 +1,3 @@
-/// All human NPCs, living or dead
-GLOBAL_LIST_EMPTY(human_npc_list)
-/// All living human NPCs
-GLOBAL_LIST_EMPTY(alive_human_npc_list)
-
-
 /mob/living/carbon/human/npc
 	faction = list(FACTION_NPC)
 	ai_controller = /datum/ai_controller/npc
@@ -16,7 +10,9 @@ GLOBAL_LIST_EMPTY(alive_human_npc_list)
 
 	/// NPC is in the process of "typing" a message
 	var/is_talking = FALSE
-	var/outfit_type = /datum/outfit/npc
+
+	/// Used to hold a bunch of global lists for stuff like speech
+	var/datum/socialrole/socialrole
 
 /mob/living/carbon/human/npc/Initialize(mapload)
 	. = ..()

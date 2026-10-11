@@ -4,7 +4,7 @@
 /mob/living/carbon/human/npc : /mob/living/carbon/human/npc/average {@OLD}
 /mob/living/carbon/human/npc/walkby : /mob/living/carbon/human/npc/average {@OLD}
 /mob/living/carbon/human/npc/walkby/club : /mob/living/carbon/human/npc/average/club {@OLD}
-/mob/living/carbon/human/npc/incel : /mob/living/carbon/human/npc/average/standing {@OLD}
+/mob/living/carbon/human/npc/incel : /mob/living/carbon/human/npc/average/standing/incel {@OLD}
 /mob/living/carbon/human/npc/business: /mob/living/carbon/human/npc/rich {@OLD}
 /mob/living/carbon/human/npc/police/static : /mob/living/carbon/human/npc/police/standing {@OLD}
 /mob/living/carbon/human/npc/endronexecsecurity : /mob/living/carbon/human/npc/endron/standing {@OLD}
