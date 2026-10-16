@@ -3,7 +3,7 @@
 
 /obj/item/relic
 	name = "strange object"
-	desc = "What mysteries could this hold? Maybe Research & Development could find out."
+	desc = "What mysteries could this hold? Maybe a smart fella could find out." // DARKPACK EDIT CHANGE
 	icon = 'icons/obj/devices/artefacts.dmi'
 	icon_state = "debug_artefact"
 	/// The name this artefact will have when it's activated.
@@ -20,6 +20,8 @@
 	var/cooldown_timer
 	/// What visual theme this artefact has. Current possible choices: "prototype", "necrotech"
 	var/artifact_theme = RELIC_PROTOTYPE
+
+	var/datum/storyteller_roll/activate_relic/identify_roll // DARKPACK EDIT ADD
 
 	COOLDOWN_DECLARE(cooldown)
 
@@ -97,7 +99,7 @@
 
 /obj/item/relic/attack_self(mob/user)
 	if(!activated)
-		to_chat(user, span_notice("You aren't quite sure what this is. Maybe R&D knows what to do with it?"))
+		to_chat(user, span_notice("You aren't quite sure what this is. Maybe a smart fella could find out.")) // DARKPACK EDIT CHANGE
 		return
 	if(!COOLDOWN_FINISHED(src, cooldown))
 		to_chat(user, span_warning("[src] does not react!"))
@@ -644,6 +646,39 @@
 /obj/item/relic/lavaland/revealed/Initialize(mapload)
 	. = ..()
 	auto_reveal()
+
+// DARKPACK EDIT ADD START
+/obj/item/relic/attack_self(mob/user, modifiers)
+	. = ..()
+	if(!isliving(user))
+		return
+
+	if(activated)
+		to_chat(user, span_notice("This relic is already activated."))
+		return
+
+	var/mob/living/artifact_identifier = user
+	if(artifact_identifier.st_get_stat(STAT_SCIENCE) < 1)
+		to_chat(artifact_identifier, span_warning("What is this thing? Some kind of yard sale item?"))
+		return
+
+	if(!can_be_used_by(artifact_identifier))
+		to_chat(artifact_identifier, span_warning("There's a presence inside of this object that refuses to cooperate with you."))
+		return
+
+	to_chat(artifact_identifier, span_cult("You figure you might know how this thing works."))
+	if(!do_after(artifact_identifier, 1 TURNS, src))
+		return
+
+	if(!identify_roll)
+		identify_roll = new()
+	var/roll = identify_roll.st_roll(user, src)
+	if(roll == ROLL_SUCCESS)
+		reveal()
+		to_chat(artifact_identifier, span_cult("You successfully activate [src]!"))
+	else
+		to_chat(artifact_identifier, span_warning("You stop examining [src]."))
+// DARKPACK EDIT ADD END
 
 #undef RELIC_PROTOTYPE
 #undef RELIC_NECROTECH

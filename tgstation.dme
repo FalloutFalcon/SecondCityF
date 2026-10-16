@@ -647,6 +647,7 @@
 #include "code\_globalvars\tgui.dm"
 #include "code\_globalvars\time_vars.dm"
 #include "code\_globalvars\darkpack\lists\ambience.dm"
+#include "code\_globalvars\darkpack\lists\maintenance_loot.dm"
 #include "code\_globalvars\darkpack\lists\masquerade.dm"
 #include "code\_globalvars\darkpack\lists\miscellaneous.dm"
 #include "code\_globalvars\darkpack\lists\phone_contacts.dm"

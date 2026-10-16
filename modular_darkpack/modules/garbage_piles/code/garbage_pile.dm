@@ -126,11 +126,26 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 		spawn_list = pick_weight(spawn_list)
 	new spawn_list(get_turf(src))
 
+	if(prob(5))
+		spawn_random_event(rand(1, 2))
+
+/obj/structure/garbage_pile/proc/spawn_random_event(event_num)
+	switch(event_num)
+		if(1)
+			do_sparks(3, TRUE, src)
+		if(2)
+			var/obj/effect/particle_effect/water/extinguisher/water_effect = new(get_turf(src))
+			water_effect.move_at(pick(get_adjacent_open_turfs(src)), 2, 3)
+
 /obj/structure/garbage_pile/proc/shake_off()
 	var/list/turf_options = get_toss_locations()
 	for(var/obj/item/shit_on_turf in get_turf(src))
 		if(prob(33))
 			continue
+
+		var/damage_amount = rand(1, shit_on_turf.max_integrity * 0.75)
+		shit_on_turf.take_damage(damage_amount)
+
 		var/turf/dropping_turf = pick(turf_options)
 		shit_on_turf.throw_at(dropping_turf, 1, 1)
 		new /obj/effect/temp_visual/mook_dust/small(dropping_turf)

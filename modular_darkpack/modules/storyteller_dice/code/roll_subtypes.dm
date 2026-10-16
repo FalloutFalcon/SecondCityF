@@ -160,3 +160,10 @@
 	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
 	reroll_cooldown = 1 TURNS
 	difficulty = 9
+
+
+/datum/storyteller_roll/activate_relic
+	bumper_text = "activate strange object"
+	applicable_stats = list(STAT_INTELLIGENCE, STAT_SCIENCE)
+	reroll_cooldown = 1 SCENES
+	difficulty = 7
