@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 
 /obj/structure/garbage_pile
 	name = "towering pile of garbage"
-	// desc = "."
+	desc = "A big ol pile of STUFF. One man's trash is another man's treasure."
 	icon = 'modular_darkpack/modules/garbage_piles/icons/garbage_pile.dmi'
 	icon_state = "pile_3"
 	base_icon_state = "pile"
@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	prevent_destruction = TRUE
 
 	/// Randomly picked icon to generate the apperance of the structure
-	var/parts_icon = 'modular_darkpack/modules/garbage_piles/icons/trash_debug.dmi'
+	var/parts_icon = 'modular_darkpack/modules/garbage_piles/icons/trash.dmi'
 	var/base_min = 0 //min and max number of random pieces of base icon
 	var/base_max = 2
 	/// Limits on pixel offsets of base pieces
@@ -42,6 +42,9 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	. = ..()
 
 	var/tower_height = get_tower_height()
+	if(tower_height)
+		return .
+
 	if(isnull(last_overlay_height) || (last_overlay_height != tower_height))
 		overlay_seed = rand(1, 30)
 	last_overlay_height = tower_height
@@ -82,6 +85,13 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 			name = "pile of garbage"
 		if(SPRITE_STATES)
 			name = "towering pile of garbage"
+
+/obj/structure/garbage_pile/examine(mob/user)
+	. = ..()
+	if(prevent_destruction)
+		. += span_notice("It's refilled regularly with more trash. Your not getting rid of it...")
+	else
+		. += span_notice("This one fell off from a bigger pile. It wont pile up on its own.")
 
 
 /obj/structure/garbage_pile/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armour_penetration)
@@ -143,8 +153,9 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 		if(prob(33))
 			continue
 
-		var/damage_amount = rand(1, shit_on_turf.max_integrity * 0.75)
-		shit_on_turf.take_damage(damage_amount)
+		if(prob(50))
+			var/damage_amount = rand(1, shit_on_turf.max_integrity * 0.75)
+			shit_on_turf.take_damage(damage_amount)
 
 		var/turf/dropping_turf = pick(turf_options)
 		shit_on_turf.throw_at(dropping_turf, 1, 1)
@@ -172,7 +183,7 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 		if(2)
 			y_offest = 6
 		if(SPRITE_STATES)
-			y_offest = 16
+			y_offest = 32
 	I.pixel_x = rand(-base_spread,base_spread)
 	I.pixel_y = rand(-base_spread,base_spread + y_offest)
 	var/matrix/M = matrix()

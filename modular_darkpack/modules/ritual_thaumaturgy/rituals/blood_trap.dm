@@ -25,3 +25,9 @@
 	if(loc)
 		UnregisterSignal(loc, COMSIG_ATOM_ENTERED)
 	return ..()
+
+/obj/ritual_rune/get_magic_sources()
+	. = ..()
+	var/datum/magic_information/magic_info = new()
+	magic_info.magic_type = MAGIC_TYPE_BLOOD
+	. += magic_info

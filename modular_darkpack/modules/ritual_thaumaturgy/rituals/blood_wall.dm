@@ -20,3 +20,9 @@
 	anchored = TRUE
 	density = TRUE
 	max_integrity = 100
+
+/obj/structure/bloodwall/get_magic_sources()
+	. = ..()
+	var/datum/magic_information/magic_info = new()
+	magic_info.magic_type = MAGIC_TYPE_BLOOD
+	. += magic_info

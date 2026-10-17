@@ -173,8 +173,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 
 	list(//equipment
 		/obj/item/clothing/ears/earmuffs = 1,
-		/obj/item/clothing/glasses/hud/diagnostic = 1,
-		/obj/item/clothing/glasses/hud/health = 1,
 		/obj/item/clothing/glasses/salesman = 1,
 		/obj/item/clothing/glasses/welding = 1,
 		/obj/item/clothing/gloves/tackler/offbrand = 1,
@@ -188,7 +186,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		) = 8,
 
 	list(//strange objects
-		/obj/item/relic = 5,
+		/obj/item/assembly/relic = 5,
 		) = 8,
 
 	list(//construction and crafting
@@ -267,11 +265,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/disk/design_disk/liberator = 1,
 		/obj/item/disk/computer/maintenance/theme = 3,
 	) = 4,
-
-	list(//modsuits
-		/obj/effect/spawner/random/mod/maint = 3,
-		/obj/item/mod/construction/broken_core = 1,
-		) = 4,
 
 	list(//music
 		/obj/item/instrument/accordion = 5,
@@ -384,6 +377,12 @@ GLOBAL_LIST_INIT(oddity_loot, list(//oddity: strange or crazy items
 		/obj/item/toy/cards/deck/tarot/haunted = 1,
 		list(//random ss13 items.
 			/obj/item/clothing/glasses/nightmare_vision = 1,
+			/obj/item/clothing/glasses/hud/diagnostic = 1,
+			/obj/item/clothing/glasses/hud/health = 1,
+			list(//modsuits
+				/obj/effect/spawner/random/mod/maint = 3,
+				/obj/item/mod/construction/broken_core = 1,
+			) = 4,
 		) = 1
 	))
 

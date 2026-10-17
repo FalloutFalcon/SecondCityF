@@ -142,6 +142,12 @@
 			return TRUE
 	return FALSE
 
+/obj/item/spirit_chime/get_magic_sources()
+	. = ..()
+	var/datum/magic_information/magic_info = new()
+	magic_info.magic_type = MAGIC_TYPE_BLOOD
+	. += magic_info
+
 
 // The proimity monitor that creates the detection field
 /datum/proximity_monitor/advanced/spirit_chime

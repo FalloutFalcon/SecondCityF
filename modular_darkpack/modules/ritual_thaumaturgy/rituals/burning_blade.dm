@@ -64,9 +64,10 @@
 
 /datum/component/burning_blade/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(on_hit_living))
+	RegisterSignal(parent, COMSIG_ATOM_GET_MAGIC_SOURCES, PROC_REF(on_get_magic_sources))
 
 /datum/component/burning_blade/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_ITEM_ATTACK))
+	UnregisterSignal(parent, list(COMSIG_ITEM_ATTACK, COMSIG_ATOM_GET_MAGIC_SOURCES))
 
 	var/obj/item/weapon = parent
 	weapon.damtype = original_damtype
@@ -78,3 +79,8 @@
 	charges--
 	if(charges <= 0)
 		qdel(src)
+
+/datum/component/burning_blade/proc/on_get_magic_sources(atom/source, list/source_list)
+	var/datum/magic_information/magic_info = new()
+	magic_info.magic_type = MAGIC_TYPE_BLOOD
+	source_list += magic_info

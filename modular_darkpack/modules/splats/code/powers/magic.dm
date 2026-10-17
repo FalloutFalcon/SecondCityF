@@ -53,16 +53,26 @@
 	. = list()
 	SEND_SIGNAL(src, COMSIG_ATOM_GET_MAGIC_SOURCES, .)
 
-
-/obj/item/occult_artifact/get_magic_sources()
+/obj/item/assembly/relic/get_magic_sources()
 	. = ..()
 	var/datum/magic_information/magic_info = new()
-	magic_info.magic_strength = rank
-	magic_info.magic_type = magic_type
+	magic_info.magic_type = MAGIC_TYPE_UNKNOWN // Some sorta weaver shit
 	. += magic_info
 
-/obj/item/ritual_tome/get_magic_sources()
+/obj/item/shadowcloak/get_magic_sources()
 	. = ..()
 	var/datum/magic_information/magic_info = new()
-	magic_info.magic_type = MAGIC_TYPE_BLOOD
+	magic_info.magic_type = MAGIC_TYPE_UNKNOWN
+	. += magic_info
+
+/obj/item/dice/d20/fate/get_magic_sources()
+	. = ..()
+	var/datum/magic_information/magic_info = new()
+	magic_info.magic_type = MAGIC_TYPE_UNKNOWN
+	. += magic_info
+
+/obj/item/toy/cards/deck/tarot/haunted/get_magic_sources()
+	. = ..()
+	var/datum/magic_information/magic_info = new()
+	magic_info.magic_type = MAGIC_TYPE_UNKNOWN
 	. += magic_info

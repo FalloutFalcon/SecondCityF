@@ -140,6 +140,12 @@
 	else
 		to_chat(artifact_identifier, span_warning("You stop examining [src]."))
 
+/obj/item/occult_artifact/get_magic_sources()
+	. = ..()
+	var/datum/magic_information/magic_info = new()
+	magic_info.magic_strength = rank
+	magic_info.magic_type = magic_type
+	. += magic_info
 
 /obj/effect/spawner/random/occult
 	name = "occult spawner"

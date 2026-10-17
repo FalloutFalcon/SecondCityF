@@ -679,7 +679,7 @@
 	auto_reveal()
 
 // DARKPACK EDIT ADD START
-/obj/item/relic/attack_self(mob/user, modifiers)
+/obj/item/assembly/relic/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!isliving(user))
 		return
@@ -691,10 +691,6 @@
 	var/mob/living/artifact_identifier = user
 	if(artifact_identifier.st_get_stat(STAT_SCIENCE) < 1)
 		to_chat(artifact_identifier, span_warning("What is this thing? Some kind of yard sale item?"))
-		return
-
-	if(!can_be_used_by(artifact_identifier))
-		to_chat(artifact_identifier, span_warning("There's a presence inside of this object that refuses to cooperate with you."))
 		return
 
 	to_chat(artifact_identifier, span_cult("You figure you might know how this thing works."))

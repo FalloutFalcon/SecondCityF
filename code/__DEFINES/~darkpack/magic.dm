@@ -5,3 +5,5 @@
 /// Broadly all WTA magic
 #define MAGIC_TYPE_SPIRIT "spirit"
 
+
+#define MAGIC_TYPE_UNKNOWN "unknown"
