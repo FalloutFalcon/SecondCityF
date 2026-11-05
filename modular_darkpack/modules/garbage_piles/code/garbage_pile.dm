@@ -42,7 +42,7 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	. = ..()
 
 	var/tower_height = get_tower_height()
-	if(tower_height)
+	if(!tower_height)
 		return .
 
 	if(isnull(last_overlay_height) || (last_overlay_height != tower_height))
