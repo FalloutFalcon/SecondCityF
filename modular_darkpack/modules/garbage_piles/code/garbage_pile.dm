@@ -137,7 +137,7 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	new spawn_list(get_turf(src))
 
 	if(prob(5))
-		spawn_random_event(rand(1, 2))
+		spawn_random_event(rand(1, 3))
 
 /obj/structure/garbage_pile/proc/spawn_random_event(event_num)
 	switch(event_num)
@@ -146,6 +146,11 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 		if(2)
 			var/obj/effect/particle_effect/water/extinguisher/water_effect = new(get_turf(src))
 			water_effect.move_at(pick(get_adjacent_open_turfs(src)), 2, 3)
+		if(3)
+			if(prob(75))
+				new /mob/living/basic/mouse/vampire(get_turf(src))
+			else
+				new /mob/living/basic/mouse/vampire/rat(get_turf(src))
 
 /obj/structure/garbage_pile/proc/shake_off()
 	var/list/turf_options = get_toss_locations()

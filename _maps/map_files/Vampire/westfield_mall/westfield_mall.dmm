@@ -9554,6 +9554,7 @@
 /obj/effect/turf_decal/bordur/inverse{
 	dir = 10
 	},
+/obj/structure/fence/door/opened,
 /turf/open/misc/grass/nosmooth,
 /area/vtm/westfield_mall)
 "aFt" = (
@@ -15807,6 +15808,10 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/vtm/westfield_mall/interior/art_store)
+"bbp" = (
+/obj/structure/fence,
+/turf/open/misc/grass/nosmooth,
+/area/vtm/westfield_mall)
 "bfc" = (
 /obj/structure/table/wood,
 /obj/effect/decal/pallet,
@@ -15855,6 +15860,12 @@
 /obj/effect/decal/rugs,
 /turf/open/floor/iron/dark,
 /area/vtm/westfield_mall/interior/art_store)
+"bme" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/open/misc/grass/nosmooth,
+/area/vtm/westfield_mall)
 "brv" = (
 /obj/structure/chair/sofa/right/brown{
 	dir = 1
@@ -15884,6 +15895,14 @@
 "bAt" = (
 /obj/effect/landmark/observer_start,
 /turf/open/floor/plating/sidewalk/old,
+/area/vtm/westfield_mall)
+"bKg" = (
+/obj/machinery/conveyor_switch/oneway{
+	dir = 8;
+	id = "garbage";
+	name = "disposal conveyor"
+	},
+/turf/open/floor/plating/sidewalk/poor,
 /area/vtm/westfield_mall)
 "bOf" = (
 /obj/vehicle/ridden/scooter{
@@ -16068,6 +16087,10 @@
 	},
 /turf/open/misc/grass/random,
 /area/vtm/westfield_mall/forest)
+"cUL" = (
+/obj/structure/fence/corner,
+/turf/open/misc/dirt,
+/area/vtm/westfield_mall)
 "dan" = (
 /obj/structure/chair/office/darkpack/blue{
 	dir = 4
@@ -16172,6 +16195,18 @@
 /obj/effect/mapping_helpers/door/autoname,
 /turf/open/floor/city/plating,
 /area/vtm/westfield_mall/interior/techshop)
+"eaG" = (
+/obj/structure/fence/corner{
+	dir = 4
+	},
+/turf/open/misc/grass/nosmooth,
+/area/vtm/westfield_mall)
+"eaV" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/open/misc/grass/random/grass,
+/area/vtm/westfield_mall)
 "ebf" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/city/toilet,
@@ -16455,6 +16490,10 @@
 /obj/structure/platform/lowwall/market/window,
 /turf/open/floor/plating/rough,
 /area/vtm/westfield_mall/interior/law_office)
+"fLx" = (
+/obj/effect/spawner/random/trash,
+/turf/open/misc/dirt,
+/area/vtm/westfield_mall)
 "fMu" = (
 /obj/structure/table/reinforced,
 /obj/item/flashlight/seclite{
@@ -16786,6 +16825,16 @@
 	},
 /turf/open/floor/plating/roofwalk,
 /area/vtm/westfield_mall)
+"hRs" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "garbage"
+	},
+/obj/machinery/recycler{
+	dir = 8
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/westfield_mall)
 "hRX" = (
 /obj/structure/noticeboard/directional/north,
 /obj/item/gun/ballistic/automatic/darkpack/ar15{
@@ -17056,6 +17105,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/vtm/westfield_mall/interior/art_store)
+"jKY" = (
+/obj/machinery/mineral/stacking_machine{
+	input_dir = 2
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "garbage"
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/westfield_mall)
 "jNL" = (
 /obj/structure/table/wood,
 /turf/open/floor/plating/rough,
@@ -17140,6 +17199,17 @@
 /obj/machinery/light/small/dim/directional/east,
 /turf/open/floor/plating/concrete,
 /area/vtm/westfield_mall/interior)
+"kJA" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "garbage"
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/westfield_mall)
+"kNq" = (
+/obj/structure/fence/door,
+/turf/open/misc/dirt,
+/area/vtm/westfield_mall)
 "kPZ" = (
 /obj/structure/table,
 /obj/effect/turf_decal/bordur{
@@ -17159,9 +17229,21 @@
 /obj/effect/landmark/start/darkpack/hecata/nonni,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/bianchiBank)
+"lek" = (
+/obj/structure/garbage_pile/temporary,
+/turf/open/misc/dirt,
+/area/vtm/westfield_mall)
+"lkU" = (
+/obj/machinery/mineral/stacking_unit_console,
+/turf/closed/wall/vampwall/rustbad,
+/area/vtm/westfield_mall)
 "lra" = (
 /obj/effect/turf_decal/bordur,
 /turf/open/floor/plating/roofwalk,
+/area/vtm/westfield_mall)
+"lsd" = (
+/obj/item/melee/vamp/tire,
+/turf/open/misc/dirt,
 /area/vtm/westfield_mall)
 "lsP" = (
 /obj/transfer_point_vamp/umbral/exit{
@@ -17383,6 +17465,10 @@
 	},
 /turf/open/floor/carpet/green,
 /area/vtm/westfield_mall/interior/law_office)
+"mXk" = (
+/obj/item/melee/vamp/tire,
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/westfield_mall)
 "nbK" = (
 /obj/structure/table,
 /obj/machinery/light/cold/directional/west{
@@ -17773,6 +17859,19 @@
 /obj/effect/decal/pallet,
 /turf/open/floor/plating/rough,
 /area/vtm/westfield_mall/interior/cave)
+"qFK" = (
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "garbage"
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/westfield_mall)
+"qGm" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/open/misc/dirt,
+/area/vtm/westfield_mall)
 "qNv" = (
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 8
@@ -17852,6 +17951,12 @@
 /obj/effect/landmark/start/darkpack/citizen/janitor,
 /turf/open/floor/plating/concrete,
 /area/vtm/westfield_mall/interior/groundskeeper_garage)
+"rvy" = (
+/obj/structure/fence/corner{
+	dir = 8
+	},
+/turf/open/misc/dirt,
+/area/vtm/westfield_mall)
 "rvI" = (
 /obj/structure/vampdoor/glass,
 /obj/effect/turf_decal/bordur,
@@ -18001,6 +18106,10 @@
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/westfield_mall/interior/anarch)
+"sZo" = (
+/obj/structure/fence,
+/turf/open/misc/dirt,
+/area/vtm/westfield_mall)
 "taO" = (
 /obj/machinery/button{
 	id = "keepershutters"
@@ -18757,6 +18866,10 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/westfield_mall/interior/groundskeeper_garage)
+"ykX" = (
+/obj/structure/garbage_pile,
+/turf/open/misc/dirt,
+/area/vtm/westfield_mall)
 
 (1,1,1) = {"
 aFc
@@ -62608,16 +62721,16 @@ adg
 adg
 adg
 adg
+kNq
+adg
+aat
+aat
+aat
 adg
 adg
-adg
-adg
-adg
-adg
-adg
-adg
-adg
-aeR
+aat
+aat
+aat
 aFs
 abl
 abl
@@ -62760,17 +62873,17 @@ aQQ
 aQQ
 aQQ
 aQQ
-aQQ
-aQQ
-adg
-adg
-adg
-adg
-adg
-adg
-adg
-adg
-adg
+qGm
+aat
+lek
+aat
+ykX
+aat
+ykX
+aat
+mXk
+kJA
+eaV
 adg
 adg
 adg
@@ -62912,17 +63025,17 @@ aQQ
 aQQ
 aQQ
 aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-adg
-aQQ
-aQQ
-aQQ
-aQQ
+qGm
+ykX
+aat
+fLx
+aat
+aat
+lek
+aat
+bKg
+hRs
+bme
 aQQ
 aQQ
 aQQ
@@ -63064,17 +63177,17 @@ aQQ
 aQQ
 aQQ
 aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
+qGm
+aat
+lsd
+aat
+aat
+ykX
+fLx
+aat
+qFK
+kJA
+bme
 aQQ
 aQQ
 aQQ
@@ -63216,17 +63329,17 @@ aQQ
 aQQ
 aQQ
 aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
+qGm
+ykX
+aat
+ykX
+aat
+aat
+lek
+aat
+jKY
+kJA
+bme
 aQQ
 aQQ
 aQQ
@@ -63368,17 +63481,17 @@ aQQ
 aQQ
 aQQ
 aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
+cUL
+sZo
+rvy
+aat
+ykX
+aat
+aat
+lkU
+aat
+aat
+bme
 aQQ
 aQQ
 aQQ
@@ -63522,15 +63635,15 @@ aQQ
 aQQ
 aQQ
 aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
-aQQ
+cUL
+bbp
+bbp
+sZo
+sZo
+sZo
+sZo
+sZo
+eaG
 aQQ
 aQQ
 aQQ
