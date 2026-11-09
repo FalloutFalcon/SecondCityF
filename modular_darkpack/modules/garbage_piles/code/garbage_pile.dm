@@ -131,10 +131,14 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 			new /obj/effect/temp_visual/mook_dust(dropping_turf)
 			return
 
-	var/list/spawn_list = GLOB.maintenance_loot
-	while(islist(spawn_list))
-		spawn_list = pick_weight(spawn_list)
-	new spawn_list(get_turf(src))
+	var/spawning_stuff
+	if(prob(50))
+		spawning_stuff = /obj/effect/spawner/random/crafting/lowrandom
+	else
+		spawning_stuff = GLOB.maintenance_loot
+		while(islist(spawning_stuff))
+			spawning_stuff = pick_weight(spawning_stuff)
+	new spawning_stuff(get_turf(src))
 
 	if(prob(5))
 		spawn_random_event(rand(1, 3))
