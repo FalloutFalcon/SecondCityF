@@ -99,11 +99,11 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		) = 1,
 
 	list(//construction and crafting
+		/obj/effect/spawner/random/crafting/lowrandom = 3,
 		/obj/item/sign = 1,
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stack/rods/twentyfive = 1,
 		/obj/item/stack/sheet/iron/twenty = 1,
-		/obj/item/stack/sheet/mineral/plasma = 1,
 		/obj/item/stock_parts/power_store/cell = 1,
 		//assemblies
 		/obj/item/assembly/health = 1,

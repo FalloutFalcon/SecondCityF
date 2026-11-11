@@ -6,4 +6,6 @@
 		/obj/item/stack/salvage/glass/two,
 		/obj/item/stack/salvage/scrap_parts/two,
 		/obj/item/stack/salvage/scrap/two,
+		/obj/item/stack/salvage/scrap_electronics,
+		/obj/item/stack/salvage/circuits,
 	)
