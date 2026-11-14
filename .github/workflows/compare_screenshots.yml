@@ -14,6 +14,7 @@ jobs:
           sparse-checkout: |
             code/modules/unit_tests/screenshots
             tools/screenshot-test-comparison
+            modular_darkpack
 
       - name: Setup directory
         run: mkdir -p artifacts

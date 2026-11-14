@@ -39,6 +39,7 @@ jobs:
             _maps/map_jsons
             dependencies.sh
             tools/ci/install_byond.sh
+            modular_darkpack
 
       - name: Find maps
         id: map_finder
