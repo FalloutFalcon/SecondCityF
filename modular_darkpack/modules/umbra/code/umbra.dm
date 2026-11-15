@@ -68,3 +68,19 @@
 			interacting_mob.forceMove(T)
 			playsound(loc, 'modular_darkpack/modules/deprecated/sounds/portal_enter.ogg', 75, FALSE)
 			playsound(T, 'modular_darkpack/modules/deprecated/sounds/portal_enter.ogg', 75, FALSE)
+
+// Helps block npc sightlines
+/obj/effect/fog_wall
+	name = "fog wall"
+	desc = "Mist, or beast.."
+	icon_state = "smoke"
+	opacity = TRUE
+	pass_flags = PASSTABLE | PASSGRILLE
+	anchored = TRUE
+
+/*
+/obj/effect/fog_wall/Crossed(atom/movable/crossed_atom, oldloc)
+	. = ..()
+	if(isliving(crossed_atom) && crossed_atom.client)
+		qdel(src)
+*/
