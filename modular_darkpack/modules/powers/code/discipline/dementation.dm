@@ -64,6 +64,11 @@ Presence powers, etc
 	aggravating = TRUE
 	hostile = TRUE
 	var/dementation_phrase //will be filled when activated via tgui_input_text
+	var/static/list/laugh_tracks = list(
+		'sound/items/sitcom_laugh/SitcomLaugh1.ogg',
+		'sound/items/sitcom_laugh/SitcomLaugh2.ogg',
+		'sound/items/sitcom_laugh/SitcomLaugh3.ogg'
+	)
 
 /datum/discipline_power/dementation/passion/pre_activation_checks(mob/living/carbon/human/target)
 	//var/theirpower = target.st_get_stat(STAT_MORALITY)
@@ -86,14 +91,11 @@ Presence powers, etc
 	dementation_overlay.pixel_z = 1
 	target.overlays_standing[POWERS_LAYER] = dementation_overlay
 	target.apply_overlay(POWERS_LAYER)
-	target.Stun(duration_length)
+	target.Immobilize(duration_length)
 	target.emote(pick("laugh","scream","cry")) // pick a random emotion for them to experience
 	var/attack_text = spooky_font_replace(dementation_phrase) // malk-ify what the attacker said
 	owner.say(attack_text, spans = list("bold", "singing")) // the malk speech uses bold and singing spans
-	// TODO: when the derangement port is merged, update the sound paths here
-	//owner.playsound_local(get_turf(H), pick('sound/items/SitcomLaugh1.ogg', 'sound/items/SitcomLaugh2.ogg', 'sound/items/SitcomLaugh3.ogg'), 100, FALSE)
-	if(target.body_position == STANDING_UP)
-		target.toggle_resting()
+	owner.playsound_local(get_turf(owner), pick(laugh_tracks), 100, FALSE)
 
 /datum/discipline_power/dementation/passion/deactivate(mob/living/carbon/human/target)
 	. = ..()
